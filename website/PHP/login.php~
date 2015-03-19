@@ -3,7 +3,7 @@
 	$pword = $_POST['password'];
 
 
-	if(getInfoFromDatabase("SELECT password FROM users WHERE email = '".$email."'") == $pword) {
+	if(getInfoFromDatabase("SELECT password FROM users WHERE email = '".$email."'") == pword) {
 		echo "Successfully Logged In";
 	}
 
