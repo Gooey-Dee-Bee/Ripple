@@ -1,0 +1,126 @@
+
+body {
+	background-color: #FFFAE6;
+	
+	}
+
+#navBar {
+	width:100%;
+	height:200px;
+	background-color: #33CCCC;
+	left:0;
+	top:0;
+	padding-left:20px;
+
+}
+
+
+#header {
+	color: white;
+	font-size:10em;
+	font-family: 'Cookie', cursive;
+}
+
+
+#accountInfo {
+	top:0;
+	right:15;
+	width:25%;
+	height:150px;
+	background-color:120054;
+	position:absolute;
+	padding:10px;
+	border-bottom-left-radius:6;
+	border-bottom-right-radius:6;
+}
+
+#userName {
+	color:white;
+	font-size:26px;
+}
+
+#userInfo {
+	color:white;
+	font-size:15px;
+	text-align:center;
+
+}
+
+#dropNumber {
+	margin-top:10px;
+	font-size:30px;
+
+
+}
+
+#logout {
+	color:white;
+	text-decoration: none;
+	bottom:5%;
+	right:5%;
+	position: absolute;
+
+}
+
+
+/*OVERALL SONGS*/
+#songBox {
+height:90%;
+}
+
+/* SONG INFORMATION */
+iframe {
+ 	height:80px;
+    border:0;
+    margin-bottom: 20px;
+    width:90%;
+    float:right;
+  }
+  
+  .songPlayer {
+	background-color: #99D6D6;
+	width:95%;
+	height:80px;
+	margin-left:auto;
+	margin-right: auto;
+	margin-top:15px;
+	padding:20px;
+	border-radius: 12;
+	
+}
+
+.songText {
+	color:white;
+
+
+}
+
+
+.songText .artist{
+	font-size:1.5em;
+
+
+
+}
+
+
+.songText .title {
+	font-size:2em;
+
+
+
+}
+
+.drop {
+	height: 80px;
+	position:absolute;
+
+}
+
+
+.drop:hover{
+	opacity:.8;
+	cursor: crosshair;
+
+}
+
