@@ -1,7 +1,7 @@
 <?php
-	$first_name = $_POST['firstName'];
-	$last_name = $_POST['lastName'];
-	$email = $_POST['email'];
+	$first_name = $_POST['first_name'];
+	$last_name = $_POST['last_name'];
+	$email = $_POST['eMail'];
 	$pword = $_POST['password'];
 
 
@@ -20,7 +20,7 @@
 
 
 	function addToDatabase($query) {
-		$con = mysqli_connect('localhost', 'root', 'mysqlpassword', 'Ripple');
+		$con = mysqli_connect('localhost', 'root', '', 'Ripple');
 		if (!$con) {
     		die('Could not connect: ' . mysqli_error($con));
 		}
@@ -33,7 +33,7 @@
 
 
 	function existsInDatabase($query) {
-		$con = mysqli_connect('localhost', 'root', 'mysqlpassword', 'Ripple');
+		$con = mysqli_connect('localhost', 'root', '', 'Ripple');
 		if (!$con) {
     		die('Could not connect: ' . mysqli_error($con));
 		}
