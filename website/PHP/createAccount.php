@@ -1,17 +1,21 @@
 <?php
 
-	$first_name = $_POST['firstName'];
-	$last_name = $_POST['lastName'];
-	$email = $_POST['email'];
+	include "sharedFunctions.php";
+
+
+	$first_name = $_POST['first_name'];
+	$last_name = $_POST['last_name'];
+	$email = $_POST['eMail'];
 	$pword = $_POST['password'];
 
 
 	if(existsInDatabase("SELECT * FROM users WHERE email = '".$email."'")) {
-		echo "email_not_found"; // 'Error Code' that will be tested in the java script and will let the user know the email has already been registered
+		echo "email"; // 'Error Code' that will be tested in the java script and will let the user know the email has already been registered
 	}
 
 	else {
-		addToDatabase("INSERT INTO users(fname, lname, password, email) VALUES ('".$first_name."', '".$last_name."', '".$pword."', '".$email."')");
+		addToDatabase("INSERT INTO users(fname, lname, pword, email) VALUES ('".$first_name."', '".$last_name."', '".$pword."', '".$email."')");
+		updateUserInfo($email, 5);
 		echo "success";
 	}
 
