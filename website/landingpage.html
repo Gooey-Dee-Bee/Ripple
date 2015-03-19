@@ -42,11 +42,11 @@
 			          			<div class="dropdown-menu" style="padding: 15px; padding-bottom: 15px;">
 									<!-- Login Form -->
 									<form method="post" action="login" accept-charset="UTF-8">
-										<input style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="username">
-										<input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="password">
+										<input style="margin-bottom: 15px;" type="text" placeholder="Username" class="loginUsername" name="username">
+										<input style="margin-bottom: 15px;" type="password" placeholder="Password" class="loginPassword" name="password">
 										<input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1">
 										<label style= "color: #fffae6;" class="string optional">Remember me</label>
-										<input style="color: #33cccc;" class="btn btn-default btn-block" type="submit" id="sign-in" value="Sign In">
+										<input id="loginButton" class="btn btn-default btn-block" type="submit" id="sign-in" value="Sign In">
 									</form>
 								</div>
 			        		</li>
@@ -58,22 +58,22 @@
 
 		<!-- Title and text underneath -->
 		<div id="header">
-			<h1>Ripple</h1>
+			<h1 id="ripple-title">Ripple</h1>
 			<p><b>The best way to discover and share the hottest songs on the internet.</b></p>
 		</div>
 
 		<!-- Sign up box -->
 		<div class="signUp well col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
-			<h3 id="signUpText">Drop your songs Today!</h3>
+			<h3 id="signUpText">Drop your songs today!</h3>
 			<br>
 			<form accept-charset="UTF-8" method="post">
-				<input class="span3" name="username" placeholder="Username" type="text">
+				<input class="signupUsername" name="username" placeholder="Username" type="text">
 				<br><br>
-				<input class="span3" name="password" placeholder="Password" type="password">
+				<input class="signupPassword" name="password" placeholder="Password" type="password">
 				<br><br>
-				<input class="span3" name="password" placeholder="Confirm Password" type="password"> 
+				<input class="signupConfirmPassword" name="password" placeholder="Confirm Password" type="password"> 
 				<br><br>
-				<button class="btn btn-success" type="submit">Sign up!</button>
+				<button id="signUpButton" class="btn" type="submit">Sign up!</button>
 			</form>
 		</div>
 

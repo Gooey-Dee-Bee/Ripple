@@ -2,29 +2,55 @@
 
 body {
 	background-color: #FFFAE6;
+  /*background-image: url("http://rippleup.net/wp-content/uploads/2013/07/ripple.jpg");
+  background-size: 100%;*/
 }
 
-/* Title and tagline */
+/* Tagline */
 #header {
-	margin-top: 100px;
+	margin-top: 80px;
 	text-align: center;
-  color: black;
+  color: #33cccc;
+  font-family: 'Cookie', cursive;
+  font-size: 50px;
 }
-
+#ripple-title {
+  font-size: 100px;
+}
 /* For signup box */
 .signUp {
 	margin-top: 50px;
 	text-align: center;
 	border-style: ridge;
 	border-width: 10px;
-	border-color: green;
+	border-color: #33cccc;
 	padding: 10px;
-	background-color: black;
+	background-color: #33cccc;
 }
 
 #signUpText {
-	color: #FFFFFF;
+	color: #fffae6;
 }
+
+#signUpButton {
+  background-color: #fffae6;
+  color: #33cccc;
+}
+
+#loginButton {
+  background-color: #fffae6;
+  color: #33cccc;
+}
+
+/* for all of the text boxes */
+.loginUsername, .loginPassword, .signupUsername, .signupPassword, .signupConfirmPassword {
+  background-color: #fffae6;
+  border-color: #fffae6
+}
+
+
+
+
 
 /* NavBar CSS */
 .navbar-default {
