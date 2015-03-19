@@ -42,20 +42,31 @@ body {
 #userInfo {
 	color:white;
 	font-size:15px;
+	text-align:center;
+
+}
+
+#dropNumber {
+	margin-top:10px;
+	font-size:30px;
+
 
 }
 
 #logout {
 	color:white;
 	text-decoration: none;
-	bottom:10%;
-	left:10%;
+	bottom:5%;
+	right:5%;
 	position: absolute;
 
 }
 
 
-
+/*OVERALL SONGS*/
+#songBox {
+height:90%;
+}
 
 /* SONG INFORMATION */
 iframe {
