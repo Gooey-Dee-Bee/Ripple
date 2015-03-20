@@ -48,7 +48,7 @@ body {
 }
 
 /* for all of the text boxes */
-.loginUsername, .loginPassword, .signupUsername, .signupPassword, .signupConfirmPassword {
+.loginEmail, .loginPassword, .signupEmail, .signupPassword, .signupConfirmPassword {
   background-color: #59bdff;
   border-color: #fffae6;
   color: #fffae6;
