@@ -22,29 +22,6 @@ function addSong() {
 }
 
 
-function loadSongs() {
 
-	var mydiv = document.getElementById("songBox");
-    console.log("SONG LENGTH" + songIdList.length);
-	for(var i=0; i < songIdList.length; i++){
-		var songId = songIdList[i];
-		console.log("SONG ID"+songId);
-		var newcontent = document.createElement('div');
-    	newcontent.innerHTML = beginPlayer+songId+endPlayer;
-    	
-
-    	while (newcontent.firstChild) {
-        	mydiv.appendChild(newcontent.firstChild);
-    	}
-    	/*
-		document.getElementById("songBox").innerHTML = value;
-		console.log(document.getElementById("song").innerHTML);*/
-	
-	
-	}
-
-
-
-}
 
 
