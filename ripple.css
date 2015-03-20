@@ -21,7 +21,13 @@ body {
 	font-family: 'Cookie', cursive;
 }
 
+#footer {
+	height:50px;
+	color:grey;
 
+
+}
+/*ACCOUNT SUBSET*/
 #accountInfo {
 	top:0;
 	right:15;
