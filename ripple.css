@@ -38,6 +38,8 @@ body {
 	padding:10px;
 	border-bottom-left-radius:6;
 	border-bottom-right-radius:6;
+	border-radius: 0 0 16px 16px;
+	font-family: 'Handlee';
 }
 
 #userName {
@@ -68,6 +70,39 @@ body {
 
 }
 
+#searchBar {
+	font-family: "Poiret One";
+	font-weight: bold;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	padding-top: 8px;
+}
+
+#songId {
+	height: 32px;
+	font-family: "Poiret One";
+	border: 1px solid #CCCCCC;
+	border-radius: 6px;
+	font-size: 14px;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+#songID:focus {
+	box-shadow: 0;
+	outline: none;
+	box-shadow: 0 0 10px #33CCCC;
+}
+
+#submitSong {
+	font-family: "Poiret One";
+	font-weight: bold;
+	font-size: 14px;
+	border: 1px solid #33CCCC;
+	background-color: white;
+	border-radius: 6px;
+	padding: 7px;
+}
 
 /*DROPPING SONGS (ORIGINAL SONGS)*/
 #dropBox {
