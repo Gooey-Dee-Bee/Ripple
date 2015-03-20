@@ -9,7 +9,7 @@
 	}
 
 	else {
-		addToDatabase("INSERT INTO users(pword, email) VALUES ('".$pword."', '".$email."')");
+		addToDatabase("INSERT INTO users(fname, lname, pword, email) VALUES ('".$first_name."', '".$last_name."', '".$pword."', '".$email."')");
 		updateUserInfo($email, 5);
 		echo "success";
 	}
