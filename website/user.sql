@@ -33,7 +33,7 @@ CREATE TABLE `users` (
   `id` mediumint(9) NOT NULL AUTO_INCREMENT,
   `points` mediumint(9) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
@@ -46,7 +46,8 @@ VALUES
 	('Mendoza','Noah','nmendoza@smu.edu','password',4,0),
 	('Rutz','Johna','jrutz@smu.edu','password',5,0),
 	('OConnor','Will','woconnor@smu.edu','password',6,0),
-	('Gutschenritter','Caitlin','cgutschenritter@smu.edu','password',7,0);
+	('Gutschenritter','Caitlin','cgutschenritter@smu.edu','password',7,0)
+	('Doe','John','jdoe@gmail.com','password',8,0);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
