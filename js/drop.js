@@ -35,7 +35,7 @@ function prependElement(parentID, child){
 	console.log(child);
 	parent.insertBefore(child, parent.childNodes[0]);
 
-<<<<<<< HEAD
+
 }
 
 //Load songs statically on the page load
@@ -85,9 +85,7 @@ function parseSong(trackJson) {
 	
 	return id;
 }
-=======
 
->>>>>>> drops-from-database
 
 
 function bumpSong(songIdentity) {
