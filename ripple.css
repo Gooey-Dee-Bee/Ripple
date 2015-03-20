@@ -21,7 +21,13 @@ body {
 	font-family: 'Cookie', cursive;
 }
 
+#footer {
+	height:50px;
+	color:grey;
 
+
+}
+/*ACCOUNT SUBSET*/
 #accountInfo {
 	top:0;
 	right:15;
@@ -98,6 +104,33 @@ body {
 	padding: 7px;
 }
 
+/*DROPPING SONGS (ORIGINAL SONGS)*/
+#dropBox {
+	text-align:center;
+	margin-top:20px;
+	height:170px;
+}
+
+#songId {
+	height:40px;
+	width:60%;
+	margin-right:auto;
+	margin-left:auto;
+	border-radius:6;
+	font-size:20px;
+}
+
+#songDrop{
+	margin-right:auto;
+	margin-left:auto;
+}
+
+#songDrop:hover{
+	opacity:.6;
+
+}
+
+
 /*OVERALL SONGS*/
 #songBox {
 height:90%;
@@ -154,7 +187,7 @@ iframe {
 
 
 .drop:hover{
-	opacity:.8;
+	opacity:.6;
 	cursor: crosshair;
 
 }
