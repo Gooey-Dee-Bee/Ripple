@@ -1,51 +1,61 @@
 /* Landing Page CSS */
 
 body {
-	background-color: #FFFAE6;
-  /*background-image: url("http://rippleup.net/wp-content/uploads/2013/07/ripple.jpg");
-  background-size: 100%;*/
+	/*background-color: #FFFAE6;*/
+  background: url("http://rippleup.net/wp-content/uploads/2013/07/ripple.jpg") no-repeat center center fixed;
+  background-size: 100% 100%;
+}
+
+/* Title */
+#ripple-title {
+  font-size: 100px;
+  color: #fffae6;
 }
 
 /* Tagline */
 #header {
-	margin-top: 80px;
+	margin-top: 50px;
 	text-align: center;
-  color: #33cccc;
+  color: #fffae6;
   font-family: 'Cookie', cursive;
-  font-size: 50px;
+  font-size: 40px;
 }
-#ripple-title {
-  font-size: 100px;
-}
+
 /* For signup box */
 .signUp {
-	margin-top: 50px;
+	margin-top: 30px;
 	text-align: center;
 	border-style: ridge;
 	border-width: 10px;
-	border-color: #33cccc;
+	border-color: #fffae6;
 	padding: 10px;
-	background-color: #33cccc;
+	background-color: #fffae6;
 }
 
 #signUpText {
-	color: #fffae6;
+	color: #59bdff;
 }
 
 #signUpButton {
-  background-color: #fffae6;
-  color: #33cccc;
+  background-color: #59bdff;
+  color: #fffae6;
+  border-color: black;
 }
 
 #loginButton {
-  background-color: #fffae6;
-  color: #33cccc;
+  background-color: #59bdff;
+  color: #fffae6;
 }
 
 /* for all of the text boxes */
 .loginUsername, .loginPassword, .signupUsername, .signupPassword, .signupConfirmPassword {
-  background-color: #fffae6;
-  border-color: #fffae6
+  background-color: #59bdff;
+  border-color: #fffae6;
+  color: #fffae6;
+}
+/* For placeholder color in all textboxes */
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #fffae6;
 }
 
 
@@ -53,9 +63,12 @@ body {
 
 
 /* NavBar CSS */
+#rememberMe {
+  color: #59bdff;
+}
 .navbar-default {
-  background-color: #33cccc;
-  border-color: #33cccc;
+  background-color: #59bdff;
+  border-color: #59bdff;
 }
 .navbar-default .navbar-brand {
   color: #fffae6;
@@ -75,25 +88,25 @@ body {
   color: #fffae6;
 }
 .navbar-default .navbar-nav > li > .dropdown-menu {
-  background-color: #33cccc;
+  background-color: #fffae6;
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a {
   color: #fffae6;
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #33cccc;
+  color: #59bdff;
   background-color: #fffae6;
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
-  background-color: #33cccc;
+  background-color: #59bdff;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #33cccc;
+  color: #59bdff;
   background-color: #fffae6;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  color: #33cccc;
+  color: #59bdff;
   background-color: #fffae6;
 }
 .navbar-default .navbar-toggle {
@@ -113,7 +126,7 @@ body {
   color: #fffae6;
 }
 .navbar-default .navbar-link:hover {
-  color: #33cccc;
+  color: #59bdff;
 }
 
 @media (max-width: 767px) {
@@ -121,10 +134,10 @@ body {
     color: #fffae6;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #33cccc;
+    color: #59bdff;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #33cccc;
+    color: #59bdff;
     background-color: #fffae6;
   }
 }
