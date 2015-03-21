@@ -24,9 +24,10 @@ body {
 #footer {
 	height:50px;
 	color:grey;
-
-
+	position:relative;
+	bottom:0;
 }
+
 /*ACCOUNT SUBSET*/
 #accountInfo {
 	top:0;
@@ -133,7 +134,8 @@ body {
 
 /*OVERALL SONGS*/
 #songBox {
-height:90%;
+
+
 }
 
 /* SONG INFORMATION */
