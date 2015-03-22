@@ -86,5 +86,5 @@ $( document ).ready(function() {
 
 // 	}); // end of sign up
 
-// }); // end of document ready func
+}); // end of document ready func
 
