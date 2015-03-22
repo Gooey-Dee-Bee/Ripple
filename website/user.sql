@@ -46,7 +46,7 @@ VALUES
 	('Mendoza','Noah','nmendoza@smu.edu','password',4,0),
 	('Rutz','Johna','jrutz@smu.edu','password',5,0),
 	('OConnor','Will','woconnor@smu.edu','password',6,0),
-	('Gutschenritter','Caitlin','cgutschenritter@smu.edu','password',7,0)
+	('Gutschenritter','Caitlin','cgutschenritter@smu.edu','password',7,0),
 	('Doe','John','jdoe@gmail.com','password',8,0);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;

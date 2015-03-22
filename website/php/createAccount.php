@@ -4,13 +4,12 @@
 	$pword = $_POST['password'];
 
 
-	if(existsInDatabase("SELECT * FROM users WHERE email = '".$email."'")) {
+	if(existsInDatabase("SELECT * FROM users WHERE email = '$email'")) {
 		echo "email"; // 'Error Code' that will be tested in the java script and will let the user know the email has already been registered
 	}
 
 	else {
-		addToDatabase("INSERT INTO users(pword, email) VALUES ('".$pword."', '".$email."')");
-		updateUserInfo($email, 5);
+		addToDatabase("INSERT INTO users(pword, email) VALUES ('$pword', '$email')");
 		echo "success";
 	}
 
