@@ -90,7 +90,7 @@ body {
 	padding-left: 8px;
 }
 
-#songID:focus {
+#songId:focus {
 	box-shadow: 0;
 	outline: none;
 	box-shadow: 0 0 10px #33CCCC;
