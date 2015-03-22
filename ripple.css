@@ -31,10 +31,10 @@ body {
 /*ACCOUNT SUBSET*/
 #accountInfo {
 	top:0;
-	right:15;
+	right:15px;
 	width:25%;
 	height:150px;
-	background-color:120054;
+	background-color:#120054;
 	position:absolute;
 	padding:10px;
 	border-bottom-left-radius:6;
