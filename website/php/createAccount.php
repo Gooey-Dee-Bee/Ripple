@@ -1,15 +1,17 @@
 <?php
-	# Might eventually take first name and last name
-	$email = $_POST['email'];
-	$pword = $_POST['password'];
+	// DECODE THE INFORMATION (IT IS PASSED IN JSON FORMAT)
+	$post_json = file_get_contents("php://input");
+	$post = json_decode($post_json, true);
 
+	$email = $post['email'];
+	$password = $post['password'];
 
 	if(existsInDatabase("SELECT * FROM users WHERE email = '$email'")) {
 		echo "email"; // 'Error Code' that will be tested in the java script and will let the user know the email has already been registered
 	}
 
 	else {
-		addToDatabase("INSERT INTO users(pword, email) VALUES ('$pword', '$email')");
+		addToDatabase("INSERT INTO users(fname, lname, pword, email) VALUES('TEST', 'USER', '$pword', '$email')");
 		echo "success";
 	}
 
