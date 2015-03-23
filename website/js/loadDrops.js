@@ -1,4 +1,3 @@
-
 var songsInDB = new Array();
 
 function loadSongs() {
