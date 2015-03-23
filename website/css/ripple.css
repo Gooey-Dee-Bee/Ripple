@@ -31,10 +31,10 @@ body {
 /*ACCOUNT SUBSET*/
 #accountInfo {
 	top:0;
-	right:15;
+	right:15px;
 	width:25%;
 	height:150px;
-	background-color:120054;
+	background-color:#120054;
 	position:absolute;
 	padding:10px;
 	border-bottom-left-radius:6;
@@ -87,9 +87,10 @@ body {
 	font-size: 14px;
 	margin-left: 1px;
 	margin-right: 1px;
+	padding-left: 8px;
 }
 
-#songID:focus {
+#songId:focus {
 	box-shadow: 0;
 	outline: none;
 	box-shadow: 0 0 10px #33CCCC;
