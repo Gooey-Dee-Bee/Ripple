@@ -1,6 +1,6 @@
 var beginPlayer = '<div class="songPlayer" id="song';
 var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
-var midPlayer ='"></iframe></div><img class="drop" src="images/dropit.png" onClick="bumpSong(this.id)" id="';
+var midPlayer ='"></iframe></div><img class="drop" src="images/dropIt.png" onClick="bumpSong(this.id)" id="';
 var endPlayer ='"/></div>';
 
 //FUNCTIONALITY FOR THE TINY DROP BUTTONS
