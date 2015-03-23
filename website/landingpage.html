@@ -79,11 +79,19 @@
 			<br>
 			<form id="signUpForm" accept-charset="UTF-8" method="post">
 				<input class="signupEmail" name="email" placeholder="Email Address" type="text">
-				<br><br>
+
+				<br>
+				<br>
 				<input class="signupPassword" name="password" placeholder="Password" type="password">
-				<br><br>
+				<br>
+				<br>
 				<input class="signupConfirmPassword" name="password" placeholder="Confirm Password" type="password"> 
-				<br><br>
+				<br>
+				<div style="color:red;">
+					<p><b id="errorMessage"></b></p>
+				</div>
+				<br>
+
 				<button id="signUpButton" class="btn" type="submit">Sign up!</button>
 			</form>
 		</div>

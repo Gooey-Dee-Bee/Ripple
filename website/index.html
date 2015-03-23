@@ -1,16 +1,21 @@
-<DOCTYPE! html>
+<!DOCTYPE html>
+<html>
 	<head>
 		<title>Ripple</title>
+		<link rel="icon" type="image/jpg" href="images/dropItIcon.png">
 		<link rel="stylesheet" type="text/css" href="ripple.css">
 		<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Poiret One' rel='stylesheet' type='text/css'>
 
-		<script type="text/javascript" src="js/drop.js"></script> 
-		<script type="text/javascript" src="js/loadDrops.js"></script>    
+		<script type="text/javascript" src="js/drop.js"></script>    
+		<script type="text/javascript" src="js/loadDrops.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	    <script type="text/javascript" src="js/getLocation.js"></script>
 
 		
-		</head>
+	</head>
 	<body onload="loadSongs()">
 		<div id="navBar">
 			<div id="header">
@@ -33,14 +38,12 @@
 		<div id="dropBox">
 			<input type="text" id="songId" placeholder="SOUNDCLOUD SONG URL"></input> 
 			<p></p>
-			<img id="songDrop" src="images/dropit.png" onClick="grabSong()"/>
+			<img id="songDrop" src="images/dropIt.png" onClick="grabSong()"/>
 		</div>
 	
 
 		
 		<div id="songBox">
-		
-
 		</div> 
 		
 		<div id="footer">
