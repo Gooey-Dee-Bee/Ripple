@@ -43,8 +43,6 @@ $( document ).ready( function() {
 		        //         $(location).attr('href', "search.html");
 		        //     }
 		        // }
-		    }
-
 		    },
 		    error: function(something, var1) {
 		    	console.log(something);
