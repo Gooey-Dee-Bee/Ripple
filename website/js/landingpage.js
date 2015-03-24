@@ -10,7 +10,7 @@ $( document ).ready( function() {
 
 		$.ajax({
 			type: "POST",
-		    url: 'http://private-f89294-ripple3.apiary-mock.com/users/email',
+		    url: 'php/login.php',
 		    content: 'application/json',
 		    data: JSON.stringify(user),
 		    success: function(data, status, request) {
@@ -28,7 +28,6 @@ $( document ).ready( function() {
 	}); // end of login function
 
 	
-
 	/* Sign Up Function */
 	$("#signUpForm").submit( function(event) {
 		event.preventDefault();
@@ -39,7 +38,7 @@ $( document ).ready( function() {
 		if ( user.password == confirmPassword ) {
 			$.ajax({
 				type: "POST",
-			    url: 'http://private-f89294-ripple3.apiary-mock.com/newuser/email',
+			    url: 'php/createAccount.php',
 			    content: 'application/json',
 			    data: JSON.stringify(user),
 			    success: function(data, status, request) {
