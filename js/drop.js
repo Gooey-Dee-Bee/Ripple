@@ -1,6 +1,6 @@
 var beginPlayer = '<div class="songPlayer" id="song';
 var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
-var midPlayer ='"></iframe></div><img class="drop" src="images/dropItIcon.png" onClick="bumpSong(this.id)" id="';
+var midPlayer ='"></iframe></div><img class="drop" src="images/dropIt.png" onClick="bumpSong(this.id)" id="';
 var endPlayer ='"/></div>';
 
 //FUNCTIONALITY FOR THE TINY DROP BUTTONS
@@ -35,12 +35,10 @@ function prependElement(parentID, child){
 	console.log(child);
 	parent.insertBefore(child, parent.childNodes[0]);
 
-
 }
 
 //Load songs statically on the page load
 function getSongId(url) {
-	var songExists = false;
 	var Request = new XMLHttpRequest();
 	Request.onreadystatechange = function () {
 	  if (this.readyState === 4 && this.status === 200) {
@@ -54,23 +52,7 @@ function getSongId(url) {
 		//NEED A CHECKING FUNCTION TO DETERMINE WHETHER OR NOT THE SONG IS A DUPLICATE AND SHOULD BE ADDED
 		//NEED SOMETHING THAT WILL REMOVE IT FROM WHEREVER IT'S AT AND SHIFT EVERYTHING DOWN
 		//FUNCTION TO COMMUNICATE WITH DATABASE IN CHANGING THE STATS
-		
-		for(var i = 0; i < songsInDB.length; i++) {
-			if(songsInDB[i] == newSongId){
-				console.log("SAME THING");
-				songExists = true;
-				}
-		}
-		
-		if (songExists == false){
-			addSong(newSongId);
-			songsInDB.push(newSongId);
-			}
-		else{
-			console.log("THIS ALREADY EXISTS");
-			bumpSong(newSongId);
-			console.log("SONG IS BUMPED");
-			}
+		addSong(newSongId);
 	  }
 	}
 
@@ -86,7 +68,6 @@ function parseSong(trackJson) {
 	
 	return id;
 }
-
 
 
 function bumpSong(songIdentity) {
