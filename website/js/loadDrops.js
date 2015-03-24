@@ -1,3 +1,4 @@
+
 var songsInDB = new Array();
 
 function loadSongs() {
@@ -15,14 +16,13 @@ function loadSongs() {
 	}
 }
 
-
-
 var Request = new XMLHttpRequest();
 Request.onreadystatechange = function () {
   if (this.readyState === 4 && this.status === 200) {
     console.log('Status:', this.status);
     console.log('Headers:', this.getAllResponseHeaders());
     console.log('Body:', this.responseText);     
+
     
     var textin = JSON.parse(this.responseText);
 	var songInformation = addSongsToArray(textin);
@@ -42,5 +42,6 @@ function addSongsToArray(jsonArray) {
 		console.log("song id: "+songId);
 		addSong(songId);
 		songsInDB.push(songId);
+
 	}
 }
