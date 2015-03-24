@@ -40,6 +40,7 @@ function prependElement(parentID, child){
 
 //Load songs statically on the page load
 function getSongId(url) {
+	var songExists = false;
 	var Request = new XMLHttpRequest();
 	Request.onreadystatechange = function () {
 	  if (this.readyState === 4 && this.status === 200) {
@@ -53,7 +54,23 @@ function getSongId(url) {
 		//NEED A CHECKING FUNCTION TO DETERMINE WHETHER OR NOT THE SONG IS A DUPLICATE AND SHOULD BE ADDED
 		//NEED SOMETHING THAT WILL REMOVE IT FROM WHEREVER IT'S AT AND SHIFT EVERYTHING DOWN
 		//FUNCTION TO COMMUNICATE WITH DATABASE IN CHANGING THE STATS
-		addSong(newSongId);
+		
+		for(var i = 0; i < songsInDB.length; i++) {
+			if(songsInDB[i] == newSongId){
+				console.log("SAME THING");
+				songExists = true;
+				}
+		}
+		
+		if (songExists == false){
+			addSong(newSongId);
+			songsInDB.push(newSongId);
+			}
+		else{
+			console.log("THIS ALREADY EXISTS");
+			bumpSong(newSongId);
+			console.log("SONG IS BUMPED");
+			}
 	  }
 	}
 
