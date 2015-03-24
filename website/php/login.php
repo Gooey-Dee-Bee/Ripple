@@ -1,5 +1,6 @@
 <?php
-	session_start();
+	require_once(__DIR__.'/databases.php');
+	require_once(__DIR__.'/sessions.php');
 
 	// DECODE THE INFORMATION (IT IS PASSED IN JSON FORMAT)
 	$post_json = file_get_contents("php://input");
@@ -8,33 +9,21 @@
 	$email = $post['email'];
 	$pword = $post['password'];
 
+	$query = "SELECT pword FROM users WHERE email = '$email'";
 
 
-	$result = getInfoFromDatabase("SELECT pword FROM users WHERE email = '$email'");
+
+	$result = getInfoFromDatabase($query);
 	$result = mysqli_fetch_assoc($result);
 	$result = $result['pword'];
 
-	if($result == $pword) {
-		$_SESSION['email'] = $email; // Account exists, set the session variables.
-		$_SESSION['password'] = $pword;
+
+	if(isset($result) && $result == $pword) {
+		createSession($email); // User is now logged in with a session
 		echo "Successfully Logged In";
 	}
 	else {
 		echo "Account Not Found";
-	}
-
-
-
-	function getInfoFromDatabase($query) {
-		$con = mysqli_connect('localhost', 'root', 'mysqlpassword', 'Ripple');
-		if (!$con) {
-			die('Could not connect: ' . mysqli_error($con));
-		}
-
-		$result = mysqli_query($con, $query);
-		mysqli_close($con);
-
-		return $result; 
 	}
 
 ?>
