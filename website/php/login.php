@@ -37,4 +37,18 @@
 		return $result; 
 	}
 
+	//beginning of getSessionInfo
+	function getSessionInfo(){
+		$array = array(
+			"email" => $_SESSION['email'],
+			"password" => $_SESSION['password']);
+		return $array;
+	}
+
+	//logout function to destroy the current session?
+	function logout(){
+		if(isset($_SESSION['email']))
+			unset($_SESSION['email']);
+	}
+
 ?>
