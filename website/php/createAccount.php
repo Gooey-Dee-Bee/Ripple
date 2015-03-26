@@ -19,7 +19,7 @@
 							('TEST', 'USER', '$pword', '$email')";
 		addToDatabase($add_query);
 		createSession($email); // User is now logged in with a session
-		echo "success";
+		echo 100;
 	}
 
 ?>
