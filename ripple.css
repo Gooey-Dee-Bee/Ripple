@@ -103,10 +103,9 @@ body {
 	margin: 6px;
 }
 
-#submitLocation {
+#locationSubmit {
 	font-family: "Poiret One";
-	background-color: #CCCCCC;
-	border: 1px solid #33CCCC;
+	border: 1px solid #333333;
 	border-radius: 6px;
 	width: 40%;
 	font-size: 14px;

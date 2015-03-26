@@ -12,7 +12,7 @@ $(document).ready(function(){
 	}
 	else
 	{
-		$('#location').append("<form id='location form'><label>CITY</label><input class='locationInput' type='text'/><br/><label>STATE</label><input class='locationInput' type='text'/><br/><input type='submit' id='locationSubmit' value='SUBMIT'/></form>");
+		$('#location').append("<form id='location form'><label>Zip Code: </label><input class='locationInput' type='text'/><br/><input type='submit' id='locationSubmit' value='SUBMIT'/></form>");
 	    console.log("Error Getting IP Address");
 	}
 });
