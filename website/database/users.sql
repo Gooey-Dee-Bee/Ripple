@@ -24,13 +24,12 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `fname` varchar(30) NOT NULL,
-  `lname` varchar(30) NOT NULL,
   `pword` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `points` int(11) DEFAULT '50',
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +38,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Avery','Ferrante','reeses11','aferrante@smu.edu',50),(2,'jack','ferrante','samsung7','jferrante@smu.edu',50),(3,'Avery','Ferrante','12345678','sam@what.com',50),(4,'New','Account','reeses11','nacct@gmail.com',50),(5,'Noah','Mendoza','balloonanimal','nmendoza@smu.edu',50);
+INSERT INTO `users` VALUES (1,'password','aferrante@smu.edu',50),(2,'password','oklaiss@smu.edu',50),(3,'password','jrutz@smu.edu',50),(4,'password','nmendoza@smu.edu',50);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-03-26 20:24:33
+-- Dump completed on 2015-03-26 22:54:30
