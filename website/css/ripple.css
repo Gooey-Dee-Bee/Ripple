@@ -84,8 +84,12 @@ body {
 	display: inline-block;
 	border: 1px solid #CCCCCC;
 	border-radius: 6px;
-	padding: 8px;
+	padding-top: 8px;
 	text-align: center;
+	margin-top:30px;
+	
+	margin-left: 40%;
+	margin-right: 40%;
 
 }
 
@@ -144,6 +148,7 @@ body {
 	text-align:center;
 	margin-top:20px;
 	height:170px;
+	display:none;
 }
 
 #songId {
