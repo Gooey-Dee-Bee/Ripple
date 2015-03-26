@@ -1,29 +1,23 @@
 <?php
-	function getInfoFromDatabase($query) {
-		$con = mysqli_connect('localhost', 'root', 'mysqlpassword', 'Ripple');
-		if (!$con) {
-    		die('Could not connect: ' . mysqli_error($con));
-		}
 
-		$result = mysqli_query($con, $query);
-		mysqli_close($con);
+	require_once(__DIR__."/databases.php"); // Access to the database functions
+	require_once(__DIR__."/sessions.php"); // Access to the sessions functioins
 
-		return $result; // This will return FALSE if the query fails
-	}
+	// DECODE THE INFORMATION (IT IS PASSED IN JSON FORMAT)
+	$post_json = file_get_contents("php://input");
+	$post = json_decode($post_json, true);
 
-
-
-	$email = $_POST['email'];
-	$pword = $_POST['password'];
+	$email = $post['email'];
+	$pword = $post['password'];
 
 	$result = getInfoFromDatabase("SELECT pword FROM users WHERE email = '$email'");
-	$result = mysqli_fetch_assoc($result);
 	$result = $result['pword'];
-	if($result == $pword) {
-		echo "Successfully Logged In";
+
+	if(isset($result) && $result == $pword) {
+		startSession($email); // User is now logged in with a session
+		echo 100;
 	}
 	else {
-		echo "Account Not Found";
+		echo 200;
 	}
-
 ?>
