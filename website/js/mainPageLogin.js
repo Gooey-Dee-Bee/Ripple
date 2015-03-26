@@ -50,4 +50,8 @@ $(function(){
 
 			}); // end of ajax
 	}); // end submit function
+	$('#logout').on("click", function(){
+		$('#accountInfo').attr("class", "hidden");
+		$('#loginFields').fadeIn();
+	}); // end logout on click
 }); // end doc.ready
