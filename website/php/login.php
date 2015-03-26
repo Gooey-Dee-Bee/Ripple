@@ -15,9 +15,9 @@
 
 	if(isset($result) && $result == $pword) {
 		startSession($email); // User is now logged in with a session
-		echo "Successfully Logged In";
+		echo 100;
 	}
 	else {
-		echo "Account Not Found";
+		echo 200;
 	}
 ?>

@@ -12,13 +12,13 @@
 
 	$query = "SELECT * FROM users WHERE email = '$email'";
 	if(existsInDatabase($query)) {
-		echo "email"; // 'Error Code' that will be tested in the java script and will let the user know the email has already been registered
+		echo 200; // 'Error Code' that will be tested in the java script and will let the user know the email has already been registered
 	}
 	else {
 		$add_query = "INSERT INTO users(fname, lname, pword, email) VALUES
 							('TEST', 'USER', '$pword', '$email')";
 		addToDatabase($add_query);
-		createSession($email); // User is now logged in with a session
+		startSession($email); // User is now logged in with a session
 		echo 100;
 	}
 ?>

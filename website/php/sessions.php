@@ -2,7 +2,7 @@
 	require_once(__DIR__."/databases.php");
 	session_start();
 
-
+	// STARTS A SESSION BY SETTING A VARIABLE SESSION
 	function startSession($verifiedEmail) {
 		$_SESSION['email'] = $verifiedEmail;
 	}
@@ -12,17 +12,15 @@
 		if(!isset($_SESSION['email']))
 			return FALSE;
 		else {
-			$query = "SELECT pword FROM users WHERE email = '".$_SESSION['email']."'";
+			$query = "SELECT * FROM users WHERE email = '".$_SESSION['email']."'";
 			return existsInDatabase($query);
 		}
 	}
 
-	//GETS THE INFO RELATED TO THE CURRENT SESSION
+	//GETS THE INFO RELATED TO THE CURRENT SESSION AS AN ASSOCIATIVE ARRAY
 	function getSessionInfo(){
-		$array = array(
-			"email" => $_SESSION['email'],
-			"password" => $_SESSION['password']);
-		return $array;
+		$query = "SELECT * FROM users WHERE email = '".$_SESSION['email']."'";
+		return getInfoFromDatabase($query);
 	}
 
 	//DESTROYS THE CURRENT SESSION AND RESETS THE SESSION ARRAY
