@@ -42,6 +42,8 @@ body {
 	font-size: 12px;
 	margin-top: 4px;
 	height: 24px;
+	padding-left: 16px;
+	padding-right: 16px;
 }
 
 #submitLogin:hover {
@@ -258,5 +260,9 @@ iframe {
 	opacity:.6;
 	cursor: crosshair;
 
+}
+
+.hidden {
+	display: none;
 }
 
