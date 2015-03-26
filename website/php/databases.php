@@ -1,5 +1,6 @@
 <?php
 
+
 	// ADDS INFO TO THE DATABASE BASED ON THE QUERY THAT IS PASSED IN
 	function addToDatabase($query) {
 		$con = establishConnection();
@@ -7,8 +8,7 @@
 		mysqli_close($con);
 	}
 
-
-	// RETURNS TRUE IF ATLEAST ONE ENTRY EXISTS IN THE DATABASE MEETING THE 'QUERY' CRITERIA
+	// RETURNS TRUE IF THE QUERY RETURNS ANY NUMBER OF RESULTS, FALSE OTHERWISE
 	function existsInDatabase($query) {
 		$con = establishConnection();
 		$result = mysqli_query($con, $query);
@@ -22,7 +22,6 @@
 			return FALSE;
 		}
 	}
-
 
 	// RETURNS THE RESULTS OF A QUERY AS AN ASSOCIATIVE ARRAY
 	function getInfoFromDatabase($query) {

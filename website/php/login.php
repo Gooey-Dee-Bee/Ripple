@@ -1,4 +1,5 @@
 <?php
+
 	require_once(__DIR__."/databases.php"); // Access to the database functions
 	require_once(__DIR__."/sessions.php"); // Access to the sessions functioins
 
@@ -9,13 +10,11 @@
 	$email = $post['email'];
 	$pword = $post['password'];
 
-
-
 	$result = getInfoFromDatabase("SELECT pword FROM users WHERE email = '$email'");
 	$result = $result['pword'];
 
-	if($result == $pword) {
-		startSession($email);
+	if(isset($result) && $result == $pword) {
+		startSession($email); // User is now logged in with a session
 		echo "Successfully Logged In";
 	}
 	else {

@@ -30,5 +30,4 @@
 		$_SESSION = array();
 		session_destroy();
 	}
-
 ?>
