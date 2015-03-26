@@ -8,7 +8,7 @@ $( document ).ready( function() {
 		user.email = $("#loginEmail").val();
 		user.password = $("#loginPassword").val();
 		// user now has email and password stored in it
-		
+
 		// url should be /ripple/php/login.php
 		// url for apiary: http://private-f89294-ripple3.apiary-mock.com/users/email
 	    $.post("/ripple/php/login.php", JSON.stringify(user), function(data) {
@@ -38,13 +38,14 @@ $( document ).ready( function() {
 			// url for apiary http://private-f89294-ripple3.apiary-mock.com/newuser/email
 			$.post("/ripple/php/createAccount.php", JSON.stringify(user), function( data ) {
 				// success function
-				if(data === "success") {
+				if(data == 100) {
 		    		document.getElementById("errorMessage").innerHTML = "";
 		    		alert("Successfully Created Account");
 		    		// Redirect to index 
 	    			window.location.replace("index.html");
 		    	}
 		    	else
+		    		alert("no go");
 		    		document.getElementById("errorMessage").innerHTML = "Account already exisits with that email address.";
 			})
 			.fail( function() {
