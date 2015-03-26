@@ -2,6 +2,7 @@
 $( document ).ready( function() {
 
 	/* Login Function */
+	/*
 	$("#loginForm").submit( function(event) {
 		event.preventDefault();
 		var user = new Object();
@@ -23,7 +24,7 @@ $( document ).ready( function() {
 	    	alert("An error occured logging you in.");
 	    });
 	}); // end of login function
-
+	*/
 	
 	/* Sign Up Function */
 	$("#signUpForm").submit( function(event) {
