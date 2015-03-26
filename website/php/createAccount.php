@@ -15,7 +15,7 @@
 
 	else {
 		addToDatabase("INSERT INTO users(fname, lname, pword, email) VALUES('TEST', 'USER', '$pword', '$email')");
-		startSession($email)
+		startSession($email);
 		echo "success";
 	}
 ?>
