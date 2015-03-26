@@ -11,7 +11,7 @@ body {
 	left:0;
 	top:0;
 	padding-left:20px;
-
+	display: inline-block;
 }
 
 
@@ -19,6 +19,33 @@ body {
 	color: white;
 	font-size:10em;
 	font-family: 'Cookie', cursive;
+	width: 60%;
+	float: left;
+}
+
+#loginFields {
+	float: right;
+	margin-right: 3%;
+	margin-top: 1%;
+	height: 28px;
+}
+
+.loginField {
+	height: 20px;
+}
+
+#submitLogin {
+	border: 1px solid #11AAAA;
+	background-color: #EEFFFF;
+	border-radius: 6px;
+	font-family: "Poiret One";
+	font-size: 12px;
+	margin-top: 4px;
+	height: 24px;
+}
+
+#submitLogin:hover {
+	background-color: #AADDDD;
 }
 
 #footer {
@@ -100,16 +127,21 @@ body {
 	border-radius: 6px;
 	margin: 4px;
 	padding-left: 8px;
+	font-family: "Poiret One";
 }
 
 #locationSubmit {
 	width: 40%;
+	background-color: #EEFFFF;
 	border: 1px solid #33CCCC;
 	border-radius: 6px;
 	font-family: "Poiret One";
 	font-size: 15px;
 	margin-top: 4px;
+}
 
+#locationSubmit:hover {
+	background-color: #55DDDD;
 }
 
 #songId {
