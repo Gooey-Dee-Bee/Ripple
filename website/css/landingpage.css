@@ -2,7 +2,7 @@
 
 body {
 	/*background-color: #FFFAE6;*/
-  background: url("http://rippleup.net/wp-content/uploads/2013/07/ripple.jpg") no-repeat center center fixed;
+  background-image: "./images/ripple.jpg" no-repeat center center fixed;
   background-size: 100% 100%;
 }
 
@@ -33,23 +33,23 @@ body {
 }
 
 #signUpText {
-	color: #59bdff;
+	color: #33cccc;
 }
 
 #signUpButton {
-  background-color: #59bdff;
+  background-color: #33cccc;
   color: #fffae6;
   border-color: black;
 }
 
 #loginButton {
-  background-color: #59bdff;
+  background-color: #33cccc;
   color: #fffae6;
 }
 
 /* for all of the text boxes */
 #loginEmail, #loginPassword, #signupEmail, #signupPassword, #signupConfirmPassword {
-  background-color: #59bdff;
+  background-color: #33cccc;
   border-color: #fffae6;
   color: #fffae6;
 }
@@ -64,11 +64,11 @@ body {
 
 /* NavBar CSS */
 #rememberMe {
-  color: #59bdff;
+  color: #33cccc;
 }
 .navbar-default {
-  background-color: #59bdff;
-  border-color: #59bdff;
+  background-color: #33cccc;
+  border-color: #33cccc;
 }
 .navbar-default .navbar-brand {
   color: #fffae6;
@@ -95,18 +95,18 @@ body {
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #59bdff;
+  color: #33cccc;
   background-color: #fffae6;
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
-  background-color: #59bdff;
+  background-color: #33cccc;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #59bdff;
+  color: #33cccc;
   background-color: #fffae6;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  color: #59bdff;
+  color: #33cccc;
   background-color: #fffae6;
 }
 .navbar-default .navbar-toggle {
@@ -126,7 +126,7 @@ body {
   color: #fffae6;
 }
 .navbar-default .navbar-link:hover {
-  color: #59bdff;
+  color: #33cccc;
 }
 
 @media (max-width: 767px) {
@@ -134,10 +134,10 @@ body {
     color: #fffae6;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #59bdff;
+    color: #33cccc;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #59bdff;
+    color: #33cccc;
     background-color: #fffae6;
   }
 }
