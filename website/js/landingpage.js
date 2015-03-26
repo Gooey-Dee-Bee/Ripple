@@ -8,29 +8,10 @@ $( document ).ready( function() {
 		user.email = $("#loginEmail").val();
 		user.password = $("#loginPassword").val();
 		// user now has email and password stored in it
-
-		// $.ajax({
-		// 	type: "POST",
-		// 	url: '/ripple/php/login.php',
-		//     contentType: 'application/json',
-		//     data: JSON.stringify(user),
-		//     success: function(data, status, request) {
-		//     	if(data === "Successfully Logged In")
-		//     		alert("Successfully Logged In");
-		//     	else
-		//     		alert("Account not found.");
-		//     	// Redirect to index 
-		//     	window.location.replace("index.html");
-		//   	},
-		//     error: function(something, var1) {
-		//     	console.log(something);
-		//     	console.log(var1);
-  //        		alert('An error occurred');
-  //     		}
-	 //    }); // end of ajax
+		
 		// url should be /ripple/php/login.php
 		// url for apiary: http://private-f89294-ripple3.apiary-mock.com/users/email
-	    $.post("http://private-f89294-ripple3.apiary-mock.com/users/email", JSON.stringify(user), function(data) {
+	    $.post("/ripple/php/login.php", JSON.stringify(user), function(data) {
 	    	if(data === "Successfully Logged In")
 	    		alert("Successfully Logged In");
 	    	else
@@ -55,7 +36,7 @@ $( document ).ready( function() {
 		if (user.password === user.confirmPassword) {
 			// url should be /ripple/php/createAccount.php
 			// url for apiary http://private-f89294-ripple3.apiary-mock.com/newuser/email
-			$.post("http://private-f89294-ripple3.apiary-mock.com/newuser/email", JSON.stringify(user), function( data ) {
+			$.post("/ripple/php/createAccount.php", JSON.stringify(user), function( data ) {
 				// success function
 				if(data === "success") {
 		    		document.getElementById("errorMessage").innerHTML = "";
