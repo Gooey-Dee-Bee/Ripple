@@ -15,7 +15,7 @@ $(function(){
 			    success: function(data, status, request) {
 
 			    	if(data === "Successfully Logged In"){
-			    		alert("Successfully Logged In");
+			    		alert("Successfully Logged In, check the console");
 			    		$('#loginFields').fadeOut();
 			    		$('#accountInfo').removeAttr("class");
 			    	}
