@@ -1,22 +1,34 @@
 /* Landing Page CSS */
 
+/*
+Colors:
+teal: #33cccc; 33 cccc 
+purple: #120054;
+offwhite: #fffae6;
+
+background image
+teal : http://i.imgur.com/h1muBWR.jpg
+purple: http://i.imgur.com/0l9rK27.jpg
+*/
+
 body {
 	/*background-color: #FFFAE6;*/
-  background: url("http://rippleup.net/wp-content/uploads/2013/07/ripple.jpg") no-repeat center center fixed;
+  background: url("http://i.imgur.com/0l9rK27.jpg") no-repeat center center fixed;
   background-size: 100% 100%;
+
 }
 
 /* Title */
 #ripple-title {
   font-size: 100px;
-  color: #fffae6;
+  color: #fffae6; /*fffae6*/
 }
 
 /* Tagline */
 #header {
 	margin-top: 50px;
 	text-align: center;
-  color: #fffae6;
+  color: #fffae6; /*fffae6*/
   font-family: 'Cookie', cursive;
   font-size: 40px;
 }
@@ -25,50 +37,62 @@ body {
 .signUp {
 	margin-top: 30px;
 	text-align: center;
-	border-style: ridge;
+	/*border-style: ridge;
 	border-width: 10px;
-	border-color: #fffae6;
+	border-color: #fffae6;*/
 	padding: 10px;
 	background-color: #fffae6;
 }
 
 #signUpText {
-	color: #59bdff;
+	color: #33cccc;
+  font-family: "Poiret One";
 }
 
 #signUpButton {
-  background-color: #59bdff;
+  background-color: #33cccc;
   color: #fffae6;
-  border-color: black;
+  border-color: #120054;
+  font-family: "Poiret One";
+  border-radius: 6px;
+  width: 150px;
 }
 
 #loginButton {
-  background-color: #59bdff;
+  background-color: #33cccc;
   color: #fffae6;
 }
 
 /* for all of the text boxes */
-#loginEmail, #loginPassword, .signupEmail, .signupPassword, .signupConfirmPassword {
-  background-color: #59bdff;
+#loginEmail, #loginPassword, #signupEmail, #signupPassword, #signupConfirmPassword {
+  background-color: #33cccc;
   border-color: #fffae6;
   color: #fffae6;
+  font-family: "Poiret One";
+  border-radius: 6px;
+  width: 200px;
 }
 /* For placeholder color in all textboxes */
 ::-webkit-input-placeholder { /* WebKit browsers */
     color: #fffae6;
 }
 
-
+#landingPageTab {
+  font-family: "Poiret One";
+}
 
 
 
 /* NavBar CSS */
 #rememberMe {
-  color: #59bdff;
+  color: #33cccc;
 }
 .navbar-default {
-  background-color: #59bdff;
-  border-color: #59bdff;
+  background-color: #33cccc;
+  border-color: #33cccc;
+  background: -webkit-linear-gradient(top, rgba(51, 204, 204, 1) 0%, rgba(18, 0, 84, 1) 100%);
+  background: linear-gradient(to bottom, rgba(51, 204, 204, 1) 0%, rgba(18, 0, 84, 1) 100%);
+    
 }
 .navbar-default .navbar-brand {
   color: #fffae6;
@@ -95,18 +119,18 @@ body {
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #59bdff;
+  color: #33cccc;
   background-color: #fffae6;
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
-  background-color: #59bdff;
+  background-color: #33cccc;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #59bdff;
+  color: #33cccc;
   background-color: #fffae6;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  color: #59bdff;
+  color: #33cccc;
   background-color: #fffae6;
 }
 .navbar-default .navbar-toggle {
@@ -126,7 +150,7 @@ body {
   color: #fffae6;
 }
 .navbar-default .navbar-link:hover {
-  color: #59bdff;
+  color: #33cccc;
 }
 
 @media (max-width: 767px) {
@@ -134,10 +158,10 @@ body {
     color: #fffae6;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #59bdff;
+    color: #33cccc;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #59bdff;
+    color: #33cccc;
     background-color: #fffae6;
   }
 }

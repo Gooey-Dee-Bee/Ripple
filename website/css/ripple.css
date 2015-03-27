@@ -11,7 +11,7 @@ body {
 	left:0;
 	top:0;
 	padding-left:20px;
-
+	display: inline-block;
 }
 
 
@@ -19,6 +19,35 @@ body {
 	color: white;
 	font-size:10em;
 	font-family: 'Cookie', cursive;
+	width: 60%;
+	float: left;
+}
+
+#loginFields {
+	float: right;
+	margin-right: 3%;
+	margin-top: 1%;
+	height: 28px;
+}
+
+.loginField {
+	height: 20px;
+}
+
+#submitLogin {
+	border: 1px solid #11AAAA;
+	background-color: #AAEEEE;
+	border-radius: 6px;
+	font-family: "Poiret One";
+	font-size: 12px;
+	margin-top: 4px;
+	height: 24px;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+#submitLogin:hover {
+	background-color: #BBFFFF;
 }
 
 #footer {
@@ -26,6 +55,11 @@ body {
 	color:grey;
 	position:relative;
 	bottom:0;
+}
+
+#locationName {
+	display:inline;
+
 }
 
 /*ACCOUNT SUBSET*/
@@ -79,6 +113,48 @@ body {
 	padding-top: 8px;
 }
 
+#location {
+	font-family: "Poiret One";
+	display: inline-block;
+	border: 1px solid #CCCCCC;
+	border-radius: 6px;
+	padding-top: 8px;
+	text-align: center;
+	margin-top:30px;
+	
+	margin-left: 40%;
+	margin-right: 40%;
+
+}
+
+#location label {
+	display: inline-block;
+
+}
+
+.locationInput {
+	display: inline-block;
+	border: 1px solid #CCCCCC;
+	border-radius: 6px;
+	margin: 4px;
+	padding-left: 8px;
+	font-family: "Poiret One";
+}
+
+#locationSubmit {
+	width: 40%;
+	background-color: #AAEEEE;
+	border: 1px solid #33CCCC;
+	border-radius: 6px;
+	font-family: "Poiret One";
+	font-size: 15px;
+	margin-top: 4px;
+}
+
+#locationSubmit:hover {
+	background-color: #BBFFFF;
+}
+
 #songId {
 	height: 32px;
 	font-family: "Poiret One";
@@ -90,7 +166,7 @@ body {
 	padding-left: 8px;
 }
 
-#songId:focus {
+#songId:focus, .locationInput:focus {
 	box-shadow: 0;
 	outline: none;
 	box-shadow: 0 0 10px #33CCCC;
@@ -110,7 +186,8 @@ body {
 #dropBox {
 	text-align:center;
 	margin-top:20px;
-	height:170px;
+	height:200px;
+	display:none;
 }
 
 #songId {
@@ -135,6 +212,7 @@ body {
 
 /*OVERALL SONGS*/
 #songBox {
+	display:none;
 
 
 }
@@ -193,5 +271,9 @@ iframe {
 	opacity:.6;
 	cursor: crosshair;
 
+}
+
+.hidden {
+	display: none;
 }
 

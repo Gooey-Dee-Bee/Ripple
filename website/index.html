@@ -13,6 +13,7 @@
 		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	    <script type="text/javascript" src="js/getLocation.js"></script>
+	    <script type="text/javascript" src="js/mainPageLogin.js"></script>
 
 		
 	</head>
@@ -21,9 +22,14 @@
 			<div id="header">
 				Ripple
 			</div>
+			<div id="loginFields">
+				<form id="loginForm" action="">
+					<input type="text" class="locationInput loginField" id="loginEmail" placeholder="EMAIL"/> <input type="password" class="locationInput loginField" id="loginPassword" placeholder="PASSWORD"/> <input type="submit" id="submitLogin" class="locationInput" value="LOGIN"/>
+				</form>
+			</div>
 		</div>
 		
-		<div id="accountInfo">
+		<div class="hidden" id="accountInfo">
 			<div id="userName">
 				Leonard H. Paton
 			</div>
@@ -36,12 +42,15 @@
 		
 
 		<div id="dropBox">
+			<h2>Hear what people in <div id="locationName"></div> are listening to</h2>
 			<input type="text" id="songId" placeholder="SOUNDCLOUD SONG URL"></input> 
 			<p></p>
 			<img id="songDrop" src="images/dropItIcon.png" onClick="grabSong()"/>
 		</div>
-	
-
+		
+		<div id="location">
+			
+		</div>
 		
 		<div id="songBox">
 		</div> 

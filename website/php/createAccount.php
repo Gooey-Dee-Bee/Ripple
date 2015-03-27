@@ -1,53 +1,25 @@
 <?php
-	# Might eventually take first name and last name
-	$email = $_POST['email'];
-	$pword = $_POST['password'];
+	require_once(__DIR__."/databases.php"); // Allow access to the database functions
+	require_once(__DIR__."/sessions.php"); // Allow access to the sessions functions
+
+	// DECODE THE INFORMATION (IT IS PASSED IN JSON FORMAT)
+	$post_json = file_get_contents("php://input");
+	$post = json_decode($post_json, true);
+
+	$email = $post['email'];
+	$pword = $post['password'];
 
 
-	if(existsInDatabase("SELECT * FROM users WHERE email = '$email'")) {
-		echo "email"; // 'Error Code' that will be tested in the java script and will let the user know the email has already been registered
+	$query = "SELECT * FROM users WHERE email = '$email'";
+	if(existsInDatabase($query)) {
+		echo 200; // 'Error Code' that will be tested in the java script and will let the user know the email has already been registered
 	}
-
 	else {
-		addToDatabase("INSERT INTO users(pword, email) VALUES ('$pword', '$email')");
-		echo "success";
+		$add_query = "INSERT INTO users(fname, lname, pword, email) VALUES
+							('TEST', 'USER', '$pword', '$email')";
+		addToDatabase($add_query);
+		startSession($email); // User is now logged in with a session
+		echo 100;
 	}
-
-
-
-
-
-	function addToDatabase($query) {
-		$con = mysqli_connect('localhost', 'root', 'mysqlpassword', 'Ripple');
-		if (!$con) {
-    		die('Could not connect: ' . mysqli_error($con));
-		}
-
-		mysqli_query($con, $query);
-
-		mysqli_close($con);
-
-	}
-
-
-	function existsInDatabase($query) {
-		$con = mysqli_connect('localhost', 'root', 'mysqlpassword', 'Ripple');
-		if (!$con) {
-    		die('Could not connect: ' . mysqli_error($con));
-		}
-
-		$result = mysqli_query($con, $query);
-
-		if(mysqli_num_rows($result) != 0) {
-			mysqli_close($con);
-			return TRUE;
-		}
-
-		else {
-			mysqli_close($con);
-			return FALSE;
-		}
-	}
-
-
 ?>
+
