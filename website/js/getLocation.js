@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	//CHECK IF LOGGED IN, FIRST
 	if(google.loader.ClientLocation)
 	{
 	    visitor_lat = google.loader.ClientLocation.latitude;
