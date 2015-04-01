@@ -66,8 +66,11 @@ console.log("HELLO?");
 		console.log(textin);
 
 		var city = textin["city"];
+		console.log("Ciity: " + city);
 		document.getElementById("locationName").innerHTML=city;
 		 }
+
+		 //ALERT: HARDCODED
 }
 
 Request.open('GET', 'http://www.zipcodeapi.com/rest/etz9JI8N47HQVohRdSaOBNk0HiLbMDv074aRNiERqlImK0dYSoMub7vTpg4bUzc1/info.json/'+zipCode+'/degrees', true);

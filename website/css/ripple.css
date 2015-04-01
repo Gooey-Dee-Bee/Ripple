@@ -4,6 +4,9 @@ body {
 	
 	}
 
+h2 {
+	font-family: "Handlee";
+}
 #navBar {
 	width:100%;
 	height:200px;
