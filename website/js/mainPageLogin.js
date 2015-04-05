@@ -25,7 +25,8 @@ $(function(){
 			    		alert("Successfully Logged In, check the console");
 			    		$('#loginFields').fadeOut();
 			    		$('#accountInfo').removeAttr("class");
-			    		$('#dropBox').show();
+			    		if(sessionStorage.getItem('location') != null)
+			    			$('#dropBox').show();
 			    		
 			    		console.log("SESSION NAME" + sessionStorage.getItem("name"));
 			    		document.getElementById("userName").innerHTML = user.email;
