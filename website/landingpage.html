@@ -32,47 +32,60 @@
 				Ripple
 			</div>
 		
-			<div id="loginFields">
-				<form id="loginForm" action="">
-					<input type="text" class="locationInput loginField" id="loginEmail" placeholder="EMAIL"/> <input type="password" class="locationInput loginField" id="loginPassword" placeholder="PASSWORD"/> <input type="submit" id="submitLogin" class="locationInput" value="LOGIN"/>
-				</form>
-			</div>
+			
 		</div>
 		
 		
 
 		<!-- Title and text underneath -->
-		<div id ="container">
+	
 		<div id="purpleBox">
 		<div id="header">
-			<h1 id="ripple-title">Ripple</h1>
+			
 			<p>The best way to discover and share the hottest songs on the internet.</p>
 		</div>
 
 		<!-- Sign up box -->
-		<div class="signUp well col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
-			<h3 id="signUpText"><b>Drop your songs today!</b></h3>
-			<br>
-			<form action="" id="signUpForm" accept-charset="UTF-8" method="post">
-				<input id="signupEmail" name="email" placeholder="Email Address" type="text">
-				<br>
-				<br>
-				<input id="signupPassword" name="password" placeholder="Password" type="password">
-				<br>
-				<br>
-				<input id="signupConfirmPassword" name="password" placeholder="Confirm Password" type="password"> 
-				<br>
-				<div style="color:red;">
+		<div id="loginSuggest">Already have an account? <a onClick="showLogin()">Login</a></div>
+		<div id="accountSuggest">Don't have an account? <a onClick="showAccount()">Create one</a></div>
+		
+		
+			<div class="entryForm">
+				<div id ="createAccount">
+					<h3 id="signUpText"><b>Drop your songs today!</b></h3>
+					<br>
+					<form action="" id="signUpForm" accept-charset="UTF-8" method="post">
+						<input id="signupEmail" name="email" placeholder="Email Address" type="text">
+						<br></br>
+						<input id="signupPassword" name="password" placeholder="Password" type="password">
+						<br></br>
+						<input id="signupConfirmPassword" name="password" placeholder="Confirm Password" type="password"> 
+						<br>
+					<div style="color:red;">
 					<p><b id="errorMessage"></b></p>
 				</div>
 				<br>
 
 				<button id="signUpButton" class="btn" type="submit">Sign up!</button>
 			</form>
+			</div>
+				<div id="loginForm">
+				<h3 id="signUpText"><b>Drop your songs today!</b></h3>
+					<br>
+				<div id="loginFields">
+				<form id="loginForm" action="">
+					<input type="text" class="loginEmail" id="loginEmail" placeholder="EMAIL"/> 
+					<br></br>
+					<input type="password" class="loginPassword" id="loginPassword" placeholder="PASSWORD"/> 
+					<br></br>
+					<button type="submit" id="submitLogin" class="btn"/>Login</button>
+				</form>
+			</div>
+			</div>
 		</div>
 		
 		</div>
-</div>
+
 		
 		
 	</body>

@@ -1,6 +1,6 @@
 
 $( document ).ready( function() {
-
+	document.getElementById('loginForm').style.display ="none";
 	/* Login Function */
 	/*
 	$("#loginForm").submit( function(event) {
@@ -66,4 +66,23 @@ $( document ).ready( function() {
 		}
 	}); // end of sign up
 	
-}); // end of document ready func
+}); // end of document ready function
+
+
+
+
+function showAccount() {
+	document.getElementById('createAccount').style.display = "compact";
+	document.getElementById('loginForm').style.display = "none";
+	document.getElementById('accountSuggest').style.display = "none";
+	document.getElementById('loginSuggest').style.display = "block";
+	
+}
+
+
+function showLogin() {
+	document.getElementById('loginForm').style.display = "block";
+	document.getElementById('createAccount').style.display = "none";
+	document.getElementById('loginSuggest').style.display = "none";
+	document.getElementById('accountSuggest').style.display= "block";
+}

@@ -26,7 +26,6 @@ $(function(){
 			    		$('#loginFields').fadeOut();
 			    		$('#accountInfo').removeAttr("class");
 			    		
-			    		
 			    		console.log("SESSION NAME" + sessionStorage.getItem("name"));
 			    		document.getElementById("userName").innerHTML = user.email;
 			    		
@@ -70,6 +69,6 @@ $(function(){
 		
 		sessionStorage.removeItem('name');
 		sessionStorage.removeItem('password');
-		sessionStorage.removeItem('location');
+		
 	}); // end logout on click
 }); // end doc.ready

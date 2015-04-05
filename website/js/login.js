@@ -30,7 +30,6 @@ $('#loginForm').on('submit', function(event){
 			    		
 			    		if(document.getElementById("userName"))
 			    			document.getElementById("userName").innerHTML = user.email;
-			    		
 			    		window.location.replace("index.html");
 			    		
 			    	}
@@ -71,7 +70,7 @@ $('#loginForm').on('submit', function(event){
 		
 		sessionStorage.removeItem("name");
 		sessionStorage.removeItem("password");
-		sessionStorage.removeItem("location");
+		
 	}); // end logout on click
 	
 	});
