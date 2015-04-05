@@ -20,32 +20,26 @@ $(document).ready(function(){
 			sessionStorage.location = google.loader.ClientLocation;
 		
 	    	console.log("User city: " + visitor_city);
-		}
-		else
+		} else
 		{
+			document.getElementById("dropBox").style.display = "none";
 			$('#location').append("<form id='location form'><label>Zip Code: </label><input required='required' class='locationInput' type='text' id='zipcode'/><br/><input type='button' id='locationSubmit' value='SUBMIT' onClick='disappearZip()'/></form>");
-	    	console.log("Error Getting IP Address");
+	    	console.log("Error Getting IP Address"); 	
 		}
 	
-		}
-		
-	else {
+	} else {
 		showLoggedInPage();
 	}
 });
 
 function disappearZip () {
-
-console.log("HELLO?");
+	console.log("HELLO?");
 
 	var zip = document.getElementById("zipcode").value;
 	if(isValidUSZip(zip) == true)
 	{
 	//Call to push zipcode into the database?
-		document.getElementById("location").style.display = 'none';
-		document.getElementById("dropBox").style.display = 'block';
-		document.getElementById("songBox").style.display = 'block';
-		
+		showLoggedInPage();
 		sessionStorage.location = zip;
 		console.log("session zip: " +zip);
 		
@@ -53,9 +47,6 @@ console.log("HELLO?");
 	} else {
 			alert("If you're a living person, you have a zipcode. Please enter it correctly.");
 	}
-
-
-
 }
 
 
@@ -66,8 +57,8 @@ function isValidUSZip(sZip) {
 function showLoggedInPage() {
 
 	document.getElementById("location").style.display = 'none';
-			document.getElementById("dropBox").style.display = 'block';
-			document.getElementById("songBox").style.display = 'block';
+	document.getElementById("dropBox").style.display = 'block';
+	document.getElementById("songBox").style.display = 'block';
 
 
 }
@@ -87,7 +78,7 @@ console.log("HELLO?");
 		console.log(textin);
 
 		var city = textin["city"];
-		console.log("Ciity: " + city);
+		console.log("City: " + city);
 		document.getElementById("locationName").innerHTML=city;
 		 }
 

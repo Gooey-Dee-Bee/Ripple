@@ -2,29 +2,71 @@
 $( document ).ready( function() {
 	document.getElementById('loginForm').style.display ="none";
 	/* Login Function */
-	/*
-	$("#loginForm").submit( function(event) {
+	$('#loginForm').on('submit', function(event){
+
 		event.preventDefault();
+		console.log("Generic Login");
 		var user = new Object();
 		user.email = $("#loginEmail").val();
 		user.password = $("#loginPassword").val();
-		// user now has email and password stored in it
+		
+		sessionStorage.name = user.email;
+		sessionStorage.password = user.password;
+	
+			    		
+			    		
+			$.ajax({
+				type: "POST",
+			    url: 'http://private-f89294-ripple3.apiary-mock.com/users/email',
+			    content: 'application/json',
 
-		// url should be /ripple/php/login.php
-		// url for apiary: http://private-f89294-ripple3.apiary-mock.com/users/email
-	    $.post("/ripple/php/login.php", JSON.stringify(user), function(data) {
-	    	if(data == 100)
-	    		alert("Successfully Logged In");
-	    	else
-	    		alert("Account not found.");
-	    	// Redirect to index 
-	    	window.location.replace("index.html");
-	    })
-	    .fail( function() {
-	    	alert("An error occured logging you in.");
-	    });
-	}); // end of login function
-	*/
+			    data: JSON.stringify(user),
+			    success: function(data, status, request) {
+
+			    	if(data === "Successfully Logged In"){
+			    		
+			    		alert("Successfully Logged In, check the console");
+			    		$('#loginFields').fadeOut();
+			    		$('#accountInfo').removeAttr("class");
+			    		
+			    		console.log("SESSION NAME" + sessionStorage.getItem("name"));
+			    		
+			    		if(document.getElementById("userName"))
+			    			document.getElementById("userName").innerHTML = user.email;
+			    		window.location.replace("index.html");
+			    		
+			    	}
+			    	else
+			    		alert("Account not found.");
+
+			        //Error Checking
+			        // if($.isNumeric(data)){
+			        //     if(data==400) {
+			        //         alert("success logging in");
+			        //     } 
+			        //     else {
+			                
+			        //     } 
+			        // }
+			        // else if(!jQuery.isEmptyObject(data)){
+			        //     var obj = JSON.parse(data);
+			        //     if(obj.Email.length>0){
+			        //         $.cookie.json = true;
+			        //         $.cookie("data", data); 
+			        //         //redirect user
+			        //         $("#loginMessage").hide();
+			        //         $(location).attr('href', "search.html");
+			        //     }
+			        // }
+			    },
+			    error: function(something, var1) {
+			    	console.log(something);
+			    	console.log(var1);
+	         		alert('An error occurred');
+	      		}
+
+			}); // end of ajax
+	}); // end submit function
 	
 	/* Sign Up Function */
 	$("#signUpForm").submit( function(event) {

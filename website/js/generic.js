@@ -1,4 +1,4 @@
-function setUpPage () {
+function setUpPage() {
 	console.log("SET UP INFORMATION");
 	console.log("SESSION NAME: "+ sessionStorage.getItem('name'));
 	console.log("SESSION PLACE: "+ sessionStorage.getItem('location'));
@@ -12,7 +12,13 @@ function setUpPage () {
 		document.getElementById("loginFields").style.display = "none";
 		$('#accountInfo').removeAttr("class");
 		document.getElementById('userName').innerHTML = sessionStorage.name;
-		document.getElementById("dropBox").style.display = 'block';
+		
+		if (sessionStorage.getItem('location') == null)
+			document.getElementById("dropBox").style.display = 'none';
+		else
+			document.getElementById("dropBox").style.display = 'block';	
+			
+		
 		
 		
 		console.log("session name:"+sessionStorage.getItem("name"));
