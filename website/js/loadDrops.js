@@ -2,7 +2,7 @@ var songsInDB = new Array();
 
 function loadSongs() {
 	var mydiv = document.getElementById("songBox");
-    console.log("SONG LENGTH" + songIdList.length);
+    //console.log("SONG LENGTH" + songIdList.length);
 	for(var i=0; i < songIdList.length; i++){
 		var songId = songIdList[i];
 		var newcontent = document.createElement('div');
@@ -20,7 +20,7 @@ Request.onreadystatechange = function () {
   if (this.readyState === 4 && this.status === 200) {
     console.log('Status:', this.status);
     console.log('Headers:', this.getAllResponseHeaders());
-    console.log('Body:', this.responseText);     
+    //console.log('Body:', this.responseText);     
 
     
     var textin = JSON.parse(this.responseText);
@@ -36,9 +36,9 @@ function addSongsToArray(jsonArray) {
 
 	for(var i = 0; i < jsonArray.length; i++){
 		var songId = JSON.stringify(jsonArray[i]["songID"]);
-		console.log("FUCK BITCHES");
+		//console.log("FUCK BITCHES");
 		songId = songId.substr(1,songId.length-2);
-		console.log("song id: "+songId);
+		//console.log("song id: "+songId);
 		addSong(songId);
 		songsInDB.push(songId);
 

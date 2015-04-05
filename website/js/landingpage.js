@@ -34,6 +34,10 @@ $( document ).ready( function() {
 		user.password = $("#signupPassword").val();
 		user.confirmPassword = $("#signupConfirmPassword").val();
 
+
+		sessionStorage.name=user.email;
+		console.log("sessionStorage"+sessionStorage.getItem("name"));
+		
 		if (user.password === user.confirmPassword) {
 			// url should be /ripple/php/createAccount.php
 			// url for apiary http://private-f89294-ripple3.apiary-mock.com/newuser/email
@@ -48,10 +52,13 @@ $( document ).ready( function() {
 		    	else {
 		    		alert("no go");
 		    		document.getElementById("errorMessage").innerHTML = "Account already exisits with that email address.";
+		    		
+		    	
 		    	}
 			})
 			.fail( function() {
 				alert("Error occured creating an account");
+				window.location.replace("index.html");
 			});
 		} // end of if
 		else { // passwords are not the same

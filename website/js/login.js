@@ -1,8 +1,8 @@
 $(function(){
-	$('#loginForm').on('submit', function(event){
+$('#loginForm').on('submit', function(event){
 
 		event.preventDefault();
-		console.log("Sup bitch!");
+		console.log("Generic Login");
 		var user = new Object();
 		user.email = $("#loginEmail").val();
 		user.password = $("#loginPassword").val();
@@ -26,9 +26,12 @@ $(function(){
 			    		$('#loginFields').fadeOut();
 			    		$('#accountInfo').removeAttr("class");
 			    		
-			    		
 			    		console.log("SESSION NAME" + sessionStorage.getItem("name"));
-			    		document.getElementById("userName").innerHTML = user.email;
+			    		
+			    		if(document.getElementById("userName"))
+			    			document.getElementById("userName").innerHTML = user.email;
+			    		
+			    		window.location.replace("index.html");
 			    		
 			    	}
 			    	else
@@ -66,10 +69,9 @@ $(function(){
 		$('#accountInfo').attr("class", "hidden");
 		$('#loginFields').fadeIn();
 		
-		$('#dropBox').fadeOut();
-		
-		sessionStorage.removeItem('name');
-		sessionStorage.removeItem('password');
-		sessionStorage.removeItem('location');
+		sessionStorage.removeItem("name");
+		sessionStorage.removeItem("password");
+		sessionStorage.removeItem("location");
 	}); // end logout on click
-}); // end doc.ready
+	
+	});

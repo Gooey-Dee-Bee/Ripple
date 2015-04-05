@@ -13,8 +13,78 @@ purple: http://i.imgur.com/0l9rK27.jpg
 
 body {
 	/*background-color: #FFFAE6;*/
-  background: url("http://i.imgur.com/0l9rK27.jpg") no-repeat center center fixed;
+  background: url("bg/skipping.jpg") no-repeat center center fixed;
   background-size: 100% 100%;
+
+}
+
+/************** NAVIGATION ***************/
+#navBar {
+	width:100%;
+	height:80px;
+	background-color: #33CCCC;
+	left:0;
+	top:0;
+	padding-left:10px;
+	display: inline-block;
+}
+
+
+#navBar #header {
+	color: white;
+	font-size:6em;
+	font-family: 'Cookie', cursive;
+	position:absolute;
+	margin-top:-20px;
+	
+}
+
+#loginFields {
+	float: right;
+	margin-right: 3%;
+	margin-top: 1%;
+	height: 28px;
+	display: block;
+}
+
+.loginField {
+	height: 20px;
+}
+
+#submitLogin {
+	border: 1px solid #11AAAA;
+	background-color: #AAEEEE;
+	border-radius: 6px;
+	font-family: "Poiret One";
+	font-size: 12px;
+	margin-top: 4px;
+	height: 24px;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+#submitLogin:hover {
+	background-color: #BBFFFF;
+}
+
+
+/********************** ALL THE BOXES IN THE CENTER ********************/
+#contentWrap {
+	text-align:center;
+
+
+}
+
+#purpleBox {
+	width: 60%;
+	margin-left:20%;
+	margin-right:20%;
+	background-color: #120054;
+	height:600px;
+	
+	opacity:.8;
+	
+
 
 }
 
@@ -41,7 +111,9 @@ body {
 	border-width: 10px;
 	border-color: #fffae6;*/
 	padding: 10px;
-	background-color: #fffae6;
+	background-color: #33cccc;
+	opacity:.9;
+	border:none;
 }
 
 #signUpText {
@@ -51,7 +123,7 @@ body {
 
 #signUpButton {
   background-color: #33cccc;
-  color: #fffae6;
+  color: black;
   border-color: #120054;
   font-family: "Poiret One";
   border-radius: 6px;
@@ -65,12 +137,13 @@ body {
 
 /* for all of the text boxes */
 #loginEmail, #loginPassword, #signupEmail, #signupPassword, #signupConfirmPassword {
-  background-color: #33cccc;
+  background-color: white;
   border-color: #fffae6;
   color: #fffae6;
   font-family: "Poiret One";
   border-radius: 6px;
   width: 200px;
+  
 }
 /* For placeholder color in all textboxes */
 ::-webkit-input-placeholder { /* WebKit browsers */
@@ -84,6 +157,7 @@ body {
 
 
 /* NavBar CSS */
+/*
 #rememberMe {
   color: #33cccc;
 }
