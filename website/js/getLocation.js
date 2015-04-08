@@ -14,8 +14,7 @@ $(document).ready(function(){
 	    	//DO SOMETHING WITH THIS INFO
 	    
 	    	document.getElementById("location").style.display = 'none';
-			document.getElementById("dropBox").style.display = 'block';
-			document.getElementById("songBox").style.display = 'block';
+			allowDrops();
 		
 			sessionStorage.location = google.loader.ClientLocation;
 		

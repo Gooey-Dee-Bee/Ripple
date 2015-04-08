@@ -267,6 +267,8 @@ iframe {
 .drop {
 	height: 80px;
 	position:absolute;
+	
+
 
 }
 
@@ -280,4 +282,5 @@ iframe {
 .hidden {
 	display: none;
 }
+
 

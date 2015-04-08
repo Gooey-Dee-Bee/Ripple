@@ -26,7 +26,8 @@ $(function(){
 			    		$('#loginFields').fadeOut();
 			    		$('#accountInfo').removeAttr("class");
 			    		if(sessionStorage.getItem('location') != null)
-			    			$('#dropBox').show();
+			    		allowDrops();
+			    		
 			    		
 			    		console.log("SESSION NAME" + sessionStorage.getItem("name"));
 			    		document.getElementById("userName").innerHTML = user.email;
@@ -67,7 +68,8 @@ $(function(){
 		$('#accountInfo').attr("class", "hidden");
 		$('#loginFields').fadeIn();
 		
-		$('#dropBox').fadeOut();
+		disallowDrops();
+		
 		
 		sessionStorage.removeItem('name');
 		sessionStorage.removeItem('password');

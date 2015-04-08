@@ -33,6 +33,8 @@ $( document ).ready( function() {
 			    		
 			    		if(document.getElementById("userName"))
 			    			document.getElementById("userName").innerHTML = user.email;
+			    			
+			    
 			    		window.location.replace("index.html");
 			    		
 			    	}
@@ -89,6 +91,7 @@ $( document ).ready( function() {
 		    		document.getElementById("errorMessage").innerHTML = "Account created successfully";
 		    		alert("Successfully Created Account");
 		    		// Redirect to index 
+		    		
 	    			window.location.replace("index.html");
 		    	}
 		    	else {
