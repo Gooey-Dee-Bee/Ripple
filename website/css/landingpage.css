@@ -13,9 +13,55 @@ purple: http://i.imgur.com/0l9rK27.jpg
 
 body {
 	/*background-color: #FFFAE6;*/
-  background: url("http://i.imgur.com/0l9rK27.jpg") no-repeat center center fixed;
+  background: url("bg/skipping.jpg") no-repeat center center fixed;
   background-size: 100% 100%;
 
+}
+
+/************** NAVIGATION ***************/
+#navBar {
+	width:100%;
+	height:80px;
+	background-color: #33CCCC;
+	left:0;
+	top:0;
+	padding-left:10px;
+	display: inline-block;
+}
+
+
+#navBar #header {
+	color: white;
+	font-size:6em;
+	font-family: 'Cookie', cursive;
+	position:absolute;
+	margin-top:-20px;
+	
+}
+
+
+
+.loginField {
+	height: 20px;
+}
+
+
+
+#submitLogin:hover {
+	background-color: #BBFFFF;
+}
+
+
+/********************** ALL THE BOXES IN THE CENTER ********************/
+
+
+#purpleBox {
+	width: 30%;
+	margin-left:5%;
+	background-color: #120054;
+	height:600px;
+	opacity:.9;
+	z-index:3000;
 }
 
 /* Title */
@@ -34,134 +80,78 @@ body {
 }
 
 /* For signup box */
-.signUp {
-	margin-top: 30px;
+.entryForm {
+	
 	text-align: center;
-	/*border-style: ridge;
-	border-width: 10px;
-	border-color: #fffae6;*/
+	width:80%;
 	padding: 10px;
-	background-color: #fffae6;
+	background-color: #33cccc;
+	margin-left:10%;
+	border:none;
+	position:relative;
+	min-height:100px;
+	border-radius:12px;
+	z-index:3000;
+}
+#loginSuggest {
+	color:white;
+	text-align:center;
+}
+
+#accountSuggest {
+	color:white;
+	text-align:center;
+	display:none;
+
+}
+#createAccount {
+	display:block;
+	z-index:4000;
+}
+
+#loginForm {
+	display:block;
+	z-index:3000;
 }
 
 #signUpText {
-	color: #33cccc;
+ color: black;
   font-family: "Poiret One";
 }
 
 #signUpButton {
   background-color: #33cccc;
-  color: #fffae6;
+  color: black;
   border-color: #120054;
   font-family: "Poiret One";
   border-radius: 6px;
   width: 150px;
 }
 
-#loginButton {
+#submitLogin {
   background-color: #33cccc;
-  color: #fffae6;
+  color: black;
+  border-color: #120054;
+  font-family: "Poiret One";
+  border-radius: 6px;
+  width: 150px;
 }
 
 /* for all of the text boxes */
 #loginEmail, #loginPassword, #signupEmail, #signupPassword, #signupConfirmPassword {
-  background-color: #33cccc;
+  background-color: white;
   border-color: #fffae6;
-  color: #fffae6;
+  color: black;
   font-family: "Poiret One";
   border-radius: 6px;
-  width: 200px;
+  width: 80%;
+  
 }
 /* For placeholder color in all textboxes */
 ::-webkit-input-placeholder { /* WebKit browsers */
-    color: #fffae6;
+    color: black;
 }
 
 #landingPageTab {
   font-family: "Poiret One";
-}
-
-
-
-/* NavBar CSS */
-#rememberMe {
-  color: #33cccc;
-}
-.navbar-default {
-  background-color: #33cccc;
-  border-color: #33cccc;
-  background: -webkit-linear-gradient(top, rgba(51, 204, 204, 1) 0%, rgba(18, 0, 84, 1) 100%);
-  background: linear-gradient(to bottom, rgba(51, 204, 204, 1) 0%, rgba(18, 0, 84, 1) 100%);
-    
-}
-.navbar-default .navbar-brand {
-  color: #fffae6;
-  font-family: 'Cookie', cursive;
-  font-size: 40px;
-}
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-  color: #fffae6;
-}
-.navbar-default .navbar-text {
-  color: #fffae6;
-}
-.navbar-default .navbar-nav > li > a {
-  color: #fffae6;
-}
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: #fffae6;
-}
-.navbar-default .navbar-nav > li > .dropdown-menu {
-  background-color: #fffae6;
-}
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a {
-  color: #fffae6;
-}
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #33cccc;
-  background-color: #fffae6;
-}
-.navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
-  background-color: #33cccc;
-}
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #33cccc;
-  background-color: #fffae6;
-}
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  color: #33cccc;
-  background-color: #fffae6;
-}
-.navbar-default .navbar-toggle {
-  border-color: #fffae6;
-}
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background-color: #fffae6;
-}
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #fffae6;
-}
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-  border-color: #fffae6;
-}
-.navbar-default .navbar-link {
-  color: #fffae6;
-}
-.navbar-default .navbar-link:hover {
-  color: #33cccc;
-}
-
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #fffae6;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #33cccc;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #33cccc;
-    background-color: #fffae6;
-  }
 }
