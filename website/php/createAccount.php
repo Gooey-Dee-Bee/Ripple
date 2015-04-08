@@ -15,11 +15,11 @@
 		echo 200; // 'Error Code' that will be tested in the java script and will let the user know the email has already been registered
 	}
 	else {
-		$add_query = "INSERT INTO users(fname, lname, pword, email) VALUES
-							('TEST', 'USER', '$pword', '$email')";
+		$add_query = "INSERT INTO users(pword, email) VALUES
+							('$pword', '$email')";
 		addToDatabase($add_query);
 		startSession($email); // User is now logged in with a session
-		echo 100;
+		echo 100; //Success
 	}
 ?>
 
