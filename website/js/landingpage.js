@@ -17,13 +17,13 @@ $( document ).ready( function() {
 			    		
 			$.ajax({
 				type: "POST",
-			    url: 'http://private-f89294-ripple3.apiary-mock.com/users/email',
+			    url: '/ripple/php/login.php',
 			    content: 'application/json',
 
 			    data: JSON.stringify(user),
 			    success: function(data, status, request) {
 
-			    	if(data === "Successfully Logged In"){
+			    	if(data == 100){
 			    		
 			    		alert("Successfully Logged In, check the console");
 			    		$('#loginFields').fadeOut();
