@@ -1,6 +1,5 @@
 <?php
 	require_once(__DIR__."/databases.php"); // Allow access to the database functions
-	require_once(__DIR__."/sessions.php"); // Allow access to the sessions functions
 
 	// DECODE THE INFORMATION (IT IS PASSED IN JSON FORMAT)
 	$post_json = file_get_contents("php://input");
@@ -18,7 +17,6 @@
 		$add_query = "INSERT INTO users(fname, lname, pword, email) VALUES
 							('TEST', 'USER', '$pword', '$email')";
 		addToDatabase($add_query);
-		startSession($email); // User is now logged in with a session
 		echo 100;
 	}
 ?>
