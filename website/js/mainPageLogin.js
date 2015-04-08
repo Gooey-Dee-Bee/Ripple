@@ -6,18 +6,32 @@ $(function(){
 		var user = new Object();
 		user.email = $("#loginEmail").val();
 		user.password = $("#loginPassword").val();
+		
+		sessionStorage.name = user.email;
+		sessionStorage.password = user.password;
+	
+			    		
+			    		
 			$.ajax({
 				type: "POST",
-			    url: 'http://private-f89294-ripple3.apiary-mock.com/users/email',
+			    url: '/ripple/php/login.php',
 			    content: 'application/json',
 
 			    data: JSON.stringify(user),
 			    success: function(data, status, request) {
 
-			    	if(data === "Successfully Logged In"){
+			    	if(data == 100){
+			    		
 			    		alert("Successfully Logged In, check the console");
 			    		$('#loginFields').fadeOut();
 			    		$('#accountInfo').removeAttr("class");
+			    		if(sessionStorage.getItem('location') != null)
+			    		allowDrops();
+			    		
+			    		
+			    		console.log("SESSION NAME" + sessionStorage.getItem("name"));
+			    		document.getElementById("userName").innerHTML = user.email;
+			    		
 			    	}
 			    	else
 			    		alert("Account not found.");
@@ -53,5 +67,12 @@ $(function(){
 	$('#logout').on("click", function(){
 		$('#accountInfo').attr("class", "hidden");
 		$('#loginFields').fadeIn();
+		
+		disallowDrops();
+		
+		
+		sessionStorage.removeItem('name');
+		sessionStorage.removeItem('password');
+		
 	}); // end logout on click
 }); // end doc.ready

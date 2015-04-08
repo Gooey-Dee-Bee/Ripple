@@ -1,17 +1,12 @@
 var beginPlayer = '<div class="songPlayer" id="song';
 var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
-var midPlayer ='"></iframe></div><img class="drop" src="images/dropItIcon.png" onClick="bumpSong(this.id)" id="';
-var endPlayer ='"/></div>';
+var midPlayer ='"></iframe></div><div class="fuck"><img class="drop" src="images/dropItIcon.png" onClick="bumpSong(this.id)" id="';
+var endPlayer ='"/></div></div>';
 
-//FUNCTIONALITY FOR THE TINY DROP BUTTONS
-var songIdList = new Array();
-songIdList.push("173752179");
-songIdList.push("188883966");
-songIdList.push("179501785");
 
 function grabSong() {
 	var songId = document.getElementById("songId").value;
-	console.log("ADD SONG");
+	//console.log("ADD SONG");
 	getSongId(songId);
 }
 
@@ -20,19 +15,19 @@ function grabSong() {
 function addSong(songId) {
     var newcontent = document.createElement('div');
     var newSongListing = beginPlayer+songId+secondPlayer+songId+midPlayer+songId+endPlayer;
-    console.log("ADD SONG"+newSongListing);
+    //console.log("ADD SONG"+newSongListing);
     newcontent.innerHTML = newSongListing;
 
     prependElement('songBox', newcontent);
 
-	console.log("SONG ADDED");
+	//console.log("SONG ADDED");
 	document.getElementById("songId").value="";
 }
 
 function prependElement(parentID, child){
 	parent = document.getElementById(parentID);
-	console.log(parent);
-	console.log(child);
+	//console.log(parent);
+	//console.log(child);
 	parent.insertBefore(child, parent.childNodes[0]);
 
 
@@ -57,7 +52,7 @@ function getSongId(url) {
 		
 		for(var i = 0; i < songsInDB.length; i++) {
 			if(songsInDB[i] == newSongId){
-				console.log("SAME THING");
+				//console.log("SAME THING");
 				songExists = true;
 				}
 		}
@@ -67,9 +62,9 @@ function getSongId(url) {
 			songsInDB.push(newSongId);
 			}
 		else{
-			console.log("THIS ALREADY EXISTS");
+			//console.log("THIS ALREADY EXISTS");
 			bumpSong(newSongId);
-			console.log("SONG IS BUMPED");
+			//console.log("SONG IS BUMPED");
 			}
 	  }
 	}
@@ -80,9 +75,9 @@ function getSongId(url) {
 
 
 function parseSong(trackJson) {
-	console.log("PARSE SONG: "+trackJson);
+	//console.log("PARSE SONG: "+trackJson);
 	var id = JSON.stringify(trackJson["id"]);
-	console.log("PARSESONG ID IS: "+id);
+	//console.log("PARSESONG ID IS: "+id);
 	
 	return id;
 }
@@ -92,9 +87,9 @@ function parseSong(trackJson) {
 function bumpSong(songIdentity) {
 	var original = document.getElementById("song"+songIdentity);
 	var box = document.getElementById("songBox");
-	console.log(original);
+	//console.log(original);
 	original.parentNode.removeChild(original);
-	console.log('removed');
+	//console.log('removed');
 	
 	addSong(songIdentity);
 
