@@ -1,13 +1,8 @@
 var beginPlayer = '<div class="songPlayer" id="song';
 var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
-var midPlayer ='"></iframe></div><img class="drop" src="images/dropItIcon.png" onClick="bumpSong(this.id)" id="';
-var endPlayer ='"/></div>';
+var midPlayer ='"></iframe></div><div class="fuck"><img class="drop" src="images/dropItIcon.png" onClick="bumpSong(this.id)" id="';
+var endPlayer ='"/></div></div>';
 
-//FUNCTIONALITY FOR THE TINY DROP BUTTONS
-var songIdList = new Array();
-songIdList.push("173752179");
-songIdList.push("188883966");
-songIdList.push("179501785");
 
 function grabSong() {
 	var songId = document.getElementById("songId").value;
