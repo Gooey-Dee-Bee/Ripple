@@ -37,7 +37,7 @@ h2 {
 	height: 20px;
 }
 
-#submitLogin {
+#submitLogin, #buy-points {
 	border: 1px solid #11AAAA;
 	background-color: #AAEEEE;
 	border-radius: 6px;
@@ -49,7 +49,7 @@ h2 {
 	padding-right: 16px;
 }
 
-#submitLogin:hover {
+#submitLogin:hover, #buy-points:hover {
 	background-color: #BBFFFF;
 }
 
@@ -70,7 +70,7 @@ h2 {
 	top:0;
 	right:15px;
 	width:25%;
-	height:150px;
+	/*height:150px;*/
 	background-color:#120054;
 	position:absolute;
 	padding:10px;
