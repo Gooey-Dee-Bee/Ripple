@@ -21,7 +21,7 @@ $( document ).ready( function() {
 			    content: 'application/json',
 
 			    data: JSON.stringify(user),
-			    success: function(data, status, request) {
+			    success: function(data) {
 
 			    	if(data == 100){
 			    		

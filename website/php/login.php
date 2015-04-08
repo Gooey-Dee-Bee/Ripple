@@ -10,6 +10,7 @@
 	$pword = $post['password'];
 
 	$result = getInfoFromDatabase("SELECT pword FROM users WHERE email = '$email'");
+	$result = mysqli_fetch_assoc($result);
 	$result = $result['pword'];
 
 	if(isset($result) && $result == $pword) {

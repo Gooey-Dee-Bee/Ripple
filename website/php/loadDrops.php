@@ -1,7 +1,7 @@
 <?php
 	require_once(__DIR__."/databases.php"); // Allow access to the database functions
 
-	$query = "SELECT song_id FROM song"; // For now, just returns everything that is in the drop database
+	$query = "SELECT song_id FROM drops"; // For now, just returns everything that is in the drop database
 
 	$result = getInfoFromDatabase($query); // Returns the data as an associative array
 
