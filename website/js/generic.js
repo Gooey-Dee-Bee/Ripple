@@ -3,7 +3,10 @@ function setUpPage() {
 	console.log("SESSION NAME: "+ sessionStorage.getItem('name'));
 	console.log("SESSION PLACE: "+ sessionStorage.getItem('location'));
 
-	
+	if(sessionStorage.getItem('location') != null) {
+		console.log('there is a location associated with this session');
+		makeRequest();
+	}
 	
 	//If there is no name associated with the session
 	if(sessionStorage.getItem("name") == null) {
@@ -26,12 +29,12 @@ function setUpPage() {
 			else {
 				console.log("place is associated, drops should display");
 				allowDrops();
+				makeRequest();
 			}
 			
 	
 			console.log("session name:"+sessionStorage.getItem("name"));
-			console.log("session location: "+sessionStorage.getItem('location'));
-		
+			console.log("session location: "+sessionStorage.getItem('location'));	
 	}
 }
 
