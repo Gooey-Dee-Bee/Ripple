@@ -1,6 +1,6 @@
 var beginPlayer = '<div class="songPlayer" id="song';
 var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
-var midPlayer ='"></iframe></div><div class="fuck"><img class="drop" src="images/dropItIcon.png" onClick="bumpSong(this.id)" id="';
+var midPlayer ='"></iframe></div><div><img class="drop" src="images/dropItIcon.png" onClick="bumpSong(this.id)" id="';
 var endPlayer ='"/></div></div>';
 
 
@@ -17,9 +17,16 @@ function addSong(songId) {
     var newSongListing = beginPlayer+songId+secondPlayer+songId+midPlayer+songId+endPlayer;
     //console.log("ADD SONG"+newSongListing);
     newcontent.innerHTML = newSongListing;
+    console.log('adding all of the classes in drop.js');
+   
 
     prependElement('songBox', newcontent);
 
+	 
+    if (sessionStorage.getItem('name') == null) {
+    	document.getElementById(songId).style.display = "none";
+    	console.log('should not be displaying');
+    	}
 	//console.log("SONG ADDED");
 	document.getElementById("songId").value="";
 }
