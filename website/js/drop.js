@@ -29,7 +29,8 @@ function addSong(songId) {
     	console.log('should not be displaying');
     	}
 	//console.log("SONG ADDED");
-	document.getElementById("songId").value="";
+	document.getElementById("songId").value="";	
+
 }
 
 function prependElement(parentID, child){
@@ -55,6 +56,16 @@ function getSongId(url) {
 		var newSongId = parseSong(textin);
 
 		//FUNCTION TO COMMUNICATE WITH DATABASE IN CHANGING THE STATS
+		//ADDING THE NEW SONG TO THE DATABASE
+		$.post(
+			'/ripple/php/insertDrop.php', 
+
+			{id: newSongId/* need to send other info eventually (like user id)*/}, 
+
+	    	function(returnedData){
+	        	console.log(returnedData);
+	        }
+		);
 		
 		for(var i = 0; i < songsInDB.length; i++) {
 			if(songsInDB[i] == newSongId){

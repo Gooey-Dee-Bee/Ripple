@@ -59,7 +59,7 @@ CREATE TABLE `drops` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `drops_ibfk_1` FOREIGN KEY (`song_id`) REFERENCES `song` (`song_id`),
   CONSTRAINT `drops_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `drops` (
 
 LOCK TABLES `drops` WRITE;
 /*!40000 ALTER TABLE `drops` DISABLE KEYS */;
-INSERT INTO `drops` VALUES (1,1,97811869,'2015-04-08 23:22:37',0,0,0),(2,1,134118386,'2015-04-08 23:22:37',0,0,0),(3,1,153385504,'2015-04-08 23:22:37',0,0,0),(4,2,176288064,'2015-04-08 23:22:37',0,0,0);
+INSERT INTO `drops` VALUES (1,1,123063109,'2015-04-09 00:19:14',0,0,0),(2,1,146962699,'2015-04-09 00:20:50',0,0,0),(3,1,18853020,'2015-04-09 00:26:25',0,0,0);
 /*!40000 ALTER TABLE `drops` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +96,7 @@ CREATE TABLE `song` (
 
 LOCK TABLES `song` WRITE;
 /*!40000 ALTER TABLE `song` DISABLE KEYS */;
-INSERT INTO `song` VALUES (97811869,1,'Rainman','filler.com'),(134118386,1,'Party Rock','FILLER.COM'),(153385504,1,'Sugar Man','FILLER.COM'),(176288064,1,'Gun Slinger','FILLER.COM');
+INSERT INTO `song` VALUES (18853020,1,'filler','filler.com'),(83816956,1,'filler','filler.com'),(97811869,1,'Rainman','filler.com'),(99619146,1,'filler','filler.com'),(123063109,1,'filler','filler.com'),(134118386,1,'Party Rock','FILLER.COM'),(146962699,1,'filler','filler.com'),(153385504,1,'Sugar Man','FILLER.COM'),(176288064,1,'Gun Slinger','FILLER.COM');
 /*!40000 ALTER TABLE `song` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,4 +162,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-08 23:28:29
+-- Dump completed on 2015-04-09  0:27:14
