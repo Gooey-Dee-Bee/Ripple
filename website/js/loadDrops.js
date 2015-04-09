@@ -1,24 +1,26 @@
 var songsInDB = new Array();
 
 function makeRequest(){
-var Request = new XMLHttpRequest();
-Request.onreadystatechange = function () {
-  if (this.readyState === 4 && this.status === 200) {
-    console.log('Status:', this.status);
-    console.log('Headers:', this.getAllResponseHeaders());
-    //console.log('Body:', this.responseText);     
+	// var Request = new XMLHttpRequest();
+	// Request.onreadystatechange = function () {
+	//   if (this.readyState === 4 && this.status === 200) {
+	//     console.log('Status:', this.status);
+	//     console.log('Headers:', this.getAllResponseHeaders());
+	//     //console.log('Body:', this.responseText);     
 
-    
-    var textin = JSON.parse(this.responseText);
-	var songInformation = addSongsToArray(textin);
-	addSongsToArray(songInformation);	
-	
-  }
-}
+	    
+	//     var textin = JSON.parse(this.responseText);
+	// 	var songInformation = addSongsToArray(textin);
+	// 	addSongsToArray(songInformation);	
+		
+	//   }
+	// }
 
-Request.open('GET', 'http://private-0601a-ripple2.apiary-mock.com/songs', true);
-Request.send(JSON.stringify(document.body));
-
+	//Request.open('GET', 'http://private-0601a-ripple2.apiary-mock.com/songs', true);
+	//Request.send(JSON.stringify(document.body));
+	$.get("http://private-0601a-ripple2.apiary-mock.com/songs", function(data, status) {
+		addSongsToArray(data);
+	});
 
 }
 
