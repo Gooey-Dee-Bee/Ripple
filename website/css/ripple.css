@@ -193,6 +193,15 @@ h2 {
 	height:200px;
 	display: none;
 }
+#searchBox {
+	font-family: "Poiret One";
+	font-weight: bold;
+	font-size: 14px;
+	text-align:center;
+	margin-top:20px;
+	height:60px;
+	/*display: none;*/
+}
 
 #songId {
 	height:40px;
