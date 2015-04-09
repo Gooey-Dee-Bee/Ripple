@@ -60,7 +60,7 @@ function getSongId(url) {
 		$.post(
 			'/ripple/php/insertDrop.php', 
 
-			{id: newSongId/* need to send other info eventually (like user id)*/}, 
+			{id: newSongId, email: sessionStorage.getItem('name')}, 
 
 	    	function(returnedData){
 	        	console.log(returnedData);

@@ -12,7 +12,10 @@
 
 		// Subtract DEFAULT value of points from user
 		$points = getInfoFromDatabase("SELECT points FROM users WHERE email = '$email'");
+		$points = mysqli_fetch_assoc($points);
+		$points = $points['points'];
 		$points = $points - $defaultPoints;
+		//echo "Points after substraction: $points";
 		if ($points < 0) {
 			$points = 0;
 		}
