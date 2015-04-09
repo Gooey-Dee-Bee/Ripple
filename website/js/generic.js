@@ -9,7 +9,7 @@ function setUpPage() {
 	}
 	
 	//If there is no name associated with the session
-	if(sessionStorage.getItem("name") == null) {
+	else if(sessionStorage.getItem("name") == null) {
 		console.log("There is no name associated with session. Drops shouldn't display.");
 		disallowDrops();
 	}
