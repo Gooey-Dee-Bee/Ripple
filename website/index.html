@@ -4,6 +4,7 @@
 		<title>Ripple</title>
 		<link rel="icon" type="image/jpg" href="images/dropItIcon.png">
 		<link rel="stylesheet" type="text/css" href="css/ripple.css">
+		<link rel="stylesheet" type="text/css" href="css/accountModule.css">
 		<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Poiret One' rel='stylesheet' type='text/css'>
@@ -18,6 +19,7 @@
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	    <script type="text/javascript" src="js/getLocation.js"></script>
 	    <script type="text/javascript" src="js/mainPageLogin.js"></script>
+	    <script type="text/javascript" src="js/userAccount.js"></script>
 	   
 	   
 
@@ -25,6 +27,7 @@
 		
 	</head>
 	<body onload="setUpPage()">
+
 		<div id="navBar">
 			<div id="header">
 				Ripple
@@ -44,8 +47,16 @@
 			</div>
 			<div id="userInfo">
 				<div id="dropNumber">123,153,665,123</div> drops left
-				<a id="logout" href="#">logout</a>
+				
 			</div>
+			
+		
+			<div class="accountLinks">
+			<a id="logout" href="#">logout</a>
+				<a id="accountInfoLink" href="#">View Account</a>
+			</tr>
+			</div>	
+				
 		</div>
 		
 
@@ -68,6 +79,10 @@
 			Created by Gooey-Dee-Bee (c) 2015
 		</div>
 		
+		
+		<!--POP UP MODULE FOR ACCOUNT-->
+		<div id="popup">
+		</div>
 	
 	</body>
 	

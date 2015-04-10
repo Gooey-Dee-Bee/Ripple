@@ -106,7 +106,8 @@ function addSong(songId) {
 /*ENSURES THE LATEST SONG IS ON TOP*/
 function prependElement(parentID, child){
 	parent = document.getElementById(parentID);
-	parent.insertBefore(child, parent.childNodes[0]);
+	if(parent)
+		parent.insertBefore(child, parent.childNodes[0]);
 }
 
 

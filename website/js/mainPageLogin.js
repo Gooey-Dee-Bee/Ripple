@@ -29,6 +29,7 @@ $(function(){
 			    		if(sessionStorage.getItem('location') != null)
 			    			{
 			    			showLoggedInPage();
+			    			
 			    			window.location.replace("index.html");
 			    			}
 			    		
@@ -46,7 +47,9 @@ $(function(){
 			}); // end of ajax
 	}); // end submit function
 	$('#logout').on("click", function(){
-		$('#accountInfo').attr("class", "hidden");
+		
+		$('#popup').hide();
+		$('#accountInfo').hide();
 		$('#loginFields').fadeIn();
 		
 		disallowDrops();
@@ -63,7 +66,8 @@ function showAccountInfo() {
 		getUserPoints();
 		
 		$('#loginFields').fadeOut();
-		$('#accountInfo').removeAttr("class");
+	//	$('#accountInfo').removeAttr("class");
+		$('#accountInfo').show();
 		document.getElementById('userName').innerHTML = sessionStorage.getItem('name');
 		document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('points');
 		console.log("SESSION NAME: " + sessionStorage.getItem("name"));

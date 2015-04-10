@@ -3,6 +3,9 @@ body {
 	background-color: #FFFAE6;
 	
 	}
+	
+	
+
 
 h2 {
 	font-family: "Handlee";
@@ -84,30 +87,57 @@ h2 {
 #userName {
 	color:white;
 	font-size:26px;
+	top:10;
+	left:10;
+	position:absolute;
 }
 
 #userInfo {
 	color:white;
 	font-size:15px;
 	text-align:center;
+	top:50px;
+	position:absolute;
+	margin-left:35%;
+	margin-right:auto;
 
 }
 
 #dropNumber {
-	margin-top:10px;
 	font-size:30px;
-
-
 }
 
-#logout {
+
+.accountLinks {
+	float: left;
+
+	bottom:0;
+	width:90%;
+	position:absolute;
+	height:20px;
+	color:white;
+	text-decoration: none;	
+
+}
+.accountLinks  #logout {
+	float: left;
 	color:white;
 	text-decoration: none;
-	bottom:5%;
-	right:5%;
-	position: absolute;
+	right:0;
+}
+
+.accountLinks  #accountInfoLink {
+	float: right;
+	color:white;
+	text-decoration: none;
+	background-color:transparent;
+
+	text-align:center;
+	height:30px;
+
 
 }
+
 
 #searchBar {
 	font-family: "Poiret One";
