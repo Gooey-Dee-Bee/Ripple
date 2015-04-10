@@ -29,7 +29,7 @@ $(document).ready(function(){
 	} else {
 	if(sessionStorage.getItem('name') != null)
 		showLoggedInPage();
-	
+			
 	}
 });
 
@@ -43,8 +43,7 @@ function disappearZip () {
 		showLoggedInPage();
 		sessionStorage.location = zip;
 		console.log("session zip: " +zip);
-		
-		getName(zip);
+		window.location.replace('index.html');
 	} else {
 			alert("If you're a living person, you have a zipcode. Please enter it correctly.");
 	}
@@ -58,10 +57,8 @@ function isValidUSZip(sZip) {
 function showLoggedInPage() {
 
 	document.getElementById("location").style.display = 'none';
-
-
 	document.getElementById("songBox").style.display = 'block';
-	
+
 	
 
 

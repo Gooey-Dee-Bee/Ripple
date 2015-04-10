@@ -26,6 +26,11 @@ $(function(){
 			    		
 			    		alert("Successfully Logged In, check the console");
 			    		showAccountInfo();
+			    		if(sessionStorage.getItem('location') != null)
+			    			{
+			    			showLoggedInPage();
+			    			window.location.replace("index.html");
+			    			}
 			    		
 			    		
 			    	}
@@ -55,14 +60,8 @@ $(function(){
 
 
 function showAccountInfo() {
-
 		$('#loginFields').fadeOut();
 		$('#accountInfo').removeAttr("class");
 		document.getElementById('userName').innerHTML = sessionStorage.getItem('name');
 		console.log("SESSION NAME: " + sessionStorage.getItem("name"));
-		$('#dropBox').css('display','block');
-		allowDrops();
-		
-		
-
 }
