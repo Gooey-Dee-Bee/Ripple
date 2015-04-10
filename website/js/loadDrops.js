@@ -42,6 +42,40 @@ function grabSong() {
 /*GET THE SONG ID FROM SOUNDCLOUD*/
 //Load songs statically on the page load
 function getSongId(url) {
+var songExists = false;
+$.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f874d25715f0e225e7c71a', function(data, status) {
+		//var textin = JSON.parse(data);
+		console.log(data['id']);
+		
+		var newSongId = parseSong(data);
+		console.log('new song id is '+newSongId);
+
+		//FUNCTION TO COMMUNICATE WITH DATABASE IN CHANGING THE STATS
+		//ADDING THE NEW SONG TO THE DATABASE
+		for(var i = 0; i < songsInDB.length; i++) {
+			if(songsInDB[i] == newSongId){
+				songExists = true;
+				}
+		}
+		if (songExists == false){
+			addSong(newSongId);
+			songsInDB.push(newSongId);
+			$.post(
+			'/ripple/php/insertDrop.php', 
+			{id: newSongId, email: sessionStorage.getItem('name')}, 
+
+	    	function(returnedData){
+	        	console.log(returnedData);
+	        }
+		);
+			} else{
+			bumpSong(newSongId);
+			}
+	});
+}
+
+
+/*
 	var songExists = false;
 	var Request = new XMLHttpRequest();
 	Request.onreadystatechange = function () {
@@ -87,6 +121,8 @@ function getSongId(url) {
 	Request.open('GET', 'https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f874d25715f0e225e7c71a', true);
 	Request.send();
 }
+
+*/
 
 
 /*PARSE THE JSON FROM SOUNDCLOUD FOR ONLY THE ID*/
