@@ -18,10 +18,11 @@ function setUpPage() {
 	}
 	//if there is name 
 	else {
+			
 			console.log("name associated with session");
 			document.getElementById("loginFields").style.display = "none";
 			showAccountInfo();
-		
+			getUserPoints();
 			//if there is no location
 			if (sessionStorage.getItem('location') == null){
 				disallowDrops();
@@ -51,3 +52,15 @@ function disallowDrops() {
 	$('.drop').css('display','none');
 	console.log('disallowing drops');
 };
+
+
+
+function getUserPoints() {
+	$.get("/ripple/php/getUserInfo.php?email="+sessionStorage.getItem('name'), function(data, status) {
+		console.log(JSON.parse(data));
+		var accountInformation = JSON.parse(data);
+		sessionStorage.points = accountInformation['points'];
+		console.log(sessionStorage.getItem('points'));
+	});
+
+}

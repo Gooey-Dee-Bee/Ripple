@@ -60,8 +60,11 @@ $(function(){
 
 
 function showAccountInfo() {
+		getUserPoints();
+		
 		$('#loginFields').fadeOut();
 		$('#accountInfo').removeAttr("class");
 		document.getElementById('userName').innerHTML = sessionStorage.getItem('name');
+		document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('points');
 		console.log("SESSION NAME: " + sessionStorage.getItem("name"));
 }
