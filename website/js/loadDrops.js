@@ -1,6 +1,7 @@
 var songsInDB = new Array();
 
 function makeRequest(){
+
 var Request = new XMLHttpRequest();
 Request.onreadystatechange = function () {
   if (this.readyState === 4 && this.status === 200) {
@@ -19,6 +20,7 @@ Request.onreadystatechange = function () {
 //http://private-0601a-ripple2.apiary-mock.com/songs
 Request.open('GET', '/ripple/php/loadDrops.php', true);
 Request.send(JSON.stringify(document.body));
+
 
 }
 
