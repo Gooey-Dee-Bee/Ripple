@@ -96,7 +96,7 @@ CREATE TABLE `song` (
 
 LOCK TABLES `song` WRITE;
 /*!40000 ALTER TABLE `song` DISABLE KEYS */;
-INSERT INTO `song` VALUES (18853020,1,'filler','filler.com'),(83816956,1,'filler','filler.com'),(97811869,1,'Rainman','filler.com'),(99619146,1,'filler','filler.com'),(123063109,1,'filler','filler.com'),(134118386,1,'Party Rock','FILLER.COM'),(146962699,1,'filler','filler.com'),(153385504,1,'Sugar Man','FILLER.COM'),(176288064,1,'Gun Slinger','FILLER.COM');
+INSERT INTO `song` VALUES (97811869,1,'Rainman','filler.com'),(134118386,1,'Party Rock','FILLER.COM'),(153385504,1,'Sugar Man','FILLER.COM'),(176288064,1,'Gun Slinger','FILLER.COM');
 /*!40000 ALTER TABLE `song` ENABLE KEYS */;
 UNLOCK TABLES;
 
