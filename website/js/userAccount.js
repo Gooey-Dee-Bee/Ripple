@@ -79,7 +79,7 @@ var endPlayer ='</div></div>';
 
 
     var newcontent = document.createElement('div');
-    var newSongListing = beginPlayer+songId+secondPlayer+songId+midPlayer+songId+endPlayer;
+    var newSongListing = beginPlayer+songId+secondPlayer+songId+midPlayer+endPlayer;
     //console.log("ADD SONG"+newSongListing);
     newcontent.innerHTML = newSongListing;
    
