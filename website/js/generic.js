@@ -26,15 +26,13 @@ function setUpPage() {
 			if (sessionStorage.getItem('location') == null){
 				disallowDrops();
 				console.log("no place associated");
-			}
-			//if there is a location
-			else {
+			} else {
+				//if there is a location
 				console.log("place is associated, drops should display");
 				allowDrops();
 				makeRequest();
 			}
 			
-	
 			console.log("session name:"+sessionStorage.getItem("name"));
 			console.log("session location: "+sessionStorage.getItem('location'));	
 	}
