@@ -64,10 +64,12 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 			songsInDB.push(newSongId);
 			$.post(
 			'/ripple/php/insertDrop.php', 
-			{id: newSongId, email: sessionStorage.getItem('name')}, 
+			{song_id: newSongId, email: sessionStorage.getItem('name')}, 
 
 	    	function(returnedData){
-	        	console.log(returnedData);
+	        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
+	        		alert("You do not have enough points to complete this drop. Please purchase more!");
+	        	}
 	        }
 		);
 			} else{
