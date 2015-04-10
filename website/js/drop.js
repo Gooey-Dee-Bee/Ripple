@@ -6,7 +6,8 @@ var endPlayer ='"/></div></div>';
 
 function grabSong() {
 	var songId = document.getElementById("songId").value;
-	//console.log("ADD SONG");
+	
+	console.log("grab song - ");
 	getSongId(songId);
 }
 
@@ -28,7 +29,8 @@ function addSong(songId) {
     	console.log('should not be displaying');
     	}
 	//console.log("SONG ADDED");
-	document.getElementById("songId").value="";
+	document.getElementById("songId").value="";	
+
 }
 
 function prependElement(parentID, child){
@@ -52,10 +54,18 @@ function getSongId(url) {
 	    
 	    var textin = JSON.parse(this.responseText);
 		var newSongId = parseSong(textin);
-		
-		//NEED A CHECKING FUNCTION TO DETERMINE WHETHER OR NOT THE SONG IS A DUPLICATE AND SHOULD BE ADDED
-		//NEED SOMETHING THAT WILL REMOVE IT FROM WHEREVER IT'S AT AND SHIFT EVERYTHING DOWN
+
 		//FUNCTION TO COMMUNICATE WITH DATABASE IN CHANGING THE STATS
+		//ADDING THE NEW SONG TO THE DATABASE
+		$.post(
+			'/ripple/php/insertDrop.php', 
+
+			{id: newSongId, email: sessionStorage.getItem('name')}, 
+
+	    	function(returnedData){
+	        	console.log(returnedData);
+	        }
+		);
 		
 		for(var i = 0; i < songsInDB.length; i++) {
 			if(songsInDB[i] == newSongId){
