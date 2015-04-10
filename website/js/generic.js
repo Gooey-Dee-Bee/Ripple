@@ -3,22 +3,24 @@ function setUpPage() {
 	console.log("SESSION NAME: "+ sessionStorage.getItem('name'));
 	console.log("SESSION PLACE: "+ sessionStorage.getItem('location'));
 
-	if(sessionStorage.getItem('location') != null) {
+	console.log('GENERIC BEING CALLED NOW');
+
+	//if there is a location but there is no name
+	if(sessionStorage.getItem('location') != null && sessionStorage.getItem("name") == null) {
 		console.log('there is a location associated with this session');
 		makeRequest();
+		disallowDrops();	
 	}
 	
-	//If there is no name associated with the session
-	else if(sessionStorage.getItem("name") == null) {
-		console.log("There is no name associated with session. Drops shouldn't display.");
+	//if name is null and location is null
+	else if(sessionStorage.getItem("name") == null ) {
 		disallowDrops();
 	}
-	//if there is name
+	//if there is name 
 	else {
 			console.log("name associated with session");
 			document.getElementById("loginFields").style.display = "none";
-			$('#accountInfo').removeAttr("class");
-			document.getElementById('userName').innerHTML = sessionStorage.name;
+			showAccountInfo();
 		
 			//if there is no location
 			if (sessionStorage.getItem('location') == null){
@@ -42,9 +44,11 @@ function setUpPage() {
 function allowDrops() {
 	$('#dropBox').css('display','block');
 	$('.drop').css('display','block');
+	$('#songBox').css('display','block');
 };
 
 function disallowDrops() {
+	$('#songBox').css('display','block');
 	$('#dropBox').css('display','none');
 	$('.drop').css('display','none');
 	console.log('disallowing drops');

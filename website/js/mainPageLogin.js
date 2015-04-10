@@ -9,7 +9,7 @@ $(function(){
 		
 		sessionStorage.name = user.email;
 		sessionStorage.password = user.password;
-	
+		
 			    		
 			    		
 			$.ajax({
@@ -21,40 +21,16 @@ $(function(){
 			    success: function(data, status, request) {
 
 			    	if(data == 100){
+			    	
+			    		console.log('the session stuff is: '+sessionStorage.getItem('name'));
 			    		
 			    		alert("Successfully Logged In, check the console");
-			    		$('#loginFields').fadeOut();
-			    		$('#accountInfo').removeAttr("class");
-			    		if(sessionStorage.getItem('location') != null)
-			    		allowDrops();
+			    		showAccountInfo();
 			    		
-			    		
-			    		console.log("SESSION NAME" + sessionStorage.getItem("name"));
-			    		document.getElementById("userName").innerHTML = user.email;
 			    		
 			    	}
 			    	else
 			    		alert("Account not found.");
-
-			        //Error Checking
-			        // if($.isNumeric(data)){
-			        //     if(data==400) {
-			        //         alert("success logging in");
-			        //     } 
-			        //     else {
-			                
-			        //     } 
-			        // }
-			        // else if(!jQuery.isEmptyObject(data)){
-			        //     var obj = JSON.parse(data);
-			        //     if(obj.Email.length>0){
-			        //         $.cookie.json = true;
-			        //         $.cookie("data", data); 
-			        //         //redirect user
-			        //         $("#loginMessage").hide();
-			        //         $(location).attr('href', "search.html");
-			        //     }
-			        // }
 			    },
 			    error: function(something, var1) {
 			    	console.log(something);
@@ -76,3 +52,17 @@ $(function(){
 		
 	}); // end logout on click
 }); // end doc.ready
+
+
+function showAccountInfo() {
+
+		$('#loginFields').fadeOut();
+		$('#accountInfo').removeAttr("class");
+		document.getElementById('userName').innerHTML = sessionStorage.getItem('name');
+		console.log("SESSION NAME: " + sessionStorage.getItem("name"));
+		$('#dropBox').css('display','block');
+		allowDrops();
+		
+		
+
+}
