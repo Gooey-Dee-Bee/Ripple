@@ -34,8 +34,10 @@ var endPlayer ='"/></div></div>';
 /** GRAB THE SONG ID FROM THE SONG URL ON THE PAGE*/
 function grabSong() {
 	var songId = document.getElementById("songId").value;
-
-	getSongId(songId);
+	if(sessionStorage.getItem('points') > 0)
+		getSongId(songId);
+	else
+		alert("We know this is a great song, but you don't have enough points to drop it right now. Why don't you buy some more?");
 }
 
 
@@ -75,55 +77,6 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 }
 
 
-/*
-	var songExists = false;
-	var Request = new XMLHttpRequest();
-	Request.onreadystatechange = function () {
-	  if (this.readyState === 4 && this.status === 200) {
-	    console.log('Status:', this.status);
-	    console.log('Headers:', this.getAllResponseHeaders());
-	    console.log('Body:', this.responseText);     
-	    
-	    var textin = JSON.parse(this.responseText);
-		var newSongId = parseSong(textin);
-		
-		console.log('before the post stuff');
-		console.log('new song id is '+newSongId);
-
-		//FUNCTION TO COMMUNICATE WITH DATABASE IN CHANGING THE STATS
-		//ADDING THE NEW SONG TO THE DATABASE
-		
-		for(var i = 0; i < songsInDB.length; i++) {
-			if(songsInDB[i] == newSongId){
-				songExists = true;
-				}
-		}
-		if (songExists == false){
-			addSong(newSongId);
-			songsInDB.push(newSongId);
-			$.post(
-			'/ripple/php/insertDrop.php', 
-
-			{id: newSongId, email: sessionStorage.getItem('name')}, 
-
-	    	function(returnedData){
-	        	console.log(returnedData);
-	        }
-		);
-			
-			
-			} else{
-			bumpSong(newSongId);
-			}
-	  }
-	}
-	console.log('url is ' + url);
-	Request.open('GET', 'https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f874d25715f0e225e7c71a', true);
-	Request.send();
-}
-
-*/
-
 
 /*PARSE THE JSON FROM SOUNDCLOUD FOR ONLY THE ID*/
 function parseSong(trackJson) {
@@ -160,9 +113,15 @@ function prependElement(parentID, child){
 
 /* BUMP A SONG UP THAT IS ALREADY ON THE PLAYLIST */
 function bumpSong(songIdentity) {
+	if(sessionStorage.getItem('points') > 0){
+	
 	var original = document.getElementById("song"+songIdentity);
 	var box = document.getElementById("songBox");
 	original.parentNode.removeChild(original);
 	
 	addSong(songIdentity);
+	}
+	else
+		alert("We know this is the best song ever. Buy more drops to keep sharing your great taste.");
+
 }
