@@ -69,6 +69,6 @@ function showAccountInfo() {
 	//	$('#accountInfo').removeAttr("class");
 		$('#accountInfo').show();
 		document.getElementById('userName').innerHTML = sessionStorage.getItem('name');
-		document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('points');
+		document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('drops');
 		console.log("SESSION NAME: " + sessionStorage.getItem("name"));
 }

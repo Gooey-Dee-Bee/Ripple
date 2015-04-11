@@ -33,7 +33,7 @@ $('#popup').html("<div id='accountModule'><div id='closeButton'></div><div id='i
 					 +"</div><div id='songBoxTitle'></div><div id='dropSongBox'></div></div></div>"); 
 var usersName = sessionStorage.getItem('name');
 var pointsLeft = sessionStorage.getItem('points');
-var totalDrops = 46;
+var totalDrops = sessionStorage.getItem('drops');
 
 $('#closeButton').html("<a id='buyMoreDrops' href='#' onClick='closeModule()'>X</a>");
 $('#accountName').html(usersName);
@@ -49,10 +49,12 @@ $('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>(Buy
 
 /*GET SONGS FROM THE DB THEORETICALLY RELATED TO USER*/
 function makeUserRequest(){
-$.get("/ripple/php/loadDrops.php", function(data, status) {
-		console.log('adding songs to array');
-		addSongsToUserArray(JSON.parse(data));
-	});
+$.get("/ripple/php/loadDrops.php",
+		{user_id: sessionStorage.getItem('user_id')},
+	    function(data, status) {
+			console.log('adding songs to array');
+			addSongsToUserArray(JSON.parse(data));
+		});
 }
 
 
