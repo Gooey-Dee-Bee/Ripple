@@ -1,7 +1,8 @@
 
 body {
-	background-color: #FFFAE6;
 	
+	background-color: #dce4e8;
+	background-color: #FFFAE6;
 	}
 	
 	
@@ -14,8 +15,10 @@ h2 {
 	width:100%;
 	height:200px;
 	background-color: #33CCCC;
+	background-color:#4898bd;
 	left:0;
 	top:0;
+	margin-top:30px;
 	padding-left:20px;
 	display: inline-block;
 }
@@ -221,7 +224,7 @@ h2 {
 /*DROPPING SONGS (ORIGINAL SONGS)*/
 #dropBox {
 	text-align:center;
-	margin-top:20px;
+	margin-top:30px;
 	height:200px;
 	display: none;
 }
@@ -264,6 +267,7 @@ iframe {
   
   .songPlayer {
 	background-color: #99D6D6;
+	background-color:#4898bd;
 	width:95%;
 	height:80px;
 	margin-left:auto;

@@ -1,7 +1,7 @@
 #accountModule {
 	position:fixed;
 	width:55%;
-	height:80%;
+	height:40%;
 	background-color: #120054;
 	border-radius:12px;
 	padding:20px;
@@ -83,17 +83,6 @@
 
 
 }
-#dropSongBox {
-	width:100%;
-	background:#7f96ad;
-	height:300px;
-	overflow:scroll;
-	position:relative;
-	border-radius:12px;
-	text-align:center;
-}
-
-
 
 .userSong {
 	height:50px;

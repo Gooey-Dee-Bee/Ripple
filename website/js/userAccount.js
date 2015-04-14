@@ -12,7 +12,7 @@ $(function(){
 
 function moduleSetUp() {
 	setBase();
-	makeUserRequest();
+	//makeUserRequest();
 
 }
 
@@ -30,7 +30,7 @@ function setBase() {
 
 $('#popup').html("<div id='accountModule'><div id='closeButton'></div><div id='info'><div id='accountName'></div><div class='dropNum'"+
 					"id='dropsLeft'></div><div class='dropNum' id='dropsUsed'></div><div id='acctLink'>"
-					 +"</div><div id='songBoxTitle'></div><div id='dropSongBox'></div></div></div>"); 
+					 +"</div></div></div>"); 
 var usersName = sessionStorage.getItem('name');
 var pointsLeft = sessionStorage.getItem('points');
 var totalDrops = sessionStorage.getItem('drops');
@@ -43,15 +43,15 @@ $('#closeButton').html("<a id='buyMoreDrops' href='#' onClick='closeModule()'>X<
 $('#accountName').html(usersName);
 $('#dropsLeft').html(pointsLeft +"<div class='yourDropText'>Drops Left</div>"); 
 $('#dropsUsed').html(totalDrops +"<div class='yourDropText'>Past Drops</div>"); 
-$('#songBoxTitle').html("<u>Your Drop Playlist:</u> ");
-$('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>(Buy more drops)</a>"); 
+
+$('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>View Drop History</a><br></br><a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>(Buy more drops)</a>"); 
 }
 
 /*Strings to get Soundcloud players on the user account*/
 
 
 
-/*GET SONGS FROM THE DB THEORETICALLY RELATED TO USER*/
+/*GET SONGS FROM THE DB THEORETICALLY RELATED TO USER
 function makeUserRequest(){
 $.get("/ripple/php/loadDrops.php",
 		{user_id: sessionStorage.getItem('user_id')},
@@ -62,7 +62,7 @@ $.get("/ripple/php/loadDrops.php",
 }
 
 
-/*ADD SONGS FROM THE DATABSE TO THE ARRAY*/
+/*ADD SONGS FROM THE DATABSE TO THE ARRAY
 function addSongsToUserArray(jsonArray) {
 
 	for(var i = 0; i < jsonArray.length; i++){
@@ -76,7 +76,7 @@ function addSongsToUserArray(jsonArray) {
 }
 
 
-/*ADD SONG FRAME TO THE SONG FEED (used for static and dynamic)*/
+ADD SONG FRAME TO THE SONG FEED (used for static and dynamic)
 function addSongForUser(songId) {
 var beginPlayer = '<div class="userSong" id="song';
 var secondPlayer= '"> <div class="songText"><iframe src="https://www.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
@@ -93,6 +93,6 @@ var endPlayer ='</div></div>';
  
 
 
-}
+}*/
 
 
