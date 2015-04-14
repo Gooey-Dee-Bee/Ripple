@@ -59,13 +59,19 @@ function getUserPoints() {
 	$.get("/ripple/php/getUserInfo.php",
 		{email: sessionStorage.getItem('name')}, 
 		function(data, status) {
-			console.log(JSON.parse(data));
+			console.log("GET USER POINTS: "+JSON.parse(data));
 			var accountInformation = JSON.parse(data);
 			// Adding variables to the sessionStorage!
 			sessionStorage.points = accountInformation['points'];
 			sessionStorage.drops = accountInformation['total_drops'];
 			sessionStorage.user_id = accountInformation['userId'];
-			console.log(sessionStorage.getItem('points'));
+			console.log('points '+ sessionStorage.getItem('points'));
+			console.log('total drops '+sessionStorage.getItem('drops'));
+			
+			
+			document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('drops');
 		});
 
 }
+
+

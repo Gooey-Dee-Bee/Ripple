@@ -7,8 +7,7 @@ $(function(){
 		user.email = $("#loginEmail").val();
 		user.password = $("#loginPassword").val();
 		
-		sessionStorage.name = user.email;
-		sessionStorage.password = user.password;
+		
 		
 			    		
 			    		
@@ -21,7 +20,8 @@ $(function(){
 			    success: function(data, status, request) {
 
 			    	if(data == 100){
-			    	
+			    		sessionStorage.name = user.email;
+						sessionStorage.password = user.password;
 			    		console.log('the session stuff is: '+sessionStorage.getItem('name'));
 			    		
 			    		alert("Successfully Logged In, check the console");

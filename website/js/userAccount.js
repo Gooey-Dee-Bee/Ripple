@@ -35,6 +35,10 @@ var usersName = sessionStorage.getItem('name');
 var pointsLeft = sessionStorage.getItem('points');
 var totalDrops = sessionStorage.getItem('drops');
 
+console.log('session points '+pointsLeft);
+console.log('session drops made '+totalDrops);
+
+
 $('#closeButton').html("<a id='buyMoreDrops' href='#' onClick='closeModule()'>X</a>");
 $('#accountName').html(usersName);
 $('#dropsLeft').html(pointsLeft +"<div class='yourDropText'>Drops Left</div>"); 
@@ -75,7 +79,7 @@ function addSongsToUserArray(jsonArray) {
 /*ADD SONG FRAME TO THE SONG FEED (used for static and dynamic)*/
 function addSongForUser(songId) {
 var beginPlayer = '<div class="userSong" id="song';
-var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
+var secondPlayer= '"> <div class="songText"><iframe src="https://www.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
 var midPlayer ='"></iframe></div><div>';
 var endPlayer ='</div></div>';
 

@@ -67,6 +67,7 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 			{song_id: newSongId, email: sessionStorage.getItem('name')}, 
 
 	    	function(returnedData){
+	    	getUserPoints();
 	        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
 	        		alert("You do not have enough points to complete this drop. Please purchase more!");
 	        	}
@@ -103,6 +104,7 @@ function addSong(songId) {
 	//console.log("SONG ADDED");
 	document.getElementById("songId").value="";	
 
+
 }
 
 /*ENSURES THE LATEST SONG IS ON TOP*/
@@ -121,8 +123,23 @@ function bumpSong(songIdentity) {
 	var original = document.getElementById("song"+songIdentity);
 	var box = document.getElementById("songBox");
 	original.parentNode.removeChild(original);
-	
+	/*NEEDS TO BE SUBSTITUTED FOR A FUNCTION THAT'S SPECIFIC TO BUMPING*/
+	$.post(
+			'/ripple/php/insertDrop.php', 
+			{song_id: songIdentity, email: sessionStorage.getItem('name')}, 
+
+	    	function(returnedData){
+	    	/*WHEN REPLACED, GETUSERPOINTS() NEEDS TO BE IN THE FUNCTION OF THE NEW CALL*/
+	    			getUserPoints();
+	        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
+	        		alert("You do not have enough points to complete this drop. Please purchase more!");
+	        	}
+	        }
+		);
 	addSong(songIdentity);
+	
+
+
 	}
 	else
 		alert("We know this is the best song ever. Buy more drops to keep sharing your great taste.");
