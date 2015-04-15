@@ -27,7 +27,9 @@ $(document).ready(function(){
 		}
 	
 	} else {
+	if(sessionStorage.getItem('name') != null)
 		showLoggedInPage();
+			
 	}
 });
 
@@ -41,8 +43,7 @@ function disappearZip () {
 		showLoggedInPage();
 		sessionStorage.location = zip;
 		console.log("session zip: " +zip);
-		
-		getName(zip);
+		window.location.replace('index.html');
 	} else {
 			alert("If you're a living person, you have a zipcode. Please enter it correctly.");
 	}
@@ -56,35 +57,10 @@ function isValidUSZip(sZip) {
 function showLoggedInPage() {
 
 	document.getElementById("location").style.display = 'none';
-	document.getElementById("dropBox").style.display = 'block';
 	document.getElementById("songBox").style.display = 'block';
+
+	
 
 
 }
 	
-function getName(zipCode){
-console.log("HELLO?");
-
-	var Request = new XMLHttpRequest();
-	Request.onreadystatechange = function () {
-  		if (this.readyState === 4 && this.status === 200) {
-    	console.log('Status:', this.status);
-    	console.log('Headers:', this.getAllResponseHeaders());
-    	console.log('Body:', this.responseText);     
-
-    
-    	var textin = JSON.parse(this.responseText);
-		console.log(textin);
-
-		var city = textin["city"];
-		console.log("City: " + city);
-		document.getElementById("locationName").innerHTML=city;
-		 }
-
-		 //ALERT: HARDCODED
-}
-
-Request.open('GET', 'http://www.zipcodeapi.com/rest/etz9JI8N47HQVohRdSaOBNk0HiLbMDv074aRNiERqlImK0dYSoMub7vTpg4bUzc1/info.json/'+zipCode+'/degrees', true);
-Request.send(JSON.stringify(document.body));
-
-}

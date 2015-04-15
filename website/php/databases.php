@@ -29,7 +29,7 @@
 		$result = mysqli_query($con, $query);
 		mysqli_close($con);
 
-		return mysqli_fetch_assoc($result); 
+		return $result; 
 	}
 
 
@@ -41,4 +41,5 @@
 		}
 		return $con;
 	}
+
 ?>

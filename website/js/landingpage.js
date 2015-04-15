@@ -103,7 +103,6 @@ $( document ).ready( function() {
 			})
 			.fail( function() {
 				alert("Error occured creating an account");
-				window.location.replace("index.html");
 			});
 		} // end of if
 		else { // passwords are not the same
@@ -117,10 +116,11 @@ $( document ).ready( function() {
 
 
 function showAccount() {
-	document.getElementById('createAccount').style.display = "compact";
+	document.getElementById('createAccount').style.display = "block";
 	document.getElementById('loginForm').style.display = "none";
 	document.getElementById('accountSuggest').style.display = "none";
 	document.getElementById('loginSuggest').style.display = "block";
+	console.log('show account');
 	
 }
 
@@ -130,4 +130,7 @@ function showLogin() {
 	document.getElementById('createAccount').style.display = "none";
 	document.getElementById('loginSuggest').style.display = "none";
 	document.getElementById('accountSuggest').style.display= "block";
+	console.log('show login');
 }
+
+showAccount();

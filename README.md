@@ -7,4 +7,4 @@ Database: Owen Klaiss, Avery Ferrante, Noah Mendoza, Caitlin Gutschenritter
 
 Github Pages: http://gooey-dee-bee.github.io/Ripple/
 
-EC2: 54.69.13.79/Ripple
+EC2: 54.69.13.79/ripple/landingpage.html
