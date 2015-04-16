@@ -47,16 +47,18 @@
 		
 		<br><br>
 		<div id="songSearchSuggest">
-			Want to drop a song? <a onClick="showSongSearch()">Search for a song</a>
+			Want to drop a song? <a href="#" onClick="showSongSearch()">Search for a song</a>
 		</div>
 
 		<div id="urlSearchSuggest">
-			Already have the SoundCloud URL? <a onClick="showURLSearch()">Enter it here</a>
+			Already have the SoundCloud URL? <a href="#" onClick="showURLSearch()">Enter it here</a>
 		</div>
 
 		
 		<div id="searchBox">
-			<input type="text" id="songId" placeholder="SEARCH FOR SONG">
+			<form id="search" action="">
+				<input type="text" id="searchQuery" placeholder="SEARCH FOR SONG">
+			</form>
 			<br><br>
 		</div>
 
@@ -67,8 +69,20 @@
 			<img id="songDrop" src="images/dropItIcon.png" onClick="grabSong()"/>
 		</div>
 		
-		<div id="searchModal">
+		<!-- Search Modal --> 
+		<div>
+			<div id="openModal" class="modalDialog">
+				<div>
+					<a href="#close" title="Close" class="close">X</a>
 
+					<h2>Search Results</h2>
+					
+					<p id="searchModal">
+						
+					</p>
+
+				</div>
+			</div>
 		</div>
 
 		<div id="location">
