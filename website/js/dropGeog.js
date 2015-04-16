@@ -1,5 +1,3 @@
-// need to handle hemispheres (i believe that this will)
-// how to handle areas at equator and prime meridian
 
 // think of regions as starting with region 1 at 12:00, and then moving around in clockwise direction
 
@@ -20,33 +18,35 @@ function Region(boundary1, boundary2, boundary3, boundary4) {
 	this.boundary4 = boundary4;
 }
 
-function SurroundingRegion(region1, region2, region3, region4, region5, region6, region7, region8) {
-	// parameters are all of type Region
-	this.region1 = region1;
-	this.region2 = region2;
-	this.region3 = region3;
-	this.region4 = region4;
-	this.region5 = region5;
-	this.region6 = region6;
-	this.region7 = region7;
-	this.region8 = region8;
+// function SurroundingRegion(region1, region2, region3, region4, region5, region6, region7, region8) {
+// 	// parameters are all of type Region
+// 	this.region1 = region1;
+// 	this.region2 = region2;
+// 	this.region3 = region3;
+// 	this.region4 = region4;
+// 	this.region5 = region5;
+// 	this.region6 = region6;
+// 	this.region7 = region7;
+// 	this.region8 = region8;
 
-	this.max_lat = this.region1.boundary1;
-	this.min_lat = this.region5.boundary3;
-	this.max_lon = this.region3.boundary2;
-	this.min_lon = this.region7.boundary4;
+// 	this.max_lat = this.region1.boundary1;
+// 	this.min_lat = this.region5.boundary3;
+// 	this.max_lon = this.region3.boundary2;
+// 	this.min_lon = this.region7.boundary4;
 
-}
+// 	//when querying for the list of songs, if a drop happened in the range of max and min lat and lon, it should appear in the list
+
+// }
 
 function getArea(latitude, longitude) {
 	// need to use the latitude and longitude to get the 1 degree by one degree area in which it falls
 	// can do that by simply truncating decimals
 	
-	var south = new Latitude(0, int(latitude)); 
-	var north = new Latitude(0, int(latitude) + 1);
+	var south = latitude; 
+	var north = latPlusOne(latitude);
 
-	var west = new Longitude(0, int(longitude));
-	var east = new Longitude(0, int(longitude) + 1);
+	var west = longitude;
+	var east = longPlusOne(longitude);
 
 	var area = new Region(north, east, south, west);
 
@@ -61,23 +61,23 @@ function getSurroundingArea(area) {
 	// if area1 > 90, then area1 = -90 + (area1 % 90)
 	// if area3 < -90, then area3 = 90 - (area3 % 90)
 
-	var area1 = area.boundary1;
-	var area2 = area.boundary2;
-	var area3 = area.boundary3;
-	var area4 = area.boundary4;
+	var upper = area.boundary1;
+	var right = area.boundary2;
+	var bottom = area.boundary3;
+	var left = area.boundary4;
 
+	// var r1 = new Region(latPlusOne(area1), area2, latPlusOne(area3), area4);
+	// var r2 = new Region(latPlusOne(area1), longPlusOne(area2), latPlusOne(area3), longPlusOne(area4));
+	// var r3 = new Region(area1, longPlusOne(area2), area3, longPlusOne(area4));
+	// var r4 = new Region(latMinusOne(area1), longPlusOne(area2), latMinusOne(area3), longPlusOne(area4));
+	// var r5 = new Region(latMinusOne(area1), area2, latMinusOne(area3), area4);
+	// var r6 = new Region(latMinusOne(area1), longMinusOne(area2), latMinusOne(area3), longMinusOne(area4));
+	// var r7 = new Region(area1, longMinusOne(area2), area3, longMinusOne(area4));
+	// var r8 = new Region(latPlusOne(area1), longMinusOne(area2), latPlusOne(area3), longMinusOne(area4));
 
+	var surroundingRegion = new Region(latPlusOne(area1), longPlusOne(area2), latMinusOne(area3), longMinusOne(area4))
 
-	var r1 = new Region(latPlusOne(area1), area2, latPlusOne(area3), area4);
-	var r2 = new Region(latPlusOne(area1), longPlusOne(area2), latPlusOne(area3), longPlusOne(area4));
-	var r3 = new Region(area1, longPlusOne(area2), area3, longPlusOne(area4));
-	var r4 = new Region(latMinusOne(area1), longPlusOne(area2), latMinusOne(area3), longPlusOne(area4));
-	var r5 = new Region(latMinusOne(area1), area2, latMinusOne(area3), area4);
-	var r6 = new Region(latMinusOne(area1), longMinusOne(area2), latMinusOne(area3), longMinusOne(area4));
-	var r7 = new Region(area1, longMinusOne(area2), area3, longMinusOne(area4));
-	var r8 = new Region(latPlusOne(area1), longMinusOne(area2), latPlusOne(area3), longMinusOne(area4));
-
-	var surroundingRegion = new SurroundingRegion(r1, r2, r3, r4, r5, r6, r7, r8);
+	// var surroundingRegion = new SurroundingRegion(r1, r2, r3, r4, r5, r6, r7, r8);
 
 	return surroundingRegion;
 }
