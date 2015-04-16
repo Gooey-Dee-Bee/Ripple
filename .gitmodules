@@ -1,0 +1,15 @@
+[submodule "Ripple-App/CocoaSoundCloudAPI"]
+	path = Ripple-App/CocoaSoundCloudAPI
+	url = git://github.com/soundcloud/CocoaSoundCloudAPI.git
+[submodule "Ripple-App/OAuth2Client"]
+	path = Ripple-App/OAuth2Client
+	url = git://github.com/nxtbgthng/OAuth2Client.git
+[submodule "Ripple-App/JSONKit"]
+	path = Ripple-App/JSONKit
+	url = git://github.com/nxtbgthng/JSONKit.git
+[submodule "Ripple-App/OHAttributedLabel"]
+	path = Ripple-App/OHAttributedLabel
+	url = git://github.com/nxtbgthng/OHAttributedLabel.git
+[submodule "Ripple-App/CocoaSoundCloudUI"]
+	path = Ripple-App/CocoaSoundCloudUI
+	url = git://github.com/soundcloud/CocoaSoundCloudUI.git
