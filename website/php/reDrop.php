@@ -24,6 +24,7 @@
 		// Update the user with their new amount of points
 		$query = "UPDATE users SET points=$points WHERE email='$email'";
 		addToDatabase($query);
+	}
 
 		
 

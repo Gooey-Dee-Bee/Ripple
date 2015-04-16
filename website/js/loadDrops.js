@@ -126,8 +126,9 @@ function bumpSong(songIdentity) {
 	original.parentNode.removeChild(original);
 	/*NEEDS TO BE SUBSTITUTED FOR A FUNCTION THAT'S SPECIFIC TO BUMPING*/
 	$.post(
-			'/ripple/php/insertDrop.php', 
-			{song_id: songIdentity, email: sessionStorage.getItem('name')}, 
+			'/ripple/php/reDrop.php', 
+			{song_id: songIdentity, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location')[0],
+			longitude: sessionStorage.getItem('location')[1]}, 
 
 	    	function(returnedData){
 	    	/*WHEN REPLACED, GETUSERPOINTS() NEEDS TO BE IN THE FUNCTION OF THE NEW CALL*/
