@@ -117,6 +117,9 @@ h2 {
 	padding-top: 8px;
 }
 
+
+
+
 #location {
 	font-family: "Poiret One";
 	display: inline-block;
@@ -186,12 +189,24 @@ h2 {
 	padding: 7px;
 }
 
+#songSearchSuggest {
+	color:#33CCCC;
+	text-align:center;
+}
+
+#urlSearchSuggest {
+	color:#33CCCC;
+	text-align:center;
+}
+
+
+
 /*DROPPING SONGS (ORIGINAL SONGS)*/
 #dropBox {
 	text-align:center;
 	margin-top:20px;
 	height:200px;
-	display: none;
+	display:none;
 }
 #searchBox {
 	font-family: "Poiret One";
@@ -200,7 +215,7 @@ h2 {
 	text-align:center;
 	margin-top:20px;
 	height:60px;
-	/*display: none;*/
+	display:none;
 }
 
 #songId {

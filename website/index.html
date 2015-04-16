@@ -45,16 +45,24 @@
 			</div>
 		</div>
 		
-		<div id="searchBox">
-			<input type="text" id="songId" placeholder="SEARCH FOR SONG"></input>
-			<br><br>
-			OR
-			<br>
+		<br><br>
+		<div id="songSearchSuggest">
+			Want to drop a song? <a onClick="showSongSearch()">Search for a song</a>
 		</div>
+
+		<div id="urlSearchSuggest">
+			Already have the SoundCloud URL? <a onClick="showURLSearch()">Enter it here</a>
+		</div>
+
 		
+		<div id="searchBox">
+			<input type="text" id="songId" placeholder="SEARCH FOR SONG">
+			<br><br>
+		</div>
+
 		<div id="dropBox">
 			<!-- <h2>Hear what people in <div id="locationName"></div> are listening to</h2> -->
-			<input type="text" id="songId" placeholder="ENTER SOUNDCLOUD SONG URL"></input> 
+			<input type="text" id="songId" placeholder="ENTER SOUNDCLOUD SONG URL">
 			<p></p>
 			<img id="songDrop" src="images/dropItIcon.png" onClick="grabSong()"/>
 		</div>
