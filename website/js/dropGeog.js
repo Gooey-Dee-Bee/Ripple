@@ -42,13 +42,15 @@ function getArea(latitude, longitude) {
 	// need to use the latitude and longitude to get the 1 degree by one degree area in which it falls
 	// can do that by simply truncating decimals
 	
-	var south = latitude; 
+	var south = int(latitude); 
 	var north = latPlusOne(latitude);
 
-	var west = longitude;
+	var west = int(longitude);
 	var east = longPlusOne(longitude);
 
 	var area = new Region(north, east, south, west);
+
+	area = getSurroundingArea(area);
 
 	return area;
 
@@ -80,6 +82,7 @@ function getSurroundingArea(area) {
 	// var surroundingRegion = new SurroundingRegion(r1, r2, r3, r4, r5, r6, r7, r8);
 
 	return surroundingRegion;
+	// so surroundingRegion.boundary1 and .boundary3 form the latitude range, and .boundary2 and .boundary4 from the longitude range 
 }
 
 function latPlusOne(latitude) {
