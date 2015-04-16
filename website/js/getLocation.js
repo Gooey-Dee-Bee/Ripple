@@ -5,18 +5,12 @@ $(document).ready(function(){
 
 		if(google.loader.ClientLocation)
 		{
-	    	visitor_lat = google.loader.ClientLocation.latitude;
-	    	visitor_lon = google.loader.ClientLocation.longitude;
-	    	visitor_city = google.loader.ClientLocation.address.city;
-	    	visitor_region = google.loader.ClientLocation.address.region;
-	    	visitor_country = google.loader.ClientLocation.address.country;
-	    	visitor_countrycode = google.loader.ClientLocation.address.country_code;
 	    	//DO SOMETHING WITH THIS INFO
-	    
+	    	
 	    	document.getElementById("location").style.display = 'none';
 			allowDrops();
 		
-			sessionStorage.location = google.loader.ClientLocation;
+			sessionStorage.location = getLocation();
 		
 	    	console.log("User city: " + visitor_city);
 		} else
@@ -32,6 +26,22 @@ $(document).ready(function(){
 			
 	}
 });
+
+function getLocation() {
+	visitor_lat = google.loader.ClientLocation.latitude;
+	visitor_lon = google.loader.ClientLocation.longitude;
+	visitor_city = google.loader.ClientLocation.address.city;
+	visitor_region = google.loader.ClientLocation.address.region;
+	visitor_country = google.loader.ClientLocation.address.country;
+	visitor_countrycode = google.loader.ClientLocation.address.country_code;
+
+	var loc = [];
+	loc[0] = visitor_lat;
+	loc[1] = visitor_lon;
+
+	return loc;
+
+}
 
 function disappearZip () {
 	console.log("HELLO?");
