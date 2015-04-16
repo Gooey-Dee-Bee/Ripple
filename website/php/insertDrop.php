@@ -4,8 +4,11 @@
 	$song_id = $_POST['song_id']; // retieve the song ID
 	$email = $_POST['email'];	// retrieve user email
 	$latitude = $_POST['latitude'];		// retrieve latitude
-	$longitude = $_POSt['longitude'];	// retrieve longitude
+	$longitude = $_POST['longitude'];	// retrieve longitude
 	$defaultPoints = 10;
+
+	echo $latitude;
+	echo $longitude;
 
 
 	// Subtract DEFAULT value of points from user
