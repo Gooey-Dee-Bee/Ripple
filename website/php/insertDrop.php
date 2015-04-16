@@ -2,7 +2,9 @@
 	require_once(__DIR__."/databases.php"); // Allow access to the database functions
 
 	$song_id = $_POST['song_id']; // retieve the song ID
-	$email = $_POST['email'];	// retreive user email
+	$email = $_POST['email'];	// retrieve user email
+	$latitude = $_POST['latitude'];		// retrieve latitude
+	$longitude = $_POSt['longitude'];	// retrieve longitude
 	$defaultPoints = 10;
 
 
@@ -33,7 +35,7 @@
 		$user_id = mysqli_fetch_assoc($user_id);
 		$user_id = $user_id['user_id'];
 
-		$query = "INSERT INTO drops(user_id, song_id) VALUES($user_id, $song_id)"; // The new drop entry
+		$query = "INSERT INTO drops(user_id, song_id, latitude, longitude) VALUES($user_id, $song_id, $latitude, $longitude)"; // The new drop entry
 		addToDatabase($query);
 	}
 
