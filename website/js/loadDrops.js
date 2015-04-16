@@ -57,14 +57,15 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 		for(var i = 0; i < songsInDB.length; i++) {
 			if(songsInDB[i] == newSongId){
 				songExists = true;
-				}
+			}
 		}
 		if (songExists == false){
 			addSong(newSongId);
 			songsInDB.push(newSongId);
 			$.post(
 			'/ripple/php/insertDrop.php', 
-			{song_id: newSongId, email: sessionStorage.getItem('name')}, 
+			{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location')[0],
+			longitude: sessionStorage.getItem('location')[1]}, 
 
 	    	function(returnedData){
 	    	getUserPoints();
