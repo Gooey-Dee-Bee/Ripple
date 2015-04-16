@@ -1,35 +1,24 @@
 <?php
-	require_once(__DIR__."/databases.php"); //Access to db fns
+	require_once(__DIR__."/databases.php"); 
 
 	$post_json = file_get_contents("php://input");
 	$post = json_decode($post_json, true);
 
-	$dropID = $_GET['dropID']; //Primary key for table.
+	$dropID = $_GET['dropID'];
 
-	//Gets user id to credit original dropper.
-	$user_id = getInfoFromDatabase("SELECT user_id FROM drops WHERE drop_id = $dropID");
-	$user_id = mysqli_fetch_assoc($user_id);
-	$user_id = $user_id['user_id'];
+	$query = "SELECT user_id, song_id, time_stamp, longitude, latitude
+				FROM drops
+				WHERE drop_id = $dropID";
 
+	$result = getInfoFromDatabase($query);
 
-	//Gets song id from drops table. Can be used to pull name from SC.
-	$song_id = getInfoFromDatabase("SELECT song_id FROM drops WHERE drop_id = $dropID");
-	$song_id = mysqli_fetch_assoc($song_id);
-	$song_id = $song_id['song_id'];
+	$row =  mysqli_fetch_assoc($result);
 
-	//Gets date/time that the drop was created.
-	$time_stamp = getInfoFromDatabase("SELECT time_stamp FROM drops WHERE drop_id = $dropID");
-	$time_stamp = mysqli_fetch_assoc($time_stamp);
-	$time_stamp = $time_stamp['time_stamp'];
-
-	//Get longitude and latitude. Translate into area covered??
-	$long = getInfoFromDatabase("SELECT longitude FROM drops WHERE drop_id = $dropID");
-	$long = mysqli_fetch_assoc($long);
-	$long = $long['longitude'];
-
-	$lat = getInfoFromDatabase("SELECT latitiude FROM drops WHERE drop_id = $dropID");
-	$lat = mysqli_fetch_assoc($lat);
-	$lat = $lat['latitiude'];
+	$user_id = $row['user_id'];
+	$song_id = $row['song_id'];
+	$time_stamp = $row['time_stamp'];
+	$long = $row['longitude'];
+	$lat = $row['low'];
 
 	$info = array(
 		'userID' => $user_id,
@@ -41,5 +30,6 @@
 
 	echo json_encode($info);
 
-?>
+	
 
+?>
