@@ -30,6 +30,12 @@ function SurroundingRegion(region1, region2, region3, region4, region5, region6,
 	this.region6 = region6;
 	this.region7 = region7;
 	this.region8 = region8;
+
+	this.max_lat = this.region1.boundary1;
+	this.min_lat = this.region5.boundary3;
+	this.max_lon = this.region3.boundary2;
+	this.min_lon = this.region7.boundary4;
+
 }
 
 function getArea(latitude, longitude) {

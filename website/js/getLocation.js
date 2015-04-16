@@ -23,7 +23,6 @@ $(document).ready(function(){
 	} else {
 	if(sessionStorage.getItem('name') != null)
 		showLoggedInPage();
-			
 	}
 });
 
