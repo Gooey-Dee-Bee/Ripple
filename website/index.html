@@ -18,9 +18,7 @@
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	    <script type="text/javascript" src="js/getLocation.js"></script>
 	    <script type="text/javascript" src="js/mainPageLogin.js"></script>
-	   
-	   
-
+	    <script src="https://checkout.stripe.com/checkout.js"></script>
 
 		
 	</head>
@@ -43,7 +41,9 @@
 				Leonard H. Paton
 			</div>
 			<div id="userInfo">
-				<div id="dropNumber">123,153,665,123</div> drops left
+				<div id="dropNumber">123,153,665,123</div> drop points <br/>
+				<button id="buy-points">Buy More</button>
+				<p> <span id="drop-count">27</span> total drops</p>
 				<a id="logout" href="#">logout</a>
 			</div>
 		</div>
@@ -67,8 +67,31 @@
 			<hr></hr>
 			Created by Gooey-Dee-Bee (c) 2015
 		</div>
-		
-	
+		<script>
+		  var handler = StripeCheckout.configure({
+		    key: 'pk_test_Winx331SdphaTbGUtv2qf8OX',
+		    image: 'images/dropItIcon.png',
+		    token: function(token) {
+		      // Use the token to create the charge with a server-side script.
+		      // You can access the token ID with `token.id`
+		    }
+		  });
+
+		  $('#buy-points').on('click', function(e) {
+		    // Open Checkout with further options
+		    handler.open({
+		      name: 'Ripple',
+		      description: '50 points',
+		      amount: 500
+		    });
+		    e.preventDefault();
+		  });
+
+		  // Close Checkout on page navigation
+		  $(window).on('popstate', function() {
+		    handler.close();
+		  });
+		</script>
 	</body>
 	
 		 
