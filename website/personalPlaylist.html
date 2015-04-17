@@ -17,7 +17,7 @@
 		
 		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-	    <script type="text/javascript" src="js/getLocation.js"></script>
+	    
 	    <script type="text/javascript" src="js/mainPageLogin.js"></script>
 	    <script type="text/javascript" src="js/userAccount.js"></script>
 	   
@@ -26,27 +26,21 @@
 
 		
 	</head>
-	<body onload="setUpPage()">
+	<body onload="getPersonalPlaylist()">
 
 		<div id="navBar">
 			<div id="header">
 				Ripple
 			</div>
-		
-			<div id="loginFields">
-				<form id="loginForm" action="">
-					<input type="text" class="locationInput loginField" id="loginEmail" placeholder="EMAIL"/> <input type="password" class="locationInput loginField" id="loginPassword" placeholder="PASSWORD"/> <input type="submit" id="submitLogin" class="locationInput" value="LOGIN"/>
-				</form>
-			</div>
 
 		</div>
 		
-		<div class="hidden" id="accountInfo">
+		<div id="accountInfo">
 			<div id="userName">
-				Leonard H. Paton
+				<script>$('#userName').html(sessionStorage.name)</script>
 			</div>
 			<div id="userInfo">
-				<div id="dropNumber">123,153,665,123</div> Total Drops
+				<div id="dropNumber"><script>$('#dropNumber').html(sessionStorage.total_points)</script></div> Total Drops
 				
 			</div>
 			
@@ -59,17 +53,6 @@
 				
 		</div>
 		
-
-		<div id="dropBox">
-			<!-- <h2>Hear what people in <div id="locationName"></div> are listening to</h2> -->
-			<input type="text" id="songId" placeholder="SOUNDCLOUD SONG URL"></input> 
-			<p></p>
-			<img id="songDrop" src="images/dropItIcon.png" onClick="grabSong()"/>
-		</div>
-		
-		<div id="location">
-			
-		</div>
 		
 		<div id="songBox">
 		</div> 

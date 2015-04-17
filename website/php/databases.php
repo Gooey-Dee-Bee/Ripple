@@ -13,13 +13,13 @@
 		$con = establishConnection();
 		$result = mysqli_query($con, $query);
 
-		if(mysqli_num_rows($result) != 0) {
+		if(!$result || mysqli_num_rows($result) == 0) {
 			mysqli_close($con);
-			return TRUE;
+			return FALSE;
 		}
 		else {
 			mysqli_close($con);
-			return FALSE;
+			return TRUE;
 		}
 	}
 
@@ -41,4 +41,5 @@
 		}
 		return $con;
 	}
+
 ?>

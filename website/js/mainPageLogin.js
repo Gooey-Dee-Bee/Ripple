@@ -7,9 +7,8 @@ $(function(){
 		user.email = $("#loginEmail").val();
 		user.password = $("#loginPassword").val();
 		
-		sessionStorage.name = user.email;
-		sessionStorage.password = user.password;
-	
+		
+		
 			    		
 			    		
 			$.ajax({
@@ -21,40 +20,23 @@ $(function(){
 			    success: function(data, status, request) {
 
 			    	if(data == 100){
+			    		sessionStorage.name = user.email;
+						sessionStorage.password = user.password;
+			    		console.log('the session stuff is: '+sessionStorage.getItem('name'));
 			    		
 			    		alert("Successfully Logged In, check the console");
-			    		$('#loginFields').fadeOut();
-			    		$('#accountInfo').removeAttr("class");
+			    		showAccountInfo();
 			    		if(sessionStorage.getItem('location') != null)
-			    		allowDrops();
+			    			{
+			    			showLoggedInPage();
+			    			
+			    			window.location.replace("index.html");
+			    			}
 			    		
-			    		
-			    		console.log("SESSION NAME" + sessionStorage.getItem("name"));
-			    		document.getElementById("userName").innerHTML = user.email;
 			    		
 			    	}
 			    	else
 			    		alert("Account not found.");
-
-			        //Error Checking
-			        // if($.isNumeric(data)){
-			        //     if(data==400) {
-			        //         alert("success logging in");
-			        //     } 
-			        //     else {
-			                
-			        //     } 
-			        // }
-			        // else if(!jQuery.isEmptyObject(data)){
-			        //     var obj = JSON.parse(data);
-			        //     if(obj.Email.length>0){
-			        //         $.cookie.json = true;
-			        //         $.cookie("data", data); 
-			        //         //redirect user
-			        //         $("#loginMessage").hide();
-			        //         $(location).attr('href', "search.html");
-			        //     }
-			        // }
 			    },
 			    error: function(something, var1) {
 			    	console.log(something);
@@ -65,7 +47,9 @@ $(function(){
 			}); // end of ajax
 	}); // end submit function
 	$('#logout').on("click", function(){
-		$('#accountInfo').attr("class", "hidden");
+		
+		$('#popup').hide();
+		$('#accountInfo').hide();
 		$('#loginFields').fadeIn();
 		
 		disallowDrops();
@@ -76,3 +60,15 @@ $(function(){
 		
 	}); // end logout on click
 }); // end doc.ready
+
+
+function showAccountInfo() {
+		getUserPoints();
+		
+		$('#loginFields').fadeOut();
+	//	$('#accountInfo').removeAttr("class");
+		$('#accountInfo').show();
+		document.getElementById('userName').innerHTML = sessionStorage.getItem('name');
+		document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('drops');
+		console.log("SESSION NAME: " + sessionStorage.getItem("name"));
+}
