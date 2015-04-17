@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ripple</title>
+		<link rel="icon" type="image/jpg" href="images/dropItIcon.png">
+		<link rel="stylesheet" type="text/css" href="css/ripple.css">
+		<link rel="stylesheet" type="text/css" href="css/accountModule.css">
+		<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Poiret One' rel='stylesheet' type='text/css'>
+
+				
+
+		<script type="text/javascript" src="js/loadDrops.js"></script>
+		<script type="text/javascript" src="js/generic.js"></script>
+		
+		
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	    
+	    <script type="text/javascript" src="js/mainPageLogin.js"></script>
+	    <script type="text/javascript" src="js/userAccount.js"></script>
+	   
+	   
+
+
+		
+	</head>
+	<body onload="getPersonalPlaylist()">
+
+		<div id="navBar">
+			<div id="header">
+				Ripple
+			</div>
+
+		</div>
+		
+		<div id="accountInfo">
+			<div id="userName">
+				<script>$('#userName').html(sessionStorage.name)</script>
+			</div>
+			<div id="userInfo">
+				<div id="dropNumber"><script>$('#dropNumber').html(sessionStorage.total_points)</script></div> Total Drops
+				
+			</div>
+			
+		
+			<div class="accountLinks">
+			<a id="logout" href="#">logout</a>
+				<a id="accountInfoLink" href="#">View Account</a>
+			</tr>
+			</div>	
+				
+		</div>
+		
+		
+		<div id="songBox">
+		</div> 
+		
+		<div id="footer">
+			<hr></hr>
+			Created by Gooey-Dee-Bee (c) 2015
+		</div>
+		
+		
+		<!--POP UP MODULE FOR ACCOUNT-->
+		<div id="popup">
+		</div>
+	
+	</body>
+	
+		 
+</html>

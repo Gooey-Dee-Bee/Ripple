@@ -7,6 +7,7 @@ $(function(){
 	});
 	
 	
+	showAccountInfo();
 
 });
 
@@ -16,7 +17,7 @@ function moduleSetUp() {
 
 }
 
-
+/*
 function buyMoreDrops(){
 		alert('This is where we let you give us your money for fake points');
 		console.log('buy more drops is being clicked');
@@ -25,7 +26,7 @@ function buyMoreDrops(){
 function closeModule(){
 		$('#accountModule').hide();
 	}
-
+*/
 function setBase() {
 
 $('#popup').html("<div id='accountModule'><div id='closeButton'></div><div id='info'><div id='accountName'></div><div class='dropNum'"+
@@ -44,14 +45,34 @@ $('#accountName').html(usersName);
 $('#dropsLeft').html(pointsLeft +"<div class='yourDropText'>Drops Left</div>"); 
 $('#dropsUsed').html(totalDrops +"<div class='yourDropText'>Past Drops</div>"); 
 
-$('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>View Drop History</a><br></br><a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>(Buy more drops)</a>"); 
+$('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='goToPersonalPlaylist()'>View Drop History</a><br></br><a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>(Buy more drops)</a>"); 
 }
 
-/*Strings to get Soundcloud players on the user account*/
+
+function goToPersonalPlaylist () {
+	if(sessionStorage.getItem('name') != null) {
+		window.location.replace("personalPlaylist.html");
+		getPersonalPlaylist();
+		
+		
+	}
+}
+
+
+function getPersonalPlaylist() {
+	$('#songBox').show();
+	console.log('ugh, inside the getting the personal playlist bullshit');
+	makeUserRequest();
 
 
 
-/*GET SONGS FROM THE DB THEORETICALLY RELATED TO USER
+}
+
+//Strings to get Soundcloud players on the user account
+
+
+
+//GET SONGS FROM THE DB THEORETICALLY RELATED TO USER
 function makeUserRequest(){
 $.get("/ripple/php/loadDrops.php",
 		{user_id: sessionStorage.getItem('user_id')},
@@ -62,7 +83,7 @@ $.get("/ripple/php/loadDrops.php",
 }
 
 
-/*ADD SONGS FROM THE DATABSE TO THE ARRAY
+//ADD SONGS FROM THE DATABSE TO THE ARRAY
 function addSongsToUserArray(jsonArray) {
 
 	for(var i = 0; i < jsonArray.length; i++){
@@ -76,23 +97,22 @@ function addSongsToUserArray(jsonArray) {
 }
 
 
-ADD SONG FRAME TO THE SONG FEED (used for static and dynamic)
+//ADD SONG FRAME TO THE SONG FEED (used for static and dynamic)
 function addSongForUser(songId) {
-var beginPlayer = '<div class="userSong" id="song';
-var secondPlayer= '"> <div class="songText"><iframe src="https://www.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
+var beginPlayer = '<div class="songPlayer" id="song';
+var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
 var midPlayer ='"></iframe></div><div>';
 var endPlayer ='</div></div>';
 
-
+	
     var newcontent = document.createElement('div');
     var newSongListing = beginPlayer+songId+secondPlayer+songId+midPlayer+endPlayer;
     //console.log("ADD SONG"+newSongListing);
     newcontent.innerHTML = newSongListing;
    
-    prependElement('dropSongBox', newcontent);
+    prependElement('songBox', newcontent);
  
 
 
-}*/
-
+}
 

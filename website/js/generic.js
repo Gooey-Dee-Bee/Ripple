@@ -27,11 +27,20 @@ function setUpPage() {
 			if (sessionStorage.getItem('location') == null){
 				disallowDrops();
 				console.log("no place associated");
+				
+				
+				//IF IT'S ON THE PERSONAL PAGE
 			} else {
 				//if there is a location
 				console.log("place is associated, drops should display");
 				allowDrops();
+				
+				//IF IT'S THE MAIN FEED
 				makeRequest();
+				
+				
+				//IF IT'S ON THE PERSONAL PAGE
+				//makeUserRequest();
 			}
 			
 			console.log("session name:"+sessionStorage.getItem("name"));
@@ -73,5 +82,6 @@ function getUserPoints() {
 		});
 
 }
+
 
 

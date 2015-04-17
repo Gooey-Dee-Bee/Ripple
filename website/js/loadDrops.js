@@ -102,7 +102,7 @@ function addSong(songId) {
     	console.log('should not be displaying');
     	}
 	//console.log("SONG ADDED");
-	document.getElementById("songId").value="";	
+	//document.getElementById("songId").value="";	
 
 
 }
