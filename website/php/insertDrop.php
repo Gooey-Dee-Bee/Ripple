@@ -3,9 +3,9 @@
 
 	$id = $_POST['id']; // retieve the song ID
 
-	$query = 'SELECT * FROM song WHERE song_id = $id';
+	$query = 'SELECT * FROM songs WHERE song_id = $id';
 	if(!existsInDatabase($query)) {
-		$query = "INSERT INTO song VALUES($id, 1, 'filler', 'filler.com')"; // Lots of filler stuff that will hopefully be fixed
+		$query = "INSERT INTO songs VALUES($id, 1, 'filler', 'filler.com')"; // Lots of filler stuff that will hopefully be fixed
 		addToDatabase($query);
 	}
 
