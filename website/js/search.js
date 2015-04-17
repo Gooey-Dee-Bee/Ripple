@@ -35,6 +35,7 @@ function search(query) {
 		for (i=0; i<10; i++) {
 			var newcontent = beginPlayer+tracks[i].id+secondPlayer+tracks[i].id+midPlayer+tracks[i].id+endPlayer;
 		    $('#searchModal').append(newcontent);
+		    console.log(tracks[i].id);
 		}
 		window.location.replace("#openModal");
 	});

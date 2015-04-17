@@ -9,7 +9,7 @@ h2 {
 
 /* SEARCH MODAL CSS */
 .modalDialog {
-    position: fixed;
+    position: absolute;
     font-family: "Poiret One";
     text-align: center;
     top: 0;
@@ -23,6 +23,7 @@ h2 {
     -moz-transition: opacity 400ms ease-in;
     transition: opacity 400ms ease-in;
     pointer-events: none;
+    overflow: scroll;
 }
 .modalDialog:target {
     opacity:1;
@@ -360,7 +361,7 @@ iframe {
 .dropFromSearch {
 	height:80px;
 	position: absolute;
-	margin-left:auto;
+	left:25px;
 }
 
 .dropFromSearch:hover {
@@ -376,7 +377,7 @@ iframe {
 	margin-right: auto;
 	margin-top:15px;
 	padding:20px;
-	/*border-radius: 12;*/
+	border-radius: 12;
 }
 
 
