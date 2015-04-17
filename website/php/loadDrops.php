@@ -10,7 +10,7 @@
 	}
 
 	else { // Load all drops in the database
-		$query = "SELECT song_id FROM drops ORDER BY time_stamp"; // For now, just returns everything that is in the drop database
+		$query = "SELECT DISTINCT song_id FROM drops ORDER BY time_stamp LIMIT 10"; // For now, just returns everything that is in the drop database
 		$result = getInfoFromDatabase($query); // Returns the data as an associative array
 	}
 

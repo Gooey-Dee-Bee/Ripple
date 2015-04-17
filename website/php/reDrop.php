@@ -24,28 +24,40 @@
 		// Update the user with their new amount of points
 		$query = "UPDATE users SET points=$points WHERE email='$email'";
 		addToDatabase($query);
-	}
 
-		
+		// Get the user ID so it can be stored in the drops table
+		$user_id = getInfoFromDatabase("SELECT user_id FROM users WHERE email = '$email'"); //user_id
+		$user_id = mysqli_fetch_assoc($user_id);
+		$user_id = $user_id['user_id'];
 
+		// Credits the previous 'droppers' with their points
+		$previous_drops = "SELECT user_id FROM drops WHERE song_id = $song_id ORDER BY time_stamp DESC";
+		$result = getInfoFromDatabase($previous_drops);
+		$previous_drops = array();
+		while($r = mysqli_fetch_assoc($result)) {
+		    $previous_drops[] = $r;
+		}
+		foreach ($previous_drops as $current_iteration => $value) {
 
-		$query = 'SELECT * FROM song WHERE song_id = $song_id';
-		if(!existsInDatabase($query)) { // Checking to see if this entry already exists in the song table
-			$query = "INSERT INTO song VALUES($song_id, 1, 'filler', 'filler.com')"; // Lots of filler stuff that will hopefully be fixed
+			$cur_user_id = $value['user_id'];
+			$query = "SELECT points FROM users WHERE user_id = $cur_user_id";
+			$points = getInfoFromDatabase($query);
+			$points = mysqli_fetch_assoc($points);
+			$points = $points['points'];
+
+			$points += ($current_iteration + 1);
+			$query = "UPDATE users SET points = $points WHERE user_id = $cur_user_id";
 			addToDatabase($query);
 		}
 
-	// Get the user ID so it can be stored in the drops table
-	$user_id = getInfoFromDatabase("SELECT user_id FROM users WHERE email = '$email'"); //user_id
-	$user_id = mysqli_fetch_assoc($user_id);
-	$user_id = $user_id['user_id'];
+		// Get the most recent drop of this song to use as the prev_song_id
+		$query1 = "SELECT drop_id FROM drops WHERE song_id = $song_id ORDER BY time_stamp DESC";
+		$redrop = getInfoFromDatabase($query1);
+		$redrop = mysqli_fetch_assoc($redrop);
+		$redrop = $redrop['drop_id'][0]; 
 
-	$query1 = "SELECT drop_id FROM drops WHERE song_id = $song_id ORDER BY time_stamp";
-	$redrop = getInfoFromDatabase($query1);
-	$redrop = mysqli_fetch_assoc($redrop);
-	$redrop = $redrop['drop_id'][0];
-
-	$query = "INSERT INTO drops(user_id, song_id, prev_drop_id, latitude, longitude) VALUES($user_id, $song_id, $redrop, $latitude, $longitude)"; // The new drop entry
-	addToDatabase($query);
+		$query = "INSERT INTO drops(user_id, song_id, prev_drop_id, latitude, longitude) VALUES($user_id, $song_id, $redrop, $latitude, $longitude)"; // The new drop entry
+		addToDatabase($query);
+	}
 
 ?>

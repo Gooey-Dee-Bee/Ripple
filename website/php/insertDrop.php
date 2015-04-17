@@ -27,12 +27,6 @@
 		$query = "UPDATE users SET points=$points WHERE email='$email'";
 		addToDatabase($query);
 
-		$query = 'SELECT * FROM song WHERE song_id = $song_id';
-		if(!existsInDatabase($query)) { // Checking to see if this entry already exists in the song table
-			$query = "INSERT INTO song VALUES($song_id, 1, 'filler', 'filler.com')"; // Lots of filler stuff that will hopefully be fixed
-			addToDatabase($query);
-		}
-
 		// Get the user ID so it can be stored in the drops table
 		$user_id = getInfoFromDatabase("SELECT user_id FROM users WHERE email = '$email'"); //user_id
 		$user_id = mysqli_fetch_assoc($user_id);
