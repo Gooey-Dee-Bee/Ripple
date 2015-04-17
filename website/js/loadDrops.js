@@ -57,14 +57,15 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 		for(var i = 0; i < songsInDB.length; i++) {
 			if(songsInDB[i] == newSongId){
 				songExists = true;
-				}
+			}
 		}
 		if (songExists == false){
 			addSong(newSongId);
 			songsInDB.push(newSongId);
 			$.post(
 			'/ripple/php/insertDrop.php', 
-			{song_id: newSongId, email: sessionStorage.getItem('name')}, 
+			{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location')[0],
+			longitude: sessionStorage.getItem('location')[1]}, 
 
 	    	function(returnedData){
 	    	getUserPoints();
@@ -125,8 +126,9 @@ function bumpSong(songIdentity) {
 	original.parentNode.removeChild(original);
 	/*NEEDS TO BE SUBSTITUTED FOR A FUNCTION THAT'S SPECIFIC TO BUMPING*/
 	$.post(
-			'/ripple/php/insertDrop.php', 
-			{song_id: songIdentity, email: sessionStorage.getItem('name')}, 
+			'/ripple/php/reDrop.php', 
+			{song_id: songIdentity, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location')[0],
+			longitude: sessionStorage.getItem('location')[1]}, 
 
 	    	function(returnedData){
 	    	/*WHEN REPLACED, GETUSERPOINTS() NEEDS TO BE IN THE FUNCTION OF THE NEW CALL*/
