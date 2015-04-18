@@ -8,6 +8,11 @@
 		mysqli_close($con);
 	}
 
+	function getUserIdFromEmail($email) {
+		$user_id = getInfoFromDatabase("SELECT user_id FROM users WHERE email = '$email'"); 
+		return $user_id[0]['user_id'];
+	}
+
 	// RETURNS TRUE IF THE QUERY RETURNS ANY NUMBER OF RESULTS, FALSE OTHERWISE
 	function existsInDatabase($query) {
 		$con = establishConnection();
