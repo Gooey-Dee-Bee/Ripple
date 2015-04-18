@@ -27,6 +27,7 @@
 		FE1633DE1AE05F2300A2CFD0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1633D71AE05F2300A2CFD0 /* QuartzCore.framework */; };
 		FE1633DF1AE05F2300A2CFD0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1633D81AE05F2300A2CFD0 /* Security.framework */; };
 		FE1633E11AE05F7500A2CFD0 /* SoundCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FE1633E01AE05F7500A2CFD0 /* SoundCloud.bundle */; };
+		FE1633E31AE1889A00A2CFD0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1633E21AE1889A00A2CFD0 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,7 @@
 		FE1633D71AE05F2300A2CFD0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FE1633D81AE05F2300A2CFD0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FE1633E01AE05F7500A2CFD0 /* SoundCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SoundCloud.bundle; path = CocoaSoundCloudUI/SoundCloud.bundle; sourceTree = "<group>"; };
+		FE1633E21AE1889A00A2CFD0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE1633E31AE1889A00A2CFD0 /* AVFoundation.framework in Frameworks */,
 				FE1633D91AE05F2300A2CFD0 /* AddressBook.framework in Frameworks */,
 				FE1633DA1AE05F2300A2CFD0 /* AddressBookUI.framework in Frameworks */,
 				FE1633DB1AE05F2300A2CFD0 /* CoreGraphics.framework in Frameworks */,
@@ -206,6 +209,7 @@
 		FE1633521AE05CCD00A2CFD0 = {
 			isa = PBXGroup;
 			children = (
+				FE1633E21AE1889A00A2CFD0 /* AVFoundation.framework */,
 				FE1633E01AE05F7500A2CFD0 /* SoundCloud.bundle */,
 				FE1633D21AE05F2300A2CFD0 /* AddressBook.framework */,
 				FE1633D31AE05F2300A2CFD0 /* AddressBookUI.framework */,
@@ -761,6 +765,7 @@
 				FE1633801AE05CCD00A2CFD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FE1633811AE05CCD00A2CFD0 /* Build configuration list for PBXNativeTarget "Ripple-AppTests" */ = {
 			isa = XCConfigurationList;
@@ -769,6 +774,7 @@
 				FE1633831AE05CCD00A2CFD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

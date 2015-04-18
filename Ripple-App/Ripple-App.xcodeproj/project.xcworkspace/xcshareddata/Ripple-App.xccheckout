@@ -7,7 +7,7 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>02827347-D308-40D4-A2C4-2634FF92094E</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Ripple-App</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>0173BB8163AFA1697CD985A278A2611E22221303</key>
@@ -24,7 +24,7 @@
 		<string>git://github.com/nxtbgthng/JSONKit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Ripple-App/Ripple-App.xcodeproj/project.xcworkspace</string>
+	<string>Ripple-App/Ripple-App.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0173BB8163AFA1697CD985A278A2611E22221303</key>
