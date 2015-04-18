@@ -29,7 +29,12 @@
 		$result = mysqli_query($con, $query);
 		mysqli_close($con);
 
-		return $result; 
+		$return_array = array();
+		while($r = mysqli_fetch_assoc($result)) {
+		    $return_array[] = $r;
+		}
+
+		return $return_array;
 	}
 
 
