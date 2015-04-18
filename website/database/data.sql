@@ -27,7 +27,7 @@ CREATE TABLE `drops` (
   `user_id` int(11) NOT NULL,
   `song_id` int(11) NOT NULL,
   `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `prev_drop_id` int(11) NOT NULL DEFAULT 0,
+  `prev_drop_id` int(11) NOT NULL DEFAULT '0',
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
   PRIMARY KEY (`drop_id`),
@@ -58,6 +58,7 @@ CREATE TABLE `users` (
   `pword` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `points` int(11) DEFAULT '50',
+  `dormant` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
@@ -69,7 +70,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'password','aferrante@smu.edu',50),(2,'password','oklaiss@smu.edu',50),(3,'password','jrutz@smu.edu',50),(4,'password','nmendoza@smu.edu',50),(5,'new','new@new.com',50);
+INSERT INTO `users` VALUES (1,'password','aferrante@smu.edu',50,1),(2,'password','oklaiss@smu.edu',50,1),(3,'password','jrutz@smu.edu',50,1),(4,'password','nmendoza@smu.edu',50,1),(5,'new','new@new.com',50,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -82,4 +83,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-09  0:27:14
+-- Dump completed on 2015-04-18 23:07:08
