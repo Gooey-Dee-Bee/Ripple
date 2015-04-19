@@ -3,20 +3,20 @@ $(document).ready(function(){
 	
 	if(sessionStorage.location == null) {
 
-		if(google.loader.ClientLocation)
+		if(navigator.geolocation)
 		{
-	    	//DO SOMETHING WITH THIS INFO
-	    	
+			var location = navigator.geolocation.getCurrentPosition(showPosition);
+
 	    	document.getElementById("location").style.display = 'none';
 			allowDrops();
 		
-			sessionStorage.location = getLocation();
+			sessionStorage.location = location;
 		
-	    	console.log("User city: " + visitor_city);
+	    	console.log("latitude: " + lat + "  longitude: " + lon);
 		} else
 		{
 			document.getElementById("dropBox").style.display = "none";
-			$('#location').append("<form id='location form'><label>Zip Code: </label><input required='required' class='locationInput' type='text' id='zipcode'/><br/><input type='button' id='locationSubmit' value='SUBMIT' onClick='disappearZip()'/></form>");
+			$('#location').append("<form id='location form'><label>Zip Code: </label><input required='required' class='locationInput' type='text' id='zipcode'/><br/><input type='button' id='locationSubmit' value='SUBMIT' onClick='getLocation()'/></form>");
 	    	console.log("Error Getting IP Address"); 	
 		}
 	
@@ -27,6 +27,26 @@ $(document).ready(function(){
 });
 
 function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+function showPosition(position) {
+    alert("Latitude: " + position.coords.latitude + 
+    "Longitude: " + position.coords.longitude);
+
+	var lat = position.coords.latitude;
+	var lon = position.coords.longitude;
+	var location = new Object();
+	location.latitude = lat;
+	location.longitude = lon;
+
+	return location;
+}
+
+function getLocation1() {
 	visitor_lat = google.loader.ClientLocation.latitude;
 	visitor_lon = google.loader.ClientLocation.longitude;
 	visitor_city = google.loader.ClientLocation.address.city;
@@ -71,5 +91,4 @@ function showLoggedInPage() {
 	
 
 
-}
-	
+}	
