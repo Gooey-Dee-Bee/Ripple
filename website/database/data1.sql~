@@ -16,30 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `artist`
---
-
-DROP TABLE IF EXISTS `artist`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `artist` (
-  `artist_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `artist`
---
-
-LOCK TABLES `artist` WRITE;
-/*!40000 ALTER TABLE `artist` DISABLE KEYS */;
-INSERT INTO `artist` VALUES (1,'FILLER');
-/*!40000 ALTER TABLE `artist` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `drops`
 --
 
@@ -55,9 +31,7 @@ CREATE TABLE `drops` (
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
   PRIMARY KEY (`drop_id`),
-  KEY `song_id` (`song_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `drops_ibfk_1` FOREIGN KEY (`song_id`) REFERENCES `song` (`song_id`),
   CONSTRAINT `drops_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -70,60 +44,6 @@ LOCK TABLES `drops` WRITE;
 /*!40000 ALTER TABLE `drops` DISABLE KEYS */;
 INSERT INTO `drops` VALUES (1,1,123063109,'2015-04-09 00:19:14',0,0,0),(2,1,146962699,'2015-04-09 00:20:50',0,0,0),(3,1,18853020,'2015-04-09 00:26:25',0,0,0);
 /*!40000 ALTER TABLE `drops` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `song`
---
-
-DROP TABLE IF EXISTS `song`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `song` (
-  `song_id` int(11) NOT NULL,
-  `artist_id` int(11) NOT NULL,
-  `name` varchar(30) DEFAULT NULL,
-  `url` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`song_id`),
-  KEY `artist_id` (`artist_id`),
-  CONSTRAINT `song_ibfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `song`
---
-
-LOCK TABLES `song` WRITE;
-/*!40000 ALTER TABLE `song` DISABLE KEYS */;
-INSERT INTO `song` VALUES (97811869,1,'Rainman','filler.com'),(134118386,3,'Party Rock','FILLER.COM'),(153385504,1,'Sugar Man','FILLER.COM'),(176288064,3,'Gun Slinger','FILLER.COM');
-/*!40000 ALTER TABLE `song` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `square`
---
-
-DROP TABLE IF EXISTS `square`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `square` (
-  `square_id` int(11) NOT NULL AUTO_INCREMENT,
-  `bottom_left` int(11) DEFAULT NULL,
-  `bottom_right` int(11) DEFAULT NULL,
-  `top_left` int(11) DEFAULT NULL,
-  `top_right` int(11) DEFAULT NULL,
-  PRIMARY KEY (`square_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `square`
---
-
-LOCK TABLES `square` WRITE;
-/*!40000 ALTER TABLE `square` DISABLE KEYS */;
-/*!40000 ALTER TABLE `square` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
