@@ -1,19 +1,19 @@
 //
-//  RippleTests.m
-//  RippleTests
+//  Ripple_AppTests.m
+//  Ripple-AppTests
 //
-//  Created by William O'Connor on 4/15/15.
+//  Created by William O'Connor on 4/16/15.
 //  Copyright (c) 2015 Gooey Dee Bee. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface RippleTests : XCTestCase
+@interface Ripple_AppTests : XCTestCase
 
 @end
 
-@implementation RippleTests
+@implementation Ripple_AppTests
 
 - (void)setUp {
     [super setUp];
