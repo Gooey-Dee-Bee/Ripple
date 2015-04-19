@@ -13,11 +13,9 @@ $(function(){
 
 function moduleSetUp() {
 	setBase();
-	//makeUserRequest();
-
 }
 
-/*
+
 function buyMoreDrops(){
 		alert('This is where we let you give us your money for fake points');
 		console.log('buy more drops is being clicked');
@@ -26,7 +24,7 @@ function buyMoreDrops(){
 function closeModule(){
 		$('#accountModule').hide();
 	}
-*/
+
 function setBase() {
 
 $('#popup').html("<div id='accountModule'><div id='closeButton'></div><div id='info'><div id='accountName'></div><div class='dropNum'"+
@@ -62,10 +60,10 @@ function goToPersonalPlaylist () {
 function getPersonalPlaylist() {
 	$('#songBox').show();
 	console.log('ugh, inside the getting the personal playlist bullshit');
-	makeUserRequest();
-
-
-
+	
+	//MAKE REQUEST WORKSBUT MAKE USER REQUEST DOES NOT, RETURNS EMPTY DATA SET//
+	makeRequest();
+	console.log('still in personal playlist');
 }
 
 //Strings to get Soundcloud players on the user account
@@ -77,6 +75,7 @@ function makeUserRequest(){
 $.get("/ripple/php/loadDrops.php",
 		{user_id: sessionStorage.getItem('user_id')},
 	    function(data, status) {
+	    	console.log('data is'+data);
 			console.log('adding songs to array');
 			addSongsToUserArray(JSON.parse(data));
 		});
@@ -108,7 +107,8 @@ var endPlayer ='</div></div>';
     var newcontent = document.createElement('div');
     var newSongListing = beginPlayer+songId+secondPlayer+songId+midPlayer+endPlayer;
     //console.log("ADD SONG"+newSongListing);
-    newcontent.innerHTML = newSongListing;
+    console.log('inside adding song for user');
+    newcontent.innerHTML = 'fuck everything';
    
     prependElement('songBox', newcontent);
  

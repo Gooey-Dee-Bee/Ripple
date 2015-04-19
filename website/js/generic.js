@@ -76,6 +76,7 @@ function getUserPoints() {
 			sessionStorage.user_id = accountInformation['userId'];
 			console.log('points '+ sessionStorage.getItem('points'));
 			console.log('total drops '+sessionStorage.getItem('drops'));
+			console.log('user id is '+sessionStorage.getItem('user_id'));
 			
 			
 			document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('drops');
