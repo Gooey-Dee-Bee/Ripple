@@ -1,12 +1,13 @@
 //
 //  AppDelegate.m
-//  Ripple
+//  Ripple-App
 //
-//  Created by William O'Connor on 4/15/15.
+//  Created by William O'Connor on 4/16/15.
 //  Copyright (c) 2015 Gooey Dee Bee. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "SCUI.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [SCSoundCloud setClientID:@"115cc96e3e888d0eef062993d2f0ef73"
+                       secret:@"f84ecc41b9c1628ce760fd46d42af1bf"
+                  redirectURL:[NSURL URLWithString:@"sampleproject://oauth"]];
     return YES;
 }
 

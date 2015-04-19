@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FE1632161ADEE65500A2CFD0"
-               BuildableName = "Ripple.app"
-               BlueprintName = "Ripple"
-               ReferencedContainer = "container:Ripple.xcodeproj">
+               BlueprintIdentifier = "FE16335A1AE05CCD00A2CFD0"
+               BuildableName = "Ripple-App.app"
+               BlueprintName = "Ripple-App"
+               ReferencedContainer = "container:Ripple-App.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FE16322F1ADEE65500A2CFD0"
-               BuildableName = "RippleTests.xctest"
-               BlueprintName = "RippleTests"
-               ReferencedContainer = "container:Ripple.xcodeproj">
+               BlueprintIdentifier = "FE1633731AE05CCD00A2CFD0"
+               BuildableName = "Ripple-AppTests.xctest"
+               BlueprintName = "Ripple-AppTests"
+               ReferencedContainer = "container:Ripple-App.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FE16322F1ADEE65500A2CFD0"
-               BuildableName = "RippleTests.xctest"
-               BlueprintName = "RippleTests"
-               ReferencedContainer = "container:Ripple.xcodeproj">
+               BlueprintIdentifier = "FE1633731AE05CCD00A2CFD0"
+               BuildableName = "Ripple-AppTests.xctest"
+               BlueprintName = "Ripple-AppTests"
+               ReferencedContainer = "container:Ripple-App.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FE1632161ADEE65500A2CFD0"
-            BuildableName = "Ripple.app"
-            BlueprintName = "Ripple"
-            ReferencedContainer = "container:Ripple.xcodeproj">
+            BlueprintIdentifier = "FE16335A1AE05CCD00A2CFD0"
+            BuildableName = "Ripple-App.app"
+            BlueprintName = "Ripple-App"
+            ReferencedContainer = "container:Ripple-App.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,10 +76,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FE1632161ADEE65500A2CFD0"
-            BuildableName = "Ripple.app"
-            BlueprintName = "Ripple"
-            ReferencedContainer = "container:Ripple.xcodeproj">
+            BlueprintIdentifier = "FE16335A1AE05CCD00A2CFD0"
+            BuildableName = "Ripple-App.app"
+            BlueprintName = "Ripple-App"
+            ReferencedContainer = "container:Ripple-App.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,10 +95,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FE1632161ADEE65500A2CFD0"
-            BuildableName = "Ripple.app"
-            BlueprintName = "Ripple"
-            ReferencedContainer = "container:Ripple.xcodeproj">
+            BlueprintIdentifier = "FE16335A1AE05CCD00A2CFD0"
+            BuildableName = "Ripple-App.app"
+            BlueprintName = "Ripple-App"
+            ReferencedContainer = "container:Ripple-App.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

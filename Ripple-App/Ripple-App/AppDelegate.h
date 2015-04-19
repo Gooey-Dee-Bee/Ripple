@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  Ripple
+//  Ripple-App
 //
-//  Created by William O'Connor on 4/15/15.
+//  Created by William O'Connor on 4/16/15.
 //  Copyright (c) 2015 Gooey Dee Bee. All rights reserved.
 //
 

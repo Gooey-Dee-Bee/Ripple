@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Ripple.xcscheme</key>
+		<key>Ripple-App.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>FE1632161ADEE65500A2CFD0</key>
+		<key>FE16335A1AE05CCD00A2CFD0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE16322F1ADEE65500A2CFD0</key>
+		<key>FE1633731AE05CCD00A2CFD0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

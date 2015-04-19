@@ -3,35 +3,67 @@ $(document).ready(function(){
 	
 	if(sessionStorage.location == null) {
 
-		if(google.loader.ClientLocation)
+		if(navigator.geolocation)
 		{
-	    	visitor_lat = google.loader.ClientLocation.latitude;
-	    	visitor_lon = google.loader.ClientLocation.longitude;
-	    	visitor_city = google.loader.ClientLocation.address.city;
-	    	visitor_region = google.loader.ClientLocation.address.region;
-	    	visitor_country = google.loader.ClientLocation.address.country;
-	    	visitor_countrycode = google.loader.ClientLocation.address.country_code;
-	    	//DO SOMETHING WITH THIS INFO
-	    
+			var location = navigator.geolocation.getCurrentPosition(showPosition);
+			var lat = location.latitude;
+			var lon = location.longitude;
+
 	    	document.getElementById("location").style.display = 'none';
 			allowDrops();
 		
-			sessionStorage.location = google.loader.ClientLocation;
+			sessionStorage.latitude = lat;
+			sessionStorage.longitude = lon;
 		
-	    	console.log("User city: " + visitor_city);
+	    	console.log("latitude: " + lat + "  longitude: " + lon);
 		} else
 		{
 			document.getElementById("dropBox").style.display = "none";
-			$('#location').append("<form id='location form'><label>Zip Code: </label><input required='required' class='locationInput' type='text' id='zipcode'/><br/><input type='button' id='locationSubmit' value='SUBMIT' onClick='disappearZip()'/></form>");
+			$('#location').append("<form id='location form'><label>Zip Code: </label><input required='required' class='locationInput' type='text' id='zipcode'/><br/><input type='button' id='locationSubmit' value='SUBMIT' onClick='getLocation()'/></form>");
 	    	console.log("Error Getting IP Address"); 	
 		}
 	
 	} else {
 	if(sessionStorage.getItem('name') != null)
 		showLoggedInPage();
-			
 	}
 });
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+function showPosition(position) {
+    alert("Latitude: " + position.coords.latitude + 
+    "Longitude: " + position.coords.longitude);
+
+	var lat = position.coords.latitude;
+	var lon = position.coords.longitude;
+	var location = new Object();
+	location.latitude = lat;
+	location.longitude = lon;
+
+	return location;
+}
+
+function getLocation1() {
+	visitor_lat = google.loader.ClientLocation.latitude;
+	visitor_lon = google.loader.ClientLocation.longitude;
+	visitor_city = google.loader.ClientLocation.address.city;
+	visitor_region = google.loader.ClientLocation.address.region;
+	visitor_country = google.loader.ClientLocation.address.country;
+	visitor_countrycode = google.loader.ClientLocation.address.country_code;
+
+	var loc = [];
+	loc[0] = visitor_lat;
+	loc[1] = visitor_lon;
+
+	return loc;
+
+}
 
 function disappearZip () {
 	console.log("HELLO?");
@@ -62,5 +94,4 @@ function showLoggedInPage() {
 	
 
 
-}
-	
+}	
