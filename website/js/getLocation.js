@@ -6,11 +6,14 @@ $(document).ready(function(){
 		if(navigator.geolocation)
 		{
 			var location = navigator.geolocation.getCurrentPosition(showPosition);
+			var lat = location.latitude;
+			var lon = location.longitude;
 
 	    	document.getElementById("location").style.display = 'none';
 			allowDrops();
 		
-			sessionStorage.location = location;
+			sessionStorage.latitude = lat;
+			sessionStorage.longitude = lon;
 		
 	    	console.log("latitude: " + lat + "  longitude: " + lon);
 		} else
