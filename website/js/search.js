@@ -2,48 +2,49 @@ SC.initialize({
 	client_id: 'dafab2de81f874d25715f0e225e7c71a'
 });
 
-function showSongSearch() {
-	document.getElementById('searchBox').style.display = "block";
-	document.getElementById('dropBox').style.display = "none";
-	document.getElementById('songSearchSuggest').style.display = "none";
-	document.getElementById('urlSearchSuggest').style.display = "block";
-	document.getElementById("songId").value="";
-	document.getElementById("searchQuery").value="";	
-	console.log('show Song Search');
-}
-
-function showURLSearch() {
-	document.getElementById('dropBox').style.display = "block";
-	document.getElementById('searchBox').style.display = "none";
-	document.getElementById('urlSearchSuggest').style.display = "none";
-	document.getElementById('songSearchSuggest').style.display = "block";
-	document.getElementById("songId").value="";
-	document.getElementById("searchQuery").value="";
-	console.log('show URL Search');
+function dropSong(songID) {
+	$.post(
+		'/ripple/php/insertDrop.php', 
+		{id: songID, email: sessionStorage.getItem('name')}, 
+		function(returnedData){
+			console.log(returnedData);
+		})
+	.done(function() { 
+		// this should reload the page so the new dropped song will be at the top of the list 
+		window.location.replace("index.html");
+	});
 }
 
 /*Strings to get Soundcloud players on the page*/
 var beginPlayer = '<div class="songPlayerSearch" id="song';
 var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
-var midPlayer = '"></iframe></div><div><img class="dropFromSearch" src="images/dropItIcon.png" onClick="bumpSong(this.id)" id="';
+var midPlayer = '"></iframe></div><div><img class="dropFromSearch" src="images/dropItIcon.png" onClick="dropSong(this.id)" id="';
 var endPlayer = '"/></div></div>';
 
 
 function search(query) {
-	SC.get('/tracks', { q: query }, function(tracks) {
-		// will insert top 10 songs returned by SoundCloud into search modal
-		for (i=0; i<10; i++) {
-			var newcontent = beginPlayer+tracks[i].id+secondPlayer+tracks[i].id+midPlayer+tracks[i].id+endPlayer;
-		    $('#searchModal').append(newcontent);
-		    console.log(tracks[i].id);
-		}
-		window.location.replace("#openModal");
-	});
+	console.log("SEARCH!!!!!");
+	//check if it is a soundcloud url first
+	var pattern = /https:\/\/soundcloud.com\/*\w*\/.*/;
+	if (pattern.test(query)) {
+		//alert("SC url");
+		grabSong();
+	}
+	else {
+		//alert("not a url");
+		SC.get('/tracks', { q: query }, function(tracks) {
+			// will insert top 10 songs returned by SoundCloud into search modal
+			for (i=0; i<10; i++) {
+				var newcontent = beginPlayer+tracks[i].id+secondPlayer+tracks[i].id+midPlayer+tracks[i].id+endPlayer;
+			    $('#searchModal').append(newcontent);
+			}
+			window.location.replace("#openModal");
+		});
+	}	
 }
 
 
 $( document ).ready( function() {
-	showSongSearch();
 
 	$('#search').on('submit', function(event){
 		event.preventDefault();
@@ -51,8 +52,13 @@ $( document ).ready( function() {
 		search(query);
 	});
 
-	//search("Swimming Pools");
+	$('#close').click(function() {
+		// clear the search results when clicked
+		$('#searchModal').html("");
+	});
+
 });
+
 
 
 

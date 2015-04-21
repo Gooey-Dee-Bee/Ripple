@@ -16,7 +16,7 @@ function addSongsToArray(jsonArray) {
 		//console.log("FUCK BITCHES");
 		songId = songId.substr(1,songId.length-2);
 		
-		console.log("song id: "+songId);
+		//console.log("song id: "+songId);
 		addSong(songId);
 		songsInDB.push(songId);
 	}	
@@ -33,7 +33,7 @@ var endPlayer ='"/></div></div>';
 
 /** GRAB THE SONG ID FROM THE SONG URL ON THE PAGE*/
 function grabSong() {
-	var songId = document.getElementById("songId").value;
+	var songId = document.getElementById("searchQuery").value;
 	if(sessionStorage.getItem('points') > 0)
 		getSongId(songId);
 	else
@@ -57,20 +57,19 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 		for(var i = 0; i < songsInDB.length; i++) {
 			if(songsInDB[i] == newSongId){
 				songExists = true;
-				}
+			}
 		}
-		if (songExists == false){
+		if (songExists == false) {
 			addSong(newSongId);
 			songsInDB.push(newSongId);
 			$.post(
-			'/ripple/php/insertDrop.php', 
-			{id: newSongId, email: sessionStorage.getItem('name')}, 
-
-	    	function(returnedData){
-	        	console.log(returnedData);
-	        }
-		);
-			} else{
+				'/ripple/php/insertDrop.php', 
+				{id: newSongId, email: sessionStorage.getItem('name')}, 
+		    	function(returnedData){
+		        	console.log(returnedData);
+		        }
+			);
+		} else{
 			bumpSong(newSongId);
 			}
 	});
@@ -97,9 +96,9 @@ function addSong(songId) {
     if (sessionStorage.getItem('name') == null) {
     	document.getElementById(songId).style.display = "none";
     	console.log('should not be displaying');
-    	}
+    }
 	//console.log("SONG ADDED");
-	document.getElementById("songId").value="";	
+	document.getElementById("searchQuery").value="";	
 
 }
 
@@ -115,11 +114,11 @@ function prependElement(parentID, child){
 function bumpSong(songIdentity) {
 	if(sessionStorage.getItem('points') > 0){
 	
-	var original = document.getElementById("song"+songIdentity);
-	var box = document.getElementById("songBox");
-	original.parentNode.removeChild(original);
-	
-	addSong(songIdentity);
+		var original = document.getElementById("song"+songIdentity);
+		var box = document.getElementById("songBox");
+		original.parentNode.removeChild(original);
+		
+		addSong(songIdentity);
 	}
 	else
 		alert("We know this is the best song ever. Buy more drops to keep sharing your great taste.");

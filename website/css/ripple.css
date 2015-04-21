@@ -249,6 +249,8 @@ h2 {
 	color:#33CCCC;
 	text-align:center;
 	font-family: "Poiret One";
+	font-weight: bold;
+	font-size: 30px;
 }
 
 #urlSearchSuggest {

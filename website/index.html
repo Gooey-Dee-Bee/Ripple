@@ -47,33 +47,23 @@
 		
 		<br><br>
 		<div id="songSearchSuggest">
-			Want to drop a song? <a href="#" onClick="showSongSearch()">Search for a song</a>
-		</div>
-
-		<div id="urlSearchSuggest">
-			Already have the SoundCloud URL? <a href="#" onClick="showURLSearch()">Enter it here</a>
+			Want to drop a song?
 		</div>
 
 		
 		<div id="searchBox">
 			<form id="search" action="">
-				<input type="text" id="searchQuery" placeholder="SEARCH FOR SONG">
+				<input type="text" id="searchQuery" placeholder="SEARCH FOR A SONG">
 			</form>
 			<br><br>
 		</div>
-
-		<div id="dropBox">
-			<!-- <h2>Hear what people in <div id="locationName"></div> are listening to</h2> -->
-			<input type="text" id="songId" placeholder="ENTER SOUNDCLOUD SONG URL">
-			<p></p>
-			<img id="songDrop" src="images/dropItIcon.png" onClick="grabSong()"/>
-		</div>
 		
+
 		<!-- Search Modal --> 
 		<div>
 			<div id="openModal" class="modalDialog">
 				<div>
-					<a href="#close" title="Close" class="close">X</a>
+					<a href="#close" title="Close" class="close" id="close">X</a>
 
 					<h2>Search Results</h2>
 					
