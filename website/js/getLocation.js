@@ -21,7 +21,8 @@ $(document).ready(function(){
 	    	console.log("User city: " + visitor_city);
 		} else
 		{
-			document.getElementById("dropBox").style.display = "none";
+			document.getElementById("searchBox").style.display = "none";
+			document.getElementById("songSearchSuggest").style.display = "none";
 			$('#location').append("<form id='location form'><label>Zip Code: </label><input required='required' class='locationInput' type='text' id='zipcode'/><br/><input type='button' id='locationSubmit' value='SUBMIT' onClick='disappearZip()'/></form>");
 	    	console.log("Error Getting IP Address"); 	
 		}
