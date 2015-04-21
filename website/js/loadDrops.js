@@ -103,9 +103,13 @@ function addSong(songId) {
     	console.log('should not be displaying');
     	}
 	//console.log("SONG ADDED");
+<<<<<<< HEAD
 	//document.getElementById("songId").value="";	
 	
 	getUserPoints();
+=======
+	document.getElementById("songId").value="";	
+>>>>>>> parent of db0c6c6... Songs load on personalPlaylist.html
 
 
 }

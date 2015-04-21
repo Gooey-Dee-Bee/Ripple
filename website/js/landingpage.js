@@ -103,7 +103,6 @@ $( document ).ready( function() {
 			})
 			.fail( function() {
 				alert("Error occured creating an account");
-				window.location.replace("index.html");
 			});
 		} // end of if
 		else { // passwords are not the same
