@@ -1,0 +1,322 @@
+
+body {
+	
+	background-color: #dce4e8;
+	background-color: #FFFAE6;
+	}
+	
+	
+
+
+h2 {
+	font-family: "Handlee";
+}
+#navBar {
+	width:100%;
+	height:200px;
+	background-color: #33CCCC;
+	background-color:#4898bd;
+	left:0;
+	top:0;
+	margin-top:30px;
+	padding-left:20px;
+	display: inline-block;
+}
+
+
+#header {
+	color: white;
+	font-size:10em;
+	font-family: 'Cookie', cursive;
+	width: 60%;
+	float: left;
+}
+
+#loginFields {
+	float: right;
+	margin-right: 3%;
+	margin-top: 1%;
+	height: 28px;
+	display: block;
+}
+
+.loginField {
+	height: 20px;
+}
+
+#submitLogin {
+	border: 1px solid #11AAAA;
+	background-color: #AAEEEE;
+	border-radius: 6px;
+	font-family: "Poiret One";
+	font-size: 12px;
+	margin-top: 4px;
+	height: 24px;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+#submitLogin:hover {
+	background-color: #BBFFFF;
+}
+
+#footer {
+	height:50px;
+	color:grey;
+	position:relative;
+	bottom:0;
+}
+
+#locationName {
+	display:inline;
+
+}
+
+/*ACCOUNT SUBSET*/
+#accountInfo {
+	top:0;
+	right:15px;
+	width:25%;
+	height:150px;
+	background-color:#120054;
+	position:absolute;
+	padding:10px;
+	border-bottom-left-radius:6;
+	border-bottom-right-radius:6;
+	border-radius: 0 0 16px 16px;
+	font-family: 'Handlee';
+}
+
+#userName {
+	color:white;
+	font-size:26px;
+	top:10;
+	left:10;
+	position:absolute;
+}
+
+#userInfo {
+	color:white;
+	font-size:15px;
+	text-align:center;
+	top:50px;
+	position:absolute;
+	margin-left:35%;
+	margin-right:auto;
+	font-family: 'Handlee';
+
+}
+
+#dropNumber {
+	font-size:30px;
+}
+
+
+.accountLinks {
+	float: left;
+
+	bottom:0;
+	width:90%;
+	position:absolute;
+	height:20px;
+	color:white;
+	text-decoration: none;	
+	font-family: 'Handlee';
+
+}
+.accountLinks  #logout {
+	float: left;
+	color:white;
+	text-decoration: none;
+	right:0;
+}
+
+.accountLinks  #accountInfoLink {
+	float: right;
+	color:white;
+	text-decoration: none;
+	background-color:transparent;
+
+	text-align:center;
+	height:30px;
+
+
+}
+
+
+#searchBar {
+	font-family: "Poiret One";
+	font-weight: bold;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	padding-top: 8px;
+}
+
+#location {
+	font-family: "Poiret One";
+	display: inline-block;
+	border: 1px solid #CCCCCC;
+	border-radius: 6px;
+	padding-top: 8px;
+	text-align: center;
+	margin-top:30px;
+	
+	margin-left: 40%;
+	margin-right: 40%;
+
+}
+
+#location label {
+	display: inline-block;
+
+}
+
+.locationInput {
+	display: inline-block;
+	border: 1px solid #CCCCCC;
+	border-radius: 6px;
+	margin: 4px;
+	padding-left: 8px;
+	font-family: "Poiret One";
+}
+
+#locationSubmit {
+	width: 40%;
+	background-color: #AAEEEE;
+	border: 1px solid #33CCCC;
+	border-radius: 6px;
+	font-family: "Poiret One";
+	font-size: 15px;
+	margin-top: 4px;
+}
+
+#locationSubmit:hover {
+	background-color: #BBFFFF;
+}
+
+#songId {
+	height: 32px;
+	font-family: "Poiret One";
+	border: 1px solid #CCCCCC;
+	border-radius: 6px;
+	font-size: 14px;
+	margin-left: 1px;
+	margin-right: 1px;
+	padding-left: 8px;
+}
+
+#songId:focus, .locationInput:focus {
+	box-shadow: 0;
+	outline: none;
+	box-shadow: 0 0 10px #33CCCC;
+}
+
+#submitSong {
+	font-family: "Poiret One";
+	font-weight: bold;
+	font-size: 14px;
+	border: 1px solid #33CCCC;
+	background-color: white;
+	border-radius: 6px;
+	padding: 7px;
+}
+
+/*DROPPING SONGS (ORIGINAL SONGS)*/
+#dropBox {
+	text-align:center;
+	margin-top:30px;
+	height:200px;
+	display: none;
+}
+
+#songId {
+	height:40px;
+	width:60%;
+	margin-right:auto;
+	margin-left:auto;
+	border-radius:6;
+	font-size:20px;
+}
+
+#songDrop{
+	margin-right:auto;
+	margin-left:auto;
+}
+
+#songDrop:hover{
+	opacity:.6;
+
+}
+
+
+/*OVERALL SONGS*/
+#songBox {
+	display:none;
+
+
+}
+
+/* SONG INFORMATION */
+iframe {
+ 	height:80px;
+    border:0;
+    margin-bottom: 20px;
+    width:90%;
+    float:right;
+  }
+  
+  .songPlayer {
+	background-color: #99D6D6;
+	background-color:#4898bd;
+	width:95%;
+	height:80px;
+	margin-left:auto;
+	margin-right: auto;
+	margin-top:15px;
+	padding:20px;
+	border-radius: 12;
+	
+}
+
+.songText {
+	color:white;
+
+
+}
+
+
+.songText .artist{
+	font-size:1.5em;
+
+
+
+}
+
+
+.songText .title {
+	font-size:2em;
+
+
+
+}
+
+.drop {
+	height: 80px;
+	position:absolute;
+	
+
+
+}
+
+
+.drop:hover{
+	opacity:.6;
+	cursor: crosshair;
+
+}
+
+.hidden {
+	display: none;
+}
+
+
