@@ -64,8 +64,8 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 			songsInDB.push(newSongId);
 			$.post(
 			'/ripple/php/insertDrop.php', 
-			{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location')[0],
-			longitude: sessionStorage.getItem('location')[1]}, 
+			{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location'),
+			longitude: sessionStorage.getItem('location')}, 
 
 	    	function(returnedData){
 	    	getUserPoints();
@@ -103,13 +103,13 @@ function addSong(songId) {
     	console.log('should not be displaying');
     	}
 	//console.log("SONG ADDED");
-<<<<<<< HEAD
+
 	//document.getElementById("songId").value="";	
 	
 	getUserPoints();
-=======
+
 	document.getElementById("songId").value="";	
->>>>>>> parent of db0c6c6... Songs load on personalPlaylist.html
+
 
 
 }
