@@ -15,6 +15,7 @@ function dropSong(songID) {
 		// this should reload the page so the new dropped song will be at the top of the list 
 		addSong(songID);
 		window.location.replace("#close");
+		$('#searchModal').html("");
 	});
 }
 
