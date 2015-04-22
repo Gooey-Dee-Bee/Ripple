@@ -6,12 +6,14 @@ $(document).ready(function(){
 		if(navigator.geolocation)
 		{
 			var location = navigator.geolocation.getCurrentPosition(showPosition);
+
 	    	document.getElementById("location").style.display = 'none';
 			allowDrops();
 		
 		} else
 		{
 	  		alert ("Couldn't get location. Sorry bitch");
+
 		}
 	
 	} else {
@@ -40,5 +42,14 @@ function showPosition(position) {
 	
 function showLoggedInPage() {
 	document.getElementById("songBox").style.display = 'block';
+
 }	
+
+
+
+
+
+
+
+
 
