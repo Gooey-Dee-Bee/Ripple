@@ -2,6 +2,7 @@
 	require_once(__DIR__."/databases.php"); // Allow access to the database functions
 
 	$defaultPoints = 10;
+	$reDropPoints = 5;
 
 	function checkPoints($email) {
 		$points = getPoints($email);
@@ -18,6 +19,15 @@
 
 		global $defaultPoints;
 		$points = $points - $defaultPoints;
+
+		updatePoints($email, $points);
+	}
+
+	function subtractReDropPoints($email) {
+		$points = getPoints($email);
+
+		global $reDropPoints;
+		$points = $points - $reDropPoints;
 
 		updatePoints($email, $points);
 	}
