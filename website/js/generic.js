@@ -9,12 +9,18 @@ function setUpPage() {
 	if(sessionStorage.getItem('location') != null && sessionStorage.getItem("name") == null) {
 		console.log('there is a location associated with this session');
 		makeRequest();
-		disallowDrops();	
+		disallowDrops();
+		$('#loginFields').fadeIn();
+		$('#accountInfo').hide();
+		
 	}
 	
 	//if name is null and location is null
 	else if(sessionStorage.getItem("name") == null ) {
 		disallowDrops();
+		$('#accountInfo').hide();
+		$('#loginFields').fadeIn();
+		console.log('account info should not be showing');
 	}
 	//if there is name 
 	else {
