@@ -50,6 +50,26 @@
 		addToDatabase($query);
 	}
 
+	function sameUserDrop($email, $song_id) {
+		$user_id = getUserIdFromEmail($email);
+
+		$query = "SELECT user_id FROM drops WHERE song_id = $song_id";
+		$dropUserId = getInfoFromDatabase($query);
+
+		if(isset($dropUserId[0]['user_id'])) {
+			// Look through each ID returned
+			// Key is what number object you are on from the return list (i.e. 0, 1, 2.....)
+			// Value is the actual json key-pair value
+			foreach ($dropUserId as $key => $value) {
+				if($value['user_id'] == $user_id)
+					return TRUE; // They can't redrop their own song
+			}
+		}
+
+		return FALSE;
+
+	}
+
 
 
 

@@ -1,41 +1,37 @@
 #accountModule {
 	position:fixed;
+	border-width: 10px;
+	border-color: #4898bd;
+	border-style: solid;
 	width:55%;
 	height:40%;
 	background-color: #120054;
 	border-radius:12px;
 	padding:20px;
-	top: -20px;
+	top: 20px;
 	margin-left: 22%;
 	margin-right:auto;
 	color:white;	
 	z-index:103;
-		overflow:scroll;
-	
+	overflow:scroll;
+	-webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
 }
 
 #closeButton {
 	top:25px;
 	right:10px;
-	
 	font-size:2em;
-	position:absolute;
-	
-
-
-
+	position:absolute;	
 }
 
 
 #accountName {
 	font-size:3.2em;
 	text-align:center;
-	font-family: "Handlee";
-	
+	font-family: "Poiret One";
 	top:35px;
-	
-
-
 }
 
 .dropNum {
@@ -44,22 +40,15 @@
 	text-align:center;
 	padding:20px;
 	width:40%;
-	font-family: "Handlee";
-
-
+	font-family: "Poiret One";
 }
 
 
 #acctLink {
 	clear:both;
 	text-align:center;
-	
 	color:white;
 	text-decoration: none;
-	
-	
-
-
 }
 
 
@@ -69,19 +58,15 @@
 	font-size:1.5em;
 	clear:both;
 	text-align:center;
-	font-family: "Handlee";
+	font-family: "Poiret One";
 	padding-bottom:40px;
-	
-	
 }
 
 
 #songBoxTitle {
 	font-size:2.1em;
 	text-align:center;
-	font-family: "Handlee";
-
-
+	font-family: "Poiret One";
 }
 
 .userSong {
@@ -95,7 +80,5 @@
 .dropNum .yourDropText {
 	font-size:.6em;
 	color:white;
-
-
 }
 

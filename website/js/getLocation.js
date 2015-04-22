@@ -34,6 +34,7 @@ function showPosition(position) {
 
 	// ****  NOW DO WHAT WE NEED TO SINCE WE HAVE THE LOCATION  ****
 
+	stopLoader();
 	makeRequest();
 
 	// return location;
@@ -45,6 +46,9 @@ function showLoggedInPage() {
 
 }	
 
+function stopLoader() {
+	$('#loader').remove();
+}
 
 
 
