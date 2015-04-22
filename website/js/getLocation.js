@@ -17,8 +17,10 @@ $(document).ready(function(){
 		}
 	
 	} else {
+
 		console.log("sessionStorage.location = " + sessionStorage.location);
 		stopLoader();
+
 	}
 
 });

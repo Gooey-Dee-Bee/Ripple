@@ -7,7 +7,7 @@ function setUpPage() {
 
 	//if there is a location but there is no name
 	if(sessionStorage.getItem('location') != null && sessionStorage.getItem("name") == null) {
-		console.log('there is a location associated with this session');
+		//console.log('there is a location associated with this session');
 		makeRequest();
 		disallowDrops();
 		$('#loginFields').fadeIn();
@@ -20,28 +20,28 @@ function setUpPage() {
 		disallowDrops();
 		$('#accountInfo').hide();
 		$('#loginFields').fadeIn();
-		console.log('account info should not be showing');
+		//console.log('account info should not be showing');
 	}
 	//if there is name 
 	else {
 			
-			console.log("name associated with session");
+			//console.log("name associated with session");
 			document.getElementById("loginFields").style.display = "none";
 			showAccountInfo();
 			getUserPoints();
 			//if there is no location
 			if (sessionStorage.getItem('location') == null){
 				disallowDrops();
-				console.log("no place associated");
+			//	console.log("no place associated");
 			} else {
 				//if there is a location
-				console.log("place is associated, drops should display");
+			//	console.log("place is associated, drops should display");
 				allowDrops();
 				makeRequest();
 			}
 			
-			console.log("session name:"+sessionStorage.getItem("name"));
-			console.log("session location: "+sessionStorage.getItem('location'));	
+			//console.log("session name:"+sessionStorage.getItem("name"));
+			//console.log("session location: "+sessionStorage.getItem('location'));	
 	}
 }
 
@@ -56,7 +56,7 @@ function disallowDrops() {
 	$('#songBox').css('display','block');
 	$('#dropBox').css('display','none');
 	$('.drop').css('display','none');
-	console.log('disallowing drops');
+	//console.log('disallowing drops');
 };
 
 
@@ -71,9 +71,9 @@ function getUserPoints() {
 			sessionStorage.points = accountInformation['points'];
 			sessionStorage.drops = accountInformation['total_drops'];
 			sessionStorage.user_id = accountInformation['userId'];
-			console.log('points '+ sessionStorage.getItem('points'));
-			console.log('total drops '+sessionStorage.getItem('drops'));
-			console.log('user id is '+sessionStorage.getItem('user_id'));
+			//console.log('points '+ sessionStorage.getItem('points'));
+			//console.log('total drops '+sessionStorage.getItem('drops'));
+			//console.log('user id is '+sessionStorage.getItem('user_id'));
 			
 			
 			document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('drops');
