@@ -50,6 +50,11 @@
 		addToDatabase($query);
 	}
 
+	function checkIfDroppedBySameUser($email, $song_id) {
+		$user_id = getUserIdFromEmail($email);
+		// More logic to go here
+	}
+
 
 
 
