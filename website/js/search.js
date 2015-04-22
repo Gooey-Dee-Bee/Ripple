@@ -8,11 +8,13 @@ function dropSong(songID) {
 		{song_id: songID, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem("latitude"),
 		 longitude: sessionStorage.getItem("longitude")}, 
 		function(returnedData){
-			console.log(returnedData);
+			// alert(returnedData);
+			// alert("success");
 		})
 	.done(function() { 
 		// this should reload the page so the new dropped song will be at the top of the list 
-		window.location.replace("index.html");
+		addSong(songID);
+		window.location.replace("#close");
 	});
 }
 
