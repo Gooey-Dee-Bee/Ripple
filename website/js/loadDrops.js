@@ -64,8 +64,8 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 			songsInDB.push(newSongId);
 			$.post(
 			'/ripple/php/insertDrop.php', 
-			{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location'),
-			longitude: sessionStorage.getItem('location')}, 
+			{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('latitude'),
+			longitude: sessionStorage.getItem('longitude')}, 
 
 	    	function(returnedData){
 	    	getUserPoints();
