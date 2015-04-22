@@ -6,6 +6,7 @@ $(document).ready(function(){
 		if(navigator.geolocation)
 		{
 			var location = navigator.geolocation.getCurrentPosition(showPosition);
+
 	    	document.getElementById("location").style.display = 'none';
 			allowDrops();
 		
@@ -13,6 +14,7 @@ $(document).ready(function(){
 		{
 	
 	  		alert ("Couldn't get location. Sorry bitch");
+
 		}
 	
 	} else {
@@ -65,6 +67,13 @@ function showLoggedInPage() {
 
 	
 
+}	
+
+
+}
+
+}
 
 }	
+
 

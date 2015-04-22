@@ -104,6 +104,14 @@ function addSong(songId) {
     }
 	//console.log("SONG ADDED");
 
+	//document.getElementById("songId").value="";	
+	
+	getUserPoints();
+
+	document.getElementById("songId").value="";	
+
+
+
 	document.getElementById("searchQuery").value="";
 
 }
