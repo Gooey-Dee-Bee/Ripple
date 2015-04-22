@@ -11,9 +11,13 @@
 	}
 
 	else {
-		// Update the user with their new amount of points
-		subtractDefaultPoints($email);
-		insertDrop($email, $song_id, $latitude, $longitude);
+		if(!sameUserDrop($email, $song_id)) { // Make sure the same user is not posting a link multiple times
+			subtractDefaultPoints($email);
+			insertDrop($email, $song_id, $latitude, $longitude);
+		}
+
+		else
+			echo 300; // Error code for same link posing
 	}
 
 

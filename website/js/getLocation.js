@@ -17,9 +17,10 @@ $(document).ready(function(){
 		}
 	
 	} else {
-		//console.log("sessionStorage.location = " + sessionStorage.location)
-	if(sessionStorage.getItem('name') != null)
-		showLoggedInPage();
+
+		console.log("sessionStorage.location = " + sessionStorage.location);
+		stopLoader();
+
 	}
 
 });
@@ -34,6 +35,7 @@ function showPosition(position) {
 
 	// ****  NOW DO WHAT WE NEED TO SINCE WE HAVE THE LOCATION  ****
 
+	stopLoader();
 	makeRequest();
 
 	// return location;
@@ -45,6 +47,9 @@ function showLoggedInPage() {
 
 }	
 
+function stopLoader() {
+	$('#loader').remove();
+}
 
 
 
