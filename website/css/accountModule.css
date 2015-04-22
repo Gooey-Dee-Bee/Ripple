@@ -52,7 +52,7 @@
 }
 
 
-#buyMoreDrops {
+#closeAccountModule {
 	color:white;
 	text-decoration: none;
 	font-size:1.5em;
@@ -60,6 +60,24 @@
 	text-align:center;
 	font-family: "Poiret One";
 	padding-bottom:40px;
+}
+
+#buyMoreDrops {
+	border: 1px solid #19668A;
+	background-color: #BBDFF0;
+	border-radius: 6px;
+	font-family: "Poiret One";
+	font-size: 1.5em;
+	height: 2em;
+	padding: 3px 16px 3px;
+	/*padding-bottom: 0;*/
+	color: #19668A;
+	text-decoration: none;
+	/*padding-right: 16px;*/
+}
+
+#buyMoreDrops:hover {
+	background-color: #E0F5FF;
 }
 
 
