@@ -132,6 +132,10 @@ body {
   width: 150px;
 }
 
+#signUpButton:hover {
+	background-color: #E0F5FF;
+}
+
 #submitLogin {
   background-color: #4898bd;
   color: black;
