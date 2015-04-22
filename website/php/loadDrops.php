@@ -14,10 +14,5 @@
 		$result = getInfoFromDatabase($query); // Returns the data as an associative array
 	}
 
-	$rows = array();
-	while($r = mysqli_fetch_assoc($result)) {
-	    $rows[] = $r;
-	}
-
-	echo json_encode($rows); // Returns the song ID in reverse chronological order (the first entry was dropped the longest time ago)
+	echo json_encode($result); // Returns the song ID in reverse chronological order (the first entry was dropped the longest time ago)
 ?>

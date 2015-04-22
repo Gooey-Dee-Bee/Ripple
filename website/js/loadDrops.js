@@ -63,18 +63,18 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 			addSong(newSongId);
 			songsInDB.push(newSongId);
 			$.post(
-				'/ripple/php/insertDrop.php', 
-				{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location')[0],
-				longitude: sessionStorage.getItem('location')[1]}, 
+			'/ripple/php/insertDrop.php', 
+			{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('latitude'),
+			longitude: sessionStorage.getItem('longitude')}, 
 
-		    	function(returnedData){
-		    	getUserPoints();
-		        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
-		        		alert("You do not have enough points to complete this drop. Please purchase more!");
-		        	}
-		        }
-			);
-		} else{
+	    	function(returnedData){
+	    	getUserPoints();
+	        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
+	        		alert("You do not have enough points to complete this drop. Please purchase more!");
+	        	}
+	        }
+		);
+			} else{
 			bumpSong(newSongId);
 		}
 	});
