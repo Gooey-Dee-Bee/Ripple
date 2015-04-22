@@ -11,19 +11,4 @@
 
 	}
 
-	if (!checkPoints($email)) {
-		echo 200; // Error code to indicate that the user does not have enough points to do this drop
-	}
-
-	else {
-		if(!sameUserDrop($email, $song_id)) { // Make sure the same user is not posting a link multiple times
-			subtractDefaultPoints($email);
-			insertDrop($email, $song_id, $latitude, $longitude);
-		}
-
-		else
-			echo 300; // Error code for same link posing
-	}
-
-
 ?>
