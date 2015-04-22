@@ -15,7 +15,7 @@ sudo apt-get -y install mysql-server
 
 #Load the sql database and tables into mysql
 mysql -u root -pmysqlpassword < /var/www/ripple/database/createDB.sql
-mysql -u root -pmysqlpassword Ripple < /var/www/ripple/database/rippledb2_0.sql
+mysql -u root -pmysqlpassword Ripple < /var/www/ripple/database/data.sql
 
 # to install PHP
 sudo apt-get install php5 -y libapache2-mod-php5 php5-mcrypt
