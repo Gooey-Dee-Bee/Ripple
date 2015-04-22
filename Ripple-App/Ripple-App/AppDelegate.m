@@ -21,6 +21,7 @@
     [SCSoundCloud setClientID:@"115cc96e3e888d0eef062993d2f0ef73"
                        secret:@"f84ecc41b9c1628ce760fd46d42af1bf"
                   redirectURL:[NSURL URLWithString:@"sampleproject://oauth"]];
+    
     return YES;
 }
 
