@@ -57,17 +57,21 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 		for(var i = 0; i < songsInDB.length; i++) {
 			if(songsInDB[i] == newSongId){
 				songExists = true;
-				}
+			}
 		}
 		if (songExists == false){
 			addSong(newSongId);
 			songsInDB.push(newSongId);
 			$.post(
 			'/ripple/php/insertDrop.php', 
-			{id: newSongId, email: sessionStorage.getItem('name')}, 
+			{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location')[0],
+			longitude: sessionStorage.getItem('location')[1]}, 
 
 	    	function(returnedData){
-	        	console.log(returnedData);
+	    	getUserPoints();
+	        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
+	        		alert("You do not have enough points to complete this drop. Please purchase more!");
+	        	}
 	        }
 		);
 			} else{
@@ -99,14 +103,16 @@ function addSong(songId) {
     	console.log('should not be displaying');
     	}
 	//console.log("SONG ADDED");
-	document.getElementById("songId").value="";	
+	//document.getElementById("songId").value="";	
+
 
 }
 
 /*ENSURES THE LATEST SONG IS ON TOP*/
 function prependElement(parentID, child){
 	parent = document.getElementById(parentID);
-	parent.insertBefore(child, parent.childNodes[0]);
+	if(parent)
+		parent.insertBefore(child, parent.childNodes[0]);
 }
 
 
@@ -118,8 +124,24 @@ function bumpSong(songIdentity) {
 	var original = document.getElementById("song"+songIdentity);
 	var box = document.getElementById("songBox");
 	original.parentNode.removeChild(original);
-	
+	/*NEEDS TO BE SUBSTITUTED FOR A FUNCTION THAT'S SPECIFIC TO BUMPING*/
+	$.post(
+			'/ripple/php/reDrop.php', 
+			{song_id: songIdentity, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location')[0],
+			longitude: sessionStorage.getItem('location')[1]}, 
+
+	    	function(returnedData){
+	    	/*WHEN REPLACED, GETUSERPOINTS() NEEDS TO BE IN THE FUNCTION OF THE NEW CALL*/
+	    			getUserPoints();
+	        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
+	        		alert("You do not have enough points to complete this drop. Please purchase more!");
+	        	}
+	        }
+		);
 	addSong(songIdentity);
+	
+
+
 	}
 	else
 		alert("We know this is the best song ever. Buy more drops to keep sharing your great taste.");

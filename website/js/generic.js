@@ -27,11 +27,20 @@ function setUpPage() {
 			if (sessionStorage.getItem('location') == null){
 				disallowDrops();
 				console.log("no place associated");
+				
+				
+				//IF IT'S ON THE PERSONAL PAGE
 			} else {
 				//if there is a location
 				console.log("place is associated, drops should display");
 				allowDrops();
+				
+				//IF IT'S THE MAIN FEED
 				makeRequest();
+				
+				
+				//IF IT'S ON THE PERSONAL PAGE
+				//makeUserRequest();
 			}
 			
 			console.log("session name:"+sessionStorage.getItem("name"));
@@ -56,11 +65,23 @@ function disallowDrops() {
 
 
 function getUserPoints() {
-	$.get("/ripple/php/getUserInfo.php?email="+sessionStorage.getItem('name'), function(data, status) {
-		console.log(JSON.parse(data));
-		var accountInformation = JSON.parse(data);
-		sessionStorage.points = accountInformation['points'];
-		console.log(sessionStorage.getItem('points'));
-	});
+	$.get("/ripple/php/getUserInfo.php",
+		{email: sessionStorage.getItem('name')}, 
+		function(data, status) {
+			console.log("GET USER POINTS: "+JSON.parse(data));
+			var accountInformation = JSON.parse(data);
+			// Adding variables to the sessionStorage!
+			sessionStorage.points = accountInformation['points'];
+			sessionStorage.drops = accountInformation['total_drops'];
+			sessionStorage.user_id = accountInformation['userId'];
+			console.log('points '+ sessionStorage.getItem('points'));
+			console.log('total drops '+sessionStorage.getItem('drops'));
+			
+			
+			document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('drops');
+		});
 
 }
+
+
+
