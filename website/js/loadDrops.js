@@ -72,6 +72,9 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 	        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
 	        		alert("You do not have enough points to complete this drop. Please purchase more!");
 	        	}
+	        	else if(returnedData == 300) { // The user attempted to post a link they have already posted
+	        		alert("You cannot drop your own song. Sorry!");
+	        	}
 	        }
 		);
 			} else{
@@ -143,6 +146,9 @@ function bumpSong(songIdentity) {
 	    			getUserPoints();
 	        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
 	        		alert("You do not have enough points to complete this drop. Please purchase more!");
+	        	}
+	        	else if(returnedData == 300) { // User tried to redrop their own song.
+	        		alert("You cannot drop your own song. Sorry!");
 	        	}
 	        }
 		);
