@@ -42,7 +42,7 @@ $('#accountName').html(usersName);
 $('#dropsLeft').html(pointsLeft +"<div class='yourDropText'>Drops Left</div>"); 
 $('#dropsUsed').html(totalDrops +"<div class='yourDropText'>Past Drops</div>"); 
 
-<<<<<<< HEAD
+
 $('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='goToPersonalPlaylist()'>View Drop History</a><br></br><a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>(Buy more drops)</a>"); 
 }
 
@@ -64,9 +64,9 @@ function getPersonalPlaylist() {
 	//MAKE REQUEST WORKSBUT MAKE USER REQUEST DOES NOT, RETURNS EMPTY DATA SET//
 	makeRequest();
 	console.log('still in personal playlist');
-=======
+
 $('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>View Drop History</a><br></br><a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>(Buy more drops)</a>"); 
->>>>>>> parent of db0c6c6... Songs load on personalPlaylist.html
+
 }
 
 /*Strings to get Soundcloud players on the user account*/
