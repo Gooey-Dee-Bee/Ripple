@@ -22,9 +22,57 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self setUpLocation];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    NSLog(@"LAT: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"latitude"]);
+    NSLog(@"LON: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"longitude"]);
+    
+}
+
+- (void) setUpLocation {
+    //LOCATION
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLLocationAccuracyThreeKilometers; 
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        NSLog(@"Hey bitch");
+        [self.locationManager requestWhenInUseAuthorization];
+        [self.locationManager startUpdatingLocation];
+    }
+    [self.locationManager stopUpdatingLocation];
+}
+
+-(void) locationManager: (CLLocationManager *)manager didUpdateToLocation: (CLLocation *) newLocation
+           fromLocation: (CLLocation *) oldLocation {
+    NSLog(@"HERE");
+    CLLocation *location = newLocation;
+    // Configure the new event with information from the location
+    CLLocationCoordinate2D coordinate = [location coordinate];
+    
+    float longitude = coordinate.longitude;
+    float latitude = coordinate.latitude;
+    
+    
+    NSLog(@"lati: %f", latitude);
+    
+    int lat = (int) latitude;
+    int lon = (int) longitude;
+    
+    NSString *latS = [NSString stringWithFormat:@"%i", lat];
+    NSString *lonS = [NSString stringWithFormat:@"%i", lon];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:latS forKey:@"latitude"];
+    [[NSUserDefaults standardUserDefaults] setObject:lonS forKey:@"longitude"];
+    
+}
+
+- (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"here");
 }
 
 - (void)didReceiveMemoryWarning {
