@@ -223,15 +223,14 @@ h2 {
 
 #location {
 	font-family: "Poiret One";
-	display: inline-block;
-	border: 1px solid #CCCCCC;
+/*	display: inline-block;
+*/	/*border: 1px solid #CCCCCC;*/
 	border-radius: 6px;
-	padding-top: 8px;
+/*	padding-top: 8px;*/
 	text-align: center;
-	margin-top:30px;
 	
-	margin-left: 40%;
-	margin-right: 40%;
+/*	margin-left: 40%;
+	margin-right: 40%;*/
 
 }
 
@@ -309,7 +308,7 @@ h2 {
 /*DROPPING SONGS (ORIGINAL SONGS)*/
 #dropBox {
 	text-align:center;
-	margin-top:30px;
+	/*margin-top:30px;*/
 	height:200px;
 	font-family: "Poiret One";
 }
