@@ -418,4 +418,33 @@ iframe {
 	border-radius: 12;
 }
 
+/* FOR LOADER */ 
+
+.ball-scale-multiple {
+	background: #4898bd;
+	margin-bottom: 0;
+	display: inline-block;
+}
+
+#loader {
+	width: 10%;
+	text-align: center;
+	margin: 5em 45%;
+	height: 40px;
+	position: fixed;
+}
+
+.empty-loader {
+	margin: 0;
+}
+
+.loader-inner {
+	margin-bottom: 0;
+}
+
+#loader p {
+	margin-top: 2em;
+	color: white;
+	font-family: "Poiret One";
+}
 
