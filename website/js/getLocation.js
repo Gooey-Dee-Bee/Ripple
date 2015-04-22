@@ -6,30 +6,28 @@ $(document).ready(function(){
 		if(navigator.geolocation)
 		{
 			var location = navigator.geolocation.getCurrentPosition(showPosition);
-<<<<<<< HEAD
+
 			var lat = location.latitude;
 			var lon = location.longitude;
-=======
->>>>>>> origin/session-compliance
+
 
 	    	document.getElementById("location").style.display = 'none';
 			allowDrops();
 		
-<<<<<<< HEAD
+
 			sessionStorage.latitude = lat;
 			sessionStorage.longitude = lon;
-=======
+
 			sessionStorage.location = location;
->>>>>>> origin/session-compliance
-		
+
 	    	console.log("latitude: " + lat + "  longitude: " + lon);
 		} else
 		{
-<<<<<<< HEAD
+
 			$('#dropBox').css.display("none");
-=======
+
 			document.getElementById("dropBox").style.display = "none";
->>>>>>> origin/session-compliance
+
 			$('#location').append("<form id='location form'><label>Zip Code: </label><input required='required' class='locationInput' type='text' id='zipcode'/><br/><input type='button' id='locationSubmit' value='SUBMIT' onClick='getLocation()'/></form>");
 	    	console.log("Error Getting IP Address"); 	
 		}
@@ -104,9 +102,9 @@ function showLoggedInPage() {
 
 	
 
-
-<<<<<<< HEAD
 }	
-=======
+
 }
->>>>>>> origin/session-compliance
+
+}
+

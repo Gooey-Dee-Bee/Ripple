@@ -7,8 +7,8 @@ Database: Owen Klaiss, Avery Ferrante, Noah Mendoza, Caitlin Gutschenritter
 
 Github Pages: http://gooey-dee-bee.github.io/Ripple/
 
-<<<<<<< HEAD
+
 EC2: 54.69.13.79/ripple/landingpage.html
-=======
+
 EC2: 54.69.13.79/ripple
->>>>>>> origin/session-compliance
+
