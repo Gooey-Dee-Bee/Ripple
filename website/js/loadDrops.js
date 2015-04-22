@@ -107,8 +107,8 @@ function addSong(songId) {
 	//document.getElementById("songId").value="";	
 	
 	getUserPoints();
-
-	document.getElementById("songId").value="";	
+	('#songId').value = "";
+	
 
 
 
