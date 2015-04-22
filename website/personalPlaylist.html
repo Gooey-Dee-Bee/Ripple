@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ripple</title>
+		<link rel="icon" type="image/jpg" href="images/dropItIcon.png">
+		<link rel="stylesheet" type="text/css" href="css/ripple.css">
+		<link rel="stylesheet" type="text/css" href="css/accountModule.css">
+		<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Poiret One' rel='stylesheet' type='text/css'>
+
+
+		<script type="text/javascript" src="js/loadDrops.js"></script>
+		<script type="text/javascript" src="js/generic.js"></script>
+		
+		<script src="http://connect.soundcloud.com/sdk.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	    <script type="text/javascript" src="js/getLocation.js"></script>
+	    <script type="text/javascript" src="js/mainPageLogin.js"></script>
+
+
+	    <script src="https://checkout.stripe.com/checkout.js"></script>
+
+	    <script type="text/javascript" src="js/userAccount.js"></script>
+	   
+
+
+	    <script src="https://checkout.stripe.com/checkout.js"></script>
+
+	    <script type="text/javascript" src="js/userAccount.js"></script>
+	   	<script type="text/javascript" src="js/search.js"></script>
+	  
+
+	</head>
+	<body onload="showAccountInfo(); makeRequestForUser();">
+
+		<div id="navBar">
+			<div id="header">
+				Ripple
+			</div>
+		
+			<div id="loginFields">
+				<form id="loginForm" action="">
+					<input type="text" class="locationInput loginField" id="loginEmail" placeholder="EMAIL"/> <input type="password" class="locationInput loginField" id="loginPassword" placeholder="PASSWORD"/> <input type="submit" id="submitLogin" class="locationInput" value="LOGIN"/>
+				<br><div style="text-align:right; color:white;"> Don't have an account? <a href="landingPage.html">Make one.</a></div>
+				</form>
+			</div>
+		</div>
+
+		<div class="hidden" id="accountInfo">
+			<div id="userName">
+				
+			</div>
+			<div id="userInfo">
+				<div id="dropNumber"></div> Total Drops
+			</div>
+			
+		
+			<div class="accountLinks">
+				<a id="logout" href="#">logout</a>
+				<a id="accountInfoLink" href="#">View Account</a>
+			</div>			
+		</div>
+
+		<!-- Search Modal --> 
+		<div>
+			<div id="openModal" class="modalDialog">
+				<div>
+					<a href="#close" title="Close" class="close" id="close">X</a>
+
+					<h2>Search Results</h2>
+					
+					<p id="searchModal">
+						
+					</p>
+
+				</div>
+			</div>
+		</div>
+
+
+		<div id="location">
+			
+		</div>
+		
+		<div id="songBox">
+		</div> 
+		
+		<div id="footer">
+			<hr></hr>
+			Created by Gooey-Dee-Bee (c) 2015
+		</div>
+
+		<script>
+		  var handler = StripeCheckout.configure({
+		    key: 'pk_test_Winx331SdphaTbGUtv2qf8OX',
+		    image: 'images/dropItIcon.png',
+		    token: function(token) {
+		      // Use the token to create the charge with a server-side script.
+		      // You can access the token ID with `token.id`
+		    }
+		  });
+
+		  $('#buy-points').on('click', function(e) {
+		    // Open Checkout with further options
+		    handler.open({
+		      name: 'Ripple',
+		      description: '50 points',
+		      amount: 500
+		    });
+		    e.preventDefault();
+		  });
+
+		  // Close Checkout on page navigation
+		  $(window).on('popstate', function() {
+		    handler.close();
+		  });
+		</script>
+
+		
+		
+		<!--POP UP MODULE FOR ACCOUNT-->
+		<div id="popup">
+		</div>
+	
+
+	</body>
+	
+		 
+</html>

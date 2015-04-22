@@ -17,7 +17,7 @@ $(document).ready(function(){
 		}
 	
 	} else {
-		console.log("sessionStorage.location = " + sessionStorage.location)
+		//console.log("sessionStorage.location = " + sessionStorage.location)
 	if(sessionStorage.getItem('name') != null)
 		showLoggedInPage();
 	}
