@@ -1,3 +1,14 @@
+/*
+
+MAIN BLUE: #4898bd;
+LIGHTER BLUE FOR BUTTONS: #BBDFF0;
+EVEN LIGHTER BLUE FOR BUTTON HOVER: #E0F5FF;
+LIGHT GRAY BORDER: #CCCCCC;
+DARK BLUE BORDER: #19668A;
+
+
+*/
+
 body {
 	background-color: #dce4e8;
 	background-color: #FFFAE6;
@@ -36,11 +47,11 @@ h2 {
     margin: 10% auto;
     padding: 5px 20px 13px 20px;
     border-radius: 10px;
-    background: #33CCCC;
+    background: #4898bd;
     background: #FFFAE6;
 }
 .close {
-    background: #33CCCC;
+    background: #4898bd;
     color: #FFFFFF;
     line-height: 25px;
     position: absolute;
@@ -67,7 +78,7 @@ h2 {
 #navBar {
 	width:100%;
 	height:200px;
-	background-color: #33CCCC;
+	background-color: #4898bd;
 	background-color:#4898bd;
 	left:0;
 	top:0;
@@ -98,8 +109,8 @@ h2 {
 }
 
 #submitLogin, #buy-points {
-	border: 1px solid #11AAAA;
-	background-color: #AAEEEE;
+	border: 1px solid #19668A;
+	background-color: #BBDFF0;
 	border-radius: 6px;
 	font-family: "Poiret One";
 	font-size: 12px;
@@ -110,7 +121,7 @@ h2 {
 }
 
 #submitLogin:hover, #buy-points:hover {
-	background-color: #BBFFFF;
+	background-color: #E0F5FF;
 }
 
 #footer {
@@ -240,8 +251,8 @@ h2 {
 
 #locationSubmit {
 	width: 40%;
-	background-color: #AAEEEE;
-	border: 1px solid #33CCCC;
+	background-color: #BBDFF0;
+	border: 1px solid #4898bd;
 	border-radius: 6px;
 	font-family: "Poiret One";
 	font-size: 15px;
@@ -266,21 +277,21 @@ h2 {
 #songId:focus, .locationInput:focus, #searchQuery:focus {
 	box-shadow: 0;
 	outline: none;
-	box-shadow: 0 0 10px #33CCCC;
+	box-shadow: 0 0 10px #4898bd;
 }
 
 #submitSong {
 	font-family: "Poiret One";
 	font-weight: bold;
 	font-size: 14px;
-	border: 1px solid #33CCCC;
+	border: 1px solid #4898bd;
 	background-color: white;
 	border-radius: 6px;
 	padding: 7px;
 }
 
 #songSearchSuggest {
-	color:#33CCCC;
+	color:#4898bd;
 	text-align:center;
 	font-family: "Poiret One";
 	font-weight: bold;
@@ -288,7 +299,7 @@ h2 {
 }
 
 #urlSearchSuggest {
-	color:#33CCCC;
+	color:#4898bd;
 	text-align:center;
 	font-family: "Poiret One";
 }
@@ -348,8 +359,7 @@ iframe {
   }
   
 .songPlayer {
-	background-color: #99D6D6;
-	background-color:#4898bd;
+	background-color:#BBDFF0;
 	width:95%;
 	height:80px;
 	margin-left: auto;
@@ -408,7 +418,7 @@ iframe {
 }
 
 .songPlayerSearch {
-	background-color: #99D6D6;
+	background-color: #BBDFF0;
 	width:95%;
 	height:80px;
 	margin-left:auto;
@@ -421,7 +431,6 @@ iframe {
 /* FOR LOADER */ 
 
 .ball-scale-multiple {
-	background: #4898bd;
 	margin-bottom: 0;
 	display: inline-block;
 }
