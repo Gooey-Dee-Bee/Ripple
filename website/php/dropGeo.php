@@ -7,18 +7,18 @@
 	
 	function getCurrentArea($latitude, $longitude)
 	{
-		$south = int($latitude);
+		$south = floor($latitude);
 		$north = latPlusOne($latitude);
-		$east = int($longitude);
+		$east = floor($longitude);
 		$west = longPlusOne($latitude);
 
 		$area =
-		[
+		array(
 			"northBound" => $north,
 			"southBound" => $south,
 			"eastBound" => $east,
 			"westBound" => $west,
-		];
+		);
 
 		return $area;
 	}
@@ -27,14 +27,23 @@
 	{
 		$area = getCurrentArea($latitude, $longitude);
 		$surroundingArea = 
-		[
-			"northBound" = latPlusOne($area['northBound']),
-			"southBound" = latMinusOne($area['southBound']),
-			"eastBound" = longPlusOne($area['eastBound']),
-			"westBound" = longMinusOne($area['westBound']),
-		];
+		array(
+			"northBound" => latPlusOne($area['northBound']),
+			"southBound" => latMinusOne($area['southBound']),
+			"eastBound" => longPlusOne($area['eastBound']),
+			"westBound" => longMinusOne($area['westBound']),
+		);
 
 		return json_encode($surroundingArea);
+	}
+
+	function inViewableRegion($songLat, $songLong, $boundsArray)
+	{
+		if($songLat < $boundsArray['northBound'] && $songLat > $boundsArray['southBound']
+			&& $songLong < $boundsArray['eastBound'] && $songLong > $boundsArray['westBound'])
+			return TRUE;
+		else
+			return FALSE;
 	}
 
 
