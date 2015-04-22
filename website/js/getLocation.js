@@ -6,6 +6,8 @@ $(document).ready(function(){
 		if(navigator.geolocation)
 		{
 			var location = navigator.geolocation.getCurrentPosition(showPosition);
+			var lat = location.latitude;
+			var lon = location.longitude;
 
 
 			var lat = location.latitude;
@@ -25,19 +27,24 @@ $(document).ready(function(){
 	    	document.getElementById("location").style.display = 'none';
 			allowDrops();
 		
-			sessionStorage.location = location;
+			sessionStorage.latitude = lat;
+			sessionStorage.longitude = lon;
 		
 
 	    	console.log("latitude: " + lat + "  longitude: " + lon);
 		} else
 		{
-
 			$('#dropBox').css.display("none");
 
 			document.getElementById("dropBox").style.display = "none";
 
 
 			$('#location').append("<form id='location form'><label>Zip Code: </label><input required='required' class='locationInput' type='text' id='zipcode'/><br/><input type='button' id='locationSubmit' value='SUBMIT' onClick='getLocation()'/></form>");
+
+			document.getElementById("searchBox").style.display = "none";
+			document.getElementById("songSearchSuggest").style.display = "none";
+			$('#location').append("<form id='location form'><label>Zip Code: </label><input required='required' class='locationInput' type='text' id='zipcode'/><br/><input type='button' id='locationSubmit' value='SUBMIT' onClick='disappearZip()'/></form>");
+
 	    	console.log("Error Getting IP Address"); 	
 		}
 	
@@ -117,5 +124,7 @@ function showLoggedInPage() {
 }
 
 }
+
+}	
 
 
