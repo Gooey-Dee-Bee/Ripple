@@ -36,7 +36,7 @@ function showPosition(position) {
 	// ****  NOW DO WHAT WE NEED TO SINCE WE HAVE THE LOCATION  ****
 
 	stopLoader();
-	makeRequest();
+	makeRequest(); //NEEDS TO LOAD THE SEARCH BAR TOO!!!
 
 	// return location;
 }
