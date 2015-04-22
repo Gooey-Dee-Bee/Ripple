@@ -1,0 +1,34 @@
+{
+  "name": "loader.css",
+  "homepage": "https://github.com/bradengroom/loader.css",
+  "authors": [
+    "Braden Groom <braden.groom@gmail.com>"
+  ],
+  "description": "A collection of CSS classes for loading animations.",
+  "main": "loader.css",
+  "keywords": [
+    "css",
+    "loading",
+    "loader",
+    "loader.css",
+    "animations"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "a00bba0271",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a00bba027117a3c5ca15dca92550f67a3a54a205"
+  },
+  "_source": "git://github.com/bradengroom/loader.css.git",
+  "_target": "*",
+  "_originalSource": "loader.css",
+  "_direct": true
+}
