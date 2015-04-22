@@ -16,7 +16,7 @@ function addSongsToArray(jsonArray) {
 		//console.log("FUCK BITCHES");
 		songId = songId.substr(1,songId.length-2);
 		
-		console.log("song id: "+songId);
+		//console.log("song id: "+songId);
 		addSong(songId);
 		songsInDB.push(songId);
 	}	
@@ -33,7 +33,7 @@ var endPlayer ='"/></div></div>';
 
 /** GRAB THE SONG ID FROM THE SONG URL ON THE PAGE*/
 function grabSong() {
-	var songId = document.getElementById("songId").value;
+	var songId = document.getElementById("searchQuery").value;
 	if(sessionStorage.getItem('points') > 0)
 		getSongId(songId);
 	else
@@ -59,24 +59,24 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 				songExists = true;
 			}
 		}
-		if (songExists == false){
+		if (songExists == false) {
 			addSong(newSongId);
 			songsInDB.push(newSongId);
 			$.post(
-			'/ripple/php/insertDrop.php', 
-			{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location')[0],
-			longitude: sessionStorage.getItem('location')[1]}, 
+				'/ripple/php/insertDrop.php', 
+				{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location')[0],
+				longitude: sessionStorage.getItem('location')[1]}, 
 
-	    	function(returnedData){
-	    	getUserPoints();
-	        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
-	        		alert("You do not have enough points to complete this drop. Please purchase more!");
-	        	}
-	        }
-		);
-			} else{
+		    	function(returnedData){
+		    	getUserPoints();
+		        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
+		        		alert("You do not have enough points to complete this drop. Please purchase more!");
+		        	}
+		        }
+			);
+		} else{
 			bumpSong(newSongId);
-			}
+		}
 	});
 }
 
@@ -101,10 +101,10 @@ function addSong(songId) {
     if (sessionStorage.getItem('name') == null) {
     	document.getElementById(songId).style.display = "none";
     	console.log('should not be displaying');
-    	}
+    }
 	//console.log("SONG ADDED");
-	//document.getElementById("songId").value="";	
 
+	document.getElementById("searchQuery").value="";
 
 }
 
@@ -120,7 +120,7 @@ function prependElement(parentID, child){
 /* BUMP A SONG UP THAT IS ALREADY ON THE PLAYLIST */
 function bumpSong(songIdentity) {
 	if(sessionStorage.getItem('points') > 0){
-	
+
 	var original = document.getElementById("song"+songIdentity);
 	var box = document.getElementById("songBox");
 	original.parentNode.removeChild(original);
@@ -139,8 +139,6 @@ function bumpSong(songIdentity) {
 	        }
 		);
 	addSong(songIdentity);
-	
-
 
 	}
 	else

@@ -14,7 +14,7 @@
 		<script type="text/javascript" src="js/loadDrops.js"></script>
 		<script type="text/javascript" src="js/generic.js"></script>
 		
-		
+		<script src="http://connect.soundcloud.com/sdk.js"></script>
 		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	    <script type="text/javascript" src="js/getLocation.js"></script>
@@ -23,12 +23,8 @@
 	    <script src="https://checkout.stripe.com/checkout.js"></script>
 
 	    <script type="text/javascript" src="js/userAccount.js"></script>
-	   
-	   
+	   	<script type="text/javascript" src="js/search.js"></script>
 
-
-
-		
 	</head>
 	<body onload="setUpPage()">
 
@@ -70,14 +66,37 @@
 				
 		</div>
 		
+		<br><br>
+		<div id="songSearchSuggest">
+			Want to drop a song?
+		</div>
 
-		<div id="dropBox">
-			<!-- <h2>Hear what people in <div id="locationName"></div> are listening to</h2> -->
-			<input type="text" id="songId" placeholder="SOUNDCLOUD SONG URL"></input> 
-			<p></p>
-			<img id="songDrop" src="images/dropItIcon.png" onClick="grabSong()"/>
+		
+		<div id="searchBox">
+			<form id="search" action="">
+				<input type="text" id="searchQuery" placeholder="SEARCH FOR A SONG">
+			</form>
+			<br><br>
 		</div>
 		
+
+		<!-- Search Modal --> 
+		<div>
+			<div id="openModal" class="modalDialog">
+				<div>
+					<a href="#close" title="Close" class="close" id="close">X</a>
+
+					<h2>Search Results</h2>
+					
+					<p id="searchModal">
+						
+					</p>
+
+				</div>
+			</div>
+		</div>
+
+
 		<div id="location">
 			
 		</div>
