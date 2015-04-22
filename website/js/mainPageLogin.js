@@ -7,8 +7,7 @@ $(function(){
 		user.email = $("#loginEmail").val();
 		user.password = $("#loginPassword").val();
 		
-		sessionStorage.name = user.email;
-		sessionStorage.password = user.password;
+		
 		
 			    		
 			    		
@@ -21,14 +20,16 @@ $(function(){
 			    success: function(data, status, request) {
 
 			    	if(data == 100){
-			    	
-			    		console.log('the session stuff is: '+sessionStorage.getItem('name'));
+			    		sessionStorage.name = user.email;
+						sessionStorage.password = user.password;
+			    		//console.log('the session stuff is: '+sessionStorage.getItem('name'));
 			    		
 			    		alert("Successfully Logged In, check the console");
 			    		showAccountInfo();
 			    		if(sessionStorage.getItem('location') != null)
 			    			{
 			    			showLoggedInPage();
+			    			
 			    			window.location.replace("index.html");
 			    			}
 			    		
@@ -46,14 +47,16 @@ $(function(){
 			}); // end of ajax
 	}); // end submit function
 	$('#logout').on("click", function(){
-		$('#accountInfo').attr("class", "hidden");
-		$('#loginFields').fadeIn();
 		
+		$('#popup').hide();
+		$('#accountInfo').hide();
+		$('#loginFields').fadeIn();
 		disallowDrops();
 		
 		
 		sessionStorage.removeItem('name');
 		sessionStorage.removeItem('password');
+		window.location.replace("index.html");
 		
 	}); // end logout on click
 }); // end doc.ready
@@ -63,8 +66,9 @@ function showAccountInfo() {
 		getUserPoints();
 		
 		$('#loginFields').fadeOut();
-		$('#accountInfo').removeAttr("class");
+	//	$('#accountInfo').removeAttr("class");
+		$('#accountInfo').show();
 		document.getElementById('userName').innerHTML = sessionStorage.getItem('name');
-		document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('points');
+		document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('drops');
 		console.log("SESSION NAME: " + sessionStorage.getItem("name"));
 }

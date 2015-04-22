@@ -1,66 +1,60 @@
 $(document).ready(function(){
 	//CHECK IF LOGGED IN, FIRST
 	
-	if(sessionStorage.location == null) {
+	if(sessionStorage.location == null || sessionStorage.location == 'undefined') {
 
-		if(google.loader.ClientLocation)
+		if(navigator.geolocation)
 		{
-	    	visitor_lat = google.loader.ClientLocation.latitude;
-	    	visitor_lon = google.loader.ClientLocation.longitude;
-	    	visitor_city = google.loader.ClientLocation.address.city;
-	    	visitor_region = google.loader.ClientLocation.address.region;
-	    	visitor_country = google.loader.ClientLocation.address.country;
-	    	visitor_countrycode = google.loader.ClientLocation.address.country_code;
-	    	//DO SOMETHING WITH THIS INFO
-	    
+			var location = navigator.geolocation.getCurrentPosition(showPosition);
+
 	    	document.getElementById("location").style.display = 'none';
 			allowDrops();
 		
-			sessionStorage.location = google.loader.ClientLocation;
-		
-	    	console.log("User city: " + visitor_city);
 		} else
 		{
-			document.getElementById("dropBox").style.display = "none";
-			$('#location').append("<form id='location form'><label>Zip Code: </label><input required='required' class='locationInput' type='text' id='zipcode'/><br/><input type='button' id='locationSubmit' value='SUBMIT' onClick='disappearZip()'/></form>");
-	    	console.log("Error Getting IP Address"); 	
+	  		alert ("Couldn't get location. Sorry bitch");
+
 		}
 	
 	} else {
-	if(sessionStorage.getItem('name') != null)
-		showLoggedInPage();
-			
+
+		console.log("sessionStorage.location = " + sessionStorage.location);
+		stopLoader();
+
 	}
+
 });
 
-function disappearZip () {
-	console.log("HELLO?");
+function showPosition(position) {
+    alert("Latitude: " + position.coords.latitude + 
+    "Longitude: " + position.coords.longitude);
 
-	var zip = document.getElementById("zipcode").value;
-	if(isValidUSZip(zip) == true)
-	{
-	//Call to push zipcode into the database?
-		showLoggedInPage();
-		sessionStorage.location = zip;
-		console.log("session zip: " +zip);
-		window.location.replace('index.html');
-	} else {
-			alert("If you're a living person, you have a zipcode. Please enter it correctly.");
-	}
+	sessionStorage.latitude = position.coords.latitude;
+	sessionStorage.longitude = position.coords.longitude;
+	sessionStorage.location = "this exists";
+
+	// ****  NOW DO WHAT WE NEED TO SINCE WE HAVE THE LOCATION  ****
+
+	stopLoader();
+	makeRequest();
+
+	// return location;
 }
 
-
-function isValidUSZip(sZip) {
-   		return /^\d{5}(-\d{4})?$/.test(sZip);
-	}
 	
 function showLoggedInPage() {
-
-	document.getElementById("location").style.display = 'none';
 	document.getElementById("songBox").style.display = 'block';
 
-	
+}	
 
-
+function stopLoader() {
+	$('#loader').remove();
 }
-	
+
+
+
+
+
+
+
+

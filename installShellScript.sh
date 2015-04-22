@@ -20,3 +20,6 @@ mysql -u root -pmysqlpassword Ripple < /var/www/ripple/database/data.sql
 # to install PHP
 sudo apt-get install php5 -y libapache2-mod-php5 php5-mcrypt
 sudo apt-get -y install php5-mysql
+
+#Restart Apache Server
+sudo /etc/init.d/apache2 restart

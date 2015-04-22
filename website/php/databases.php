@@ -8,18 +8,23 @@
 		mysqli_close($con);
 	}
 
+	function getUserIdFromEmail($email) {
+		$user_id = getInfoFromDatabase("SELECT user_id FROM users WHERE email = '$email'"); 
+		return $user_id[0]['user_id'];
+	}
+
 	// RETURNS TRUE IF THE QUERY RETURNS ANY NUMBER OF RESULTS, FALSE OTHERWISE
 	function existsInDatabase($query) {
 		$con = establishConnection();
 		$result = mysqli_query($con, $query);
 
-		if(mysqli_num_rows($result) != 0) {
+		if(!$result || mysqli_num_rows($result) == 0) {
 			mysqli_close($con);
-			return TRUE;
+			return FALSE;
 		}
 		else {
 			mysqli_close($con);
-			return FALSE;
+			return TRUE;
 		}
 	}
 
@@ -29,7 +34,12 @@
 		$result = mysqli_query($con, $query);
 		mysqli_close($con);
 
-		return $result; 
+		$return_array = array();
+		while($r = mysqli_fetch_assoc($result)) {
+		    $return_array[] = $r;
+		}
+
+		return $return_array;
 	}
 
 
