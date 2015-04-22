@@ -10,21 +10,21 @@
 		<link href='http://fonts.googleapis.com/css?family=Poiret One' rel='stylesheet' type='text/css'>
 
 				
-
+		<script type="text/javascript" src="js/dropGeog.js"></script>
 		<script type="text/javascript" src="js/loadDrops.js"></script>
 		<script type="text/javascript" src="js/generic.js"></script>
 		
-		
+		<script src="http://connect.soundcloud.com/sdk.js"></script>
 		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	    <script type="text/javascript" src="js/getLocation.js"></script>
 	    <script type="text/javascript" src="js/mainPageLogin.js"></script>
+
+	    <script src="https://checkout.stripe.com/checkout.js"></script>
+
 	    <script type="text/javascript" src="js/userAccount.js"></script>
-	   
-	   
+	   	<script type="text/javascript" src="js/search.js"></script>
 
-
-		
 	</head>
 	<body onload="setUpPage()">
 
@@ -46,8 +46,15 @@
 				Leonard H. Paton
 			</div>
 			<div id="userInfo">
+
+				<!--<div id="dropNumber">123,153,665,123</div> drop points <br/>
+				<button id="buy-points">Buy More</button>
+				<p> <span id="drop-count">27</span> total drops</p>
+				<a id="logout" href="#">logout</a>-->
+
 				<div id="dropNumber">123,153,665,123</div> Total Drops
 				
+
 			</div>
 			
 		
@@ -59,14 +66,37 @@
 				
 		</div>
 		
+		<br><br>
+		<div id="songSearchSuggest">
+			Want to drop a song?
+		</div>
 
-		<div id="dropBox">
-			<!-- <h2>Hear what people in <div id="locationName"></div> are listening to</h2> -->
-			<input type="text" id="songId" placeholder="SOUNDCLOUD SONG URL"></input> 
-			<p></p>
-			<img id="songDrop" src="images/dropItIcon.png" onClick="grabSong()"/>
+		
+		<div id="searchBox">
+			<form id="search" action="">
+				<input type="text" id="searchQuery" placeholder="SEARCH FOR A SONG">
+			</form>
+			<br><br>
 		</div>
 		
+
+		<!-- Search Modal --> 
+		<div>
+			<div id="openModal" class="modalDialog">
+				<div>
+					<a href="#close" title="Close" class="close" id="close">X</a>
+
+					<h2>Search Results</h2>
+					
+					<p id="searchModal">
+						
+					</p>
+
+				</div>
+			</div>
+		</div>
+
+
 		<div id="location">
 			
 		</div>
@@ -78,12 +108,40 @@
 			<hr></hr>
 			Created by Gooey-Dee-Bee (c) 2015
 		</div>
+
+		<script>
+		  var handler = StripeCheckout.configure({
+		    key: 'pk_test_Winx331SdphaTbGUtv2qf8OX',
+		    image: 'images/dropItIcon.png',
+		    token: function(token) {
+		      // Use the token to create the charge with a server-side script.
+		      // You can access the token ID with `token.id`
+		    }
+		  });
+
+		  $('#buy-points').on('click', function(e) {
+		    // Open Checkout with further options
+		    handler.open({
+		      name: 'Ripple',
+		      description: '50 points',
+		      amount: 500
+		    });
+		    e.preventDefault();
+		  });
+
+		  // Close Checkout on page navigation
+		  $(window).on('popstate', function() {
+		    handler.close();
+		  });
+		</script>
+
 		
 		
 		<!--POP UP MODULE FOR ACCOUNT-->
 		<div id="popup">
 		</div>
 	
+
 	</body>
 	
 		 
