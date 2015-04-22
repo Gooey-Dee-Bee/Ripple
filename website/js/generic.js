@@ -27,20 +27,11 @@ function setUpPage() {
 			if (sessionStorage.getItem('location') == null){
 				disallowDrops();
 				console.log("no place associated");
-				
-				
-				//IF IT'S ON THE PERSONAL PAGE
 			} else {
 				//if there is a location
 				console.log("place is associated, drops should display");
 				allowDrops();
-				
-				//IF IT'S THE MAIN FEED
 				makeRequest();
-				
-				
-				//IF IT'S ON THE PERSONAL PAGE
-				//makeUserRequest();
 			}
 			
 			console.log("session name:"+sessionStorage.getItem("name"));
@@ -76,12 +67,12 @@ function getUserPoints() {
 			sessionStorage.user_id = accountInformation['userId'];
 			console.log('points '+ sessionStorage.getItem('points'));
 			console.log('total drops '+sessionStorage.getItem('drops'));
+			console.log('user id is '+sessionStorage.getItem('user_id'));
 			
 			
 			document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('drops');
 		});
 
 }
-
 
 

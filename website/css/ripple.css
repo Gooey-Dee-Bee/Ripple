@@ -130,7 +130,7 @@ h2 {
 	top:0;
 	right:15px;
 	width:25%;
-	/*height:150px;*/
+	height:150px;
 	background-color:#120054;
 	position:absolute;
 	padding:10px;
@@ -336,6 +336,7 @@ h2 {
 /*OVERALL SONGS*/
 #songBox {
 	display:none;
+	
 
 
 }
