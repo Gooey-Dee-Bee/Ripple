@@ -124,8 +124,7 @@ function prependElement(parentID, child){
 /* BUMP A SONG UP THAT IS ALREADY ON THE PLAYLIST */
 function bumpSong(songIdentity) {
 	if(sessionStorage.getItem('points') > 0){
-	
-<<<<<<< HEAD
+
 	var original = document.getElementById("song"+songIdentity);
 	var box = document.getElementById("songBox");
 	original.parentNode.removeChild(original);
@@ -144,16 +143,7 @@ function bumpSong(songIdentity) {
 	        }
 		);
 	addSong(songIdentity);
-	
 
-
-=======
-		var original = document.getElementById("song"+songIdentity);
-		var box = document.getElementById("songBox");
-		original.parentNode.removeChild(original);
-		
-		addSong(songIdentity);
->>>>>>> searchModal
 	}
 	else
 		alert("We know this is the best song ever. Buy more drops to keep sharing your great taste.");
