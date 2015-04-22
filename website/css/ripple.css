@@ -4,7 +4,7 @@ body {
 }
 
 h2 {
-	font-family: "Handlee";
+	font-family: "Poiret One";
 }
 
 
@@ -127,17 +127,15 @@ h2 {
 
 /*ACCOUNT SUBSET*/
 #accountInfo {
-	top:0;
+	top:52px;
 	right:15px;
 	width:25%;
 	height:150px;
 	background-color:#120054;
 	position:absolute;
 	padding:10px;
-	border-bottom-left-radius:6;
-	border-bottom-right-radius:6;
-	border-radius: 0 0 16px 16px;
-	font-family: 'Handlee';
+	border-radius: 16px 16px 16px 16px;
+	font-family: 'Poiret One';
 }
 
 #drop-count {
@@ -161,7 +159,7 @@ h2 {
 	position:absolute;
 	margin-left:35%;
 	margin-right:auto;
-	font-family: 'Handlee';
+	font-family: 'Poiret One';
 
 }
 
@@ -179,7 +177,7 @@ h2 {
 	height:20px;
 	color:white;
 	text-decoration: none;	
-	font-family: 'Handlee';
+	font-family: 'Poiret One';
 
 }
 .accountLinks  #logout {
@@ -197,7 +195,6 @@ h2 {
 
 	text-align:center;
 	height:30px;
-
 
 }
 
@@ -421,4 +418,33 @@ iframe {
 	border-radius: 12;
 }
 
+/* FOR LOADER */ 
+
+.ball-scale-multiple {
+	background: #4898bd;
+	margin-bottom: 0;
+	display: inline-block;
+}
+
+#loader {
+	width: 10%;
+	text-align: center;
+	margin: 5em 45%;
+	height: 40px;
+	position: fixed;
+}
+
+.empty-loader {
+	margin: 0;
+}
+
+.loader-inner {
+	margin-bottom: 0;
+}
+
+#loader p {
+	margin-top: 2em;
+	color: white;
+	font-family: "Poiret One";
+}
 
