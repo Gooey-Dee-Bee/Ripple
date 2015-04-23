@@ -11,6 +11,7 @@
 		$user_id = $_GET['user_id'];
 		$query = "SELECT song_id FROM drops WHERE user_id = $user_id ORDER BY time_stamp";
 		$result = getInfoFromDatabase($query);
+	
 	}
 
 	else { // Load all drops in the database

@@ -2,8 +2,20 @@ var songsInDB = new Array();
 
 /*GET SONGS FROM THE DATABASE*/
 function makeRequest(){
-$.get("/ripple/php/loadDrops.php", function(data, status) {
-		console.log('adding songs to array');
+$.post("/ripple/php/loadDrops.php", 
+		{latitude: sessionStorage.getItem('latitude'), longitude: sessionStorage.getItem('longitude')},
+		function(data, status) {
+			//console.log('adding songs to array');
+			addSongsToArray(JSON.parse(data));
+		});
+}
+
+
+function makeRequestForUser(){
+$.post("/ripple/php/loadDrops.php",
+		{user_id: sessionStorage.getItem('user_id')},
+ 		function(data, status) {
+		//console.log('adding songs to array');
 		addSongsToArray(JSON.parse(data));
 	});
 }
@@ -16,7 +28,7 @@ function addSongsToArray(jsonArray) {
 		//console.log("FUCK BITCHES");
 		songId = songId.substr(1,songId.length-2);
 		
-		console.log("song id: "+songId);
+		//console.log("song id: "+songId);
 		addSong(songId);
 		songsInDB.push(songId);
 	}	
@@ -48,10 +60,10 @@ var songExists = false;
 console.log('GETTING THE SONG URL');
 $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f874d25715f0e225e7c71a', function(data, status) {
 		//var textin = JSON.parse(data);
-		console.log('this new thing is'+data['id']);
+		//console.log('this new thing is'+data['id']);
 		
 		var newSongId = parseSong(data);
-		console.log('new song id is '+newSongId);
+		//console.log('new song id is '+newSongId);
 
 		//FUNCTION TO COMMUNICATE WITH DATABASE IN CHANGING THE STATS
 		//ADDING THE NEW SONG TO THE DATABASE
@@ -59,7 +71,7 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 	
 			alert('the song does not exist');
 			addSong(newSongId);
-			console.log('adding the song because it is not a duplicate');
+			//console.log('adding the song because it is not a duplicate');
 			songsInDB.push(newSongId);
 			$.post(
 			'/ripple/php/insertDrop.php', 
@@ -92,12 +104,12 @@ function parseSong(trackJson) {
 /**ADD SONG FRAME TO THE SONG FEED (used for static and dynamic)**/
 function addSong(songId) {
 	for(var i = 0; i < songsInDB.length; i++) {
-			console.log('ADDING SONGS IN DB AND SHIT'+songsInDB[i]);
+			//console.log('ADDING SONGS IN DB AND SHIT'+songsInDB[i]);
 			if(songsInDB[i] == songId){
 				var original = document.getElementById("song"+songId);
 				var box = document.getElementById("songBox");
 				original.parentNode.removeChild(original);
-				console.log('wtf');
+				//console.log('wtf');
 				
 				bumpSong(songId);
 				break;
@@ -108,20 +120,22 @@ function addSong(songId) {
 	
     var newcontent = document.createElement('div');
     var newSongListing = beginPlayer+songId+secondPlayer+songId+midPlayer+songId+endPlayer;
-    console.log("ADD SONG "+songId);
+    //console.log("ADD SONG "+songId);
     newcontent.innerHTML = newSongListing;
    
     prependElement('songBox', newcontent);
  
     if (sessionStorage.getItem('name') == null) {
     	document.getElementById(songId).style.display = "none";
-    	console.log('should not be displaying');
+    	//console.log('should not be displaying');
     }
 	
 	getUserPoints();
 	('#songId').value = "";
 
-	document.getElementById("searchQuery").value="";
+
+	if($('#searchQuery').length)
+		document.getElementById("searchQuery").value="";
 
 }
 
@@ -145,7 +159,7 @@ function bumpSong(songIdentity) {
 	    	function(returnedData){
 	    	/*WHEN REPLACED, GETUSERPOINTS() NEEDS TO BE IN THE FUNCTION OF THE NEW CALL*/
 	    			getUserPoints();
-	    			console.log('wtf');
+	    			//console.log('wtf');
 	        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
 	        		alert("You do not have enough points to complete this drop. Please purchase more!");
 	        	}

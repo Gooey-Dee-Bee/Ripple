@@ -22,7 +22,7 @@ $(function(){
 			    	if(data == 100){
 			    		sessionStorage.name = user.email;
 						sessionStorage.password = user.password;
-			    		console.log('the session stuff is: '+sessionStorage.getItem('name'));
+			    		//console.log('the session stuff is: '+sessionStorage.getItem('name'));
 			    		
 			    		alert("Successfully Logged In, check the console");
 			    		showAccountInfo();
@@ -51,12 +51,12 @@ $(function(){
 		$('#popup').hide();
 		$('#accountInfo').hide();
 		$('#loginFields').fadeIn();
-		
 		disallowDrops();
 		
 		
 		sessionStorage.removeItem('name');
 		sessionStorage.removeItem('password');
+		window.location.replace("index.html");
 		
 	}); // end logout on click
 }); // end doc.ready

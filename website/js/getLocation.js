@@ -17,16 +17,17 @@ $(document).ready(function(){
 		}
 	
 	} else {
-		console.log("sessionStorage.location = " + sessionStorage.location)
-	if(sessionStorage.getItem('name') != null)
-		showLoggedInPage();
+
+		console.log("sessionStorage.location = " + sessionStorage.location);
+		stopLoader();
+
 	}
 
 });
 
 function showPosition(position) {
-    alert("Latitude: " + position.coords.latitude + 
-    "Longitude: " + position.coords.longitude);
+    // alert("Latitude: " + position.coords.latitude + 
+    // "Longitude: " + position.coords.longitude);
 
 	sessionStorage.latitude = position.coords.latitude;
 	sessionStorage.longitude = position.coords.longitude;
@@ -35,7 +36,7 @@ function showPosition(position) {
 	// ****  NOW DO WHAT WE NEED TO SINCE WE HAVE THE LOCATION  ****
 
 	stopLoader();
-	makeRequest();
+	makeRequest(); //NEEDS TO LOAD THE SEARCH BAR TOO!!!
 
 	// return location;
 }
