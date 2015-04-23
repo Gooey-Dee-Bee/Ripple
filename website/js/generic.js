@@ -76,7 +76,7 @@ function getUserPoints() {
 			//console.log('user id is '+sessionStorage.getItem('user_id'));
 			
 			
-			document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('drops');
+			document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('points');
 		});
 
 }
