@@ -7,7 +7,7 @@
 	$drop;
 	$prev_drop;
 
-	function traceBack( $user_id, $drop_id, $prev_drop_id){
+	function traceBack($user_id, $drop_id, $prev_drop_id){
 		global $user, $drop, $prev_drop, $pointCounter;
 
 		$user = user_id;
@@ -28,6 +28,10 @@
 			$query2 = "SELECT prev_drop_id FROM drops WHERE drop_id = '$drop'";
 			$prev_drop = getInfoFromDatabase($query2);
 		}
+	}
+
+	function isInLocation($prev_id, $cur_id) {
+		//use location function 
 	}
 
 ?>
