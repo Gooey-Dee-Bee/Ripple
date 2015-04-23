@@ -120,31 +120,6 @@
 			Created by Gooey-Dee-Bee (c) 2015
 		</div>
 
-		<script>
-		  var handler = StripeCheckout.configure({
-		    key: 'pk_test_Winx331SdphaTbGUtv2qf8OX',
-		    image: 'images/dropItIcon.png',
-		    token: function(token) {
-		      // Use the token to create the charge with a server-side script.
-		      // You can access the token ID with `token.id`
-		    }
-		  });
-
-		  $('#buy-points').on('click', function(e) {
-		    // Open Checkout with further options
-		    handler.open({
-		      name: 'Ripple',
-		      description: '50 points',
-		      amount: 500
-		    });
-		    e.preventDefault();
-		  });
-
-		  // Close Checkout on page navigation
-		  $(window).on('popstate', function() {
-		    handler.close();
-		  });
-		</script>
 
 		
 		
