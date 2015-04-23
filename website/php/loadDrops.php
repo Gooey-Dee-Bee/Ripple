@@ -23,7 +23,7 @@
 	}
 
 	else { // Load all drops in the database
-		$query = "SELECT DISTINCT song_id, latitude, longitude FROM drops ORDER BY time_stamp LIMIT 10"; // For now, just returns everything that is in the drop database
+		$query = "SELECT song_id, latitude, longitude FROM drops GROUP BY song_id ORDER BY time_stamp";
 		
 		$results = getInfoFromDatabase($query); // Returns the data as an associative array
 		$viewableSongs =  array();
