@@ -21,11 +21,6 @@ function dropSong(songID) {
 	});
 }
 
-/*Strings to get Soundcloud players on the page*/
-var beginPlayer = '<div class="songPlayerSearch" id="song';
-var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
-var midPlayer = '"></iframe></div><div><img class="dropFromSearch" src="images/dropItIcon.png" onClick="dropSong(this.id)" id="';
-var endPlayer = '"/></div></div>';
 
 
 function search(query) {
@@ -39,6 +34,11 @@ function search(query) {
 	else {
 		//alert("not a url");
 		$("#queryString").html(query);
+		var beginPlayer = '<div class="songPlayerSearch" id="song';
+		var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
+		var midPlayer = '"></iframe></div><div><img class="dropFromSearch" src="images/dropItIcon.png" onClick="dropSong(this.id)" id="';
+		var endPlayer = '"/></div></div>';
+
 		SC.get('/tracks', { q: query }, function(tracks) {
 			// will insert top 10 songs returned by SoundCloud into search modal
 			for (i=0; i<10; i++) {

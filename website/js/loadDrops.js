@@ -58,7 +58,7 @@ var beginPlayer = '<div class="songPlayer" id="song';
 var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
 var midPlayer ='"></iframe></div><div><img class="drop" src="images/dropItIcon.png"  id=song';
 var alternateEnd = '"></iframe></div><div>';
-var endPlayer =' onClick="bumpSong()"/></div></div>';
+var endPlayer =' onClick="bumpSong(this.id)"/></div></div>';
 
 /** GRAB THE SONG ID FROM THE SONG URL ON THE PAGE*/
 function grabSong() {
