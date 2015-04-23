@@ -132,8 +132,6 @@ console.log('add song');
 				var box = document.getElementById("songBox");
 				original.parentNode.removeChild(original);
 				//console.log('wtf');
-				
-				bumpSong(songId);
 				break;
 			}
 		}
@@ -148,7 +146,7 @@ console.log('add song');
     prependElement('songBox', newcontent);
  
     if (sessionStorage.getItem('name') == null) {
-    	document.getElementById(songId).style.display = "none";
+    	$('.drop').hide();
     	//console.log('should not be displaying');
     }
 	
@@ -196,6 +194,9 @@ console.log('prepend element');
 /* BUMP A SONG UP THAT IS ALREADY ON THE PLAYLIST */
 function bumpSong(songIdentity) {
 		/*NEEDS TO BE SUBSTITUTED FOR A FUNCTION THAT'S SPECIFIC TO BUMPING*/
+		songIdentity = songIdentity.substr(4,songIdentity.length);
+		
+		
 		console.log('bump song');
 		$.post(
 			'/ripple/php/reDrop.php', 
@@ -205,12 +206,21 @@ function bumpSong(songIdentity) {
 	    	function(returnedData){
 	    	/*WHEN REPLACED, GETUSERPOINTS() NEEDS TO BE IN THE FUNCTION OF THE NEW CALL*/
 	    			getUserPoints();
+
 	    			//console.log('wtf');
-	        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
+	        	if(returnedData == '200') { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
 	        		alert("You do not have enough points to complete this drop. Please purchase more!");
+	        		console.log('not enough points');
 	        	}
-	        	else if(returnedData == 300) { // User tried to redrop their own song.
+	        	else if(returnedData == '300') { // User tried to redrop their own song.
 	        		alert("You cannot drop your own song. Sorry!");
+	        		console.log('dropping your own song');
+	        	}
+	        	
+	        	else {
+	        		
+	        		console.log(songIdentity);
+	        		addSong(songIdentity);
 	        	}
 	        }
 		)
