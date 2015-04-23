@@ -35,13 +35,14 @@
 
 	function getPrevDropId($song_id, $latitude, $longitude) {
 		$surrArea = getSurroundingArea($latitude, $longitude);
-		$query = "SELECT drop_id FROM drops WHERE song_id = $song_id ORDER BY time_stamp DESC";
+		$query = "SELECT drop_id, latitude, longitude FROM drops WHERE song_id = $song_id ORDER BY time_stamp DESC";
 		$redrop = getInfoFromDatabase($query);
 
 		foreach ($redrop as $key => $value) {
-				if(inViewableRegion($value['latitude'], $value['longitude'], $surrArea))
-					return $value['user_id'];
-			}
+				if(inViewableRegion($value['latitude'], $value['longitude'], $surrArea)) {
+					return $value['drop_id'];
+				}
+		}
 
 			return "OhShit";
 	}
