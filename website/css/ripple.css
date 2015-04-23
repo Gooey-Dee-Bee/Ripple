@@ -532,8 +532,10 @@ iframe {
 	text-align:center;
 	position:relative;
 	z-index:1000;
-	left:180px;
+	margin-left:10%;
+	margin-right:auto;
 	width:60%;
+	float:left;
 }
 
 #analyticTitle {
