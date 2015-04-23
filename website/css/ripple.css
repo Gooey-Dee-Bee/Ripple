@@ -2,7 +2,8 @@
 
 MAIN BLUE: #4898bd;
 LIGHTER BLUE FOR BUTTONS: #BBDFF0;
-EVEN LIGHTER BLUE FOR BUTTON HOVER: #E0F5FF;
+DARK BLUE FOR ACCOUNT MODAL: #120054;
+LIGHT BLUE FOR HOVER: #E0F5FF;
 LIGHT GRAY BORDER: #CCCCCC;
 DARK BLUE BORDER: #19668A;
 
@@ -483,3 +484,77 @@ iframe {
 	font-family: "Poiret One";
 }
 
+
+
+/*** ANALYTICS PAGE *****/
+#informationBox {
+	text-align:center;
+	font-family: "Poiret One";
+	height:500px;
+	overflow:scroll;
+	border:thick;
+	width:89%;
+	background-color:#120054;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius:8px;
+}
+
+
+#analyticBar {
+	width:190px;
+	height:100%;
+	background-color: #4898bd;
+	float:left;
+}
+
+.analyticOption {
+	width:180px;
+	padding:10px;
+	margin:5px;
+	font-size:1.3em;
+	font-family: "Poiret One";
+	background-color: #BBDFF0;
+	border:none;
+	border-radius:6px;
+	z-index:4000;
+	
+
+}
+.analyticOption:hover {
+	background-color:#E0F5FF;
+}
+
+
+#songAnalytics {
+	color:white;
+	padding-top:25px;
+	text-align:center;
+	position:relative;
+	z-index:1000;
+	left:180px;
+	width:60%;
+}
+
+#analyticTitle {
+	font-size:2em;
+
+}
+
+.anNumber {
+	font-size:1.6em;
+}
+.anDescriptor {
+	font-size:1.2em;
+}
+
+#genTable {
+	width:60%;
+	text-align:center;
+
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:50px;
+	
+
+}

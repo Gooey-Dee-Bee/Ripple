@@ -39,12 +39,12 @@
 		$redrop = getInfoFromDatabase($query);
 
 		foreach ($redrop as $key => $value) {
-				if(inViewableRegion($value['latitude'], $value['longitude'], $surrArea)) {
-					return $value['drop_id'];
-				}
+			if(inViewableRegion($value['latitude'], $value['longitude'], $surrArea)) {
+				return $value['drop_id'];
+			}
 		}
 
-			return "OhShit";
+			return "Error";
 	}
 
 	function updatePoints($email, $points) {
