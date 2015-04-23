@@ -50,12 +50,14 @@ function allowDrops() {
 	$('#dropBox').css('display','block');
 	$('.drop').css('display','block');
 	$('#songBox').css('display','block');
+	$('#infoBox').css('display','block');
 };
 
 function disallowDrops() {
 	$('#songBox').css('display','block');
 	$('#dropBox').css('display','none');
 	$('.drop').css('display','none');
+	$('#infoBox').css('display','none');
 	//console.log('disallowing drops');
 };
 
@@ -76,7 +78,7 @@ function getUserPoints() {
 			//console.log('user id is '+sessionStorage.getItem('user_id'));
 			
 			
-			document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('drops');
+			document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('points');
 		});
 
 }

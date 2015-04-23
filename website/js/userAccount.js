@@ -54,7 +54,7 @@ console.log('session drops made '+totalDrops);
 
 $('#closeButton').html("<a id='closeAccountModule' href='#' onClick='closeModule()'>X</a>");
 $('#accountName').html(usersName);
-$('#dropsLeft').html(pointsLeft +"<div class='yourDropText'>Drops Left</div>"); 
+$('#dropsLeft').html(pointsLeft +"<div class='yourDropText'>Points Left</div>"); 
 $('#dropsUsed').html(totalDrops +"<div class='yourDropText'>Past Drops</div>"); 
 
 

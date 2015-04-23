@@ -38,7 +38,6 @@
 		return $redrop[0]['drop_id']; 
 	}
 
-
 	function updatePoints($email, $points) {
 		$query = "UPDATE users SET points=$points WHERE email='$email'";
 		addToDatabase($query);
