@@ -35,7 +35,7 @@
 	 	if(!sameUserDrop($email, $song_id)) { // Make sure it is not the same user trying to re-drop their song
 			$prev_id = getPrevDropId($song_id);
 			insertDrop($email, $song_id, $latitude, $longitude, $prev_id);
-			subtractDefaultPoints($email);
+			subtractReDropPoints($email);
 		}
 
 		else
