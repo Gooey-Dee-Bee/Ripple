@@ -543,9 +543,12 @@ iframe {
 
 .anNumber {
 	font-size:1.6em;
+	margin-left:20px;
+	margin-right:20px;
 }
 .anDescriptor {
 	font-size:1.2em;
+	margin-top:30px;
 }
 
 #genTable {
@@ -554,7 +557,8 @@ iframe {
 
 	margin-left:auto;
 	margin-right:auto;
-	padding-top:50px;
+	margin-top:20px;
+	
 	
 
 }
