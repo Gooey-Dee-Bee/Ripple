@@ -77,61 +77,11 @@ function getPersonalPlaylist() {
 	console.log('ugh, inside the getting the personal playlist bullshit');
 	
 	//MAKE REQUEST WORKSBUT MAKE USER REQUEST DOES NOT, RETURNS EMPTY DATA SET//
-	makeRequest();
+	makeUserRequest();
 	console.log('still in personal playlist');
 
 $('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>View Drop History</a><br></br><a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>(Buy more drops)</a>"); 
 
 }
-
-/*Strings to get Soundcloud players on the user account*/
-
-
-
-/*GET SONGS FROM THE DB THEORETICALLY RELATED TO USER
-function makeUserRequest(){
-$.get("/ripple/php/loadDrops.php",
-		{user_id: sessionStorage.getItem('user_id')},
-	    function(data, status) {
-	    	console.log('data is'+data);
-			console.log('adding songs to array');
-			addSongsToUserArray(JSON.parse(data));
-		});
-}
-
-
-/*ADD SONGS FROM THE DATABSE TO THE ARRAY
-function addSongsToUserArray(jsonArray) {
-
-	for(var i = 0; i < jsonArray.length; i++){
-		var songId = JSON.stringify(jsonArray[i]["song_id"]);
-		songId = songId.substr(1,songId.length-2);
-		
-		console.log("song id in usr account: "+songId);
-		addSongForUser(songId);
-		
-	}	
-}
-
-
-ADD SONG FRAME TO THE SONG FEED (used for static and dynamic)
-function addSongForUser(songId) {
-var beginPlayer = '<div class="userSong" id="song';
-var secondPlayer= '"> <div class="songText"><iframe src="https://www.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
-var midPlayer ='"></iframe></div><div>';
-var endPlayer ='</div></div>';
-
-
-    var newcontent = document.createElement('div');
-    var newSongListing = beginPlayer+songId+secondPlayer+songId+midPlayer+endPlayer;
-    //console.log("ADD SONG"+newSongListing);
-    console.log('inside adding song for user');
-    newcontent.innerHTML = 'fuck everything';
-   
-    prependElement('dropSongBox', newcontent);
- 
-
-
-}*/
 
 
