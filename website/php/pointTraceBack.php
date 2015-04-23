@@ -1,37 +1,63 @@
 <?php
-	require_once(__DIR__."/dropHelper.php"); // Allow access to the database functions
+	require_once(__DIR__."/dropHelper.php"); // Allow access to the drop functions
+	require_once(__DIR__."/databases.php"); // Allow access to the database functions
 
-	$pointCounter = 1;
-	//use while look to go up the user tree until previous drop id == null?
-	$user;
-	$drop;
-	$prev_drop;
+	$point_limit = 10;
+	$id_query;
+	$drop_id_query;
+	$email_query;
 
-	function traceBack($user_id, $drop_id, $prev_drop_id){
-		global $user, $drop, $prev_drop, $pointCounter;
+	function traceBack($prev_drop_id){
+		global $point_limit, $id_query, $drop_id_query, $email_query;
+		$pointCounter = 1;
 
-		$user = user_id;
-		$drop = $drop_id;
-		$prev_drop = $prev_drop_id;
-		$nextPrev = "SELECT prev_drop_id FROM drops WHERE drop_id = '$prev_drop'";
 
-		while (getInfoFromDatabase($nextPrev)!=0) {
-			//get info about previous drop from database
-			$prevDropUser = "SELECT user_id FROM drops WHERE drop_id = '$prev_drop'";
-			$prevDropUser = getInfoFromDatabase($prevDropUser);
-			//increase points by pointCounter for that user
-			$query = "UPDATE users SET points = points+'$pointCounter' WHERE user_id = '$prevDropUser'";
-			addToDatabase($query);
-			$pointCounter += 1;
-			//reset variables to be valid for the prevdrop and repeat
-			$drop = getInfoFromDatabase($nextPrev);
-			$query2 = "SELECT prev_drop_id FROM drops WHERE drop_id = '$drop'";
-			$prev_drop = getInfoFromDatabase($query2);
+		setIdQuery($prev_drop_id);
+		$result = getInfoFromDatabase($id_query); // Get the user ID
+		$result = $result[0]['user_id'];
+		while($result != 0) { // While there are still valid user_id's to be added
+
+			setEmailQuery($result);
+			$user_email = getInfoFromDatabase($email_query); // Get the users email for adding points below
+			$user_email = $user_email[0]['email'];
+
+
+			$points = getPoints($user_email);
+			$points += $pointCounter; // Add the appropriate amount of points
+			updatePoints($user_email, $points); // Points have been credited
+
+
+			setDropIdQuery($prev_drop_id);
+			$prev_drop_id = getInfoFromDatabase($drop_id_query); // Get the next drop ID
+			$prev_drop_id = $prev_drop_id[0]['prev_drop_id'];
+
+
+			setIdQuery($prev_drop_id);
+			$result = getInfoFromDatabase($id_query);
+			$result = $result[0]['user_id'];
+
+
+			if($pointCounter < $point_limit) // Increment point counter appropriately
+				$pointCounter += 1;
 		}
 	}
 
-	function isInLocation($prev_id, $cur_id) {
-		//use location function 
+	// This will get the user_id associated with the previous drop
+	function setIdQuery($prev_drop_id) {
+		global $id_query;
+		$id_query = "SELECT user_id FROM drops WHERE drop_id = $prev_drop_id";
+	}
+
+	// This will get the next previous drop id so we can get the next user id to give points
+	function setDropIdQuery($prev_drop_id) {
+		global $drop_id_query;
+		$drop_id_query = "SELECT prev_drop_id FROM drops WHERE drop_id = $prev_drop_id";
+	}
+
+	// This is just to get the email so we can use dropHelper functions that take an email parameter
+	function setEmailQuery($user_id) {
+		global $email_query;
+		$email_query = "SELECT email FROM users WHERE user_id = $user_id";
 	}
 
 ?>

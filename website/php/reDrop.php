@@ -1,6 +1,7 @@
 <?php
 	require_once(__DIR__."/dropHelper.php"); // Allow access to the database functions
 	require_once(__DIR__."/dropGeo.php"); // Allow access to the geography functions
+	require_once(__DIR__."/pointTraceBack.php"); // Allow the points crediting system function 
 
 	$song_id = $_POST['song_id']; // retieve the song ID
 	$email = $_POST['email'];	// retrieve user email
@@ -17,6 +18,7 @@
 			if($prev_id == "Error")
 				echo "No Previous ID was found. This should not be possible.";
 			else {
+				traceBack($prev_id); // Give the reDrop points
 				insertDrop($email, $song_id, $latitude, $longitude, $prev_id);
 				subtractReDropPoints($email);
 			}
