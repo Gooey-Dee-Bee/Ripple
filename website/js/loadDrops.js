@@ -2,15 +2,17 @@ var songsInDB = new Array();
 
 /*GET SONGS FROM THE DATABASE*/
 function makeRequest(){
-$.get("/ripple/php/loadDrops.php", function(data, status) {
-		//console.log('adding songs to array');
-		addSongsToArray(JSON.parse(data));
-	});
+$.post("/ripple/php/loadDrops.php", 
+		{latitude: sessionStorage.getItem('latitude'), longitude: sessionStorage.getItem('longitude')},
+		function(data, status) {
+			//console.log('adding songs to array');
+			addSongsToArray(JSON.parse(data));
+		});
 }
 
 
 function makeRequestForUser(){
-$.get("/ripple/php/loadDrops.php",
+$.post("/ripple/php/loadDrops.php",
 		{user_id: sessionStorage.getItem('user_id')},
  		function(data, status) {
 		console.log('adding songs to user array');

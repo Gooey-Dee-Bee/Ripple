@@ -38,6 +38,7 @@ function search(query) {
 	}
 	else {
 		//alert("not a url");
+		$("#queryString").html(query);
 		SC.get('/tracks', { q: query }, function(tracks) {
 			// will insert top 10 songs returned by SoundCloud into search modal
 			for (i=0; i<10; i++) {
