@@ -14,9 +14,8 @@
 	 else {	
 	 	if(!sameUserDrop($email, $song_id)) { // Make sure it is not the same user trying to re-drop their song
 			$prev_id = getPrevDropId($song_id, $latitude, $longitude);
-			echo $prev_id;
-			if($prev_id == "OhShit")
-				echo "delete *";
+			if($prev_id == "Error")
+				echo "No Previous ID was found. This should not be possible.";
 			else {
 				insertDrop($email, $song_id, $latitude, $longitude, $prev_id);
 				subtractReDropPoints($email);
