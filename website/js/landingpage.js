@@ -82,7 +82,13 @@ $( document ).ready( function() {
 		sessionStorage.name=user.email;
 		console.log("sessionStorage"+sessionStorage.getItem("name"));
 		
-		if (user.password === user.confirmPassword) {
+		if (user.password == "") {
+			document.getElementById("errorMessage").innerHTML = "Please enter a password";
+		} // end if
+		else if (user.confirmPassword == "") {
+			document.getElementById("errorMessage").innerHTML = "Please confirm your password";
+		}
+		else if (user.password === user.confirmPassword) {
 			// url should be /ripple/php/createAccount.php
 			// url for apiary http://private-f89294-ripple3.apiary-mock.com/newuser/email
 			$.post("/ripple/php/createAccount.php", JSON.stringify(user), function( data ) {
