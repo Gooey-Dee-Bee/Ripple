@@ -12,7 +12,7 @@
 
 	$result = getInfoFromDatabase($query);
 
-	$row =  mysqli_fetch_assoc($result);
+	$row =  mysql_fetch_assoc($result);
 
 	$user_id = $row['user_id'];
 	$song_id = $row['song_id'];

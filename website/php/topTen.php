@@ -10,11 +10,21 @@
 	$result = getInfoFromDatabase($query);
 
 	$rows = array();
-	while($r = mysqli_fetch_assoc($result)){
-		$rows[] = $r;
+
+	$i = 0;
+
+	while($r = mysql_fetch_assoc($result)){
+
+		$rows[$i] = array(
+			'song_id' => $r['song_id'],
+			'count' => $r['count']
+			);
+
+		$i++;
 	}
 
-	echo json_encode($rows);
+
+echo json_encode($rows);
 
 
 
