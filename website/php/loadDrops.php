@@ -27,7 +27,7 @@
 		
 		$results = getInfoFromDatabase($query); // Returns the data as an associative array
 		$viewableSongs =  array();
-		for($i = 0; $i < count($results); $i++)
+		for($i = count($results) - 1; $i >= 0; $i--)
 		{
 			if(inViewableRegion($results[$i]['latitude'],$results[$i]['longitude'], $viewableRegion) == TRUE)
 			{
