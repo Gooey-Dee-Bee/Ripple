@@ -2,6 +2,7 @@ var songsInDB = new Array();
 
 /*GET SONGS FROM THE DATABASE*/
 function makeRequest(){
+console.log('make request');
 $.post("/ripple/php/loadDrops.php", 
 		{latitude: sessionStorage.getItem('latitude'), longitude: sessionStorage.getItem('longitude')},
 		function(data, status) {
@@ -23,7 +24,7 @@ $.post("/ripple/php/loadDrops.php",
 
 /*ADD SONGS FROM THE DATABSE TO THE ARRAY*/
 function addSongsToArray(jsonArray) {
-
+console.log('add song to array');
 	for(var i = 0; i < jsonArray.length; i++){
 		var songId = JSON.stringify(jsonArray[i]["song_id"]);
 		//console.log("FUCK BITCHES");
@@ -37,7 +38,7 @@ function addSongsToArray(jsonArray) {
 
 /*ADD SONGS FROM THE DATABSE TO THE ARRAY*/
 function addSongsToUserArray(jsonArray) {
-
+console.log('add song to user array');
 	for(var i = 0; i < jsonArray.length; i++){
 		var songId = JSON.stringify(jsonArray[i]["song_id"]);
 		//console.log("FUCK BITCHES");
@@ -57,10 +58,11 @@ var beginPlayer = '<div class="songPlayer" id="song';
 var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
 var midPlayer ='"></iframe></div><div><img class="drop" src="images/dropItIcon.png"  id=song';
 var alternateEnd = '"></iframe></div><div>';
-var endPlayer =' onClick="bumpSong(this.id)"/></div></div>';
+var endPlayer =' onClick="bumpSong()"/></div></div>';
 
 /** GRAB THE SONG ID FROM THE SONG URL ON THE PAGE*/
 function grabSong() {
+	console.log('grab song');
 	var songId = document.getElementById("searchQuery").value;
 	if(sessionStorage.getItem('points') > 0)
 		getSongId(songId);
@@ -72,6 +74,7 @@ function grabSong() {
 /*GET THE SONG ID FROM SOUNDCLOUD*/
 //Load songs statically on the page load
 function getSongId(url) {
+console.log('get song ID');
 var songExists = false;
 console.log('GETTING THE SONG URL');
 $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f874d25715f0e225e7c71a', function(data, status) {
@@ -87,6 +90,7 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 	
 			alert('the song does not exist');
 			addSong(newSongId);
+			
 			//console.log('adding the song because it is not a duplicate');
 			songsInDB.push(newSongId);
 			$.post(
@@ -112,6 +116,7 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 
 /*PARSE THE JSON FROM SOUNDCLOUD FOR ONLY THE ID*/
 function parseSong(trackJson) {
+	console.log('parse song');
 	var id = JSON.stringify(trackJson["id"]);
 	return id;
 }
@@ -119,6 +124,7 @@ function parseSong(trackJson) {
 
 /**ADD SONG FRAME TO THE SONG FEED (used for static and dynamic)**/
 function addSong(songId) {
+console.log('add song');
 	for(var i = 0; i < songsInDB.length; i++) {
 			//console.log('ADDING SONGS IN DB AND SHIT'+songsInDB[i]);
 			if(songsInDB[i] == songId){
@@ -158,6 +164,7 @@ function addSong(songId) {
 
 
 function addUserSong(songId) {
+	console.log('add user song');
 	for(var i = 0; i < songsInDB.length; i++) {
     var newcontent = document.createElement('div');
     var newSongListing = beginPlayer+songId+secondPlayer+songId+alternateEnd;
@@ -178,6 +185,7 @@ function addUserSong(songId) {
 
 /*ENSURES THE LATEST SONG IS ON TOP*/
 function prependElement(parentID, child){
+console.log('prepend element');	
 	parent = document.getElementById(parentID);
 	if(parent)
 		parent.insertBefore(child, parent.childNodes[0]);
@@ -188,6 +196,7 @@ function prependElement(parentID, child){
 /* BUMP A SONG UP THAT IS ALREADY ON THE PLAYLIST */
 function bumpSong(songIdentity) {
 		/*NEEDS TO BE SUBSTITUTED FOR A FUNCTION THAT'S SPECIFIC TO BUMPING*/
+		console.log('bump song');
 		$.post(
 			'/ripple/php/reDrop.php', 
 			{song_id: songIdentity, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('location')[0],
