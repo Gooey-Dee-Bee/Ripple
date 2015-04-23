@@ -1,5 +1,6 @@
 <?php
 	require_once(__DIR__."/databases.php"); // Allow access to the database functions
+	require_once(__DIR__."/databases.php"); // Allow access to the geog functions
 
 	$defaultPoints = 10;
 	$reDropPoints = 5;
@@ -32,10 +33,17 @@
 		updatePoints($email, $points);
 	}
 
-	function getPrevDropId($song_id) {
+	function getPrevDropId($song_id, $latitude, $longitude) {
+		$surrArea = getSurroundingArea($latitude, $longitude);
 		$query = "SELECT drop_id FROM drops WHERE song_id = $song_id ORDER BY time_stamp DESC";
 		$redrop = getInfoFromDatabase($query);
-		return $redrop[0]['drop_id']; 
+
+		foreach ($redrop as $key => $value) {
+				if(inViewableRegion($value['latitude'], $value['longitude'], $surrArea))
+					return $value['user_id'];
+			}
+
+			return "OhShit";
 	}
 
 	function updatePoints($email, $points) {

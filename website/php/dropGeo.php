@@ -1,25 +1,23 @@
 <?php
 	Require_once(__DIR__."/databases.php"); //DB function access
-	$latitude = $_POST['latitude'];		// retrieve latitude
-	$longitude = $_POST['longitude'];	// retrieve longitude
-
 
 	
 	function getCurrentArea($latitude, $longitude)
 	{
-		$south = int($latitude);
-		$north = latPlusOne($latitude);
-		$east = int($longitude);
-		$west = longPlusOne($latitude);
+		$south = floor($latitude);
+		$north = ceil($latitude);
+		$east = floor($longitude);
+		$west = ceil($longitude);
 
 		$area =
-		[
+		array(
 			"northBound" => $north,
 			"southBound" => $south,
 			"eastBound" => $east,
 			"westBound" => $west,
-		];
+		);
 
+		#echo json_encode($area);
 		return $area;
 	}
 
@@ -27,14 +25,23 @@
 	{
 		$area = getCurrentArea($latitude, $longitude);
 		$surroundingArea = 
-		[
-			"northBound" = latPlusOne($area['northBound']),
-			"southBound" = latMinusOne($area['southBound']),
-			"eastBound" = longPlusOne($area['eastBound']),
-			"westBound" = longMinusOne($area['westBound']),
-		];
+		array(
+			"northBound" => latPlusOne($area['northBound']),
+			"southBound" => latMinusOne($area['southBound']),
+			"eastBound" => longPlusOne($area['eastBound']),
+			"westBound" => longMinusOne($area['westBound']),
+		);
 
-		return json_encode($surroundingArea);
+		return ($surroundingArea);
+	}
+
+	function inViewableRegion($songLat, $songLong, $boundsArray)
+	{
+		#echo json_encode($boundsArray);
+		if($songLat < $boundsArray['northBound'] && $songLat > $boundsArray['southBound']&& $songLong < $boundsArray['eastBound'] && $songLong > $boundsArray['westBound'])
+			return TRUE;
+		else
+			return FALSE;
 	}
 
 
@@ -74,7 +81,7 @@
 
 	function longMinusOne($longitude)
 	{
-		$longi = $longitude + 1;
+		$longi = $longitude - 1;
 		if($longi < -180)
 		{
 			$longi = 180 - ($longi %  (-180));
