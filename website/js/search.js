@@ -8,6 +8,8 @@ function dropSong(songID) {
 		{song_id: songID, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem("latitude"),
 		 longitude: sessionStorage.getItem("longitude")}, 
 		function(returnedData){
+			if(returnedData == 200) // The user doesn't have enough points to drop the song
+				alert("You do not have enough points to drop this song!");
 			// alert(returnedData);
 			// alert("success");
 		})
@@ -36,6 +38,7 @@ function search(query) {
 	}
 	else {
 		//alert("not a url");
+		$("#queryString").html(query);
 		SC.get('/tracks', { q: query }, function(tracks) {
 			// will insert top 10 songs returned by SoundCloud into search modal
 			for (i=0; i<10; i++) {
