@@ -24,7 +24,7 @@ h2 {
 	text-align:center;
 	font-family: "Poiret One";
 	font-weight: bold;
-	font-size: 25px;
+	font-size: 20px;
 	width:65%;
 	margin-left: auto;
 	margin-right: auto;
@@ -337,7 +337,7 @@ h2 {
 #dropBox {
 	text-align:center;
 	/*margin-top:30px;*/
-	height:200px;
+	height:80px;
 	font-family: "Poiret One";
 }
 #searchBox {
