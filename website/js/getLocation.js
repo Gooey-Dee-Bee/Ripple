@@ -26,8 +26,8 @@ $(document).ready(function(){
 });
 
 function showPosition(position) {
-    alert("Latitude: " + position.coords.latitude + 
-    "Longitude: " + position.coords.longitude);
+    // alert("Latitude: " + position.coords.latitude + 
+    // "Longitude: " + position.coords.longitude);
 
 	sessionStorage.latitude = position.coords.latitude;
 	sessionStorage.longitude = position.coords.longitude;
