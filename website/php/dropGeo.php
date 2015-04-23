@@ -1,8 +1,5 @@
 <?php
 	Require_once(__DIR__."/databases.php"); //DB function access
-	$latitude = $_POST['latitude'];		// retrieve latitude
-	$longitude = $_POST['longitude'];	// retrieve longitude
-
 
 	
 	function getCurrentArea($latitude, $longitude)

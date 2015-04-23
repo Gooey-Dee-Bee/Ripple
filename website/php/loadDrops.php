@@ -17,14 +17,17 @@
 		$query = "SELECT DISTINCT song_id, latitude, longitude FROM drops ORDER BY time_stamp LIMIT 10"; // For now, just returns everything that is in the drop database
 		
 		$results = getInfoFromDatabase($query); // Returns the data as an associative array
-		
+		$viewableSongs =  array()
 		for($i = 0; $i < count($results); $i = $i + 1)
 		{
-	
+			if(inViewableRegion($results[i]['latitude'],$results[i]['longitude'], $viewableRegion) == FALSE)
+			{
+				array_push($viewableSongs, $results[i]['song_id']);
+			}
 		}
 
-		echo json_encode($results);
+		#echo json_encode($viewableSongs);
 	}
 
-	#echo json_encode($results); // Returns the song ID in reverse chronological order (the first entry was dropped the longest time ago)
+	echo json_encode($viewableSongs); // Returns the song ID in reverse chronological order (the first entry was dropped the longest time ago)
 ?>
