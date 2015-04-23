@@ -15,8 +15,9 @@ function makeRequestForUser(){
 $.post("/ripple/php/loadDrops.php",
 		{user_id: sessionStorage.getItem('user_id')},
  		function(data, status) {
-		//console.log('adding songs to array');
-		addSongsToArray(JSON.parse(data));
+		console.log('adding songs to user array');
+		addSongsToUserArray(JSON.parse(data));
+		$('#songBox').show();
 	});
 }
 
@@ -34,6 +35,20 @@ function addSongsToArray(jsonArray) {
 	}	
 }
 
+/*ADD SONGS FROM THE DATABSE TO THE ARRAY*/
+function addSongsToUserArray(jsonArray) {
+
+	for(var i = 0; i < jsonArray.length; i++){
+		var songId = JSON.stringify(jsonArray[i]["song_id"]);
+		//console.log("FUCK BITCHES");
+		songId = songId.substr(1,songId.length-2);
+		
+		console.log("song id: "+songId);
+		addUserSong(songId);
+		songsInDB.push(songId);
+	}	
+}
+
 
 /******************* FOR BOTH SONGS FROM DB AND SONGS DROPPED DYNAMICALLY **************/
 
@@ -41,6 +56,7 @@ function addSongsToArray(jsonArray) {
 var beginPlayer = '<div class="songPlayer" id="song';
 var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
 var midPlayer ='"></iframe></div><div><img class="drop" src="images/dropItIcon.png"  id=song';
+var alternateEnd = '"></iframe></div><div>';
 var endPlayer =' onClick="bumpSong(this.id)"/></div></div>';
 
 /** GRAB THE SONG ID FROM THE SONG URL ON THE PAGE*/
@@ -138,6 +154,27 @@ function addSong(songId) {
 		document.getElementById("searchQuery").value="";
 
 }
+
+
+
+function addUserSong(songId) {
+	for(var i = 0; i < songsInDB.length; i++) {
+    var newcontent = document.createElement('div');
+    var newSongListing = beginPlayer+songId+secondPlayer+songId+alternateEnd;
+    console.log("ADD SONG "+songId);
+    newcontent.innerHTML = newSongListing;
+   
+    prependElement('songBox', newcontent);
+ 
+    if (sessionStorage.getItem('name') == null) {
+    	document.getElementById(songId).style.display = "none";
+    	//console.log('should not be displaying');
+    }
+	
+	getUserPoints();
+	('#songId').value = "";
+
+}}
 
 /*ENSURES THE LATEST SONG IS ON TOP*/
 function prependElement(parentID, child){
