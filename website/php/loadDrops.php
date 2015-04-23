@@ -37,6 +37,9 @@
 				array_push($viewableSongs, $newArray);
 				#unset($results[$i]);
 			}
+
+			if(count($viewableSongs) >= 10)
+				break;
 		}
 
 		#echo json_encode($viewableSongs);
