@@ -124,7 +124,7 @@ function parseSong(trackJson) {
 
 /**ADD SONG FRAME TO THE SONG FEED (used for static and dynamic)**/
 function addSong(songId) {
-console.log('add song');
+//console.log('add song');
 	for(var i = 0; i < songsInDB.length; i++) {
 			//console.log('ADDING SONGS IN DB AND SHIT'+songsInDB[i]);
 			if(songsInDB[i] == songId){
@@ -183,7 +183,7 @@ function addUserSong(songId) {
 
 /*ENSURES THE LATEST SONG IS ON TOP*/
 function prependElement(parentID, child){
-console.log('prepend element');	
+//console.log('prepend element');	
 	parent = document.getElementById(parentID);
 	if(parent)
 		parent.insertBefore(child, parent.childNodes[0]);
