@@ -26,7 +26,7 @@
 		
 		$results = getInfoFromDatabase($query); // Returns the data as an associative array
 		$viewableSongs =  array();
-		for($i = 0; $i < count($results); $i++)
+		for($i = count($results) - 1; $i >= 0; $i--)
 		{
 			if(inViewableRegion($results[$i]['latitude'],$results[$i]['longitude'], $viewableRegion) == TRUE)
 			{
@@ -36,6 +36,9 @@
 				array_push($viewableSongs, $newArray);
 				#unset($results[$i]);
 			}
+
+			if(count($viewableSongs) >= 10)
+				break;
 		}
 
 		echo json_encode($viewableSongs); // Returns the song ID in reverse chronological order (the first entry was dropped the longest time ago)
