@@ -41,9 +41,20 @@ function search(query) {
 
 		SC.get('/tracks', { q: query }, function(tracks) {
 			// will insert top 10 songs returned by SoundCloud into search modal
-			for (i=0; i<10; i++) {
-				var newcontent = beginPlayer+tracks[i].id+secondPlayer+tracks[i].id+midPlayer+tracks[i].id+endPlayer;
-			    $('#searchModal').append(newcontent);
+			if (tracks.length > 10) {
+				for (i=0; i<10; i++) {
+					var newcontent = beginPlayer+tracks[i].id+secondPlayer+tracks[i].id+midPlayer+tracks[i].id+endPlayer;
+				    $('#searchModal').append(newcontent);
+				}
+			}
+			else if (tracks.length == 0){
+				$('#searchModal').append("No results :(");
+			}
+			else {
+				for (i=0; i<tracks.length; i++) {
+					var newcontent = beginPlayer+tracks[i].id+secondPlayer+tracks[i].id+midPlayer+tracks[i].id+endPlayer;
+				    $('#searchModal').append(newcontent);
+				}
 			}
 			window.location.replace("#openModal");
 		});
