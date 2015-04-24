@@ -74,25 +74,31 @@ console.log("SEARCHING FOR SONG: "+songID);
 		var songDrops = 342;
 //# of times the song has been dropped
 var songDrops = 342;
-
 //# of users who have dropped the song
 var songUsers = 12;
-
 //# first time the song was dropped
 var songFirst = "03/4/1293";
-
 //last time the song was dropped
 var songLast = "40/12/3423";
-
 //locations where the song has been dropped
-var songLocation = "everywhere";
+var songLocation = "Georgia, the country";
+var originalDrop = 234;
 
 
-var htmlString= "<table id='genTable' class='anNumber'><tr class='anDescriptor'>"+
-				"<td># of Times Dropped</td><td># of Users Dropping</td></tr>"+
-				"<tr class='anNumber '><td>"+songDrops+"</td><td>"+songUsers+"</td></tr>"+
-				"<tr class='anDescriptor'><td>First Drop</td><td>Most Recent Drop</td></tr>"+
-				"<tr class='anNumber '><td>"+songFirst+"</td><td>"+songLast+"</td></tr>";
+var htmlString= "<div id='info'>"+
+		'<table id="genTable">'+
+		'<tr><td class="anDescriptor">Time</td></tr>'+
+		'<tr><td>First Drop</td><td>'+songFirst+'</td></tr>'+
+		'<tr><td>Most Recent Drop</td><td>'+songLast+'</td></tr>'+
+		'<tr><td class="anDescriptor">Drops</td></tr>'+
+		'<tr><td>Number of Times Dropped</td><td>'+songDrops+'</td></tr>'+
+		'<tr><td>Number of Users Dropping</td><td>'+songUsers+'</td></tr>'+
+		'<tr><td>Number of Original Drops</td><td>'+originalDrop+'</td></tr>'+
+		'<tr ><td class="anDescriptor">Location</td></tr>'+
+		'<tr><td>First Drop Location</td><td>+'+songLocation+'</td></tr>'+
+		'<tr><td>Last Drop Location</td><td>'+songLocation+'</td></tr>'+
+		'<tr><td>Most Common Location</td><td>'+songLocation+'</td></tr>'+
+		'</table></div>"';
 
 		$('#songAnalytics').append(htmlString);
 	
@@ -118,32 +124,48 @@ function userSearch() {
 $.get('php/getUserInfo.php', {'email':userID}, function(data, status) {
 		console.log(JSON.stringify(JSON.parse(data)));
 		data = JSON.parse(data);
-			/*INCLUDE PHP FUNCTION REGARDING USERS*/
-	var songDrops = data['total_drops'];
-
-	//# of users who have dropped the song
-	var userPoints = data['points'];
-
-	//# first time the song was dropped
-	var songFirst = "03/4/1293";
-
-	//last time the song was dropped
-	var songLast = "40/12/3423";
-
-	//locations where the song has been dropped
-	var songLocation = "everywhere";
-
-
-
-	var htmlString = "<div id='info'><table id='genTable' class='anNumber'><tr class='anDescriptor'>"+
-				"<td># of Songs Dropped </td><td>Points on User's Acount</td></tr>"+
-				"<tr class='anNumber '><td>"+songDrops+"</td><td>"+userPoints+"</td></tr>"+
-				"<tr class='anDescriptor'><td>First Drop</td><td>Most Recent Drop</td></tr>"+
-				"<tr class='anNumber '><td>"+songFirst+"</td><td>"+songLast+"</td></tr></div>";
-				
+		
+		var songDrops = data['total_drops'];
+		var userName = data['email'];
+		var userID = data['userId'];
+		//# of users who have dropped the song
+		var userPoints = data['points'];
+		//# first time the song was dropped
+		var songFirst = "03/4/1293";
+		//last time the song was dropped
+		var songLast = "40/12/3423";
+		//locations where the song has been dropped
+		var songLocation = "Georgia, The country";
+	if(userID != null) {
+		
 
 
-		$('#songAnalytics').append(htmlString);
+
+		var htmlString = "<div id='info'>"+
+			'<table id="genTable">'+
+			'<tr><td class="anDescriptor">User</td></tr>'+
+			'<tr><td>User ID</td><td>'+userID+'</td></tr>'+
+			'<tr><td>Username</td><td>'+userName+'</td></tr>'+
+			'<tr><td>First Drop</td><td>'+songFirst+'</td></tr>'+
+			'<tr><td>Most Recent Drop</td><td>'+songLast+'</td></tr>'+
+			'<tr><td class="anDescriptor">Points</td></tr>'+
+			'<tr><td>Bought Drops</td><td>Yes/No</td></tr>'+
+			'<tr><td>Number of Songs Dropped</td><td>'+songDrops+'</td></tr>'+
+			'<tr><td>Points all time</td><td>'+userPoints+'</td></tr>'+
+			'<tr><td>Points from Redrops</td><td>666</td></tr>'+
+			'<tr><td>Current points left</td><td>666</td></tr>'+
+			'<tr ><td class="anDescriptor">Location</td></tr>'+
+			'<tr><td>Most common location</td><td>+'+songLocation+'</td></tr>'+
+			'<tr><td>More than one location?</td><td>No.</td></tr>'+
+			'</table></div>"';
+		}
+		
+		else {
+			var htmlString = "<div id='info' style='color:black;'>I'm sorry, we couldn't find that user.</div>"
+		}
+
+
+			$('#songAnalytics').append(htmlString);
 		});
 
 	
