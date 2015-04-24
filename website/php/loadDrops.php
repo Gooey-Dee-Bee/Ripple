@@ -23,11 +23,11 @@
 	}
 
 	else { // Load all drops in the database
-		$query = "SELECT song_id, latitude, longitude FROM drops GROUP BY song_id ORDER BY time_stamp";
+		$query = "SELECT song_id, latitude, longitude FROM drops GROUP BY song_id ORDER BY time_stamp DESC";
 		
 		$results = getInfoFromDatabase($query); // Returns the data as an associative array
 		$viewableSongs =  array();
-		for($i = count($results) - 1; $i >= 0; $i--)
+		for($i = 0; $i < count($results); $i++)
 		{
 			if(inViewableRegion($results[$i]['latitude'],$results[$i]['longitude'], $viewableRegion) == TRUE)
 			{
