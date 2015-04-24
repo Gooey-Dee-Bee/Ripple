@@ -16,6 +16,7 @@
 	else {
 		$add_query = "INSERT INTO users(pword, email) VALUES('$pword', '$email')";
 		addToDatabase($add_query);
+		shell_exec("php ".__DIR__."/email.php $email > /var/log/ripple/error.log &"); // Email confirmation service ran in BG
 		echo 100;
 	}
 ?>

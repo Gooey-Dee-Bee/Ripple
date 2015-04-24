@@ -3,7 +3,7 @@
 	require_once(__DIR__."/databases.php"); // Allow access to the database functions
 	require_once(__DIR__."/swiftmailer/lib/swift_required.php"); // Access to the swift mailer library
 
-	$email = $_GET['email'];
+	$email = $argv[1]; // This file is called as a background process using shell_exec() so it will recieve the variable like this.
 	main($email);
 
 	//main function that will call all other email functions
