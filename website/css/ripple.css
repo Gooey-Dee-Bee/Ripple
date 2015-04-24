@@ -24,7 +24,7 @@ h2 {
 	text-align:center;
 	font-family: "Poiret One";
 	font-weight: bold;
-	font-size: 25px;
+	font-size: 20px;
 	width:65%;
 	margin-left: auto;
 	margin-right: auto;
@@ -337,7 +337,7 @@ h2 {
 #dropBox {
 	text-align:center;
 	/*margin-top:30px;*/
-	height:200px;
+	height:80px;
 	font-family: "Poiret One";
 }
 #searchBox {
@@ -543,9 +543,12 @@ iframe {
 
 .anNumber {
 	font-size:1.6em;
+	margin-left:20px;
+	margin-right:20px;
 }
 .anDescriptor {
 	font-size:1.2em;
+	margin-top:30px;
 }
 
 #genTable {
@@ -554,7 +557,8 @@ iframe {
 
 	margin-left:auto;
 	margin-right:auto;
-	padding-top:50px;
+	margin-top:20px;
+	
 	
 
 }

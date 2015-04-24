@@ -14,20 +14,19 @@
 	// echo json_encode($viewableRegion);
 	// echo "\n";
 
-	$result;
-	if(isset($_GET['user_id'])) { // This is to load the drops from a certain user only
-		$user_id = $_GET['user_id'];
+	if(isset($_POST['user_id'])) { // This is to load the drops from a certain user only
+		$user_id = $_POST['user_id'];
 		$query = "SELECT song_id FROM drops WHERE user_id = $user_id ORDER BY time_stamp";
-		$result = getInfoFromDatabase($query);
-	
+		$result = getInfoFromDatabase($query);	
+		echo json_encode($result);
 	}
 
 	else { // Load all drops in the database
-		$query = "SELECT DISTINCT song_id, latitude, longitude FROM drops ORDER BY time_stamp LIMIT 10"; // For now, just returns everything that is in the drop database
+		$query = "SELECT song_id, latitude, longitude FROM drops GROUP BY song_id ORDER BY time_stamp";
 		
 		$results = getInfoFromDatabase($query); // Returns the data as an associative array
 		$viewableSongs =  array();
-		for($i = 0; $i < count($results); $i++)
+		for($i = count($results) - 1; $i >= 0; $i--)
 		{
 			if(inViewableRegion($results[$i]['latitude'],$results[$i]['longitude'], $viewableRegion) == TRUE)
 			{
@@ -37,10 +36,13 @@
 				array_push($viewableSongs, $newArray);
 				#unset($results[$i]);
 			}
+
+			if(count($viewableSongs) >= 10)
+				break;
 		}
 
-		#echo json_encode($viewableSongs);
+		echo json_encode($viewableSongs); // Returns the song ID in reverse chronological order (the first entry was dropped the longest time ago)
+
 	}
 
-	echo json_encode($viewableSongs); // Returns the song ID in reverse chronological order (the first entry was dropped the longest time ago)
 ?>

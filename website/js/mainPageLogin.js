@@ -24,7 +24,7 @@ $(function(){
 						sessionStorage.password = user.password;
 			    		//console.log('the session stuff is: '+sessionStorage.getItem('name'));
 			    		
-			    		alert("Successfully Logged In, check the console");
+			    		//alert("Successfully Logged In, check the console");
 			    		showAccountInfo();
 			    		if(sessionStorage.getItem('location') != null)
 			    			{

@@ -1,6 +1,6 @@
 <?php
 	require_once(__DIR__."/databases.php"); // Allow access to the database functions
-	require_once(__DIR__."/databases.php"); // Allow access to the geog functions
+	require_once(__DIR__."/dropGeo.php"); // Allow access to the geog functions
 
 	$defaultPoints = 10;
 	$reDropPoints = 5;
@@ -39,12 +39,12 @@
 		$redrop = getInfoFromDatabase($query);
 
 		foreach ($redrop as $key => $value) {
-				if(inViewableRegion($value['latitude'], $value['longitude'], $surrArea)) {
-					return $value['drop_id'];
-				}
+			if(inViewableRegion($value['latitude'], $value['longitude'], $surrArea)) {
+				return $value['drop_id'];
+			}
 		}
 
-			return "OhShit";
+			return "Error";
 	}
 
 	function updatePoints($email, $points) {

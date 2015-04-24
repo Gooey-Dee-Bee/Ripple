@@ -59,7 +59,7 @@ $('#dropsLeft').html(pointsLeft +"<div class='yourDropText'>Points Left</div>");
 $('#dropsUsed').html(totalDrops +"<div class='yourDropText'>Past Drops</div>"); 
 
 
-$('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='goToPersonalPlaylist()'>View Drop History</a><br></br><a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>Buy More Drops</a>"); 
+$('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='goToPersonalPlaylist()'>View Drop History</a><br></br><a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>Buy More Points</a>"); 
 }
 
 
