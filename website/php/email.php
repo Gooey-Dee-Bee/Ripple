@@ -21,7 +21,7 @@
 		$confirm = addToDatabase("INSERT INTO confirm VALUES('$email','$key')");
 
 		if($confirm){
-			format_email($email, $key);
+			send_email($email, $key);
 		}else{
 			echo "delete*";
 			echo "Could not send email";
@@ -40,6 +40,27 @@
          
     	//return the txt of the template
     	return $template;
+	}
+
+	function send_email($email, $key)
+	{ 
+    	//format each email
+    	$body = format_email($email, $key);
+ 
+    	//setup the mailer
+    	$transport = Swift_MailTransport::newInstance();
+    	$mailer = Swift_Mailer::newInstance($transport);
+    	$message = Swift_Message::newInstance();
+    	$message ->setSubject('Welcome to Ripple');
+    	$message ->setFrom(array('noreply@ripple.com' => 'Ripple'));
+    	$message ->setTo(array('$email' => 'Ripple User'));
+     
+    	$message ->setBody($body);
+             
+    	$result = $mailer->send($message);
+     
+    	return $result;
+     
 	}
 	
 
