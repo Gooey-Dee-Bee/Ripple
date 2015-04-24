@@ -25,7 +25,7 @@ $( document ).ready( function() {
 
 			    	if(data == 100){
 			    		
-			    		alert("Successfully Logged In, check the console");
+			    		//alert("Successfully Logged In, check the console");
 			    		$('#loginFields').fadeOut();
 			    		$('#accountInfo').removeAttr("class");
 			    		
@@ -95,20 +95,20 @@ $( document ).ready( function() {
 				// success function
 				if(data == 100) {
 		    		document.getElementById("errorMessage").innerHTML = "Account created successfully";
-		    		alert("Successfully Created Account");
+		    		//alert("Successfully Created Account");
 		    		// Redirect to index 
 		    		
 	    			window.location.replace("index.html");
 		    	}
 		    	else {
-		    		alert("no go");
+		    		//alert("An acount already exists with that email address.");
 		    		document.getElementById("errorMessage").innerHTML = "Account already exisits with that email address.";
 		    		
 		    	
 		    	}
 			})
 			.fail( function() {
-				alert("Error occured creating an account");
+				document.getElementById("errorMessage").innerHTML = "Error occured creating an account";
 			});
 		} // end of if
 		else { // passwords are not the same
