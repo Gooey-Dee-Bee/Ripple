@@ -1,0 +1,7 @@
+Welcome to Ripple {EMAIL} !
+
+Please click the link below to activate your account:
+
+54.69.13.79/ripple/php/confirmation.php?key={KEY}
+
+Ripple 2015

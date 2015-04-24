@@ -14,12 +14,11 @@
 	// echo json_encode($viewableRegion);
 	// echo "\n";
 
-	$result;
-	if(isset($_GET['user_id'])) { // This is to load the drops from a certain user only
-		$user_id = $_GET['user_id'];
+	if(isset($_POST['user_id'])) { // This is to load the drops from a certain user only
+		$user_id = $_POST['user_id'];
 		$query = "SELECT song_id FROM drops WHERE user_id = $user_id ORDER BY time_stamp";
-		$result = getInfoFromDatabase($query);
-	
+		$result = getInfoFromDatabase($query);	
+		echo json_encode($result);
 	}
 
 	else { // Load all drops in the database
@@ -42,8 +41,8 @@
 				break;
 		}
 
-		#echo json_encode($viewableSongs);
+		echo json_encode($viewableSongs); // Returns the song ID in reverse chronological order (the first entry was dropped the longest time ago)
+
 	}
 
-	echo json_encode($viewableSongs); // Returns the song ID in reverse chronological order (the first entry was dropped the longest time ago)
 ?>
