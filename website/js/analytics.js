@@ -1,3 +1,8 @@
+SC.initialize({
+	client_id: 'dafab2de81f874d25715f0e225e7c71a'
+});
+
+
 function showGeneral() {
 	var numOfUsers;
 	var numOfSongs;
@@ -57,7 +62,7 @@ $('#songAnalytics').html(htmlString);
 function searchBySong() {
 var htmlString = "<div id='analyticTitle'>Search By Song</div>"
 					+"<br><input type='text' id='songId' placeholder='SONG ID'></input>'"+
-					"<button class='analyticOption' onClick='songSearch()'>Search</button>"+
+					"<button class='analyticOption' onClick='augmentedSongSearch()'>Search</button>"+
 					"<div id='info'>To search for a song you must know the songID."+
 					" To find out how to get the id... </div>";
 
@@ -106,8 +111,9 @@ console.log("SEARCHING FOR SONG: "+songID);
 	}
 
 
-function augmentedSongSearch(query) {
-
+function augmentedSongSearch() {
+	var query = $('#songId').val();
+	console.log('query is '+query);
 	var pattern = /https:\/\/soundcloud.com\/*\w*\/.*/;
 	if (pattern.test(query)) {
 		//alert("SC url");
@@ -118,13 +124,13 @@ function augmentedSongSearch(query) {
 		$("#queryString").html(query);
 		var beginPlayer = '<div class="songPlayerSearch" id="song';
 		var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
-		var midPlayer = '"></iframe></div><div> </div></div>';
-		
+		var midPlayer = '"></iframe></div><div><div class="dropFromSearch" onClick="searchBySong(this.id)" id="';
+		var endPlayer = '">SEARCH FOR THIS SONG</div></div></div>';
 
 		SC.get('/tracks', { q: query }, function(tracks) {
 			// will insert top 10 songs returned by SoundCloud into search modal
 			for (i=0; i<10; i++) {
-				var newcontent = beginPlayer+tracks[i].id+secondPlayer+tracks[i].id+midPlayer;
+				var newcontent = beginPlayer+tracks[i].id+secondPlayer+tracks[i].id+midPlayer+tracks[i].id+endPlayer;
 			    $('#searchModal').append(newcontent);
 			}
 			window.location.replace("#openModal");
