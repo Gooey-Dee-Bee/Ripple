@@ -22,11 +22,11 @@
 	}
 
 	else { // Load all drops in the database
-		$query = "SELECT song_id, latitude, longitude FROM drops GROUP BY song_id ORDER BY time_stamp";
+		$query = "SELECT song_id, latitude, longitude FROM drops GROUP BY song_id ORDER BY MAX(time_stamp) DESC";
 		
 		$results = getInfoFromDatabase($query); // Returns the data as an associative array
 		$viewableSongs =  array();
-		for($i = count($results) - 1; $i >= 0; $i--)
+		for($i = 0; $i < count($results); $i++)
 		{
 			if(inViewableRegion($results[$i]['latitude'],$results[$i]['longitude'], $viewableRegion) == TRUE)
 			{
@@ -34,14 +34,15 @@
 				// echo "\n";
 				$newArray = array('song_id' => $results[$i]['song_id']);
 				array_push($viewableSongs, $newArray);
-				#unset($results[$i]);
+				
+
 			}
 
 			if(count($viewableSongs) >= 10)
 				break;
 		}
 
-		echo json_encode($viewableSongs); // Returns the song ID in reverse chronological order (the first entry was dropped the longest time ago)
+		echo json_encode(array_reverse($viewableSongs)); // Returns the song ID in reverse chronological order (the first entry was dropped the longest time ago)
 
 	}
 

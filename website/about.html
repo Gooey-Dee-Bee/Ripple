@@ -3,11 +3,61 @@
 	<head>
 		<title>About Us</title>
 		<link rel="icon" type="image/jpg" href="images/dropItIcon.png">
+		<link rel="stylesheet" type="text/css" href="css/ripple.css">
+		<link rel="stylesheet" type="text/css" href="css/accountModule.css">
+		<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Poiret One' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/about.css">
 
+		<script type="text/javascript" src="js/generic.js"></script>
+		<script src="http://connect.soundcloud.com/sdk.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	    <script type="text/javascript" src="js/getLocation.js"></script>
+	    <script type="text/javascript" src="js/mainPageLogin.js"></script>
+	    <script type="text/javascript" src="js/analytics.js"></script>
+		<script src="https://checkout.stripe.com/checkout.js"></script>
+	    <script type="text/javascript" src="js/userAccount.js"></script>
+	    <script src="https://checkout.stripe.com/checkout.js"></script>
 
 	</head>
-	<body>
-		
+	<body onload="showAccountInfo();">
+		<div id="navBar">
+			<a href="index.html"><div id="header">
+				Ripple
+			</div></a>
+			<div id="loginFields">
+				<form id="loginForm" action="">
+					<input type="text" class="locationInput loginField" id="loginEmail" placeholder="EMAIL"/> <input type="password" class="locationInput loginField" id="loginPassword" placeholder="PASSWORD"/> <input type="submit" id="submitLogin" class="locationInput" value="LOGIN"/>
+				<br><div style="text-align:right; color:white;"> Don't have an account? <a href="landingPage.html">Make one.</a></div>
+				</form>
+			</div>
+		</div>
+
+		<div class="hidden" id="accountInfo">
+			<div id="userName">
+			</div>
+			<div id="userInfo">
+				<div id="dropNumber"></div> Total Drops
+			</div>
+			<div class="accountLinks">
+				<a id="logout" href="#">logout</a>
+				<a id="accountInfoLink" href="#">View Account</a>
+			</div>			
+		</div>
+
+		<h2 id="aboutUsTitle">About Us</h2>
+
+		<div id="RippleInfo">
+			<p>
+				Ripple is a new way to share the music you love. You can drop a song for the other users in your area to see. If they like it, they can redrop it. The more people that redrop your song, the farther it will spread. 
+			</p>
+		</div>
+
+
+
+
 		<div id="footer" style="text-align:center;">
 			<hr></hr>
 			<a href="analytics.html" style="color:gray; text-decoration:none;">Ripple Analytics</a><br></br>
