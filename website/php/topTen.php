@@ -13,7 +13,7 @@
 
 	$i = 0;
 
-	while($r = mysql_fetch_assoc($result)){
+	while($r = mysqli_fetch_assoc($result)){
 
 		$rows[$i] = array(
 			'song_id' => $r['song_id'],
