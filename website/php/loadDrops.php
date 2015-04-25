@@ -2,8 +2,22 @@
 	require_once(__DIR__."/databases.php"); // Allow access to the database functions
 	
 	require_once(__DIR__."/dropGeo.php");
-	$latitude = $_POST['latitude'];		// retrieve latitude
-	$longitude = $_POST['longitude'];	// retrieve longitude
+
+	// ADDED BY WILL FOR IOS APP
+
+	$request_body = file_get_contents('php://input');
+	$data = json_decode($request_body);
+	if (isset($data->latitude)){
+	$latitude = $data->latitude;
+	$longitude = $data->longitude;
+
+	}
+
+	//
+    else {
+		$latitude = $_POST["latitude"];		// retrieve latitude
+		$longitude = $_POST["longitude"];	// retrieve longitude
+    }
 
 	// echo "\n";
 	// echo $latitude;
