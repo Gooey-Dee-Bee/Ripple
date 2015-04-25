@@ -4,11 +4,12 @@
 
  	$html_start = "<html><head><title>Account Confirmation</title></head><body>";
  	$html_end   = "</body></html>";
- 	$site_path = "192.168.10.10/ripple";
+ 	$site_path = "index.html";
 
  	$html_error = "<h2>An Error Occured</h2><p>An error occured in processing your account.
  					Please make sure the link in your URL exactly matches the one sent via email.</br>
  					If this problem persists, please contact the system administrator.</p>";
+
  	$html_success = "<h2>Confirmation Successful!</h2><p>Your account was successfully confirmed.
  					 Please click the link below to begin using Ripple Music.</br></br></br>
  					 <a href=\"$site_path\">Ripple Music</a></p>";
