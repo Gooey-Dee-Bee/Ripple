@@ -9,7 +9,7 @@
 	$longitude = $_POST['longitude'];	// retrieve longitude
 
 
-	if (!checkPoints($email)) {
+	if (!checkPoints($email, TRUE)) {
 		echo 200; // Error code to indicate that the user does not have enough points to do this drop
 	}
 	 else {	
