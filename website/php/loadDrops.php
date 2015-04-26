@@ -1,32 +1,24 @@
 <?php
 	require_once(__DIR__."/databases.php"); // Allow access to the database functions
-	
 	require_once(__DIR__."/dropGeo.php");
 
 	// ADDED BY WILL FOR IOS APP
 
 	$request_body = file_get_contents('php://input');
 	$data = json_decode($request_body);
-	if (isset($data->latitude)){
-	$latitude = $data->latitude;
-	$longitude = $data->longitude;
 
+	if (isset($data->latitude)) {
+		$latitude = $data->latitude;
+		$longitude = $data->longitude;
 	}
 
-	//
+
     else {
 		$latitude = $_POST["latitude"];		// retrieve latitude
 		$longitude = $_POST["longitude"];	// retrieve longitude
     }
 
-	// echo "\n";
-	// echo $latitude;
-	// echo "\n";
-	// echo $longitude;
-	// echo "\n";
 	$viewableRegion = getSurroundingArea($latitude, $longitude);
-	// echo json_encode($viewableRegion);
-	// echo "\n";
 
 	if(isset($_POST['user_id'])) { // This is to load the drops from a certain user only
 		$user_id = $_POST['user_id'];
