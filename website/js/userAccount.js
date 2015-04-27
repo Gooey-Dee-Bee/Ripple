@@ -19,20 +19,21 @@ function buyMoreDrops(){
 		// alert('This is where we let you give us your money for fake points');
 		console.log('buy more drops is being clicked');
 
-		  var handler = StripeCheckout.configure({
-		    key: 'pk_test_Winx331SdphaTbGUtv2qf8OX',
-		    image: 'images/dropItIcon.png',
-		    token: function(token) {
-		      // Use the token to create the charge with a server-side script.
-		      // You can access the token ID with `token.id`
-		    }
-		  });
+		var handler = StripeCheckout.configure({
+			key: 'pk_test_Winx331SdphaTbGUtv2qf8OX',
+			image: 'images/dropItIcon.png',
+			token: function(token) {
+			  // Use the token to create the charge with a server-side script.
+			  // You can access the token ID with `token.id`
+			}
+		});
 
-		    handler.open({
-		      name: 'Ripple',
-		      description: '50 points',
-		      amount: 500
-		    });
+		handler.open({
+			name: 'Ripple',
+			description: '50 points',
+			amount: 500,
+			email: sessionStorage.getItem('name')
+		});
 	}
 	
 function closeModule(){
@@ -58,7 +59,7 @@ $('#dropsLeft').html(pointsLeft +"<div class='yourDropText'>Points Left</div>");
 $('#dropsUsed').html(totalDrops +"<div class='yourDropText'>Past Drops</div>"); 
 
 
-$('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='goToPersonalPlaylist()'>View Drop History</a><br></br><a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>Buy More Drops</a>"); 
+$('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='goToPersonalPlaylist()'>View Drop History</a><br></br><a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>Buy More Points</a>"); 
 }
 
 

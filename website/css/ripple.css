@@ -2,7 +2,8 @@
 
 MAIN BLUE: #4898bd;
 LIGHTER BLUE FOR BUTTONS: #BBDFF0;
-EVEN LIGHTER BLUE FOR BUTTON HOVER: #120054;
+DARK BLUE FOR ACCOUNT MODAL: #120054;
+LIGHT BLUE FOR HOVER: #E0F5FF;
 LIGHT GRAY BORDER: #CCCCCC;
 DARK BLUE BORDER: #19668A;
 
@@ -23,7 +24,7 @@ h2 {
 	text-align:center;
 	font-family: "Poiret One";
 	font-weight: bold;
-	font-size: 25px;
+	font-size: 20px;
 	width:65%;
 	margin-left: auto;
 	margin-right: auto;
@@ -336,7 +337,7 @@ h2 {
 #dropBox {
 	text-align:center;
 	/*margin-top:30px;*/
-	height:200px;
+	height:80px;
 	font-family: "Poiret One";
 }
 #searchBox {
@@ -483,3 +484,91 @@ iframe {
 	font-family: "Poiret One";
 }
 
+
+
+/*** ANALYTICS PAGE *****/
+#informationBox {
+	text-align:center;
+	font-family: "Poiret One";
+	height:500px;
+	overflow:scroll;
+	border:thick;
+	width:89%;
+	
+	margin-left:auto;
+	margin-right:auto;
+	
+}
+
+
+#analyticBar {
+	width:190px;
+	height:100%;
+	background-color: #120054;
+	float:left;
+
+}
+
+.analyticOption {
+	width:180px;
+	padding:10px;
+	margin:5px;
+	font-size:1.3em;
+	font-family: "Poiret One";
+	background-color: #BBDFF0;
+	border:none;
+	border-radius:6px;
+	z-index:4000;
+	
+
+}
+.analyticOption:hover {
+	background-color:#E0F5FF;
+}
+
+
+#songAnalytics {
+	color:white;
+	
+	text-align:center;
+	position:relative;
+	z-index:1000;
+	margin-left:10%;
+	margin-right:auto;
+	width:65%;
+	float:left;
+	overflow:scroll;
+}
+
+#analyticTitle {
+	font-size:2em;
+	color:black;
+
+}
+
+.anNumber {
+	font-size:1.6em;
+	margin-left:20px;
+	padding-right:20px;
+}
+.anDescriptor {
+	font-size:1.5em;
+	border-bottom:5px solid gray;
+
+}
+
+#genTable {
+	width:100%;
+	text-align:left;
+	color:black;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+
+	
+	
+	
+
+}

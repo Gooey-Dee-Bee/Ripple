@@ -50,7 +50,7 @@
 			<div id="loginFields">
 				<form id="loginForm" action="">
 					<input type="text" class="locationInput loginField" id="loginEmail" placeholder="EMAIL"/> <input type="password" class="locationInput loginField" id="loginPassword" placeholder="PASSWORD"/> <input type="submit" id="submitLogin" class="locationInput" value="LOGIN"/>
-				<br><div style="text-align:right; color:white; font-family:'Poiret One'"> Don't have an account? <a href="landingPage.html">Make one.</a></div>
+				<br><div style="text-align:right; color:white; font-family:'Poiret One'"> Don't have an account? <a href="landingpage.html">Make one.</a></div>
 				</form>
 			</div>
 		</div>
@@ -74,18 +74,18 @@
 			Welcome to Ripple, the home of the hottest songs in your area. Dropping a song costs you 10 points and redropping is 5 points. For every redrop of your song, you get points back. The more people that redrop your song, the more points you get. So...
 		</div>
 
-		<div id="dropBox">
-			<br>
-			<div id="songSearchSuggest">
-				Want to drop a song?
-			</div>
 
-			
+		<br><br>
+		<div id="songSearchSuggest">
+			Want to drop a song?
+		</div>
+		<br>
+
+		<div id="dropBox">
 			<div id="searchBox">
 				<form id="search" action="">
 					<input type="text" id="searchQuery" placeholder="SEARCH FOR A SONG">
 				</form>
-				<br><br>
 			</div>
 		</div>
 
@@ -117,34 +117,10 @@
 		
 		<div id="footer" style="text-align:center;">
 			<hr></hr>
+			<a href="analytics.html" style="color:gray; text-decoration:none;">Ripple Analytics</a><br></br>
 			Created by Gooey-Dee-Bee (c) 2015
 		</div>
 
-		<script>
-		  var handler = StripeCheckout.configure({
-		    key: 'pk_test_Winx331SdphaTbGUtv2qf8OX',
-		    image: 'images/dropItIcon.png',
-		    token: function(token) {
-		      // Use the token to create the charge with a server-side script.
-		      // You can access the token ID with `token.id`
-		    }
-		  });
-
-		  $('#buy-points').on('click', function(e) {
-		    // Open Checkout with further options
-		    handler.open({
-		      name: 'Ripple',
-		      description: '50 points',
-		      amount: 500
-		    });
-		    e.preventDefault();
-		  });
-
-		  // Close Checkout on page navigation
-		  $(window).on('popstate', function() {
-		    handler.close();
-		  });
-		</script>
 
 		
 		

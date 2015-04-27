@@ -1,44 +1,32 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Ripple</title>
+		<title>About Us</title>
 		<link rel="icon" type="image/jpg" href="images/dropItIcon.png">
 		<link rel="stylesheet" type="text/css" href="css/ripple.css">
 		<link rel="stylesheet" type="text/css" href="css/accountModule.css">
 		<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Poiret One' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/about.css">
 
-
-		<script type="text/javascript" src="js/loadDrops.js"></script>
 		<script type="text/javascript" src="js/generic.js"></script>
-		
 		<script src="http://connect.soundcloud.com/sdk.js"></script>
 		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	    <script type="text/javascript" src="js/getLocation.js"></script>
 	    <script type="text/javascript" src="js/mainPageLogin.js"></script>
-
-
-	    <script src="https://checkout.stripe.com/checkout.js"></script>
-
+	    <script type="text/javascript" src="js/analytics.js"></script>
+		<script src="https://checkout.stripe.com/checkout.js"></script>
 	    <script type="text/javascript" src="js/userAccount.js"></script>
-	   
-
-
 	    <script src="https://checkout.stripe.com/checkout.js"></script>
-	   	<script type="text/javascript" src="js/search.js"></script>
-	  
 
 	</head>
-	<body onload="showAccountInfo(); makeRequestForUser();">
-
+	<body onload="showAccountInfo();">
 		<div id="navBar">
-
 			<a href="index.html"><div id="header">
 				Ripple
 			</div></a>
-		
 			<div id="loginFields">
 				<form id="loginForm" action="">
 					<input type="text" class="locationInput loginField" id="loginEmail" placeholder="EMAIL"/> <input type="password" class="locationInput loginField" id="loginPassword" placeholder="PASSWORD"/> <input type="submit" id="submitLogin" class="locationInput" value="LOGIN"/>
@@ -49,83 +37,31 @@
 
 		<div class="hidden" id="accountInfo">
 			<div id="userName">
-				
 			</div>
 			<div id="userInfo">
 				<div id="dropNumber"></div> Total Drops
 			</div>
-			
-		
 			<div class="accountLinks">
 				<a id="logout" href="#">logout</a>
 				<a id="accountInfoLink" href="#">View Account</a>
 			</div>			
 		</div>
 
-		<!-- Search Modal --> 
-		<div>
-			<div id="openModal" class="modalDialog">
-				<div>
-					<a href="#close" title="Close" class="close" id="close">X</a>
+		<h2 id="aboutUsTitle">About Us</h2>
 
-					<h2>Search Results</h2>
-					
-					<p id="searchModal">
-						
-					</p>
-
-				</div>
-			</div>
+		<div id="RippleInfo">
+			<p>
+				Ripple is a new way to share the music you love. You can drop a song for the other users in your area to see. If they like it, they can redrop it. The more people that redrop your song, the farther it will spread. 
+			</p>
 		</div>
 
 
-		<div id="location">
-			
-		</div>
-		
-		<div id="songBox">
-		</div> 
-		
-			<div id="footer" style="text-align:center;">
+
+
+		<div id="footer" style="text-align:center;">
 			<hr></hr>
 			<a href="analytics.html" style="color:gray; text-decoration:none;">Ripple Analytics</a><br></br>
 			Created by Gooey-Dee-Bee (c) 2015
 		</div>
-
-		<script>
-		  var handler = StripeCheckout.configure({
-		    key: 'pk_test_Winx331SdphaTbGUtv2qf8OX',
-		    image: 'images/dropItIcon.png',
-		    token: function(token) {
-		      // Use the token to create the charge with a server-side script.
-		      // You can access the token ID with `token.id`
-		    }
-		  });
-
-		  $('#buy-points').on('click', function(e) {
-		    // Open Checkout with further options
-		    handler.open({
-		      name: 'Ripple',
-		      description: '50 points',
-		      amount: 500
-		    });
-		    e.preventDefault();
-		  });
-
-		  // Close Checkout on page navigation
-		  $(window).on('popstate', function() {
-		    handler.close();
-		  });
-		</script>
-
-		
-		
-		<!--POP UP MODULE FOR ACCOUNT-->
-		<div id="popup">
-		</div>
-	
-
 	</body>
-	
-		 
 </html>

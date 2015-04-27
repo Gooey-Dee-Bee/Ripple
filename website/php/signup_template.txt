@@ -1,0 +1,8 @@
+Welcome to Ripple {EMAIL}!
+
+Please click the link below to activate your account.
+If it is unclickable, please copy and paste it fully into your broswer.
+
+{SITEPATH}/php/accountConfirm.php?key={KEY}&&email={EMAIL}
+
+Ripple 2015
