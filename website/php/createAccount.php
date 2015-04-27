@@ -11,7 +11,7 @@
 
 	$query = "SELECT * FROM users WHERE email = '$email'";
 	if(existsInDatabase($query)) {
-		echo 200; // 'Error Code' that the email has already been registered
+		echo 200; // 'Error Code' that the email has already been registered. JS needs to return an error
 	}
 	else {
 		$add_query = "INSERT INTO users(pword, email) VALUES('$pword', '$email')";
