@@ -9,7 +9,7 @@
 	function checkPoints($email, $redrop = FALSE) {
 		$points = getPoints($email);
 
-		global $defaultPoints;
+		global $defaultPoints, $defaultreDropPoints;
 		if(!$redrop && ($points - $defaultPoints) < 0) // They don't have enough points to complete a drop
 			return FALSE;
 		else if($redrop && ($points - $defaultreDropPoints) < 0) 
@@ -91,6 +91,12 @@
 
 		return FALSE;
 
+	}
+
+	function checkIfUserHasDroppedBefore($email, $song_id) {
+		$user_id = getUserIdFromEmail($email);
+		$query = "SELECT * FROM drops WHERE user_id = $user_id AND song_id = $song_id";
+		return existsInDatabase($query);
 	}
 
 

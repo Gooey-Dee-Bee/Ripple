@@ -13,19 +13,26 @@
 		echo 200; // Error code to indicate that the user does not have enough points to do this drop
 	}
 	 else {	
-	 	if(!sameUserDrop($email, $song_id)) { // Make sure it is not the same user trying to re-drop their song
-			$prev_id = getPrevDropId($song_id, $latitude, $longitude);
-			if($prev_id == "Error")
-				echo "No Previous ID was found. This should not be possible.";
-			else {
-				traceBack($prev_id); // Give the reDrop points
+	 	if(!sameUserDrop($email, $song_id)) { // No record of the user dropping this song in the last 24 hours
+
+	 		if(checkIfUserHasDroppedBefore($email, $song_id)) {
+	 			// The user has dropped this song before, so no one gets points
+				$prev_id = getPrevDropId($song_id, $latitude, $longitude);
 				insertDrop($email, $song_id, $latitude, $longitude, $prev_id);
 				subtractReDropPoints($email);
 			}
+			else {
+				// The user has not dropped this song before, so points will be given
+				$prev_id = getPrevDropId($song_id, $latitude, $longitude);
+				traceBack($prev_id);
+				insertDrop($email, $song_id, $latitude, $longitude, $prev_id);
+				subtractReDropPoints($email);
+			}
+			
 		}
 
 		else
-			echo 300; // User attempted to drop their own song agian.
+			echo 300; // User attempted to drop their own song in under 24 hours.
 	}
 
 ?>
