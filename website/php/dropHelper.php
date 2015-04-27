@@ -50,6 +50,18 @@
 			return "Error";
 	}
 
+	function hasBeenDroppedInAreaBefore($song_id, $latitude, $longitude) {
+		$query = "SELECT * FROM drops WHERE song_id = $song_id";
+		$pastDrops = getInfoFromDatabase($query);
+		$surrArea = getSurroundingArea($latitude, $longitude);
+
+		foreach ($pastDrops as $key => $value) {
+			if(inViewableRegion($value['latitude'], $value['longitude'], $surrArea))
+				return TRUE;			
+		}
+		return FALSE;
+	}
+
 	function updatePoints($email, $points) {
 		$query = "UPDATE users SET points=$points WHERE email='$email'";
 		addToDatabase($query);

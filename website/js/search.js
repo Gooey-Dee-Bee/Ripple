@@ -5,7 +5,7 @@ SC.initialize({
 function dropSong(songID) {
 	console.log('dropping song');
 	$.post(
-		'/ripple/php/insertDrop.php', 
+		'/ripple/php/drop.php', 
 		{song_id: songID, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem("latitude"),
 		 longitude: sessionStorage.getItem("longitude")}, 
 		function(returnedData){
