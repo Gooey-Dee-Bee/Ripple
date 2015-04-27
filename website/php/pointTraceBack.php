@@ -28,6 +28,8 @@
 			$user_email = $user_email[0]['email'];
 
 
+			// Only give points if the user hasn't received points during this process. This prevents a user that has
+			// redropped their own song from continuously getting points added to themselves.
 			if(!in_array($result, $pastUserId)) {
 				$points = getPoints($user_email);
 				$points += $pointCounter; // Add the appropriate amount of points
