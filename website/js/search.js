@@ -49,7 +49,8 @@ function search(query) {
 				}
 			}
 			else if (tracks.length == 0){
-				$('#searchModal').append("No results :(");
+				$('#searchModal').append("No results");
+				$('.modalDialog').css('bottom', '-1000px');
 			}
 			else {
 				for (i=0; i<tracks.length; i++) {
