@@ -74,7 +74,8 @@
 	function sameUserDrop($email, $song_id) {
 		$user_id = getUserIdFromEmail($email);
 
-		$query = "SELECT user_id, time_stamp FROM drops WHERE song_id = $song_id";
+		// This query makes sure atleast 24 hours has elapsed before the same user can drop his/her own song
+		$query = "SELECT user_id FROM drops WHERE DATEDIFF(NOW(), time_stamp) <= 1 AND song_id = $song_id";
 		$dropUserId = getInfoFromDatabase($query);
 
 		if(isset($dropUserId[0]['user_id'])) {
@@ -83,9 +84,7 @@
 			// Value is the actual json key-pair value
 			foreach ($dropUserId as $key => $value) {
 				if($value['user_id'] == $user_id) {
-					// Now we need to check if it has been over 1 week since the song was last dropped
-					if(!checkIfAllotedTimeHasPassed($value['time_stamp']));
-						return TRUE; // They can't redrop their own song
+					return TURE;
 				}
 			}
 		}
@@ -93,28 +92,6 @@
 		return FALSE;
 
 	}
-
-
-	function checkIfAllotedTimeHasPassed($mysqltimestamp) {
-		global $defaultDaysPassed;
-
-		$currentDay = intval(date('d', time())); // The current day in number format
-		$currentMonth = intval(date('m', time()));
-		$dropDay = intval(date('d', strtotime($mysqltimestamp)); // The day the song was dropped
-		$dropMonth = intval(date('m', strtotime($mysqltimestamp)));
-
-		if($currentMonth == $dropMonth && ($currentDay - $dropDay) >= $defaultDaysPassed) {
-			return TRUE;
-		}
-		// If the months have changed, this comparison will determine if it is in range (Assume every month has 31 days)
-		else if($currentMonth != $dropMonth && abs(($currentDay - $dropDay)) <= (31 - $defaultDaysPassed)) {
-			return TRUE;
-		}
-		else
-			return FALSE;
-	}
-
-
 
 
 ?>
