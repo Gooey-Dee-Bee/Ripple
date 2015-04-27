@@ -11,7 +11,7 @@
 	}
 
 	else {
-		if(!sameUserDrop($email, $song_id)) { // Make sure the same user is not posting a link multiple times
+		if(!sameUserDrop($email, $song_id)) { // No record of the song dropped in the last 24 hours
 			subtractDefaultPoints($email);
 			insertDrop($email, $song_id, $latitude, $longitude);
 		}

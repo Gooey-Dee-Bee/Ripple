@@ -15,7 +15,7 @@
 		else if($redrop && ($points - $defaultreDropPoints) < 0) 
 			return FALSE;
 		else
-			return TRUE;
+			return TRUE; // They have enough points to complete the drop
 	}
 
 	function subtractDefaultPoints($email) {
