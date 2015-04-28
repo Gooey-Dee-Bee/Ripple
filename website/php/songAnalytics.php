@@ -2,7 +2,7 @@
 	require_once(__DIR__."/databases.php");
 
 	$songID = $_GET['song_id'];
-	//$songID = 123063109;
+	//$songID =  136949481;
 
 	$result = getInfoFromDatabase(
 		"SELECT user_id, latitude, longitude, time_stamp
@@ -11,8 +11,23 @@
 		ORDER BY time_stamp");
 
 	$total = count($result);
+	if($total == 0){
+		echo 404;
+		exit;
+	}
 
 	$last = $total - 1;
+
+	$result2 = getInfoFromDatabase(
+		"SELECT latitude, longitude, count(*) as c
+		FROM drops
+		WHERE song_id = '$songID'
+		GROUP BY latitude, longitude
+		ORDER BY c");
+	$totLoc = count($result2);
+	$popLat = $result2[0]['latitude'];
+	$popLong = $result2[0]['longitude'];
+	
 
 
 	/*echo json_encode($result);
@@ -31,7 +46,10 @@
 		'lastLat' => $result[$last]['latitude'],
 		'lastLong' => $result[$last]['longitude'],
 		'lastTime' => $result[$last]['time_stamp'],
-		'count' => $total);
+		'count' => $total, //number of drops total
+		'numOrigDrops' => $totLoc, //number of different locations
+		'popLat' => $popLat,
+		'popLong' => $popLong);
 
 	//echo "\n<br />";
 
