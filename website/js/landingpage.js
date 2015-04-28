@@ -25,7 +25,7 @@ $( document ).ready( function() {
 
 			    	if(data == 100){
 			    		
-			    		//alert("Successfully Logged In, check the console");
+			    		//alert("Successfully Logged In! Drop wisely. ");
 			    		$('#loginFields').fadeOut();
 			    		$('#accountInfo').removeAttr("class");
 			    		
