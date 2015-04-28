@@ -527,7 +527,7 @@ iframe {
 
 
 #songAnalytics {
-	color:white;
+	color:black;
 	
 	text-align:center;
 	position:relative;
@@ -566,8 +566,5 @@ iframe {
 	border-top: 1px solid gray;
 	border-bottom: 1px solid gray;
 
-	
-	
-	
-
 }
+

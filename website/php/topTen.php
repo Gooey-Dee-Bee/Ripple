@@ -1,5 +1,7 @@
 <?php
+
 	require_once(__DIR__."/databases.php");
+
 
 	$query = "SELECT song_id, count(song_id) as c
 				FROM drops
@@ -9,25 +11,19 @@
 
 	$result = getInfoFromDatabase($query);
 
-	$rows = array();
+	/*$rows = array();
 
 	$i = 0;
 
-	while($r = mysql_fetch_assoc($result)){
-
-		$rows[$i] = array(
-			'song_id' => $r['song_id'],
-			'count' => $r['count']
-			);
+	foreach($result as $r){
+		$songID = $r['song_id'];
+		$count = $r['c'];
+		$rows[$i] = array('songID' => $songID, 'count' => $count);
 
 		$i++;
-	}
+	}*/
 
 
-echo json_encode($rows);
-
-
-
-
+echo json_encode($result);
 
 ?>
