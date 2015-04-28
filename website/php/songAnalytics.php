@@ -5,8 +5,8 @@
 	//$songID =  136949481;
 
 	$result = getInfoFromDatabase(
-		"SELECT user_id, latitude, longitude, time_stamp
-		FROM drops
+		"SELECT email, latitude, longitude, time_stamp
+		FROM drops NATURAL JOIN users
 		WHERE song_id = '$songID'
 		ORDER BY time_stamp");
 
@@ -39,7 +39,7 @@
 	echo $result[$last]['time_stamp'];*/
 
 	$info = array(
-		'firstUser' => $result[0]['user_id'],
+		'firstUser' => $result[0]['email'],
 		'firstLat' => $result[0]['latitude'],
 		'firstLong' => $result[0]['longitude'],
 		'firstTime' => $result[0]['time_stamp'],

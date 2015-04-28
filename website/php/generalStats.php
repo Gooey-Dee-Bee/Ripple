@@ -21,17 +21,18 @@
 				ORDER BY mp desc
 				LIMIT 1"
 				);
-	$popSong = $query4[0]['mp'];
+	$popSongID = $query4[0]['song_id'];
+	$popSongCt = $query4[0]['mp'];
 
 	//User with the most drops
 	$query5 = getInfoFromDatabase(
-				"SELECT user_id, count(user_id) as au
-				FROM drops
-				GROUP BY user_id
+				"SELECT email, count(email) as au
+				FROM drops NATURAL JOIN users
+				GROUP BY email
 				ORDER BY au desc
 				LIMIT 1"
 				);
-	$bestUser = $query5[0]['user_id'];
+	$bestUser = $query5[0]['email'];
 
 	//Most popular location (in latitude and longitude)
 	$query6 = getInfoFromDatabase(
@@ -48,7 +49,8 @@
 			'numUsers' => $numUsers,
 			'numDrops' => $numDrops,
 			'numSongs' => $numSongs,
-			'popSong' => $popSong,
+			'popSongID' => $popSongID,
+			'popSong' => $popSongCt,
 			'bestUser' => $bestUser,
 			'popLat' => $popLat,
 			'popLong' => $popLong
