@@ -37,19 +37,44 @@ function showGeneral() {
 function top10Songs() {
 var htmlString = "<div id='analyticTitle'>Top Ten Songs</div>";
 /*INCLUDE PHP FUNCTION REGARDING TOP 10 SONGS*/
-
+var tenSongs = Array();
+var songId = Array();
 
 $.get('php/topTen.php', function(data, status) {
 		console.log(JSON.stringify(JSON.parse(data)));
+		data = JSON.parse(data);
+			for(var i = 0; i < data.length; i++) {
+				songId.push(data[i]["song_id"]);
+				$.get('http://api.soundcloud.com/tracks/'+data[i]["song_id"]+'.json?client_id=dafab2de81f874d25715f0e225e7c71a', function(fullData, status) {
+					var trackTitle = JSON.stringify(fullData["title"]);
+					tenSongs.push(trackTitle);
+					setHtmlString(songId, tenSongs,htmlString);
+				});
+			}	
 		});
 
 
 
 
 console.log('top ten songs');
-$('#songAnalytics').html(htmlString);
-
 }
+
+function setHtmlString(idArray, nameArray, htmlString) {
+	htmlString+="<div id='info'><table id='genTable'>"+
+					'<tr style="font-weight:bold;"><td>Rank</td><td>Song ID</td><td>Song Title</td></tr>';
+	for(var i =0; i < idArray.length; i++) {
+		if(i%2)
+			htmlString += '<tr><td style="font-weight:bold;">'+(i+1)+'<td style="font-weight:bold;">'+idArray[i]+'</td><td>'+nameArray[i]+'</td></tr>';
+		else
+			htmlString += '<tr style="background-color:#BBDFF0;"><td style="font-weight:bold;">'+(i+1)+'<td style="font-weight:bold;">'+idArray[i]+'</td><td>'+nameArray[i]+'</td></tr>';
+					
+	}
+	htmlString+='</table></div>"';
+	
+	$('#songAnalytics').html(htmlString);
+}
+	
+				
 
 
 function top10Users() {
