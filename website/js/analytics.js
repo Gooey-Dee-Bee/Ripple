@@ -35,7 +35,9 @@ function showGeneral() {
 
 
 function top10Songs() {
-var htmlString = "<div id='analyticTitle'>Top Ten Songs</div>";
+var htmlString = "<div id='analyticTitle'>Top Ten Songs</div>"+
+					"<div id='info'><table id='genTable'>"+
+				'<tr style="font-weight:bold;"><td>Rank</td><td>Song ID</td><td>Song Title</td></tr>';
 /*INCLUDE PHP FUNCTION REGARDING TOP 10 SONGS*/
 var tenSongs = Array();
 var songId = Array();
@@ -48,20 +50,15 @@ $.get('php/topTen.php', function(data, status) {
 				$.get('http://api.soundcloud.com/tracks/'+data[i]["song_id"]+'.json?client_id=dafab2de81f874d25715f0e225e7c71a', function(fullData, status) {
 					var trackTitle = JSON.stringify(fullData["title"]);
 					tenSongs.push(trackTitle);
-					setHtmlString(songId, tenSongs,htmlString);
+					set2HtmlString(songId, tenSongs,htmlString);
 				});
 			}	
 		});
-
-
-
-
 console.log('top ten songs');
 }
 
-function setHtmlString(idArray, nameArray, htmlString) {
-	htmlString+="<div id='info'><table id='genTable'>"+
-					'<tr style="font-weight:bold;"><td>Rank</td><td>Song ID</td><td>Song Title</td></tr>';
+function set2HtmlString(idArray, nameArray, htmlString) {
+	
 	for(var i =0; i < idArray.length; i++) {
 		if(i%2)
 			htmlString += '<tr><td style="font-weight:bold;">'+(i+1)+'<td style="font-weight:bold;">'+idArray[i]+'</td><td>'+nameArray[i]+'</td></tr>';
@@ -75,10 +72,46 @@ function setHtmlString(idArray, nameArray, htmlString) {
 }
 	
 				
-
+function set3HtmlString(firstArray, secondArray, thirdArray, htmlString) {
+	
+	for(var i =0; i < firstArray.length; i++) {
+		if(i%2)
+			htmlString += '<tr><td style="font-weight:bold;">'+(i+1)+'<td style="font-weight:bold;">'+firstArray[i]+'</td><td>'+secondArray[i]+'</td><td>'+thirdArray[i]+'</td></tr>';
+		else
+			htmlString += '<tr style="background-color:#BBDFF0;"><td style="font-weight:bold;">'+(i+1)+'<td style="font-weight:bold;">'+firstArray[i]+'</td><td>'+secondArray[i]+'</td><td>'+thirdArray[i]+'</td></tr>';
+	
+	}
+	htmlString+='</table></div>"';
+	console.log('3 STRING IS'+htmlString);
+	$('#songAnalytics').html(htmlString);
+}
+	
 
 function top10Users() {
-var htmlString = "<div id='analyticTitle'>Top Ten Users</div>";
+var htmlString = "<div id='analyticTitle'>Top Ten Users</div>"+
+					"<div id='info'><table id='genTable'>"+
+				'<tr style="font-weight:bold;"><td>Rank</td><td>Email</td><td>Number of Drops</td><td>Number of Points</td></tr>';
+
+var drops = Array();
+var points = Array();
+var email = Array();
+$.get('php/topTenUsers.php', function(data, status) {
+		console.log(JSON.stringify(JSON.parse(data)));
+		data = JSON.parse(data);
+		for(var i = 0; i <data.length; i++){
+		console.log('in here');
+		
+			email.push(data[i]['email']);
+			points.push(data[i]['points']);
+			drops.push(data[i]['numDrops']);
+	
+		}
+		
+		
+		set3HtmlString(email, drops, points, htmlString);
+		});
+
+
 
 $('#songAnalytics').html(htmlString);
 
