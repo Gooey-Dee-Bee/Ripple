@@ -224,21 +224,27 @@ function userSearch() {
 
 
 
-$.get('php/getUserInfo.php', {'email':userID}, function(data, status) {
+$.get('php/userStats.php', {'email':userID}, function(data, status) {
 		console.log(JSON.stringify(JSON.parse(data)));
 		data = JSON.parse(data);
 		
-		var songDrops = data['total_drops'];
+		var songDrops = data['total drops'];
 		var userName = data['email'];
-		var userID = data['userId'];
+		var userID = data['userID'];
 		//# of users who have dropped the song
 		var userPoints = data['points'];
 		//# first time the song was dropped
-		var songFirst = "03/4/1293";
+		var songFirst = data['first drop'];
 		//last time the song was dropped
-		var songLast = "40/12/3423";
+		var songLast = data['last drop'];
 		//locations where the song has been dropped
-		var songLocation = "Georgia, The country";
+		var songLocation = data['pop latitude']+', '+data['pop longitude'];
+		var multipleLocal;
+		if(data['locations'] == false)
+			multipleLocal = 'No';
+		else
+			multipleLocal = 'Yes';
+			
 	if(userID != null) {
 		var htmlString = "<div id='info'>"+
 			'<table id="genTable">'+
@@ -249,12 +255,11 @@ $.get('php/getUserInfo.php', {'email':userID}, function(data, status) {
 			'<tr><td class="anDescriptor">Points</td></tr>'+
 			'<tr><td>Bought Drops</td><td>Yes/No</td></tr>'+
 			'<tr><td>Number of Songs Dropped</td><td>'+songDrops+'</td></tr>'+
-			'<tr><td>Points all time</td><td>'+userPoints+'</td></tr>'+
-			'<tr><td>Points from Redrops</td><td>666</td></tr>'+
-			'<tr><td>Current points left</td><td>666</td></tr>'+
+			'<tr><td>Points Since Joining (To Be Figured)</td><td>'+userPoints+'</td></tr>'+
+			'<tr><td>Points Left in Account</td><td>'+userPoints+'</td></tr>'+
 			'<tr ><td class="anDescriptor">Location</td></tr>'+
 			'<tr><td>Most common location</td><td>+'+songLocation+'</td></tr>'+
-			'<tr><td>More than one location?</td><td>No.</td></tr>'+
+			'<tr><td>More than one location?</td><td>'+multipleLocal+'</td></tr>'+
 			'</table></div>"';
 		}
 		
