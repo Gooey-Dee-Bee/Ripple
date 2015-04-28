@@ -127,34 +127,36 @@ function searchBySong() {
 var htmlString = "<div id='analyticTitle'>Search By Song</div>"
 					+"<br><input type='text' id='songId' placeholder='SONG ID'></input>'"+
 					"<button class='analyticOption' onClick='augmentedSongSearch()'>Search</button>"+
-					"<div id='info'>To search for a song you must know the songID."+
-					" To find out how to get the id... </div>";
+					"<div id='info'>Search for a song by name or artist.";
 
 
 $('#songAnalytics').html(htmlString);
 
 }
 
-function songSearch() {
-var songID = $('#songId').val();
+function songSearch(songID) {
+//var songID = $('#songId').val();
 console.log("SEARCHING FOR SONG: "+songID);
+$('#info').remove();
 
-	$('#info').remove();
-	/*INCLUDE PHP FUNCTION REGARDING SONGS*/
-		var songDrops = 342;
+$.get('php/songAnalytics.php', {song_id:songID}, function(data, result) {
+		data = JSON.parse(data);
+		var songDrops = data['count'];
 		//# of times the song has been dropped
-		var songDrops = 342;
-		//# of users who have dropped the song
 		var songUsers = 12;
+		var firstDropper = data['firstUser'];
 		//# first time the song was dropped
-		var songFirst = "03/4/1293";
+		var songFirst = data['firstTime'];
 		//last time the song was dropped
-		var songLast = "40/12/3423";
+		var songLast = data['lastTime'];
 		//locations where the song has been dropped
-		var songLocation = "Georgia, the country";
-		var originalDrop = 234;
+		var firstSongLocation = data['firstLat']+''+data['firstLong'];
+		var lastSongLocation = data['lastLat']+''+data['lastLong'];
+		var popularLocation = data['popLat']+''+data['popLong'];
+		var originalDrop = data['numOrigDrops'];
 
 
+	if(songDrops != null){
 		var htmlString= "<div id='info'>"+
 				'<table id="genTable">'+
 				'<tr><td class="anDescriptor">Time</td></tr>'+
@@ -165,12 +167,28 @@ console.log("SEARCHING FOR SONG: "+songID);
 				'<tr><td>Number of Users Dropping</td><td>'+songUsers+'</td></tr>'+
 				'<tr><td>Number of Original Drops</td><td>'+originalDrop+'</td></tr>'+
 				'<tr ><td class="anDescriptor">Location</td></tr>'+
-				'<tr><td>First Drop Location</td><td>+'+songLocation+'</td></tr>'+
-				'<tr><td>Last Drop Location</td><td>'+songLocation+'</td></tr>'+
-				'<tr><td>Most Common Location</td><td>'+songLocation+'</td></tr>'+
+				'<tr><td>First Drop Location</td><td>+'+firstSongLocation+'</td></tr>'+
+				'<tr><td>Last Drop Location</td><td>'+lastSongLocation+'</td></tr>'+
+				'<tr><td>Most Common Location</td><td>'+popularLocation+'</td></tr>'+
 				'</table></div>"';
 
 		$('#songAnalytics').append(htmlString);
+	}
+	else {
+		var htmlString = "<div id='info'>This song hasn't been dropped."+
+					" It may have been dropped under a different ID. </div>";
+					$('#songAnalytics').append(htmlString);
+	}
+		window.location.replace("#close");
+		$('#searchModal').html("");
+
+
+});
+	
+	/*INCLUDE PHP FUNCTION REGARDING SONGS*/
+		
+
+
 	
 	}
 
@@ -188,8 +206,8 @@ function augmentedSongSearch() {
 		$("#queryString").html(query);
 		var beginPlayer = '<div class="songPlayerSearch" id="song';
 		var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
-		var midPlayer = '"></iframe></div><div><div class="dropFromSearch" onClick="searchBySong(this.id)" id="';
-		var endPlayer = '">SEARCH FOR THIS SONG</div></div></div>';
+		var midPlayer = '"></iframe></div><div><div class="dropFromSearch" onClick="songSearch(this.id)" id="';
+		var endPlayer = '" style="width:10px; margin:5px; font-weight:bold;">SEARCH FOR THIS SONG</div></div></div>';
 
 		SC.get('/tracks', { q: query }, function(tracks) {
 			// will insert top 10 songs returned by SoundCloud into search modal
