@@ -6,7 +6,7 @@ SC.initialize({
 function showGeneral() {
 
 var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
-					"<div id='info'><table id='genTable'>"+
+					"<div id='info'><table id='genTable'>";
 	$.get('php/generalStats.php', function(data, status) {
 		data = JSON.parse(data);
 	var numOfUsers = data['numUsers'];
