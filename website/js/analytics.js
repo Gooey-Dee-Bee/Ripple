@@ -196,10 +196,10 @@ $.get('php/songAnalytics.php', {song_id:songID}, function(data, result) {
 function augmentedSongSearch() {
 	var query = $('#songId').val();
 	console.log('query is '+query);
-	var pattern = /https:\/\/soundcloud.com\/*\w*\/.*/;
+	var pattern = /^\d+$/;
 	if (pattern.test(query)) {
 		//alert("SC url");
-		grabSong();
+		songSearch(query);
 	}
 	else {
 		//alert("not a url");
