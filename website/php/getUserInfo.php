@@ -10,7 +10,7 @@
 	$user_id = $user_id[0]['user_id'];
 
 	// Gets the total number of drops by the user
-	$total_drops = getInfoFromDatabase("SELECT COUNT(drop_id) AS drop_count FROM drops WHERE user_id = $user_id"); 
+	$total_drops = getInfoFromDatabase("SELECT COUNT(DISTINCT song_id) AS drop_count FROM drops WHERE user_id = $user_id"); 
 	$total_drops = $total_drops[0]['drop_count'];
 
 	$acct_status = getInfoFromDatabase("SELECT active FROM confirmation WHERE user_id = $user_id");

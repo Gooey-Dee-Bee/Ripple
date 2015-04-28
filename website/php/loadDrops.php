@@ -22,7 +22,7 @@
 
 	if(isset($_POST['user_id'])) { // This is to load the drops from a certain user only
 		$user_id = $_POST['user_id'];
-		$query = "SELECT song_id FROM drops WHERE user_id = $user_id ORDER BY time_stamp";
+		$query = "SELECT DISTINCT song_id FROM drops WHERE user_id = $user_id ORDER BY time_stamp";
 		$result = getInfoFromDatabase($query);	
 		echo json_encode($result);
 	}
