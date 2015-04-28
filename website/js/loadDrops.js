@@ -94,7 +94,7 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 			//console.log('adding the song because it is not a duplicate');
 			songsInDB.push(newSongId);
 			$.post(
-			'/ripple/php/insertDrop.php', 
+			'/ripple/php/drop.php', 
 			{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('latitude'),
 			longitude: sessionStorage.getItem('longitude')}, 
 
@@ -199,7 +199,7 @@ function bumpSong(songIdentity) {
 		
 		console.log('bump song');
 		$.post(
-			'/ripple/php/reDrop.php', 
+			'/ripple/php/drop.php', 
 			{song_id: songIdentity, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('latitude'),
 			longitude: sessionStorage.getItem('longitude')}, 
 
