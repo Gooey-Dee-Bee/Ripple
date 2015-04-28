@@ -1,4 +1,5 @@
 var songsInDB = new Array();
+var songsFromUser = new Array();
 
 /*GET SONGS FROM THE DATABASE*/
 function makeRequest(){
@@ -46,7 +47,7 @@ console.log('add song to user array');
 		
 		console.log("song id: "+songId);
 		addUserSong(songId);
-		songsInDB.push(songId);
+		songsFromUser.push(songId);
 	}	
 }
 
@@ -83,23 +84,14 @@ $.get('https://api.soundcloud.com/resolve.json?url='+url+'&client_id=dafab2de81f
 		
 		var newSongId = parseSong(data);
 		//console.log('new song id is '+newSongId);
-
-		//FUNCTION TO COMMUNICATE WITH DATABASE IN CHANGING THE STATS
-		//ADDING THE NEW SONG TO THE DATABASE
-		
-	
-			alert('the song does not exist');
-			addSong(newSongId);
+		addSong(newSongId);
 			
 			//console.log('adding the song because it is not a duplicate');
-			songsInDB.push(newSongId);
-			$.post(
-			'/ripple/php/drop.php', 
-			{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('latitude'),
-			longitude: sessionStorage.getItem('longitude')}, 
-
+		songsInDB.push(newSongId);
+		$.post('/ripple/php/drop.php', 
+			{song_id: newSongId, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('latitude'), longitude: sessionStorage.getItem('longitude')}, 
 	    	function(returnedData){
-	    	getUserPoints();
+	    		getUserPoints();
 	        	if(returnedData == 200) { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
 	        		alert("You do not have enough points to complete this drop. Please purchase more!");
 	        	}
@@ -163,13 +155,13 @@ console.log('add song');
 
 function addUserSong(songId) {
 	console.log('add user song');
-	for(var i = 0; i < songsInDB.length; i++) {
-    var newcontent = document.createElement('div');
-    var newSongListing = beginPlayer+songId+secondPlayer+songId+alternateEnd;
-    console.log("ADD SONG "+songId);
-    newcontent.innerHTML = newSongListing;
+	
+    	var newcontent = document.createElement('div');
+   	 	var newSongListing = beginPlayer+songId+secondPlayer+songId+alternateEnd;
+    	console.log("ADD SONG "+songId);
+    	newcontent.innerHTML = newSongListing;
    
-    prependElement('songBox', newcontent);
+    	prependElement('songBox', newcontent);
  
     if (sessionStorage.getItem('name') == null) {
     	document.getElementById(songId).style.display = "none";
@@ -179,7 +171,7 @@ function addUserSong(songId) {
 	getUserPoints();
 	('#songId').value = "";
 
-}}
+}
 
 /*ENSURES THE LATEST SONG IS ON TOP*/
 function prependElement(parentID, child){
