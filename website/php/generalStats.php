@@ -45,9 +45,22 @@
 	$popLat = $query6[0]['latitude'];
 	$popLong = $query6[0]['longitude'];
 
+	$today = date("Y-m-d");
+	$today = $today . "%";
+	//echo $today . "\n<br />";
+	$query7 = getInfoFromDatabase(
+			"SELECT song_id, time_stamp, count(song_id) as sto
+				FROM drops
+				WHERE time_stamp like '$today'");
+	//echo json_encode($query7);
+	//echo "\n<br />";
+	$dropsToday = $query7[0]['sto'];
+
+
 	$info = array(
 			'numUsers' => $numUsers,
 			'numDrops' => $numDrops,
+			'dropsToday' => $dropsToday,
 			'numSongs' => $numSongs,
 			'popSongID' => $popSongID,
 			'popSong' => $popSongCt,
