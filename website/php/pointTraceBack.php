@@ -11,6 +11,12 @@
 		global $point_limit, $id_query, $drop_id_query, $email_query;
 		$pointCounter = 1;
 
+		// It is possible for a user to redrop a song multiple times, so they can
+		// Show up multiple times during the reDrop point chaining, so we must
+		// Keep track of the user id's that have been accredited points so we don't
+		// Keep crediting the same user with points.
+		$pastUserId = array();
+
 
 		setIdQuery($prev_drop_id);
 		$result = getInfoFromDatabase($id_query); // Get the user ID
@@ -22,9 +28,18 @@
 			$user_email = $user_email[0]['email'];
 
 
-			$points = getPoints($user_email);
-			$points += $pointCounter; // Add the appropriate amount of points
-			updatePoints($user_email, $points); // Points have been credited
+			// Only give points if the user hasn't received points during this process. This prevents a user that has
+			// redropped their own song from continuously getting points added to themselves.
+			if(!in_array($result, $pastUserId)) {
+				$points = getPoints($user_email);
+				$points += $pointCounter; // Add the appropriate amount of points
+				updatePoints($user_email, $points); // Points have been credited
+
+				if($pointCounter < $point_limit) // Increment point counter appropriately
+					$pointCounter += 1;
+
+				$pastUserId[] = $result; // Add the user_id to the list
+			}
 
 
 			setDropIdQuery($prev_drop_id);
@@ -36,9 +51,6 @@
 			$result = getInfoFromDatabase($id_query);
 			$result = $result[0]['user_id'];
 
-
-			if($pointCounter < $point_limit) // Increment point counter appropriately
-				$pointCounter += 1;
 		}
 	}
 
