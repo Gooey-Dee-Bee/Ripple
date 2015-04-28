@@ -10,6 +10,5 @@ Github Pages: http://gooey-dee-bee.github.io/Ripple/
 
 
 
-EC2: 54.69.13.79/ripple/landingpage.html
+EC2: 54.69.13.79/ripple/website/landingpage.html
 
-EC2: 54.69.13.79/ripple
