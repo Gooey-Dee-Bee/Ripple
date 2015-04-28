@@ -4,33 +4,39 @@ SC.initialize({
 
 
 function showGeneral() {
-	var numOfUsers;
-	var numOfSongs;
-	var numOfDrops;
-	var numOfLocations;
-	
-	var mostPopularSong;
-	var userWithMostPoints;
 
-	numOfUsers = 3;
-	numOfSongs =392;
-	numOfDrops =12312312;
-	numOfLocations =1;
+var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
+					"<div id='info'><table id='genTable'>"+
+	$.get('php/generalStats.php', function(data, status) {
+		data = JSON.parse(data);
+	var numOfUsers = data['numUsers'];
+	var numOfSongs = data['numSongs'];
+	var numOfDrops = data['numDrops'];
+	var commonLat = data['popLat'];
+	var commonLong = data['popLong'];
+	var frequentUser = data['bestUser'];
+	var popSong = data['popSong'];
 	
-	mostPopularSong = "title of track";
-	userWithMostPoints = "Master";
-	
-	
-	var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
-						"<table id='genTable' class='anNumber'>"+
-						"<tr><td>"+numOfUsers+" Users</td></tr>"+
-						"<tr><td>"+numOfSongs+" Songs</td></tr>"+
-						"<tr><td>"+numOfDrops+" Drops</td></tr>"+
-						"<tr><td>"+mostPopularSong+" (most popular song)</td></tr>"+
-						"<tr><td>"+userWithMostPoints+" (user with most points)</td></tr></table>";
-						
-						
+		htmlString+= '<tr><td class="anDescriptor">Songs</td></tr>'+
+			'<tr><td>Most Dropped Song</td><td>'+popSong+'</td></tr>'+
+			'<tr><td>Total Number of Drops</td><td>'+numOfDrops+'</td></tr>'+
+			'<tr><td>Number of Songs on Site</td><td>'+numOfSongs+'</td></tr>'+
+			'<tr><td class="anDescriptor">Users</td></tr>'+
+			'<tr><td>Most Frequent User</td><td>'+frequentUser+'</td></tr>'+
+			'<tr><td>Registered Users</td><td>'+numOfUsers+'</td></tr>'+
+			'<tr ><td class="anDescriptor">Location</td></tr>'+
+			'<tr><td>Most common location</td><td>+'+commonLat+', '+commonLong+'</td></tr>'+
+			'<tr><td>More than one location?</td><td>No.</td></tr>'+
+			'</table></div>"';
+
 	$('#songAnalytics').html(htmlString);
+	
+	
+	});
+	
+						
+						
+	
 }
 
 
