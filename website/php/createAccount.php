@@ -4,7 +4,6 @@
 	$email = $_POST['email'];
 	$pword = $_POST['password'];
 
-
 	$query = "SELECT * FROM users WHERE email = '$email'";
 	if(existsInDatabase($query)) {
 		echo 200; // 'Error Code' that the email has already been registered. JS needs to return an error
