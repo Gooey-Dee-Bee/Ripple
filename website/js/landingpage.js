@@ -91,7 +91,8 @@ $( document ).ready( function() {
 		else if (user.password === user.confirmPassword) {
 			// url should be /ripple/php/createAccount.php
 			// url for apiary http://private-f89294-ripple3.apiary-mock.com/newuser/email
-			$.post("/ripple/php/createAccount.php", JSON.stringify(user), function( data ) {
+			$.post("/ripple/php/createAccount.php",
+					{email: user.email, password: user.password}, function( data ) {
 				// success function
 				if(data == 100) {
 		    		document.getElementById("errorMessage").innerHTML = "Account created successfully";
