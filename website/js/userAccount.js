@@ -55,8 +55,8 @@ console.log('session drops made '+totalDrops);
 
 $('#closeButton').html("<a id='closeAccountModule' href='#' onClick='closeModule()'>X</a>");
 $('#accountName').html(usersName);
-$('#dropsLeft').html(pointsLeft +"<div class='yourDropText'>Points Left</div>"); 
-$('#dropsUsed').html(totalDrops +"<div class='yourDropText'>Past Drops</div>"); 
+$('#dropsLeft').html(pointsLeft +"<div class='yourDropText'>Points Remaining</div>"); 
+$('#dropsUsed').html(totalDrops +"<div class='yourDropText'>Drops All Time</div>"); 
 
 
 $('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='goToPersonalPlaylist()'>View Drop History</a><br></br><a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>Buy More Points</a>"); 
