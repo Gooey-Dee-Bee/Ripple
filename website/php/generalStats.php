@@ -48,8 +48,12 @@
 	$today = date("Y-m-d");
 	$today = $today . "%";
 	//echo $today . "\n<br />";
-	$query7 = getInfoFromDatabase(
-			"SELECT song_id, time_stamp, count(song_id) as sto
+	/*$query7 = getInfoFromDatabase(
+			"SELECT drop_id, time_stamp, count(drop_id) as sto
+				FROM drops
+				WHERE time_stamp like '$today'");*/
+		$query7 = getInfoFromDatabase(
+			"SELECT count(drop_id) as sto
 				FROM drops
 				WHERE time_stamp like '$today'");
 	//echo json_encode($query7);
