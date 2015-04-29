@@ -4,8 +4,8 @@
 	//$post_json = file_get_contents("php://input");
 	//$post = json_decode($post_json, true);
 
-	//$email = $_GET['email'];
-	$email = "master@smu.edu";
+	$email = $_GET['email'];
+	//$email = "master@smu.edu";
 
 	$query1 = "SELECT user_id, points FROM users WHERE email = '$email'";
 	$result1 = getInfoFromDatabase($query1);
