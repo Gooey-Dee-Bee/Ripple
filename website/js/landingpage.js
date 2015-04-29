@@ -103,17 +103,20 @@ $( document ).ready( function() {
 		    	}
 		    	else {
 		    		//alert("An acount already exists with that email address.");
-		    		document.getElementById("errorMessage").innerHTML = "Account already exisits with that email address.";
+		    		document.getElementById("errorMessage").innerHTML = "Account already exists with that email address.";
+		    		setTimeout(function(){$('#errorMessage').html('');},4000);
 		    		
 		    	
 		    	}
 			})
 			.fail( function() {
-				document.getElementById("errorMessage").innerHTML = "Error occured creating an account";
+				document.getElementById("errorMessage").innerHTML = "Error occured creating an account. We can't tell you why it did this, you just failed. Sorry. ";
+				setTimeout(function(){$('#errorMessage').html('');},4000);
 			});
 		} // end of if
 		else { // passwords are not the same
 			document.getElementById("errorMessage").innerHTML = "Passwords are not the same.";
+			setTimeout(function(){$('#errorMessage').html('');},4000);
 		}
 	}); // end of sign up
 	
