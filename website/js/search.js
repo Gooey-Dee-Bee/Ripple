@@ -35,6 +35,9 @@ function search(query) {
 	else {
 		//alert("not a url");
 		$("#queryString").html(query);
+		if (query == "nickleback" || query == "Nickleback") {
+			alert("Why would you want to listen to that crap?");
+		}
 		var beginPlayer = '<div class="songPlayerSearch" id="song';
 		var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
 		var midPlayer = '"></iframe></div><div><img class="dropFromSearch" src="images/dropItIcon.png" onClick="dropSong(this.id)" id="';
