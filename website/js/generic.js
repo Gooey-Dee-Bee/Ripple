@@ -47,15 +47,23 @@ function setUpPage() {
 
 
 function allowDrops() {
-	$('#dropBox').css('display','block');
+	console.log('allowing drops');
+	$('#dropBox').html('<div id="searchBox">'+
+				'<form id="search" action="">'+
+					'<input type="text" id="searchQuery" placeholder="SEARCH FOR A SONG">'+
+					'<button type="submit" class="analyticOption">Search</button>'+
+					'</form></div>');
+
 	$('.drop').css('display','block');
 	$('#songBox').css('display','block');
 	//$('#infoBox').css('display','block');
 };
 
 function disallowDrops() {
+	$('#dropBox').html("<div style='font-size:1.1em; font-family:'Poiret One''>"+
+	 				"(Don't have an account? <a href='landingpage.html'>Make one.</a>)</div>");
 	$('#songBox').css('display','block');
-	$('#dropBox').css('display','none');
+	
 	$('.drop').css('display','none');
 	//$('#infoBox').css('display','none');
 	//console.log('disallowing drops');
