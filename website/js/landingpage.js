@@ -109,7 +109,7 @@ $( document ).ready( function() {
 		    	}
 			})
 			.fail( function() {
-				document.getElementById("errorMessage").innerHTML = "Error occured creating an account";
+				document.getElementById("errorMessage").innerHTML = "Error occured creating an account. We can't tell you why it did this, you just failed. Sorry. ";
 				setTimeout(function(){$('#errorMessage').html('');},4000);
 			});
 		} // end of if
