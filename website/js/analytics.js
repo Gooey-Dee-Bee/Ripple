@@ -16,9 +16,15 @@ var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
 	var commonLong = data['popLong'];
 	var frequentUser = data['bestUser'];
 	var popSong = data['popSong'];
+	var droppedToday = data['dropsToday']
 	
+	$.get('http://api.soundcloud.com/tracks/'+popSong+'.json?client_id=dafab2de81f874d25715f0e225e7c71a', function(fullData, status) {
+					var trackTitle = JSON.stringify(fullData["title"]);
+					
+					
 		htmlString+= '<tr><td class="anDescriptor">Songs</td></tr>'+
-			'<tr><td>Most Dropped Song</td><td>'+popSong+'</td></tr>'+
+			'<tr><td># of Songs Dropped Today</td><td>'+droppedToday+'</td></tr>'+
+			'<tr><td>Most Dropped Song</td><td>'+trackTitle+'</td></tr>'+
 			'<tr><td>Total Number of Drops</td><td>'+numOfDrops+'</td></tr>'+
 			'<tr><td>Number of Songs on Site</td><td>'+numOfSongs+'</td></tr>'+
 			'<tr><td class="anDescriptor">Users</td></tr>'+
@@ -30,6 +36,9 @@ var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
 			'</table></div>"';
 
 	$('#songAnalytics').html(htmlString);
+					
+				});
+	
 	
 	
 	});
@@ -255,6 +264,7 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 		var songFirst = data['first drop'];
 		//last time the song was dropped
 		var songLast = data['last drop'];
+		
 		//locations where the song has been dropped
 		var songLocation = data['pop latitude']+', '+data['pop longitude'];
 		var multipleLocal;
