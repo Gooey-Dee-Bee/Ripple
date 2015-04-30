@@ -15,14 +15,9 @@ $( document ).ready( function() {
 	
 			    		
 			    		
-			$.ajax({
-				type: "POST",
-			    url: '/ripple/php/login.php',
-			    content: 'application/json',
-
-			    data: JSON.stringify(user),
-			    success: function(data) {
-
+			$.post('/ripple/php/login.php', 
+				{email: user.email, password: user.password},
+			    function(data) {
 			    	if(data == 100){
 			    		
 			    		//alert("Successfully Logged In! Drop wisely. ");
@@ -40,7 +35,6 @@ $( document ).ready( function() {
 			    	}
 			    	else
 			    		alert("Account not found.");
-
 			        //Error Checking
 			        // if($.isNumeric(data)){
 			        //     if(data==400) {
@@ -60,13 +54,6 @@ $( document ).ready( function() {
 			        //         $(location).attr('href', "search.html");
 			        //     }
 			        // }
-			    },
-			    error: function(something, var1) {
-			    	console.log(something);
-			    	console.log(var1);
-	         		alert('An error occurred');
-	      		}
-
 			}); // end of ajax
 	}); // end submit function
 	

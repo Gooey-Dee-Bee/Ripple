@@ -44,9 +44,9 @@
     	//grab the template content
     	$template = file_get_contents('signup_template.html', FILE_USE_INCLUDE_PATH);            
     	//replace all the tags
-    	$template = ereg_replace('{EMAIL}', $email, $template);
-    	$template = ereg_replace('{KEY}', $key, $template);
-    	$template = ereg_replace('{SITEPATH}','192.168.10.10/ripple', $template);
+    	$template = str_replace('{EMAIL}', $email, $template);
+    	$template = str_replace('{KEY}', $key, $template);
+    	$template = str_replace('{SITEPATH}','192.168.10.10/ripple', $template);
          
     	return $template;
 	}

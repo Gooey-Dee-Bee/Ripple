@@ -1,6 +1,6 @@
 <?php
 	require_once(__DIR__."/databases.php"); // Allow access to the database functions
-	require_once(__DIR__."email.php");
+	require_once(__DIR__."/email.php");
 
 	$email = $_POST['email'];
 	$pword = $_POST['password'];
@@ -12,7 +12,7 @@
 	else {
 		$add_query = "INSERT INTO users(pword, email) VALUES('$pword', '$email')";
 		addToDatabase($add_query);
-		echo send_mail($email); // 100 on success, 300 on error
+		echo send_email($email); // 100 on success, 300 on error
 	}
 ?>
 
