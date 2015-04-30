@@ -16,17 +16,20 @@ var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
 	var commonLong = data['popLong'];
 	var frequentUser = data['bestUser'];
 	var popSong = data['popSong'];
-	var droppedToday = data['dropsToday']
+	var popSongID = data['popSongID'];
+	var droppedToday = data['dropsToday'];
 	
-	$.get('http://api.soundcloud.com/tracks/'+popSong+'.json?client_id=dafab2de81f874d25715f0e225e7c71a', function(fullData, status) {
+	$.get('http://api.soundcloud.com/tracks/'+popSongID+'.json?client_id=dafab2de81f874d25715f0e225e7c71a', function(fullData, status) {
 					var trackTitle = JSON.stringify(fullData["title"]);
 					
 					
 		htmlString+= '<tr><td class="anDescriptor">Songs</td></tr>'+
 			'<tr><td># of Songs Dropped Today</td><td>'+droppedToday+'</td></tr>'+
+			'<tr><td>Total # of Drops on Site</td><td>'+numOfDrops+'</td></tr>'+
+			'<tr><td># of Unique Songs on Site</td><td>'+numOfSongs+'</td></tr>'+
 			'<tr><td>Most Dropped Song</td><td>'+trackTitle+'</td></tr>'+
-			'<tr><td>Total Number of Drops</td><td>'+numOfDrops+'</td></tr>'+
-			'<tr><td>Number of Songs on Site</td><td>'+numOfSongs+'</td></tr>'+
+			'<tr><td>    # of Times Dropped</td><td>'+popSong+'</td></tr>'+
+			
 			'<tr><td class="anDescriptor">Users</td></tr>'+
 			'<tr><td>Most Frequent User</td><td>'+frequentUser+'</td></tr>'+
 			'<tr><td>Registered Users</td><td>'+numOfUsers+'</td></tr>'+
