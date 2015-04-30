@@ -61,6 +61,7 @@ var midPlayer ='"></iframe></div><div><img class="drop" src="images/dropItIcon.p
 var alternateEnd = '"></iframe></div><div>';
 var endPlayer =' onClick="bumpSong(this.id)"/></div></div>';
 
+
 /** GRAB THE SONG ID FROM THE SONG URL ON THE PAGE*/
 function grabSong() {
 	console.log('grab song');
