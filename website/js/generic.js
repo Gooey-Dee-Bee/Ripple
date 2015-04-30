@@ -53,6 +53,11 @@ function allowDrops() {
 					'<input type="text" id="searchQuery" placeholder="SEARCH FOR A SONG">'+
 					'<button type="submit" class="analyticOption">Search</button>'+
 					'</form></div>');
+	$('#search').on('submit', function(event){
+		event.preventDefault();
+		var query = $("#searchQuery").val();
+		search(query);
+	});
 
 	$('.drop').css('display','block');
 	$('#songBox').css('display','block');
