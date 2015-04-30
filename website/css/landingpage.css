@@ -51,7 +51,7 @@ body {
 
 
 
-#submitLogin:hover {
+#submitLogin:hover, #signUpButton {
 	background-color: #BBFFFF;
 }
 
@@ -123,20 +123,20 @@ body {
   font-family: "Poiret One";
 }
 
-#signUpButton {
+/*#signUpButton, #submitLogin {
   background-color: #BBDFF0;
   color: black;
   border-color: #4898bd;
   font-family: "Poiret One";
   border-radius: 6px;
   width: 150px;
-}
+}*/
 
-#signUpButton:hover {
+/*#signUpButton:hover, #submitLogin:hover {
 	background-color: #E0F5FF;
-}
+}*/
 
-#submitLogin {
+#submitLogin, #signUpButton {
   background-color: #4898bd;
   color: black;
   border-color: #BBDFF0;
