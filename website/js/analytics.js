@@ -55,27 +55,29 @@ var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
 function top10Songs() {
 var htmlString = "<div id='analyticTitle'>Top Ten Songs</div>"+
 					"<div id='info'><table id='genTable'>"+
-				'<tr style="font-weight:bold;"><td>Rank</td><td>Song ID</td><td>Song Title</td></tr>';
+				'<tr style="font-weight:bold;"><td>Rank</td><td>Plays</td><td>Song Title</td><td>Soundcloud ID</td></tr>';
 /*INCLUDE PHP FUNCTION REGARDING TOP 10 SONGS*/
 var tenSongs = Array();
 var songId = Array();
+var songPlays = Array();
 
 $.get('php/topTen.php', function(data, status) {
 		console.log(JSON.stringify(JSON.parse(data)));
 		data = JSON.parse(data);
 			for(var i = 0; i < data.length; i++) {
 				songId.push(data[i]["song_id"]);
+				songPlays.push(data[i]['c']);
 				$.get('http://api.soundcloud.com/tracks/'+data[i]["song_id"]+'.json?client_id=dafab2de81f874d25715f0e225e7c71a', function(fullData, status) {
 					var trackTitle = JSON.stringify(fullData["title"]);
 					tenSongs.push(trackTitle);
-					set2HtmlString(songId, tenSongs,htmlString);
+					set3HtmlString(songPlays,tenSongs, songId, htmlString);
 				});
 			}	
 		});
 console.log('top ten songs');
 }
 
-function set2HtmlString(idArray, nameArray, htmlString) {
+function set2HtmlString(idArray, nameArray, playString, htmlString) {
 	
 	for(var i =0; i < idArray.length; i++) {
 		if(i%2)
