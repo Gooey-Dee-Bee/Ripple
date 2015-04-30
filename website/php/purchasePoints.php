@@ -1,5 +1,6 @@
 <?php 
 	require_once(__DIR__."/databases.php"); // Allow the getUserFromEmail
+	require_once(__DIR__."/dropHelper.php"); // Allow access to addPoints/addToTotalPoints
 
 	$email = $_POST['email'];	// retrieve user email
 	$dollars = $_POST['amount'];	//retrieve amount in dollars from purchase
@@ -19,7 +20,7 @@
 	} else (if $dollars == 20){
 		$points = 700;
 	}
-
+	/*
 	//get points from users
 	$userPoints = getInfoFromDatabase("SELECT points FROM users WHERE email = '$email'");
 	$userPoints = $userPoints[0]['points'];
@@ -35,6 +36,11 @@
 	addToDatabase($pointsQuery);
 	$totalPointsQuery = "UPDATE users SET total_points = '$totalUserPoints' WHERE email = '$email'";
 	addToDatabase($totalPointsQuery);
+	*/
+
+	//new functions from dropHelper.php
+	addPoints($email, $points);
+	addToTotalPoints($email, $points);
 
 
  ?>
