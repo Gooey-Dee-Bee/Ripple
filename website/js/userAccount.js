@@ -35,6 +35,15 @@ function buyMoreDrops(num){
 			token: function(token) {
 			  // Use the token to create the charge with a server-side script.
 			  // You can access the token ID with `token.id`
+				$.post(
+					'/ripple/php/purchasePoints.php', 
+					{email: sessionStorage.getItem('name'), amount: num}, 
+					function(returnedData){
+						
+					})
+				.done(function() { 
+					window.location.replace("index.html");
+				});
 			}
 		});
 
@@ -45,15 +54,7 @@ function buyMoreDrops(num){
 			email: sessionStorage.getItem('name')
 		});
 
-		// $.post(
-		// 	'/ripple/php/purchasePoints.php', 
-		// 	{email: sessionStorage.getItem('name'), amount: num}, 
-		// 	function(returnedData){
-				
-		// 	})
-		// .done(function() { 
-		// 	window.location.replace("index.html");
-		// });
+		
 	}
 	
 function showPaymentOptions() {
