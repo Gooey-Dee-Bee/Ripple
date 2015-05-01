@@ -51,7 +51,7 @@ body {
 
 
 
-#submitLogin:hover, #signUpButton {
+#submitLogin:hover, #signUpButton:hover {
 	background-color: #BBFFFF;
 }
 
