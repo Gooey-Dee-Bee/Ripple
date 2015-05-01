@@ -15,10 +15,13 @@
 	$points  = 0;
 	if($dollars == 5){
 		$points = 150;
+		echo "adding 150";
 	} else (if $dollars == 10){
 		$points = 320;
+		echo "adding 320";
 	} else (if $dollars == 20){
 		$points = 700;
+		echo "adding 700";
 	}
 	/*
 	//get points from users
