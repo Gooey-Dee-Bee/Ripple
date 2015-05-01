@@ -4,22 +4,38 @@ SC.initialize({
 
 function dropSong(songID) {
 	console.log('dropping song');
-	$.post(
-		'/ripple/php/drop.php', 
-		{song_id: songID, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem("latitude"),
-		 longitude: sessionStorage.getItem("longitude")}, 
-		function(returnedData){
-			if(returnedData == 200) // The user doesn't have enough points to drop the song
-				alert("You do not have enough points to drop this song!");
-			// alert(returnedData);
-			// alert("success");
-		})
-	.done(function() { 
-		// this should reload the page so the new dropped song will be at the top of the list 
-		addSong(songID);
-		window.location.replace("#close");
-		$('#searchModal').html("");
-	});
+	// check to see if song already dropped in the area before dropping it
+	var inCurrentList = false;
+	console.log("songsInDB");
+	for (var i=0; i < songsInDB.length; i++) {
+		//console.log(songsInDB[i]);
+		if (songsInDB[i] === songID) {
+			bumpSong('song'+songID);
+			inCurrentList = true;
+			window.location.replace("#close");
+			$('#searchModal').html("");
+			return;
+		}
+	}
+
+	if (!inCurrentList) {
+		$.post(
+			'/ripple/php/drop.php', 
+			{song_id: songID, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem("latitude"),
+			 longitude: sessionStorage.getItem("longitude")}, 
+			function(returnedData){
+				if(returnedData == 200) // The user doesn't have enough points to drop the song
+					alert("You do not have enough points to drop this song!");
+				// alert(returnedData);
+				// alert("success");
+			})
+		.done(function() { 
+			// this should reload the page so the new dropped song will be at the top of the list 
+			addSong(songID);
+			window.location.replace("#close");
+			$('#searchModal').html("");
+		});
+	}
 }
 
 
@@ -35,6 +51,9 @@ function search(query) {
 	else {
 		//alert("not a url");
 		$("#queryString").html(query);
+		if (query == "nickleback" || query == "Nickleback") {
+			alert("Why would you want to listen to that crap?");
+		}
 		var beginPlayer = '<div class="songPlayerSearch" id="song';
 		var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
 		var midPlayer = '"></iframe></div><div><img class="dropFromSearch" src="images/dropItIcon.png" onClick="dropSong(this.id)" id="';

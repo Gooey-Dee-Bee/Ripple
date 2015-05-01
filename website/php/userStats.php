@@ -5,7 +5,7 @@
 	//$post = json_decode($post_json, true);
 
 	$email = $_GET['email'];
-	//$email = "c@smu.edu";
+	//$email = "master@smu.edu";
 
 	$query1 = "SELECT user_id, points FROM users WHERE email = '$email'";
 	$result1 = getInfoFromDatabase($query1);
@@ -45,11 +45,15 @@
 	} else {
 		$numLocs = false;
 	}
+	//total points
+	$totalQuery = "SELECT total_points FROM users WHERE email = '$email'";
+	$totalpoints = getInfoFromDatabase($totalPoints);
+	$totalpoints = $totalpoints[0]['total_points'];
 
 	$info = array(
 			'email' => $email,
-			'userID' => $userID,
 			'points' => $points,
+			'total points' => $totalpoints,
 			'total drops' => $total,
 			'first drop' => $firstDrop,
 			'last drop' => $lastDrop,

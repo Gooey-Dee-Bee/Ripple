@@ -4,7 +4,6 @@
 
 	$defaultPoints = 10;
 	$defaultreDropPoints = 5;
-	$defaultDaysPassed = 7; // Number of days to check against for a user redropping their own song
 
 	function checkPoints($email, $redrop = FALSE) {
 		$points = getPoints($email);
@@ -19,21 +18,13 @@
 	}
 
 	function subtractDefaultPoints($email) {
-		$points = getPoints($email);
-
 		global $defaultPoints;
-		$points = $points - $defaultPoints;
-
-		updatePoints($email, $points);
+		subtractPoints($email, $defaultPoints);
 	}
 
 	function subtractReDropPoints($email) {
-		$points = getPoints($email);
-
 		global $defaultreDropPoints;
-		$points = $points - $defaultreDropPoints;
-
-		updatePoints($email, $points);
+		subtractPoints($email, $defaultreDropPoints);
 	}
 
 	function getPrevDropId($song_id, $latitude, $longitude) {
@@ -62,8 +53,18 @@
 		return FALSE;
 	}
 
-	function updatePoints($email, $points) {
-		$query = "UPDATE users SET points=$points WHERE email='$email'";
+	function addToTotalPoints($email, $points) {
+		$query = "UPDATE users SET total_points = total_points + $points WHERE email = '$email'";
+		addToDatabase($query);
+	}
+
+	function addPoints($email, $points) {
+		$query = "UPDATE users SET points = points + $points WHERE email = '$email'";
+		addToDatabase($query);
+	}
+
+	function subtractPoints($email, $points) {
+		$query = "UPDATE users SET points = points - $points WHERE email = '$email'";
 		addToDatabase($query);
 	}
 
@@ -71,9 +72,7 @@
 		$query = "SELECT points FROM users WHERE email = '$email'";
 
 		$points = getInfoFromDatabase($query);
-		$points = $points[0]['points'];
-
-		return $points;
+		return $points[0]['points'];
 	}
 
 	function insertDrop($email, $song_id, $latitude, $longitude, $prev_id = 0) {
@@ -83,7 +82,7 @@
 		addToDatabase($query);
 	}
 
-	function sameUserDrop($email, $song_id) {
+	function sameUserDrop($email, $song_id) { // This determines if the user dropped the song more than 24 hours ago
 		$user_id = getUserIdFromEmail($email);
 
 		// This query makes sure atleast 24 hours has elapsed before the same user can drop his/her own song
@@ -105,7 +104,7 @@
 
 	}
 
-	function checkIfUserHasDroppedBefore($email, $song_id) {
+	function checkIfUserHasDroppedBefore($email, $song_id) { // See if this user has dropped this song before
 		$user_id = getUserIdFromEmail($email);
 		$query = "SELECT * FROM drops WHERE user_id = $user_id AND song_id = $song_id";
 		return existsInDatabase($query);

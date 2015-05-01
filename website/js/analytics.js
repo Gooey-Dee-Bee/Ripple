@@ -16,11 +16,20 @@ var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
 	var commonLong = data['popLong'];
 	var frequentUser = data['bestUser'];
 	var popSong = data['popSong'];
+	var popSongID = data['popSongID'];
+	var droppedToday = data['dropsToday'];
 	
+	$.get('http://api.soundcloud.com/tracks/'+popSongID+'.json?client_id=dafab2de81f874d25715f0e225e7c71a', function(fullData, status) {
+					var trackTitle = JSON.stringify(fullData["title"]);
+					
+					
 		htmlString+= '<tr><td class="anDescriptor">Songs</td></tr>'+
-			'<tr><td>Most Dropped Song</td><td>'+popSong+'</td></tr>'+
-			'<tr><td>Total Number of Drops</td><td>'+numOfDrops+'</td></tr>'+
-			'<tr><td>Number of Songs on Site</td><td>'+numOfSongs+'</td></tr>'+
+			'<tr><td># of Songs Dropped Today</td><td>'+droppedToday+'</td></tr>'+
+			'<tr><td>Total # of Drops on Site</td><td>'+numOfDrops+'</td></tr>'+
+			'<tr><td># of Unique Songs on Site</td><td>'+numOfSongs+'</td></tr>'+
+			'<tr><td>Most Dropped Song</td><td>'+trackTitle+'</td></tr>'+
+			'<tr><td>    # of Times Dropped</td><td>'+popSong+'</td></tr>'+
+			
 			'<tr><td class="anDescriptor">Users</td></tr>'+
 			'<tr><td>Most Frequent User</td><td>'+frequentUser+'</td></tr>'+
 			'<tr><td>Registered Users</td><td>'+numOfUsers+'</td></tr>'+
@@ -30,6 +39,9 @@ var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
 			'</table></div>"';
 
 	$('#songAnalytics').html(htmlString);
+					
+				});
+	
 	
 	
 	});
@@ -43,27 +55,29 @@ var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
 function top10Songs() {
 var htmlString = "<div id='analyticTitle'>Top Ten Songs</div>"+
 					"<div id='info'><table id='genTable'>"+
-				'<tr style="font-weight:bold;"><td>Rank</td><td>Song ID</td><td>Song Title</td></tr>';
+				'<tr style="font-weight:bold;"><td>Rank</td><td>Plays</td><td>Song Title</td><td>Soundcloud ID</td></tr>';
 /*INCLUDE PHP FUNCTION REGARDING TOP 10 SONGS*/
 var tenSongs = Array();
 var songId = Array();
+var songPlays = Array();
 
 $.get('php/topTen.php', function(data, status) {
 		console.log(JSON.stringify(JSON.parse(data)));
 		data = JSON.parse(data);
 			for(var i = 0; i < data.length; i++) {
 				songId.push(data[i]["song_id"]);
+				songPlays.push(data[i]['c']);
 				$.get('http://api.soundcloud.com/tracks/'+data[i]["song_id"]+'.json?client_id=dafab2de81f874d25715f0e225e7c71a', function(fullData, status) {
 					var trackTitle = JSON.stringify(fullData["title"]);
 					tenSongs.push(trackTitle);
-					set2HtmlString(songId, tenSongs,htmlString);
+					set3HtmlString(songPlays,tenSongs, songId, htmlString);
 				});
 			}	
 		});
 console.log('top ten songs');
 }
 
-function set2HtmlString(idArray, nameArray, htmlString) {
+function set2HtmlString(idArray, nameArray, playString, htmlString) {
 	
 	for(var i =0; i < idArray.length; i++) {
 		if(i%2)
@@ -125,7 +139,7 @@ $('#songAnalytics').html(htmlString);
 
 function searchBySong() {
 var htmlString = "<div id='analyticTitle'>Search By Song</div>"
-					+"<br><input type='text' id='songId' placeholder='SONG ID'></input>'"+
+					+"<br><input type='text' id='songId' placeholder='SONG ID'></input>"+
 					"<button class='analyticOption' onClick='augmentedSongSearch()'>Search</button>"+
 					"<div id='info'>Search for a song by name or artist.";
 
@@ -150,9 +164,9 @@ $.get('php/songAnalytics.php', {song_id:songID}, function(data, result) {
 		//last time the song was dropped
 		var songLast = data['lastTime'];
 		//locations where the song has been dropped
-		var firstSongLocation = data['firstLat']+''+data['firstLong'];
-		var lastSongLocation = data['lastLat']+''+data['lastLong'];
-		var popularLocation = data['popLat']+''+data['popLong'];
+		var firstSongLocation = data['firstLat']+', '+data['firstLong'];
+		var lastSongLocation = data['lastLat']+', '+data['lastLong'];
+		var popularLocation = data['popLat']+', '+data['popLong'];
 		var originalDrop = data['numOrigDrops'];
 
 
@@ -163,10 +177,10 @@ $.get('php/songAnalytics.php', {song_id:songID}, function(data, result) {
 				'<tr><td>First Drop</td><td>'+songFirst+'</td></tr>'+
 				'<tr><td>Most Recent Drop</td><td>'+songLast+'</td></tr>'+
 				'<tr><td class="anDescriptor">Drops</td></tr>'+
-				'<tr><td>Number of Times Dropped</td><td>'+songDrops+'</td></tr>'+
-				'<tr><td>Number of Users Dropping</td><td>'+songUsers+'</td></tr>'+
-				'<tr><td>Number of Original Drops</td><td>'+originalDrop+'</td></tr>'+
+				'<tr><td># of Times Dropped</td><td>'+songDrops+'</td></tr>'+
+				'<tr><td># of Users Dropping this Song</td><td>'+songUsers+'</td></tr>'+
 				'<tr ><td class="anDescriptor">Location</td></tr>'+
+				'<tr><td># of Different Locations</td><td>'+originalDrop+'</td></tr>'+
 				'<tr><td>First Drop Location</td><td>+'+firstSongLocation+'</td></tr>'+
 				'<tr><td>Last Drop Location</td><td>'+lastSongLocation+'</td></tr>'+
 				'<tr><td>Most Common Location</td><td>'+popularLocation+'</td></tr>'+
@@ -255,6 +269,7 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 		var songFirst = data['first drop'];
 		//last time the song was dropped
 		var songLast = data['last drop'];
+		
 		//locations where the song has been dropped
 		var songLocation = data['pop latitude']+', '+data['pop longitude'];
 		var multipleLocal;
@@ -263,7 +278,7 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 		else
 			multipleLocal = 'Yes';
 			
-	if(userID != null) {
+	if(userName != null) {
 		var htmlString = "<div id='info'>"+
 			'<table id="genTable">'+
 			'<tr><td class="anDescriptor">User</td></tr>'+
@@ -294,6 +309,14 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 
 function searchByLocation() {
 var htmlString = "<div id='analyticTitle'>Search By Location</div>";
+
+$.get('php/locationStats.php', {latitude:'+32.8435', longitude:'-96.7841'},function(data,status) {
+
+	console.log(data);
+
+
+	});
+
 
 $('#songAnalytics').html(htmlString);
 

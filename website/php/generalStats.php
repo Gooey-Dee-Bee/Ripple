@@ -21,17 +21,18 @@
 				ORDER BY mp desc
 				LIMIT 1"
 				);
-	$popSong = $query4[0]['mp'];
+	$popSongID = $query4[0]['song_id'];
+	$popSongCt = $query4[0]['mp'];
 
 	//User with the most drops
 	$query5 = getInfoFromDatabase(
-				"SELECT user_id, count(user_id) as au
-				FROM drops
-				GROUP BY user_id
+				"SELECT email, count(email) as au
+				FROM drops NATURAL JOIN users
+				GROUP BY email
 				ORDER BY au desc
 				LIMIT 1"
 				);
-	$bestUser = $query5[0]['user_id'];
+	$bestUser = $query5[0]['email'];
 
 	//Most popular location (in latitude and longitude)
 	$query6 = getInfoFromDatabase(
@@ -44,11 +45,29 @@
 	$popLat = $query6[0]['latitude'];
 	$popLong = $query6[0]['longitude'];
 
+	$today = date("Y-m-d");
+	$today = $today . "%";
+	//echo $today . "\n<br />";
+	/*$query7 = getInfoFromDatabase(
+			"SELECT drop_id, time_stamp, count(drop_id) as sto
+				FROM drops
+				WHERE time_stamp like '$today'");*/
+		$query7 = getInfoFromDatabase(
+			"SELECT count(drop_id) as sto
+				FROM drops
+				WHERE time_stamp like '$today'");
+	//echo json_encode($query7);
+	//echo "\n<br />";
+	$dropsToday = $query7[0]['sto'];
+
+
 	$info = array(
 			'numUsers' => $numUsers,
 			'numDrops' => $numDrops,
+			'dropsToday' => $dropsToday,
 			'numSongs' => $numSongs,
-			'popSong' => $popSong,
+			'popSongID' => $popSongID,
+			'popSong' => $popSongCt,
 			'bestUser' => $bestUser,
 			'popLat' => $popLat,
 			'popLong' => $popLong

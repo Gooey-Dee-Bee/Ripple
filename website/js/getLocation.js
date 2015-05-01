@@ -20,6 +20,7 @@ $(document).ready(function(){
 
 		console.log("sessionStorage.location = " + sessionStorage.location);
 		stopLoader();
+	
 
 	}
 
@@ -49,6 +50,7 @@ function showLoggedInPage() {
 
 function stopLoader() {
 	$('#loader').remove();
+	allowDrops();
 }
 
 
