@@ -15,20 +15,15 @@
 	$points  = 0;
 	if($dollars == 5){
 		$points = 150;
-<<<<<<< HEAD
+		echo "adding 150";
 	} else if ($dollars == 10){
 		$points = 320;
-	} else if ($dollars == 20){
-=======
-		echo "adding 150";
-	} else (if $dollars == 10){
-		$points = 320;
 		echo "adding 320";
-	} else (if $dollars == 20){
->>>>>>> 646a42a2d78fe66bc1da7ea73ee898b8385fd376
-		$points = 700;
-		echo "adding 700";
-	}
+	} else if ($dollars == 20){
+		$points  = 700;
+		echo "adding 150";
+	} 
+
 	/*
 	//get points from users
 	$userPoints = getInfoFromDatabase("SELECT points FROM users WHERE email = '$email'");
