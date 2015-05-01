@@ -61,7 +61,7 @@ console.log('add song to user array');
 
 /*Strings to get Soundcloud players on the page*/
 var beginPlayer = '<div class="songPlayer" id="song';
-var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
+var secondPlayer= '"> <div class="songText"><iframe class="iframeObj" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
 var midPlayer ='"></iframe></div><div><img class="drop" src="images/dropItIcon.png"  id=song';
 var alternateEnd = '"></iframe></div><div>';
 var endPlayer =' onClick="bumpSong(this.id)"/></div></div>';
