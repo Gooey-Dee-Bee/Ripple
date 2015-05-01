@@ -15,9 +15,9 @@
 	$points  = 0;
 	if($dollars == 5){
 		$points = 150;
-	} else (if $dollars == 10){
+	} else if ($dollars == 10){
 		$points = 320;
-	} else (if $dollars == 20){
+	} else if ($dollars == 20){
 		$points = 700;
 	}
 	/*
