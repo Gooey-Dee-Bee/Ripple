@@ -164,9 +164,9 @@ $.get('php/songAnalytics.php', {song_id:songID}, function(data, result) {
 		//last time the song was dropped
 		var songLast = data['lastTime'];
 		//locations where the song has been dropped
-		var firstSongLocation = data['firstLat']+''+data['firstLong'];
-		var lastSongLocation = data['lastLat']+''+data['lastLong'];
-		var popularLocation = data['popLat']+''+data['popLong'];
+		var firstSongLocation = data['firstLat']+', '+data['firstLong'];
+		var lastSongLocation = data['lastLat']+', '+data['lastLong'];
+		var popularLocation = data['popLat']+', '+data['popLong'];
 		var originalDrop = data['numOrigDrops'];
 
 
@@ -177,10 +177,10 @@ $.get('php/songAnalytics.php', {song_id:songID}, function(data, result) {
 				'<tr><td>First Drop</td><td>'+songFirst+'</td></tr>'+
 				'<tr><td>Most Recent Drop</td><td>'+songLast+'</td></tr>'+
 				'<tr><td class="anDescriptor">Drops</td></tr>'+
-				'<tr><td>Number of Times Dropped</td><td>'+songDrops+'</td></tr>'+
-				'<tr><td>Number of Users Dropping</td><td>'+songUsers+'</td></tr>'+
-				'<tr><td>Number of Original Drops</td><td>'+originalDrop+'</td></tr>'+
+				'<tr><td># of Times Dropped</td><td>'+songDrops+'</td></tr>'+
+				'<tr><td># of Users Dropping this Song</td><td>'+songUsers+'</td></tr>'+
 				'<tr ><td class="anDescriptor">Location</td></tr>'+
+				'<tr><td># of Different Locations</td><td>'+originalDrop+'</td></tr>'+
 				'<tr><td>First Drop Location</td><td>+'+firstSongLocation+'</td></tr>'+
 				'<tr><td>Last Drop Location</td><td>'+lastSongLocation+'</td></tr>'+
 				'<tr><td>Most Common Location</td><td>'+popularLocation+'</td></tr>'+
