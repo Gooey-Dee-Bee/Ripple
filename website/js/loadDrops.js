@@ -61,7 +61,8 @@ console.log('add song to user array');
 
 /*Strings to get Soundcloud players on the page*/
 var beginPlayer = '<div class="songPlayer" id="song';
-var secondPlayer= '"> <div class="songText"><iframe class="iframeObj" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
+var secondPlayer= '"> <div class="songText"><iframe id=';
+var secondPlayer2 = ' src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
 var midPlayer ='"></iframe></div><div><img class="drop" src="images/dropItIcon.png"  id=song';
 var alternateEnd = '"></iframe></div><div>';
 var endPlayer =' onClick="bumpSong(this.id)"/></div></div>';
@@ -137,7 +138,7 @@ console.log('add song');
 	
 	
     var newcontent = document.createElement('div');
-    var newSongListing = beginPlayer+songId+secondPlayer+songId+midPlayer+songId+endPlayer;
+    var newSongListing = beginPlayer+songId+secondPlayer+songId+secondPlayer2+songId+midPlayer+songId+endPlayer;
     //console.log("ADD SONG "+songId);
     newcontent.innerHTML = newSongListing;
    
@@ -163,7 +164,7 @@ function addUserSong(songId) {
 	console.log('add user song');
 	
     	var newcontent = document.createElement('div');
-   	 	var newSongListing = beginPlayer+songId+secondPlayer+songId+alternateEnd;
+   	 	var newSongListing = beginPlayer+songId+secondPlayer+songId+secondPlayer2+songId+alternateEnd;
     	console.log("ADD SONG "+songId);
     	newcontent.innerHTML = newSongListing;
    

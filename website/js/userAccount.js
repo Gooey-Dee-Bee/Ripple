@@ -42,7 +42,8 @@ function buyMoreDrops(num){
 						
 					})
 				.done(function() { 
-					window.location.replace("index.html");
+					getUserPoints();
+					$('#accountModule').hide();
 				});
 			}
 		});
