@@ -278,7 +278,7 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 		else
 			multipleLocal = 'Yes';
 			
-	if(userID != null) {
+	if(userName != null) {
 		var htmlString = "<div id='info'>"+
 			'<table id="genTable">'+
 			'<tr><td class="anDescriptor">User</td></tr>'+
@@ -309,6 +309,14 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 
 function searchByLocation() {
 var htmlString = "<div id='analyticTitle'>Search By Location</div>";
+
+$.get('php/locationStats.php', {latitude:'+32.8435', longitude:'-96.7841'},function(data,status) {
+
+	console.log(data);
+
+
+	});
+
 
 $('#songAnalytics').html(htmlString);
 

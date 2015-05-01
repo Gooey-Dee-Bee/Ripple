@@ -1,10 +1,10 @@
 <?php
 	require_once(__DIR__."/databases.php");
 
-	//$lat = $_GET['latitude'];
-	//$long = $_GET['long'];
-	$lat = '32.846';
-	$long = '-96.7837';
+	$lat = $_GET['latitude'];
+	$long = $_GET['longitude'];
+	//$lat = '32.846';
+	//$long = '-96.7837';
 	$roundLat = round($lat) . "%";
 	$roundLong = round($long) . "%";
 	$today = date("Y-m-d");
