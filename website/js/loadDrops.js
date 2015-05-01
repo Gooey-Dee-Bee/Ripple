@@ -14,7 +14,12 @@ $.post("/ripple/php/loadDrops.php",
 
 
 function makeRequestForUser(){
-$.post("/ripple/php/loadDrops.php",
+	console.log('makeRequestForUser');
+	if (sessionStorage.getItem('name') === null) {
+		//alert('not permitted to be here');
+		window.location.replace('index.html');
+	}
+	$.post("/ripple/php/loadDrops.php",
 		{user_id: sessionStorage.getItem('user_id')},
  		function(data, status) {
 		console.log('adding songs to user array');
