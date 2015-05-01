@@ -139,7 +139,7 @@ $('#songAnalytics').html(htmlString);
 
 function searchBySong() {
 var htmlString = "<div id='analyticTitle'>Search By Song</div>"
-					+"<br><input type='text' id='songId' placeholder='SONG ID'></input>'"+
+					+"<br><input type='text' id='songId' placeholder='SONG ID'></input>"+
 					"<button class='analyticOption' onClick='augmentedSongSearch()'>Search</button>"+
 					"<div id='info'>Search for a song by name or artist.";
 

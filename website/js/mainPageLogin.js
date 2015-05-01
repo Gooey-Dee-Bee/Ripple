@@ -11,40 +11,22 @@ $(function(){
 		
 			    		
 			    		
-			$.ajax({
-				type: "POST",
-			    url: '/ripple/php/login.php',
-			    content: 'application/json',
-
-			    data: JSON.stringify(user),
-			    success: function(data, status, request) {
+			$.post('/ripple/php/login.php', {email: user.email, password: user.password},
+ 					function(data, status, request) {
 
 			    	if(data == 100){
 			    		sessionStorage.name = user.email;
 						sessionStorage.password = user.password;
-			    		//console.log('the session stuff is: '+sessionStorage.getItem('name'));
-			    		
-			    		//alert("Successfully Logged In, check the console");
+
 			    		showAccountInfo();
-			    		if(sessionStorage.getItem('location') != null)
-			    			{
+			    		if(sessionStorage.getItem('location') != null){
 			    			showLoggedInPage();
-			    			
 			    			window.location.replace("index.html");
-			    			}
-			    		
-			    		
+			    		}	
 			    	}
 			    	else
 			    		alert("Account not found.");
-			    },
-			    error: function(something, var1) {
-			    	console.log(something);
-			    	console.log(var1);
-	         		alert('An error occurred');
-	      		}
-
-			}); // end of ajax
+			}); // end of post
 	}); // end submit function
 	$('#logout').on("click", function(){
 		

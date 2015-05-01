@@ -1,23 +1,18 @@
 <?php
 	require_once(__DIR__."/databases.php"); // Allow access to the database functions
+	require_once(__DIR__."/email.php");
 
-	// DECODE THE INFORMATION (IT IS PASSED IN JSON FORMAT)
-	$post_json = file_get_contents("php://input");
-	$post = json_decode($post_json, true);
-
-	$email = $post['email'];
-	$pword = $post['password'];
-
+	$email = $_POST['email'];
+	$pword = $_POST['password'];
 
 	$query = "SELECT * FROM users WHERE email = '$email'";
 	if(existsInDatabase($query)) {
-		echo 200; // 'Error Code' that the email has already been registered. JS needs to return an error
+		echo 200; // 'Error Code' that the email has already been registered.
 	}
 	else {
 		$add_query = "INSERT INTO users(pword, email) VALUES('$pword', '$email')";
 		addToDatabase($add_query);
-		shell_exec("php ".__DIR__."/email.php $email > /var/log/ripple/error.log &"); // Email confirmation service ran in BG
-		echo 100;
+		echo send_email($email); // 100 on success, 300 on error
 	}
 ?>
 

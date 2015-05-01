@@ -15,14 +15,9 @@ $( document ).ready( function() {
 	
 			    		
 			    		
-			$.ajax({
-				type: "POST",
-			    url: '/ripple/php/login.php',
-			    content: 'application/json',
-
-			    data: JSON.stringify(user),
-			    success: function(data) {
-
+			$.post('/ripple/php/login.php', 
+				{email: user.email, password: user.password},
+			    function(data) {
 			    	if(data == 100){
 			    		
 			    		//alert("Successfully Logged In! Drop wisely. ");
@@ -40,7 +35,6 @@ $( document ).ready( function() {
 			    	}
 			    	else
 			    		alert("Account not found.");
-
 			        //Error Checking
 			        // if($.isNumeric(data)){
 			        //     if(data==400) {
@@ -60,13 +54,6 @@ $( document ).ready( function() {
 			        //         $(location).attr('href', "search.html");
 			        //     }
 			        // }
-			    },
-			    error: function(something, var1) {
-			    	console.log(something);
-			    	console.log(var1);
-	         		alert('An error occurred');
-	      		}
-
 			}); // end of ajax
 	}); // end submit function
 	
@@ -91,7 +78,8 @@ $( document ).ready( function() {
 		else if (user.password === user.confirmPassword) {
 			// url should be /ripple/php/createAccount.php
 			// url for apiary http://private-f89294-ripple3.apiary-mock.com/newuser/email
-			$.post("/ripple/php/createAccount.php", JSON.stringify(user), function( data ) {
+			$.post("/ripple/php/createAccount.php",
+					{email: user.email, password: user.password}, function( data ) {
 				// success function
 				if(data == 100) {
 		    		document.getElementById("errorMessage").innerHTML = "Account created successfully";
@@ -102,17 +90,20 @@ $( document ).ready( function() {
 		    	}
 		    	else {
 		    		//alert("An acount already exists with that email address.");
-		    		document.getElementById("errorMessage").innerHTML = "Account already exisits with that email address.";
+		    		document.getElementById("errorMessage").innerHTML = "Account already exists with that email address.";
+		    		setTimeout(function(){$('#errorMessage').html('');},4000);
 		    		
 		    	
 		    	}
 			})
 			.fail( function() {
-				document.getElementById("errorMessage").innerHTML = "Error occured creating an account";
+				document.getElementById("errorMessage").innerHTML = "Error occured creating an account. We can't tell you why it did this, you just failed. Sorry. ";
+				setTimeout(function(){$('#errorMessage').html('');},4000);
 			});
 		} // end of if
 		else { // passwords are not the same
 			document.getElementById("errorMessage").innerHTML = "Passwords are not the same.";
+			setTimeout(function(){$('#errorMessage').html('');},4000);
 		}
 	}); // end of sign up
 	

@@ -14,7 +14,12 @@ $.post("/ripple/php/loadDrops.php",
 
 
 function makeRequestForUser(){
-$.post("/ripple/php/loadDrops.php",
+	console.log('makeRequestForUser');
+	if (sessionStorage.getItem('name') === null) {
+		//alert('not permitted to be here');
+		window.location.replace('index.html');
+	}
+	$.post("/ripple/php/loadDrops.php",
 		{user_id: sessionStorage.getItem('user_id')},
  		function(data, status) {
 		console.log('adding songs to user array');
@@ -60,6 +65,7 @@ var secondPlayer= '"> <div class="songText"><iframe src="https://w.soundcloud.co
 var midPlayer ='"></iframe></div><div><img class="drop" src="images/dropItIcon.png"  id=song';
 var alternateEnd = '"></iframe></div><div>';
 var endPlayer =' onClick="bumpSong(this.id)"/></div></div>';
+
 
 /** GRAB THE SONG ID FROM THE SONG URL ON THE PAGE*/
 function grabSong() {
