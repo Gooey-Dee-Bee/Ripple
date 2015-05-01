@@ -3,10 +3,11 @@
 
 	$lat = $_GET['latitude'];
 	$long = $_GET['longitude'];
-	//$lat = '32.846';
-	//$long = '-96.7837';
-	$roundLat = round($lat) . "%";
-	$roundLong = round($long) . "%";
+	//$lat = 32.846;
+	//$long = -96.7837;
+	$roundLat = round($lat);// . "%";
+	$roundLong = round($long);// . "%";
+	//echo $roundLat . " and " . $roundLong . "\n<br />";
 	$today = date("Y-m-d");
 	$today = $today . "%";
 
@@ -14,8 +15,10 @@
 	$query1 = getInfoFromDatabase(
 		"SELECT drop_id, song_id, time_stamp
 		FROM drops
-		WHERE CAST(latitude as decimal)= CAST($lat as decimal)
-		AND CAST(longitude as decimal) = CAST($long as decimal)");
+		WHERE round(latitude, 5) = round($lat, 5)
+		AND round(longitude, 5) = round($long, 5)");
+	//echo CAST(latitude as decimal) . " vs " . CAST($lat as decimal) . "\n<br />";
+		//AND CAST(longitude as decimal) = CAST($long as decimal)
 	$totalSpec = count($query1);
 	if($totalSpec == 0){
 		echo 404; //location does not exist bro
@@ -25,8 +28,8 @@
 	$query2 = getInfoFromDatabase(
 		"SELECT count(drop_id) as c
 		FROM drops
-		WHERE CAST(latitude as decimal)= CAST($lat as decimal)
-		AND CAST(longitude as decimal) = CAST($long as decimal)
+		WHERE round(latitude, 5) = round($lat, 5)
+		AND round(longitude, 5) = round($long, 5)
 		AND time_stamp LIKE '$today'");
 	$specToday = $query2[0]['c'];
 
@@ -34,7 +37,7 @@
 	$query3 = getInfoFromDatabase(
 		"SELECT drop_id, song_id, time_stamp
 		FROM drops
-		WHERE round(latitude)= '$roundLat'
+		WHERE round(latitude) = '$roundLat'
 		AND round(longitude) = '$roundLong'");
 	$totalGen = count($query3);
 	echo "\n<br />";
