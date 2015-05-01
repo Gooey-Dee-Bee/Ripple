@@ -4,10 +4,29 @@
 	
 	function getCurrentArea($latitude, $longitude)
 	{
-		$south = floor($latitude);
-		$north = ceil($latitude);
-		$east = floor($longitude);
-		$west = ceil($longitude);
+		
+		#This logic decides which operation decides how to deal with lat and long based on hemisphere
+		if ($latitude >= 0)
+		{
+			$north = latPlusOne((int)$latitude);
+			$south = (int)$latitude;
+		}
+		else
+		{
+			$north = (int)$latitude;
+			$south = longMinusOne((int)$latitude);
+		}
+
+		if($longitude >= 0)
+		{
+			$east = longPlusOne((int)$longitude);
+			$west = (int)$longitude;
+		}
+		else
+		{
+			$east = (int)$longitude;
+			$west = longMinusOne((int)$longitude);	
+		}
 
 		$area =
 		array(
@@ -16,8 +35,7 @@
 			"eastBound" => $east,
 			"westBound" => $west,
 		);
-
-		#echo json_encode($area);
+		
 		return $area;
 	}
 
@@ -32,6 +50,8 @@
 			"westBound" => longMinusOne($area['westBound']),
 		);
 
+		#echo "TESTING SURROUNDING AREA:";
+		#echo $surroundingArea;
 		return ($surroundingArea);
 	}
 
@@ -45,14 +65,18 @@
 	}
 
 
-
+	#Adds 1 to the latitude. If incrementing causes the 
 	function latPlusOne($latitude)
 	{
 		$lat = $latitude + 1;
 		if($lat > 90)
 		{
-			$lat = ($lat % 90) - 90;
+			$lat = -90;
 		}
+		
+		// {
+		// 	$lat = ($lat % 90) - 90;
+		// }
 
 		return $lat;
 	}
@@ -62,8 +86,11 @@
 		$lat = $latitude - 1;
 		if($lat < -90)
 		{
-			$lat = 90 - ($lat % (-90));
+			$lat = 90;
 		}
+		// {
+		// 	$lat = 90 - ($lat % (-90));
+		// }
 
 		return $lat;
 	}
@@ -73,8 +100,11 @@
 		$longi = $longitude + 1;
 		if($longi > 180)
 		{
-			$longi = ($longi % 180) - 180;
+			$longi = -180;
 		}
+		// {
+		// 	$longi = ($longi % 180) - 180;
+		// }
 
 		return $longi;
 	}
@@ -84,8 +114,11 @@
 		$longi = $longitude - 1;
 		if($longi < -180)
 		{
-			$longi = 180 - ($longi %  (-180));
+			$longi = 180;
 		}
+		// {
+		// 	$longi = 180 - ($longi %  (-180));
+		// }
 		return $longi;
 	}
 ?>
