@@ -45,10 +45,15 @@
 	} else {
 		$numLocs = false;
 	}
+	//total points
+	$totalQuery = "SELECT total_points FROM users WHERE email = '$email'";
+	$totalpoints = getInfoFromDatabase($totalPoints);
+	$totalpoints = $totalpoints[0]['total_points'];
 
 	$info = array(
 			'email' => $email,
 			'points' => $points,
+			'total points' => $totalpoints,
 			'total drops' => $total,
 			'first drop' => $firstDrop,
 			'last drop' => $lastDrop,
