@@ -49,11 +49,20 @@
 	$totalQuery = "SELECT total_points FROM users WHERE email = '$email'";
 	$totalpoints = getInfoFromDatabase($totalPoints);
 	$totalpoints = $totalpoints[0]['total_points'];
+	//if user has bought points
+	$purchaseQuery = "SELECT user_id FROM payment WHERE user_id = '$userID'";
+	$purchaseQuery = getInfoFromDatabase($purchaseQuery);
+	if (sizeof($purchaseQuery)>0){
+		$purchaseQuery = 1;
+	} else {
+		$purchaseQuery = 0;
+	}
 
 	$info = array(
 			'email' => $email,
 			'points' => $points,
 			'total points' => $totalpoints,
+			'purchased points' => $purchaseQuery,
 			'total drops' => $total,
 			'first drop' => $firstDrop,
 			'last drop' => $lastDrop,
