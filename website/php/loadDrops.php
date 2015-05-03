@@ -12,13 +12,13 @@
 		$longitude = $data->longitude;
 	}
 
-
     else {
 		$latitude = $_POST["latitude"];		// retrieve latitude
 		$longitude = $_POST["longitude"];	// retrieve longitude
     }
 
 	$viewableRegion = getSurroundingArea($latitude, $longitude);
+	#echo json_encode($viewableRegion); //Testing
 
 	if(isset($_POST['user_id'])) { // This is to load the drops from a certain user only
 		$user_id = $_POST['user_id'];
@@ -43,8 +43,6 @@
 		}
 
 		// Returns the song ID in reverse chronological order (the first entry was dropped the longest time ago)
-		echo json_encode(array_reverse($viewableSongs)); 
-
+		echo json_encode(array_reverse($viewableSongs));
 	}
-
 ?>
