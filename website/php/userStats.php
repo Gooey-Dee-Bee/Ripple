@@ -52,7 +52,7 @@
 	//if user has bought points
 	$purchaseQuery = "SELECT user_id FROM payment WHERE user_id = '$userID'";
 	$purchaseQuery = getInfoFromDatabase($purchaseQuery);
-	if (mysqli_num_rows($purchaseQuery)>0){
+	if (sizeof($purchaseQuery)>0){
 		$purchaseQuery = 1;
 	} else {
 		$purchaseQuery = 0;

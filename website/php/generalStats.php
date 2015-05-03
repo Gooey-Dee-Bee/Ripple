@@ -60,6 +60,9 @@
 	//echo "\n<br />";
 	$dropsToday = $query7[0]['sto'];
 
+	//Number of unique, active regions on the website
+	$query8 = getInfoFromDatabase("SELECT COUNT(DISTINCT TRUNCATE(latitude, 0), TRUNCATE(longitude,0)) FROM drops");
+	$numUsedRegions = $query8;
 
 	$info = array(
 			'numUsers' => $numUsers,
@@ -70,7 +73,8 @@
 			'popSong' => $popSongCt,
 			'bestUser' => $bestUser,
 			'popLat' => $popLat,
-			'popLong' => $popLong
+			'popLong' => $popLong,
+			'numUsedRegions' => $numUsedRegions,
 			);
 
 	echo json_encode($info);
