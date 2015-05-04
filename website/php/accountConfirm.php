@@ -4,7 +4,7 @@
 
  	$html_start = "<html><head><title>Account Confirmation</title></head><body>";
  	$html_end   = "</body></html>";
- 	$site_path = "index.html";
+ 	$site_path = "http://192.168.10.10/ripple/index.html";
 
  	$html_error = "<h2>An Error Occured</h2><p>An error occured in processing your account.
  					Please make sure the link in your URL exactly matches the one sent via email.</br>
