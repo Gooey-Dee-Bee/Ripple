@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.41, for debian-linux-gnu (i686)
+-- MySQL dump 10.13  Distrib 5.5.43, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: Ripple
 -- ------------------------------------------------------
--- Server version	5.5.41-0ubuntu0.12.04.1
+-- Server version	5.5.43-0ubuntu0.12.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,6 +37,7 @@ CREATE TABLE `confirmation` (
 
 LOCK TABLES `confirmation` WRITE;
 /*!40000 ALTER TABLE `confirmation` DISABLE KEYS */;
+INSERT INTO `confirmation` VALUES (1,'aferrante@smu.edu','test',1),(2,'oklaiss@smu.edu','test',1),(3,'jrutz@smu.edu','test',1),(4,'nmendoza@smu.edu','test',1),(6,'master@smu.edu','test',1),(8,'averyferrante@yahoo.com','8fef12fbe4311d8836e2534eee5e53be',1);
 /*!40000 ALTER TABLE `confirmation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +59,7 @@ CREATE TABLE `drops` (
   PRIMARY KEY (`drop_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `drops_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +68,7 @@ CREATE TABLE `drops` (
 
 LOCK TABLES `drops` WRITE;
 /*!40000 ALTER TABLE `drops` DISABLE KEYS */;
-INSERT INTO `drops` VALUES (4,1,136949481,'2015-04-24 16:23:21',0,32.846,-96.7837),(5,6,18853020,'2015-04-24 16:29:27',0,32.846,-96.7837),(6,4,4138540,'2015-04-24 16:30:39',0,32.846,-96.7837);
+INSERT INTO `drops` VALUES (4,1,136949481,'2015-04-24 16:23:21',0,32.846,-96.7837),(5,6,18853020,'2015-04-24 16:29:27',0,32.846,-96.7837),(6,4,4138540,'2015-04-24 16:30:39',0,32.846,-96.7837),(7,8,136949481,'2015-05-03 23:48:29',4,32.8427,-96.783);
 /*!40000 ALTER TABLE `drops` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +112,7 @@ CREATE TABLE `users` (
   `total_points` int(11) DEFAULT '50',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +121,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'password','aferrante@smu.edu',40,50),(2,'password','oklaiss@smu.edu',50,50),(3,'password','jrutz@smu.edu',50,50),(4,'password','nmendoza@smu.edu',40,50),(5,'new','new@new.com',50,50),(6,'password','master@smu.edu',999989,50);
+INSERT INTO `users` VALUES (1,'password','aferrante@smu.edu',41,51),(2,'password','oklaiss@smu.edu',50,50),(3,'password','jrutz@smu.edu',50,50),(4,'password','nmendoza@smu.edu',40,50),(5,'new','new@new.com',50,50),(6,'password','master@smu.edu',999989,50),(8,'password','averyferrante@yahoo.com',45,50);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -133,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-29 18:43:53
+-- Dump completed on 2015-05-03 23:51:09
