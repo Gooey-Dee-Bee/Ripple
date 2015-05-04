@@ -337,7 +337,44 @@ function getSongsForLocation(chosenDistance, html) {
 			html+= data[i]["song_id"];
 		}
 		html+= "</div>";
-		setUpMap(data);
+		
+		
+		var longitude = parseFloat(sessionStorage.getItem('longitude'));
+		var latitude = parseFloat(sessionStorage.getItem('latitude'));
+		console.log(longitude);
+		
+		var zoomNumber;
+		switch(chosenDistance) {
+			case '0.5':
+				zoomNumber = 18;
+				break;
+			case '1':
+				zoomNumber = 16;
+				break;
+			case '5':
+				zoomNumber = 14;
+				break;
+			case '10':
+				zoomNumber = 12;
+				break;
+			case '25':
+				zoomNumber = 11;
+				break;
+			case '50':
+				zoomNumber = 8;
+				break;
+			case '100':
+				zoomNumber = 7;
+				break;
+			case '2725':
+				zoomNumber = 4;
+				break;
+			default:
+				zoomNumber = 5;
+		}
+		console.log(zoomNumber);
+		var newData = [[longitude, latitude],[-96, 32]]
+		setUpMap(newData, zoomNumber);
 		$('#songAnalytics').append(html);
 	console.log(data);
 	});
@@ -347,24 +384,29 @@ function getSongsForLocation(chosenDistance, html) {
 
 }
 
-function setUpMap (songCoords) {
+function setUpMap (songCoords, zoomNumber) {
+var longitude = parseFloat(sessionStorage.getItem('longitude'));
+var latitude = parseFloat(sessionStorage.getItem('latitude'));
 
 $('#map').html('');
 
-var longitude = parseFloat(sessionStorage.getItem('longitude'));
-var latitude = parseFloat(sessionStorage.getItem('latitude'));
-console.log(longitude);
 
- 
-  var iconFeature = new ol.Feature({
-  geometry: new ol.geom.Point(ol.proj.transform([longitude, latitude],  'EPSG:4326', 'EPSG:3857')),
-  name: 'Null Island',
+var icon_features = [];
+
+$.each(songCoords, function(index, item){
+   var point = new ol.geom.Point(item);
+   point.transform('EPSG:4326', 'EPSG:900913');
+   // I tried it the other way too, but doesn't seem to work
+
+   var iconFeature = new ol.Feature({
+       geometry: point,
+       name: item.name
+   });
+   
+	icon_features.push(iconFeature);
+   
 });
 
- var iconFeature2 = new ol.Feature({
-  geometry: new ol.geom.Point(ol.proj.transform([-96, 32],  'EPSG:4326', 'EPSG:3857')),
-  name: 'Null Island',
-});
 
 var iconStyle = new ol.style.Style({
   	image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
@@ -377,16 +419,13 @@ var iconStyle = new ol.style.Style({
 });
 
 
-
-iconFeature.setStyle(iconStyle);
-iconFeature2.setStyle(iconStyle);
-
 var vectorSource = new ol.source.Vector({
-  features: [iconFeature, iconFeature2]
+  features: icon_features
 });
 
 var vectorLayer = new ol.layer.Vector({
-  source: vectorSource
+  source: vectorSource,
+  style: iconStyle
 });
 
 var rasterLayer = new ol.layer.Tile({
@@ -399,7 +438,7 @@ var map = new ol.Map({
   target: document.getElementById('map'),
   view: new ol.View({
     center: ol.proj.transform([longitude, latitude],  'EPSG:4326', 'EPSG:3857'),
-    zoom: 6
+    zoom: zoomNumber
   })
 });
 
