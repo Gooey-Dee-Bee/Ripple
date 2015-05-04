@@ -88,7 +88,7 @@ h2 {
 
 
 #navBar {
-	width:100%;
+	width:98%;
 	height:200px;
 	background-color: #4898bd;
 	background-color:#4898bd;
@@ -166,7 +166,7 @@ h2 {
 /*ACCOUNT SUBSET*/
 #accountInfo {
 	top:52px;
-	right:15px;
+	right:20px;
 	width:25%;
 	height:150px;
 	background-color:#120054;

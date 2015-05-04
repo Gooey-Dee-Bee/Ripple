@@ -5,6 +5,12 @@ function setUpPage() {
 
 	console.log('GENERIC BEING CALLED NOW');
 
+	$.get('/ripple/php/getUserInfo.php',{email: sessionStorage.getItem('name')}, function(data) {
+		console.log('User Account Status' + sessionStorage.acct_status);
+		var array = JSON.parse(data);
+		sessionStorage.acct_status = array.acct_status;
+	});
+
 	//if there is a location but there is no name
 	if(sessionStorage.getItem('location') != null && sessionStorage.getItem("name") == null) {
 		//console.log('there is a location associated with this session');
@@ -12,9 +18,7 @@ function setUpPage() {
 		disallowDrops();
 		$('#loginFields').fadeIn();
 		$('#accountInfo').hide();
-		
 	}
-	
 	//if name is null and location is null
 	else if(sessionStorage.getItem("name") == null ) {
 		disallowDrops();

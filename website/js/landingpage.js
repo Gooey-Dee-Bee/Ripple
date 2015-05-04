@@ -31,7 +31,7 @@ $( document ).ready( function() {
 			    			
 			    
 			    		window.location.replace("index.html");
-			    		
+			    		console.log("replaced index");
 			    	}
 			    	else
 			    		alert("Account not found.");
