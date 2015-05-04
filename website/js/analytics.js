@@ -333,11 +333,11 @@ $('#songAnalytics').html(htmlString);
 function getSongsForLocation(chosenDistance, html) {
 
 	var longLats = new Array();
-	
+	html='';
 	$.get('php/locationStats.php', {latitude:sessionStorage.getItem('latitude'), longitude:sessionStorage.getItem('longitude'), distance:chosenDistance},function(data,status) {
 		data = JSON.parse(data);
 		for(var i = 0; i < data.length; i ++) {
-			html+= data[i]["song_id"];
+			//html+= data[i]["song_id"];
 			
 			//var coords = '['+parseFloat(data[i]['longitude'])+', '+parseFloat(data[i]['latitude'])+']';
 			var coordinatePair = new Array();
