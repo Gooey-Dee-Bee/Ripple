@@ -70,7 +70,7 @@
 
 	// 3959 represents the earth's radius. Change it to the correct amount in the preferred units of choice
 	// (i.e 6371 for KM)
-	$haversineQuery = "SELECT song_id, 
+	$haversineQuery = "SELECT song_id, latitude, longitude,
 		(3959 * acos(cos(radians($latitude)) * cos(radians(latitude)) * cos(radians(longitude) - radians($longitude)) 
 		+ sin(radians($latitude)) * sin(radians(latitude)))) AS distance FROM drops 
 		GROUP BY song_id HAVING distance < $distance ORDER BY distance";
