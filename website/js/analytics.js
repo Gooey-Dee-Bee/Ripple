@@ -331,18 +331,23 @@ $('#songAnalytics').html(htmlString);
 
 
 function getSongsForLocation(chosenDistance, html) {
+
+	var longLats = new Array();
+	
 	$.get('php/locationStats.php', {latitude:sessionStorage.getItem('latitude'), longitude:sessionStorage.getItem('longitude'), distance:chosenDistance},function(data,status) {
 		data = JSON.parse(data);
 		for(var i = 0; i < data.length; i ++) {
 			html+= data[i]["song_id"];
+			
+			//var coords = '['+parseFloat(data[i]['longitude'])+', '+parseFloat(data[i]['latitude'])+']';
+			var coordinatePair = new Array();
+			coordinatePair.push('[ '+data[i]['longitude'], data[i]['latitude']+' ]');
+			
+			longLats.push(coordinatePair);
 		}
 		html+= "</div>";
-		
-		
-		var longitude = parseFloat(sessionStorage.getItem('longitude'));
-		var latitude = parseFloat(sessionStorage.getItem('latitude'));
-		console.log(longitude);
-		
+
+
 		var zoomNumber;
 		switch(chosenDistance) {
 			case '0.5':
@@ -372,11 +377,11 @@ function getSongsForLocation(chosenDistance, html) {
 			default:
 				zoomNumber = 5;
 		}
+		
 		console.log(zoomNumber);
-		var newData = [[longitude, latitude],[-96, 32]]
-		setUpMap(newData, zoomNumber);
+		setUpMap(longLats, zoomNumber);
 		$('#songAnalytics').append(html);
-	console.log(data);
+	console.log('DATA FROM LOCATION '+JSON.stringify(data));
 	});
 
 
@@ -394,7 +399,11 @@ $('#map').html('');
 var icon_features = [];
 
 $.each(songCoords, function(index, item){
-   var point = new ol.geom.Point(item);
+	var tempLong = parseFloat(item[0].substr(1, item[0].length));
+	var tempLat = parseFloat(item[1].substr(0, item[1].length-1));
+	var coordinatingBitches = [tempLong, tempLat];
+
+   var point = new ol.geom.Point(coordinatingBitches);
    point.transform('EPSG:4326', 'EPSG:900913');
    // I tried it the other way too, but doesn't seem to work
 
