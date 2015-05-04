@@ -310,7 +310,7 @@ $('#info').remove();
 
 var htmlString = "<div id='analyticTitle'>Search By Location</div>"+
 					"<div id='info'>"+
-					"<div id ='distanceChoice'><select onChange='getSongsForLocation(this.options[this.selectedIndex].value)'>"+
+					"<div ><select id ='distanceChoice' onChange='getSongsForLocation(this.options[this.selectedIndex].value)'>"+
 					"<option value=''>Select a Distance</option>"+
 					"<option value='0.5'>0.5 Miles</option>"+
 					"<option value='1'> 1 Mile </option>"+
