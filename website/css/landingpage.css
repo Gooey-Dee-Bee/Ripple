@@ -100,12 +100,14 @@ body {
 #loginSuggest {
 	color:white;
 	text-align:center;
+	cursor:pointer;
 }
 
 #accountSuggest {
 	color:white;
 	text-align:center;
 	display:none;
+	cursor:pointer;
 
 }
 #createAccount {
