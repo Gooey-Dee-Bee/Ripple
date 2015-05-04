@@ -299,8 +299,6 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 		else {
 			var htmlString = "<div id='info' style='color:black;'>I'm sorry, we couldn't find that user.</div>"
 		}
-
-
 			$('#songAnalytics').append(htmlString);
 		});
 
@@ -308,16 +306,143 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 	}
 
 function searchByLocation() {
-var htmlString = "<div id='analyticTitle'>Search By Location</div>";
+$('#info').remove();
 
-$.get('php/locationStats.php', {latitude:'+32.8435', longitude:'-96.7841'},function(data,status) {
+var htmlString = "<div id='analyticTitle'>Search By Location</div>"+
+					"<div id='info'>"+
+					"<div id ='distanceChoice'><select onChange='getSongsForLocation(this.options[this.selectedIndex].value)'>"+
+					"<option value=''>Select a Distance</option>"+
+					"<option value='0.5'>0.5 Miles</option>"+
+					"<option value='1'> 1 Mile </option>"+
+					"<option value='5'> 5 Miles </option>"+
+					"<option value = '10'> 10 Miles </option>"+
+					"<option value = '25'> 25 Miles </option>"+
+					"<option value = '50'> 50 Miles </option>"+
+					"<option value = '100'> 100 Miles </option>"+
+					"<option value = '2725'> All of United States (or most of europe)</option>"+
+					"</select></div><div id='map' class='map'></div>";
 
-	console.log(data);
 
-
-	});
 
 
 $('#songAnalytics').html(htmlString);
+
+}
+
+
+function getSongsForLocation(chosenDistance, html) {
+	$.get('php/locationStats.php', {latitude:sessionStorage.getItem('latitude'), longitude:sessionStorage.getItem('longitude'), distance:chosenDistance},function(data,status) {
+		data = JSON.parse(data);
+		for(var i = 0; i < data.length; i ++) {
+			html+= data[i]["song_id"];
+		}
+		html+= "</div>";
+		setUpMap(data);
+		$('#songAnalytics').append(html);
+	console.log(data);
+	});
+
+
+
+
+}
+
+function setUpMap (songCoords) {
+
+$('#map').html('');
+
+var longitude = parseFloat(sessionStorage.getItem('longitude'));
+var latitude = parseFloat(sessionStorage.getItem('latitude'));
+console.log(longitude);
+
+ 
+  var iconFeature = new ol.Feature({
+  geometry: new ol.geom.Point(ol.proj.transform([longitude, latitude],  'EPSG:4326', 'EPSG:3857')),
+  name: 'Null Island',
+});
+
+ var iconFeature2 = new ol.Feature({
+  geometry: new ol.geom.Point(ol.proj.transform([-96, 32],  'EPSG:4326', 'EPSG:3857')),
+  name: 'Null Island',
+});
+
+var iconStyle = new ol.style.Style({
+  	image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+    anchor: [0.5, 46],
+    anchorXUnits: 'fraction',
+    anchorYUnits: 'pixels',
+    opacity: 0.75,
+    src: 'images/dropItIconMarker.png'
+  }))
+});
+
+
+
+iconFeature.setStyle(iconStyle);
+iconFeature2.setStyle(iconStyle);
+
+var vectorSource = new ol.source.Vector({
+  features: [iconFeature, iconFeature2]
+});
+
+var vectorLayer = new ol.layer.Vector({
+  source: vectorSource
+});
+
+var rasterLayer = new ol.layer.Tile({
+  source: new ol.source.MapQuest({layer: 'osm'
+  })
+});
+
+var map = new ol.Map({
+  layers: [rasterLayer, vectorLayer],
+  target: document.getElementById('map'),
+  view: new ol.View({
+    center: ol.proj.transform([longitude, latitude],  'EPSG:4326', 'EPSG:3857'),
+    zoom: 6
+  })
+});
+
+var element = document.getElementById('popup');
+
+var popup = new ol.Overlay({
+  element: element,
+  positioning: 'bottom-center',
+  stopEvent: false
+});
+map.addOverlay(popup);
+
+// display popup on click
+map.on('click', function(evt) {
+  var feature = map.forEachFeatureAtPixel(evt.pixel,
+      function(feature, layer) {
+        return feature;
+      });
+  if (feature) {
+    var geometry = feature.getGeometry();
+    var coord = geometry.getCoordinates();
+    popup.setPosition(coord);
+    $(element).popover({
+      'placement': 'top',
+      'html': true,
+      'content': feature.get('name')
+    });
+    $(element).popover('show');
+  } else {
+    $(element).popover('destroy');
+  }
+});
+
+// change mouse cursor when over marker
+map.on('pointermove', function(e) {
+  if (e.dragging) {
+    $(element).popover('destroy');
+    return;
+  }
+  var pixel = map.getEventPixel(e.originalEvent);
+  var hit = map.hasFeatureAtPixel(pixel);
+  map.getTarget().style.cursor = hit ? 'pointer' : '';
+});
+ 
 
 }
