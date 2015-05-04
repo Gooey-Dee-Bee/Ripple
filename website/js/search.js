@@ -96,6 +96,13 @@ function search(query) {
 	}	
 }
 
+document.addEventListener('keyup', function(e) {
+    if (e.keyCode == 27) {
+        window.location.replace("#close");
+        $('#searchModal').html("");
+    }
+});
+
 
 $( document ).ready( function() {
 
