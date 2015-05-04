@@ -72,8 +72,12 @@ var endPlayer =' onClick="bumpSong(this.id)"/></div></div>';
 function grabSong() {
 	console.log('grab song');
 	var songId = document.getElementById("searchQuery").value;
-	if(sessionStorage.getItem('points') > 0)
+	if (sessionStorage.acct_status == 0) {
+		alert('Please confirm your account in order to drop a song');
+	}
+	else if(sessionStorage.getItem('points') > 0) {
 		getSongId(songId);
+	}
 	else
 		alert("We know this is a great song, but you don't have enough points to drop it right now. Why don't you buy some more?");
 }
@@ -197,30 +201,36 @@ function bumpSong(songIdentity) {
 		
 		
 		console.log('bump song');
-		$.post(
-			'/ripple/php/drop.php', 
-			{song_id: songIdentity, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('latitude'),
-			longitude: sessionStorage.getItem('longitude')}, 
+		if (sessionStorage.acct_status == 0) {
+			alert('Please confirm your account in order to drop a song');
+		}
+		else {
+			$.post(
+				'/ripple/php/drop.php', 
+				{song_id: songIdentity, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem('latitude'),
+				longitude: sessionStorage.getItem('longitude')}, 
 
-	    	function(returnedData){
-	    	/*WHEN REPLACED, GETUSERPOINTS() NEEDS TO BE IN THE FUNCTION OF THE NEW CALL*/
-	    			getUserPoints();
+		    	function(returnedData){
+		    	/*WHEN REPLACED, GETUSERPOINTS() NEEDS TO BE IN THE FUNCTION OF THE NEW CALL*/
+		    			getUserPoints();
 
-	    			//console.log('wtf');
-	        	if(returnedData == '200') { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
-	        		alert("You do not have enough points to complete this drop. Please purchase more!");
-	        		console.log('not enough points');
-	        	}
-	        	else if(returnedData == '300') { // User tried to redrop their own song.
-	        		alert("You cannot drop your own song. Sorry!");
-	        		console.log('dropping your own song');
-	        	}
-	        	
-	        	else {
-	        		
-	        		console.log(songIdentity);
-	        		addSong(songIdentity);
-	        	}
-	        }
-		)
+		    			//console.log('wtf');
+		        	if(returnedData == '200') { // Means they would have less than 0 points after doing to drop (i.e. they have 5 points, and a drop costs 10)
+		        		alert("You do not have enough points to complete this drop. Please purchase more!");
+		        		console.log('not enough points');
+		        	}
+		        	else if(returnedData == '300') { // User tried to redrop their own song.
+		        		alert("You cannot drop your own song. Sorry!");
+		        		console.log('dropping your own song');
+		        	}
+		        	
+		        	else {
+		        		
+		        		console.log(songIdentity);
+		        		addSong(songIdentity);
+		        	}
+		        }
+			);
+		}
+		
 }

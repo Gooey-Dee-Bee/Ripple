@@ -5,36 +5,41 @@ SC.initialize({
 function dropSong(songID) {
 	console.log('dropping song');
 	// check to see if song already dropped in the area before dropping it
-	var inCurrentList = false;
-	console.log("songsInDB");
-	for (var i=0; i < songsInDB.length; i++) {
-		//console.log(songsInDB[i]);
-		if (songsInDB[i] === songID) {
-			bumpSong('song'+songID);
-			inCurrentList = true;
-			window.location.replace("#close");
-			$('#searchModal').html("");
-			return;
-		}
+	if (sessionStorage.acct_status == 0) {
+		alert('Please confirm your account in order to drop a song');
 	}
+	else {
+		var inCurrentList = false;
+		console.log("songsInDB");
+		for (var i=0; i < songsInDB.length; i++) {
+			//console.log(songsInDB[i]);
+			if (songsInDB[i] === songID) {
+				bumpSong('song'+songID);
+				inCurrentList = true;
+				window.location.replace("#close");
+				$('#searchModal').html("");
+				return;
+			}
+		}
 
-	if (!inCurrentList) {
-		$.post(
-			'/ripple/php/drop.php', 
-			{song_id: songID, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem("latitude"),
-			 longitude: sessionStorage.getItem("longitude")}, 
-			function(returnedData){
-				if(returnedData == 200) // The user doesn't have enough points to drop the song
-					alert("You do not have enough points to drop this song!");
-				// alert(returnedData);
-				// alert("success");
-			})
-		.done(function() { 
-			// this should reload the page so the new dropped song will be at the top of the list 
-			addSong(songID);
-			window.location.replace("#close");
-			$('#searchModal').html("");
-		});
+		if (!inCurrentList) {
+			$.post(
+				'/ripple/php/drop.php', 
+				{song_id: songID, email: sessionStorage.getItem('name'), latitude: sessionStorage.getItem("latitude"),
+				 longitude: sessionStorage.getItem("longitude")}, 
+				function(returnedData){
+					if(returnedData == 200) // The user doesn't have enough points to drop the song
+						alert("You do not have enough points to drop this song!");
+					// alert(returnedData);
+					// alert("success");
+				})
+			.done(function() { 
+				// this should reload the page so the new dropped song will be at the top of the list 
+				addSong(songID);
+				window.location.replace("#close");
+				$('#searchModal').html("");
+			});
+		}
 	}
 }
 
