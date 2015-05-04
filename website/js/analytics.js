@@ -299,8 +299,6 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 		else {
 			var htmlString = "<div id='info' style='color:black;'>I'm sorry, we couldn't find that user.</div>"
 		}
-
-
 			$('#songAnalytics').append(htmlString);
 		});
 
@@ -308,16 +306,182 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 	}
 
 function searchByLocation() {
-var htmlString = "<div id='analyticTitle'>Search By Location</div>";
+$('#info').remove();
 
-$.get('php/locationStats.php', {latitude:'+32.8435', longitude:'-96.7841'},function(data,status) {
+var htmlString = "<div id='analyticTitle'>Search By Location</div>"+
+					"<div id='info'>"+
+					"<div id ='distanceChoice'><select onChange='getSongsForLocation(this.options[this.selectedIndex].value)'>"+
+					"<option value=''>Select a Distance</option>"+
+					"<option value='0.5'>0.5 Miles</option>"+
+					"<option value='1'> 1 Mile </option>"+
+					"<option value='5'> 5 Miles </option>"+
+					"<option value = '10'> 10 Miles </option>"+
+					"<option value = '25'> 25 Miles </option>"+
+					"<option value = '50'> 50 Miles </option>"+
+					"<option value = '100'> 100 Miles </option>"+
+					"<option value = '2725'> All of United States (or most of europe)</option>"+
+					"</select></div><div id='map' class='map'></div>";
 
-	console.log(data);
 
-
-	});
 
 
 $('#songAnalytics').html(htmlString);
+
+}
+
+
+function getSongsForLocation(chosenDistance, html) {
+	$.get('php/locationStats.php', {latitude:sessionStorage.getItem('latitude'), longitude:sessionStorage.getItem('longitude'), distance:chosenDistance},function(data,status) {
+		data = JSON.parse(data);
+		for(var i = 0; i < data.length; i ++) {
+			html+= data[i]["song_id"];
+		}
+		html+= "</div>";
+		
+		
+		var longitude = parseFloat(sessionStorage.getItem('longitude'));
+		var latitude = parseFloat(sessionStorage.getItem('latitude'));
+		console.log(longitude);
+		
+		var zoomNumber;
+		switch(chosenDistance) {
+			case '0.5':
+				zoomNumber = 18;
+				break;
+			case '1':
+				zoomNumber = 16;
+				break;
+			case '5':
+				zoomNumber = 14;
+				break;
+			case '10':
+				zoomNumber = 12;
+				break;
+			case '25':
+				zoomNumber = 11;
+				break;
+			case '50':
+				zoomNumber = 8;
+				break;
+			case '100':
+				zoomNumber = 7;
+				break;
+			case '2725':
+				zoomNumber = 4;
+				break;
+			default:
+				zoomNumber = 5;
+		}
+		console.log(zoomNumber);
+		var newData = [[longitude, latitude],[-96, 32]]
+		setUpMap(newData, zoomNumber);
+		$('#songAnalytics').append(html);
+	console.log(data);
+	});
+
+
+
+
+}
+
+function setUpMap (songCoords, zoomNumber) {
+var longitude = parseFloat(sessionStorage.getItem('longitude'));
+var latitude = parseFloat(sessionStorage.getItem('latitude'));
+
+$('#map').html('');
+
+
+var icon_features = [];
+
+$.each(songCoords, function(index, item){
+   var point = new ol.geom.Point(item);
+   point.transform('EPSG:4326', 'EPSG:900913');
+   // I tried it the other way too, but doesn't seem to work
+
+   var iconFeature = new ol.Feature({
+       geometry: point,
+       name: item.name
+   });
+   
+	icon_features.push(iconFeature);
+   
+});
+
+
+var iconStyle = new ol.style.Style({
+  	image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+    anchor: [0.5, 46],
+    anchorXUnits: 'fraction',
+    anchorYUnits: 'pixels',
+    opacity: 0.75,
+    src: 'images/dropItIconMarker.png'
+  }))
+});
+
+
+var vectorSource = new ol.source.Vector({
+  features: icon_features
+});
+
+var vectorLayer = new ol.layer.Vector({
+  source: vectorSource,
+  style: iconStyle
+});
+
+var rasterLayer = new ol.layer.Tile({
+  source: new ol.source.MapQuest({layer: 'osm'
+  })
+});
+
+var map = new ol.Map({
+  layers: [rasterLayer, vectorLayer],
+  target: document.getElementById('map'),
+  view: new ol.View({
+    center: ol.proj.transform([longitude, latitude],  'EPSG:4326', 'EPSG:3857'),
+    zoom: zoomNumber
+  })
+});
+
+var element = document.getElementById('popup');
+
+var popup = new ol.Overlay({
+  element: element,
+  positioning: 'bottom-center',
+  stopEvent: false
+});
+map.addOverlay(popup);
+
+// display popup on click
+map.on('click', function(evt) {
+  var feature = map.forEachFeatureAtPixel(evt.pixel,
+      function(feature, layer) {
+        return feature;
+      });
+  if (feature) {
+    var geometry = feature.getGeometry();
+    var coord = geometry.getCoordinates();
+    popup.setPosition(coord);
+    $(element).popover({
+      'placement': 'top',
+      'html': true,
+      'content': feature.get('name')
+    });
+    $(element).popover('show');
+  } else {
+    $(element).popover('destroy');
+  }
+});
+
+// change mouse cursor when over marker
+map.on('pointermove', function(e) {
+  if (e.dragging) {
+    $(element).popover('destroy');
+    return;
+  }
+  var pixel = map.getEventPixel(e.originalEvent);
+  var hit = map.hasFeatureAtPixel(pixel);
+  map.getTarget().style.cursor = hit ? 'pointer' : '';
+});
+ 
 
 }
