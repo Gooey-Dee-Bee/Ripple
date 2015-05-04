@@ -64,6 +64,12 @@
 	$query8 = getInfoFromDatabase("SELECT COUNT(DISTINCT TRUNCATE(latitude, 0), TRUNCATE(longitude,0)) FROM drops");
 	$numUsedRegions = $query8;
 
+	//Number of unique, active regions for that day
+	$query9 = getInfoFromDatabase("SELECT COUNT(DISTINCT TRUNCATE(latitude, 0), TRUNCATE(longitude,0)) 
+									FROM drops WHERE time_stamp LIKE '$today'");
+	$numUsedRegionsToday = $query9;
+
+
 	$info = array(
 			'numUsers' => $numUsers,
 			'numDrops' => $numDrops,
@@ -75,6 +81,7 @@
 			'popLat' => $popLat,
 			'popLong' => $popLong,
 			'numUsedRegions' => $numUsedRegions,
+			'numUsedRegionsToday' => $numUsedRegionsToday,
 			);
 
 	echo json_encode($info);
