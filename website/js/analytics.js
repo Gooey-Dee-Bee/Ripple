@@ -351,25 +351,25 @@ function getSongsForLocation(chosenDistance, html) {
 		var zoomNumber;
 		switch(chosenDistance) {
 			case '0.5':
-				zoomNumber = 18;
-				break;
-			case '1':
-				zoomNumber = 16;
-				break;
-			case '5':
 				zoomNumber = 14;
 				break;
-			case '10':
+			case '1':
 				zoomNumber = 12;
 				break;
-			case '25':
-				zoomNumber = 11;
+			case '5':
+				zoomNumber = 10;
 				break;
-			case '50':
+			case '10':
+				zoomNumber = 9;
+				break;
+			case '25':
 				zoomNumber = 8;
 				break;
-			case '100':
+			case '50':
 				zoomNumber = 7;
+				break;
+			case '100':
+				zoomNumber = 6;
 				break;
 			case '2725':
 				zoomNumber = 4;
@@ -492,5 +492,35 @@ map.on('pointermove', function(e) {
   map.getTarget().style.cursor = hit ? 'pointer' : '';
 });
  
+
+}
+
+function showFrequency() {
+$('#info').remove();
+
+var htmlString = "<div id='analyticTitle'>Frequency of Drops Over Time</div>"+
+					"<div id='info'><div id='chart' style='width: 100%; height: 500px;'>xxx</div></div>";
+$('#songAnalytics').html(htmlString);
+chartValues();			
+	
+}
+
+function chartValues() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Drops'],
+          ['9/26',  34],
+          ['10/2',  29],
+          ['10/4',  54],
+          ['10/6',  97]
+        ]);
+
+        var options = {
+          hAxis: {title: 'Date',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart'));
+        chart.draw(data, options);
+        console.log('inside of draw chart');
 
 }
