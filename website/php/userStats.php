@@ -5,7 +5,7 @@
 	//$post = json_decode($post_json, true);
 
 	$email = $_GET['email'];
-	//$email = "master@smu.edu";
+	//$email = "averyferrante@yahoo.com";
 
 	$query1 = "SELECT user_id, points FROM users WHERE email = '$email'";
 	$result1 = getInfoFromDatabase($query1);
@@ -58,12 +58,19 @@
 		$purchaseQuery = 0;
 	}
 
+	$query5 = "SELECT count(*) as c FROM drops
+				WHERE user_id = '$userID'
+				AND prev_drop_id != 0";
+	$result5 = getInfoFromDatabase($query5);
+	$numReDrops = $result5[0]['c'];
+
 	$info = array(
 			'email' => $email,
 			'points' => $points,
 			'total points' => $totalpoints,
 			'purchased points' => $purchaseQuery,
 			'total drops' => $total,
+			'total redrops' => $numReDrops,
 			'first drop' => $firstDrop,
 			'last drop' => $lastDrop,
 			'pop latitude' => $popLat,
