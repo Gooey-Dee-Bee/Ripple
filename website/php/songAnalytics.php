@@ -1,8 +1,8 @@
 <?php
 	require_once(__DIR__."/databases.php");
 
-	//$songID = $_GET['song_id'];
-	$songID =  136949481;
+	$songID = $_GET['song_id'];
+	//$songID =  136949481;
 
 	$result = getInfoFromDatabase(
 		"SELECT email, latitude, longitude, time_stamp
