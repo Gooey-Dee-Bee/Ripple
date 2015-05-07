@@ -38,7 +38,7 @@
 				array_push($viewableSongs, $newArray);
 			}
 
-			if(count($viewableSongs) >= 50)
+			if(count($viewableSongs) >= 25)
 				break;
 		}
 
