@@ -35,7 +35,7 @@ var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
 			'<tr ><td class="anDescriptor">Location</td></tr>'+
 			'<tr><td>Most common location</td><td>+'+commonLat+', '+commonLong+'</td></tr>'+
 			'<tr><td>More than one location?</td><td>No.</td></tr>'+
-			'</table></div>"';
+			'</table></div>';
 
 	$('#songAnalytics').html(htmlString);
 					
@@ -100,7 +100,7 @@ function set3HtmlString(firstArray, secondArray, thirdArray, htmlString) {
 			htmlString += '<tr style="background-color:#BBDFF0;"><td style="font-weight:bold;">'+(i+1)+'<td style="font-weight:bold;">'+firstArray[i]+'</td><td>'+secondArray[i]+'</td><td>'+thirdArray[i]+'</td></tr>';
 	
 	}
-	htmlString+='</table></div>"';
+	htmlString+='</table></div>';
 	console.log('3 STRING IS'+htmlString);
 	$('#songAnalytics').html(htmlString);
 }
