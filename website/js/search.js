@@ -6,7 +6,10 @@ function dropSong(songID) {
 	console.log('dropping song');
 	// check to see if song already dropped in the area before dropping it
 	if (sessionStorage.acct_status == 0) {
-		alert('Please confirm your account in order to drop a song');
+		alert('Please check your email and confirm your account in order to drop this song.');
+	}
+	else if (sessionStorage.getItem('points') < 10) {
+		alert('This song is pretty sick, but you do not have enough points to drop it.');
 	}
 	else {
 		var inCurrentList = false;
