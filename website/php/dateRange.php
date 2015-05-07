@@ -24,7 +24,7 @@
 			'userCount' => $userCount);
 		echo json_encode($info);
 
-	} else {
+	} /*else {
 		$query3 = getInfoFromDatabase(
 				"SELECT count(drop_id) as dc
 				FROM drops
@@ -42,6 +42,35 @@
 		$info = array(
 			'dropCount' => $dropCount,
 			'userCount' => $userCount);
+		echo json_encode($info);
+	}*/
+	else {
+		$query5 = getInfoFromDatabase(
+				"SELECT DISTINCT(DATE(time_stamp)) as dates
+				FROM drops
+				WHERE DATE(time_Stamp) >= '$date1'
+				AND DATE(time_stamp) <= '$date2'");
+		$info = array();
+		foreach($query5 as $key => $value){
+			$date = $value['dates'];
+			$query6 = "SELECT count(drop_id) as dc
+					FROM drops
+					WHERE DATE(time_stamp) = '$date'";
+			$result6 = getInfoFromDatabase($query6);
+			$dropCount = $result6[0]['dc'];
+
+			$query7 = "SELECT count(user_id) as uc
+					FROM drops
+					WHERE DATE(time_stamp) = '$date'";
+			$result7 = getInfoFromDatabase($query7);
+			$userCount = $result7[0]['uc'];
+
+			$info[] = array(
+					'date' => $date,
+					'dropCount' => $dropCount,
+					'userCount' => $userCount);	
+		}
+
 		echo json_encode($info);
 	}
 
