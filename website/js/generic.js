@@ -80,7 +80,9 @@ function disallowDrops() {
 	console.log('disallowing drops');
 };
 
-
+function setName(email) {
+	sessionStorage.name = email;
+}
 
 function getUserPoints() {
 	$.get("/ripple/php/getUserInfo.php",
