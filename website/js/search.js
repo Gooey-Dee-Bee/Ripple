@@ -76,11 +76,12 @@ function search(query) {
 
 		SC.get('/tracks', { q: query }, function(tracks) {
 			// will insert top 10 songs returned by SoundCloud into search modal
+			var limitResults = 10;
 			if (tracks.length == 0){
 				$('#searchModal').append("No results");
 			}
-			else if (tracks.length > 10) {
-				for (i=0; i<10; i++) {
+			else if (tracks.length > limitResults) {
+				for (i=0; i<limitResults; i++) {
 					var newcontent = beginPlayer+tracks[i].id+secondPlayer+tracks[i].id+midPlayer+tracks[i].id+endPlayer;
 				    $('#searchModal').append(newcontent);
 				}
@@ -108,12 +109,6 @@ document.addEventListener('keyup', function(e) {
 
 
 $( document ).ready( function() {
-
-	$('#search').on('submit', function(event){
-		event.preventDefault();
-		var query = $("#searchQuery").val();
-		search(query);
-	});
 
 	$('#close').click(function() {
 		// clear the search results when clicked
