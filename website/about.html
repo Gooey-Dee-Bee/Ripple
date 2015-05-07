@@ -21,15 +21,20 @@
 	    <script type="text/javascript" src="js/userAccount.js"></script>
 	    <script src="https://checkout.stripe.com/checkout.js"></script>
 	</head>
-	<body onload="showAccountInfo();">
+	<body onload="setUpPage();">
 		<div id="navBar">
 			<a href="index.html"><div id="header">
 				Ripple
 			</div></a>
 			<div id="loginFields">
 				<form id="loginForm" action="">
-					<input type="text" class="locationInput loginField" id="loginEmail" placeholder="EMAIL"/> <input type="password" class="locationInput loginField" id="loginPassword" placeholder="PASSWORD"/> <input type="submit" id="submitLogin" class="locationInput" value="LOGIN"/>
-				<br><div style="text-align:right; color:white;"> Don't have an account? <a href="landingPage.html">Make one.</a></div>
+					<input type="text" class="locationInput loginField" id="loginEmail" placeholder="EMAIL"/>
+					<input type="password" class="locationInput loginField" id="loginPassword" placeholder="PASSWORD"/> 
+					<input type="submit" id="submitLogin" class="locationInput" value="LOGIN"/>
+					<br>
+					<div style="text-align:right; color:white; font-size:1.1em; font-family:'Poiret One'" > 
+						Don't have an account? <a href="landingPage.html">Make one.</a>
+					</div>
 				</form>
 			</div>
 		</div>
