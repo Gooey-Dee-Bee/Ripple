@@ -4,7 +4,6 @@ SC.initialize({
 
 
 function showGeneral() {
-
 var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
 					"<div id='info'><table id='genTable'>";
 	$.get('php/generalStats.php', function(data, status) {
@@ -494,3 +493,6 @@ map.on('pointermove', function(e) {
  
 
 }
+
+
+showGeneral();
