@@ -27,24 +27,13 @@
 		 		else {
 		 			$activateQuery = "UPDATE confirmation SET active = 1 WHERE user_id = $user_id";
 		 			addToDatabase($activateQuery);
-		 			displaySuccess();
 		 			$javascript = "<script>setName('$email');setConfirmation();window.location.replace('/ripple/index.html');</script>";
 		 			echo $javascript;
 		 		}
 		 	}
 
 		 	function displayError() {
-		 		global $html_error, $html_start, $html_end;
-		 		echo $html_start;
-		 		echo $html_error;
-		 		echo $html_end;
-		 	}
-
-		 	function displaySuccess() {
-		 		global $html_success, $html_start, $html_end;
-		 		echo $html_start;
-		 		echo $html_success;
-		 		echo $html_end;
+		 		echo "<h1>Unknown error occured. Please make sure you followed the link exactly.</h1>";
 		 	}
 		?>
 	</body>
