@@ -60,6 +60,7 @@ $( document ).ready( function() {
 	/* Sign Up Function */
 	$("#signUpForm").submit( function(event) {
 		event.preventDefault();
+
 		var user = new Object();
 		user.email = $("#signupEmail").val();
 		user.password = $("#signupPassword").val();
@@ -82,22 +83,20 @@ $( document ).ready( function() {
 					{email: user.email, password: user.password}, function( data ) {
 				// success function
 				if(data == 100) {
-		    		document.getElementById("errorMessage").innerHTML = "Account created successfully";
+		    		//document.getElementById("errorMessage").innerHTML = "Account created successfully";
 		    		//alert("Successfully Created Account");
 		    		// Redirect to index 
-		    		
+		    		alert("Account created successfully. Please check your email to confirm your account with Ripple.");
 	    			window.location.replace("index.html");
 		    	}
 		    	else {
 		    		//alert("An acount already exists with that email address.");
 		    		document.getElementById("errorMessage").innerHTML = "Account already exists with that email address.";
 		    		setTimeout(function(){$('#errorMessage').html('');},4000);
-		    		
-		    	
 		    	}
 			})
 			.fail( function() {
-				document.getElementById("errorMessage").innerHTML = "Error occured creating an account. We can't tell you why it did this, you just failed. Sorry. ";
+				document.getElementById("errorMessage").innerHTML = "Error occured creating an account. We can't tell you why it did this, you just failed. Sorry.";
 				setTimeout(function(){$('#errorMessage').html('');},4000);
 			});
 		} // end of if

@@ -9,6 +9,10 @@ function setUpPage() {
 		console.log('User Account Status' + sessionStorage.acct_status);
 		var array = JSON.parse(data);
 		sessionStorage.acct_status = array.acct_status;
+		console.log('User Account Status' + sessionStorage.acct_status);
+		if (sessionStorage.acct_status == 0) {
+			$('#confirmAccountMessage').show();
+		}
 	});
 
 	//if there is a location but there is no name
