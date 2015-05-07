@@ -3,6 +3,7 @@
 	<head>
 		<title>Ripple: Confirm Email</title>
 		<link rel="icon" type="image/jpg" href="/ripple/images/dropItIcon.png">
+		<script type="text/javascript" src="/ripple/js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="/ripple/js/generic.js"></script>
 	</head>
 	<body>
@@ -26,7 +27,7 @@
 		 		else {
 		 			$activateQuery = "UPDATE confirmation SET active = 1 WHERE user_id = $user_id";
 		 			addToDatabase($activateQuery);
-		 			$javascript = "<script>setName('$email');window.location.replace('/ripple/index.html');</script>";
+		 			$javascript = "<script>setName('$email');setConfirmation();window.location.replace('/ripple/index.html');</script>";
 		 			echo $javascript;
 		 		}
 		 	}
