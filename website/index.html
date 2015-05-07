@@ -70,17 +70,25 @@
 			Welcome to Ripple, the home of the hottest songs in your area. Dropping a song costs you 10 points and redropping is 5 points. For every redrop of your song, you get points back. The more people that redrop your song, the more points you get. So...
 		</div>
 
-
 		<br><br>
+
 		<div id="songSearchSuggest">
 			Want to drop a song?<br>
-			
 		</div>
-		<br>
 
-		<div id="dropBox">
-			<div style="font-size:1.1em; font-family:'Poiret One'"> 
-				(Don't have an account? <a href="landingpage.html">Make one.</a>)
+		<br>
+		
+		<div id="createAccountSuggest" style="font-size:1.1em; font-family:'Poiret One'; text-align:center;" class="hidden"> 
+			(Don't have an account? <a href="landingpage.html">Make one.</a>)
+			<br><br>
+		</div>
+
+		<div id="dropBox" class="hidden">
+			<div id="searchBox">
+				<form id="search" action="">
+					<input type="text" id="searchQuery" placeholder="SEARCH FOR A SONG">
+					<button type="submit" class="analyticOption">Search</button>
+				</form>
 			</div>
 		</div>
 

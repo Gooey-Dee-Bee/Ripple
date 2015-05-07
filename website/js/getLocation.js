@@ -8,20 +8,14 @@ $(document).ready(function(){
 			var location = navigator.geolocation.getCurrentPosition(showPosition);
 
 	    	document.getElementById("location").style.display = 'none';
-			allowDrops();
-		
-		} else
-		{
+		} 
+		else {
 	  		alert ("Couldn't get location. Sorry bitch");
-
 		}
-	
-	} else {
-
+	} 
+	else {
 		console.log("sessionStorage.location = " + sessionStorage.location);
 		stopLoader();
-	
-
 	}
 
 });
@@ -50,7 +44,6 @@ function showLoggedInPage() {
 
 function stopLoader() {
 	$('#loader').remove();
-	allowDrops();
 }
 
 
