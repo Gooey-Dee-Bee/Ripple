@@ -49,8 +49,9 @@
 	$totalQuery = "SELECT total_points FROM users WHERE email = '$email'";
 	$totalpoints = getInfoFromDatabase($totalPoints);
 	$totalpoints = $totalpoints[0]['total_points'];
+	
 	//if user has bought points
-	$purchaseQuery = "SELECT user_id FROM payment WHERE user_id = '$userID'";
+	$purchaseQuery = "SELECT DISTINCT user_id FROM payment WHERE user_id = '$userID' LIMIT 1";
 	$purchaseQuery = getInfoFromDatabase($purchaseQuery);
 	if (sizeof($purchaseQuery)>0){
 		$purchaseQuery = 1;
