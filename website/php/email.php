@@ -20,7 +20,7 @@
 
 		$mail->MsgHTML($html_body);
 
-		$altBody = "You do not have an HTML enabled email service.";
+		$altBody = format_plain_email($email, $key);
 		$mail->AltBody = $altBody;
 
 		if(!$mail->Send())
@@ -34,6 +34,7 @@
 		//Create random key for this email
 		$key = $email . date('mY');	// concatenate email and date in xxXXXX format
 		$key = md5($key);
+		$key = substr($key, 0, 12); // Limit to only 12 characters
 
 		$user_id = getUserIdFromEmail($email);
 		addToDatabase("INSERT INTO confirmation(user_id, email, confirm_key) VALUES($user_id, '$email', '$key')");
@@ -43,6 +44,17 @@
 	function format_html_email($email, $key) {
     	//grab the template content
     	$template = file_get_contents('signup_template.html', FILE_USE_INCLUDE_PATH);            
+    	//replace all the tags
+    	$template = str_replace('{EMAIL}', $email, $template);
+    	$template = str_replace('{KEY}', $key, $template);
+    	$template = str_replace('{SITEPATH}','192.168.10.10/ripple', $template);
+         
+    	return $template;
+	}
+
+	function format_plain_email($email, $key) {
+    	//grab the template content
+    	$template = file_get_contents('signup_template.txt', FILE_USE_INCLUDE_PATH);            
     	//replace all the tags
     	$template = str_replace('{EMAIL}', $email, $template);
     	$template = str_replace('{KEY}', $key, $template);

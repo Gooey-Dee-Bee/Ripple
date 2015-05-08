@@ -87,7 +87,7 @@ $( document ).ready( function() {
 		    		//alert("Successfully Created Account");
 		    		// Redirect to index 
 		    		alert("Account created successfully. Please check your email to confirm your account with Ripple.");
-	    			window.location.replace("index.html");
+	    			window.location.replace("info.html");
 		    	}
 		    	else {
 		    		//alert("An acount already exists with that email address.");

@@ -5,15 +5,7 @@ function setUpPage() {
 	console.log("SESSION PLACE: "+ sessionStorage.getItem('location'));
 
 	// to check if they have verfied their account
-	$.get('/ripple/php/getUserInfo.php',{email: sessionStorage.getItem('name')}, function(data) {
-		console.log('User Account Status: ' + sessionStorage.acct_status);
-		var array = JSON.parse(data);
-		sessionStorage.acct_status = array.acct_status;
-		console.log('User Account Status: ' + sessionStorage.acct_status);
-		if (sessionStorage.acct_status == 0) {
-			$('#confirmAccountMessage').show();
-		}
-	});
+	setConfirmation();
 
 	//if there is a location but there is no name
 	if(sessionStorage.getItem('location') != null && sessionStorage.getItem("name") == null) {
@@ -80,7 +72,19 @@ function disallowDrops() {
 	console.log('disallowing drops');
 };
 
+function setName(email) {
+	sessionStorage.name = email;
+}
 
+function setConfirmation() {
+	$.get('/ripple/php/getUserInfo.php',{email: sessionStorage.getItem('name')}, function(data) {
+		var array = JSON.parse(data);
+		sessionStorage.acct_status = array.acct_status;
+		if (sessionStorage.acct_status == 0) {
+			$('#confirmAccountMessage').show();
+		}
+	});
+}
 
 function getUserPoints() {
 	$.get("/ripple/php/getUserInfo.php",
