@@ -9,13 +9,13 @@
 	if($date1 == $date2){ //only asking for info from one day, so...
 		//echo "executing one day loop" . "\n <br />";
 		$query1 = getInfoFromDatabase(
-					"SELECT count(drop_id) as dc
+					"SELECT count(DISTINCT drop_id) as dc
 					FROM drops
 					WHERE DATE(time_stamp) = '$date1'");
 		$dropCount = $query1[0]['dc'];
 
 		$query2 = getInfoFromDatabase(
-					"SELECT count(user_id) as uc
+					"SELECT count(DISTINCT user_id) as uc
 					FROM drops
 					WHERE DATE(time_stamp) = '$date1'");
 		$userCount = $query2[0]['uc'];
