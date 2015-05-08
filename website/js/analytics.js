@@ -501,22 +501,64 @@ $('#info').remove();
 var htmlString = "<div id='analyticTitle'>Frequency of Drops Over Time</div>"+
 					"<div id='info'><div id='chart' style='width: 100%; height: 500px;'>xxx</div></div>";
 $('#songAnalytics').html(htmlString);
-chartValues();			
+getDataPoints();
 	
 }
 
-function chartValues() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Drops'],
-          ['9/26',  34],
-          ['10/2',  29],
-          ['10/4',  54],
-          ['10/6',  97]
-        ]);
+function getDataPoints() {
+	var date1s= '2015-04-24';
+	var date2s= '2015-04-29';
+	
+	var firstDateJS = fromMtoJSDates(date1s);
+	var secondDateJS = fromMtoJSDates(date2s);
+	
+	var dateRange = (parseFloat(secondDateJS) - parseFloat(firstDateJS));
+	
+	$.get('php/dateRange.php', {date1:date1s, date2:date2s},function(data,status) {
+		data = JSON.parse(data);
+		console.log(data);
+		var allTheDays = new Array();
+		
+		allTheDays.push(['Date', 'Users', 'Drops']);
+		for(var i=0; i < dateRange; i++) {
+			var oneDay = new Array();
+			var users = data[i]['userCount'];
+			var counts = data[i]['dropCount'];
+			if(users == 'undefined')
+				users = 0;
+			if(counts == 'undefined')
+				counts = 0;
+			
+			
+ 			oneDay.push(parseInt(i), [users], [counts]);
+			allTheDays.push(oneDay);
+		}
+		console.log(allTheDays);
+
+		
+		chartValues(allTheDays);
+   });
+
+}
+
+function fromMtoJSDates(sqlDate){
+var sqlDateArr1 = sqlDate.split("-");
+    var sYear = sqlDateArr1[0];
+    var sMonth = sqlDateArr1[1];
+    var sDay = sqlDateArr1[2];
+    
+    var dateString = sYear+''+sMonth+''+sDay;
+    console.log(dateString);
+
+	return dateString;
+}
+
+function chartValues(dataPoints) {
+        var data = google.visualization.arrayToDataTable(dataPoints);
 
         var options = {
           hAxis: {title: 'Date',  titleTextStyle: {color: '#333'}},
-          vAxis: {minValue: 0}
+          vAxis: {minValue: dataPoints[0][1]}
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('chart'));
