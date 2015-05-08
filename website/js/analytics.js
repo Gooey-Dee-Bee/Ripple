@@ -520,17 +520,10 @@ function getDataPoints() {
 		var allTheDays = new Array();
 		
 		allTheDays.push(['Date', 'Users', 'Drops']);
-		for(var i=0; i < dateRange; i++) {
+		for(var i=0; i < data.length; i++) {
 			var oneDay = new Array();
-			var users = data[i]['userCount'];
-			var counts = data[i]['dropCount'];
-			if(users == 'undefined')
-				users = 0;
-			if(counts == 'undefined')
-				counts = 0;
-			
-			
- 			oneDay.push(parseInt(i), [users], [counts]);
+		
+ 			oneDay.push(parseInt(i), [data[i]['userCount']], [data[i]['dropCount']]);
 			allTheDays.push(oneDay);
 		}
 		console.log(allTheDays);
