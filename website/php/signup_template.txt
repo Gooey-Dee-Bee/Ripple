@@ -1,0 +1,9 @@
+Welcome to Ripple!
+
+Your email service does not support HTML formatted email.
+
+Please copy and paste entirely into your browsers url:
+
+{SITEPATH}/php/accountConfirm.php?key={KEY}&email={EMAIL}
+
+Created by Gooey-Dee-Bee 2015
