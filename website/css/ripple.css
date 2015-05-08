@@ -489,7 +489,7 @@ iframe {
 #informationBox {
 	text-align:center;
 	font-family: "Poiret One";
-	height:500px;
+	min-height:500px;
 	overflow:scroll;
 	border:thick;
 	width:89%;
