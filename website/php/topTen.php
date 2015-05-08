@@ -11,19 +11,6 @@
 
 	$result = getInfoFromDatabase($query);
 
-	/*$rows = array();
-
-	$i = 0;
-
-	foreach($result as $r){
-		$songID = $r['song_id'];
-		$count = $r['c'];
-		$rows[$i] = array('songID' => $songID, 'count' => $count);
-
-		$i++;
-	}*/
-
-
 echo json_encode($result);
 
 ?>

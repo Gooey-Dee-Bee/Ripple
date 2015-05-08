@@ -27,7 +27,13 @@
 	$totLoc = count($result2);
 	$popLat = $result2[0]['latitude'];
 	$popLong = $result2[0]['longitude'];
-	
+
+	$result3 = getInfoFromDatabase(
+		"SELECT count(*) as c
+		FROM drops
+		WHERE song_id = '$songID'
+		AND prev_drop_id != 0");
+	$numReDrops = $result3[0]['c'];
 
 
 	/*echo json_encode($result);
@@ -47,6 +53,7 @@
 		'lastLong' => $result[$last]['longitude'],
 		'lastTime' => $result[$last]['time_stamp'],
 		'count' => $total, //number of drops total
+		'numReDrops' => $numReDrops,
 		'numOrigDrops' => $totLoc, //number of different locations
 		'popLat' => $popLat,
 		'popLong' => $popLong);

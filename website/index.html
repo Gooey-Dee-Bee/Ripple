@@ -55,7 +55,10 @@
 			<div id="userInfo">
 				<div id="dropNumber"></div> Points Left
 			</div>
-			
+
+			<div id="confirmAccountMessage" style="color:yellow; text-align:center; margin-top:95px;" class="hidden">
+				Please confirm your account before dropping a song
+			</div>
 		
 			<div class="accountLinks">
 				<a id="logout" href="#">logout</a>
@@ -67,16 +70,26 @@
 			Welcome to Ripple, the home of the hottest songs in your area. Dropping a song costs you 10 points and redropping is 5 points. For every redrop of your song, you get points back. The more people that redrop your song, the more points you get. So...
 		</div>
 
-
 		<br><br>
+
 		<div id="songSearchSuggest">
 			Want to drop a song?<br>
-			
 		</div>
-		<br>
 
-		<div id="dropBox">
-		<div style="font-size:1.1em; font-family:'Poiret One'"> (Don't have an account? <a href="landingpage.html">Make one.</a>)</div>
+		<br>
+		
+		<div id="createAccountSuggest" style="font-size:1.1em; font-family:'Poiret One'; text-align:center;" class="hidden"> 
+			(Don't have an account? <a href="landingpage.html">Make one.</a>)
+			<br><br>
+		</div>
+
+		<div id="dropBox" class="hidden">
+			<div id="searchBox">
+				<form id="search" action="">
+					<input type="text" id="searchQuery" placeholder="SEARCH FOR A SONG">
+					<button type="submit" class="analyticOption">Search</button>
+				</form>
+			</div>
 		</div>
 
 
@@ -102,6 +115,8 @@
 			
 		</div>
 		
+		<!-- <a href="#" onclick="playAll();">Play All Songs</a> -->
+		
 		<div id="songBox">
 		</div> 
 		
@@ -109,7 +124,7 @@
 			<hr></hr>
 			<a href="about.html" style="color:gray; text-decoration:none;">About Us</a> |
 			<a href="analytics.html" style="color:gray; text-decoration:none;">Ripple Analytics</a><br></br>
-			Created by Gooey-Dee-Bee (c) 2015
+			Created by Gooey-Dee-Bee &#169; 2015
 			<br></br>
 		</div>
 
@@ -117,7 +132,8 @@
 		
 		
 		<!--POP UP MODULE FOR ACCOUNT-->
-		<div id="popup"></div>
+		<div id="popup">
+		</div>
 	
 
 	</body>

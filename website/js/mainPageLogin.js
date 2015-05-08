@@ -53,4 +53,7 @@ function showAccountInfo() {
 		document.getElementById('userName').innerHTML = sessionStorage.getItem('name');
 		document.getElementById('dropNumber').innerHTML = sessionStorage.getItem('drops');
 		console.log("SESSION NAME: " + sessionStorage.getItem("name"));
+		if (sessionStorage.acct_status == 0) {
+			$('#confirmAccountMessage').show();
+		}
 }

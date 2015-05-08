@@ -29,7 +29,7 @@
 	   	<script src="https://checkout.stripe.com/checkout.js"></script>
 	   	
 	</head>
-	<body onload="showAccountInfo(); ">
+	<body onload="setUpPage(); ">
 
 		<div id="navBar">
 			<a href="index.html"><div id="header">
@@ -38,8 +38,13 @@
 		
 			<div id="loginFields">
 				<form id="loginForm" action="">
-					<input type="text" class="locationInput loginField" id="loginEmail" placeholder="EMAIL"/> <input type="password" class="locationInput loginField" id="loginPassword" placeholder="PASSWORD"/> <input type="submit" id="submitLogin" class="locationInput" value="LOGIN"/>
-				<br><div style="text-align:right; color:white;"> Don't have an account? <a href="landingPage.html">Make one.</a></div>
+					<input type="text" class="locationInput loginField" id="loginEmail" placeholder="EMAIL"/>
+					<input type="password" class="locationInput loginField" id="loginPassword" placeholder="PASSWORD"/>
+					<input type="submit" id="submitLogin" class="locationInput" value="LOGIN"/>
+					<br>
+					<div style="text-align:right; color:white; font-size:1.1em; font-family:'Poiret One'" > 
+						Don't have an account? <a href="landingPage.html">Make one.</a>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -52,6 +57,9 @@
 				<div id="dropNumber"></div> Total Drops
 			</div>
 			
+			<div id="confirmAccountMessage" style="color:yellow; text-align:center; margin-top:95px;" class="hidden">
+				Please confirm your account before dropping a song
+			</div>
 		
 			<div class="accountLinks">
 				<a id="logout" href="#">logout</a>
@@ -77,11 +85,12 @@
 		
 		</div>
 		
-			<div id="footer" style="text-align:center;">
+		<div id="footer" style="text-align:center;">
 			<hr></hr>
 			<a href="about.html" style="color:gray; text-decoration:none;">About Us</a> |
 			<a href="analytics.html" style="color:gray; text-decoration:none;">Ripple Analytics</a><br></br>
-			Created by Gooey-Dee-Bee (c) 2015
+			Created by Gooey-Dee-Bee &#169; 2015
+			<br><br>
 		</div>
 
 		<script>

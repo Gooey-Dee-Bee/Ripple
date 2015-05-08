@@ -6,40 +6,35 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.4.0/ol.css" type="text/css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.4.0/ol.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart']}]}"></script>
+      
+   
+
+<script>
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales'],
+          ['2013',  1000],
+          ['2014',  1170],
+          ['2015',  660],
+          ['2016',  1030]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+      
+</script>
 
 </head>
 <body>
-<div class="container-fluid">
-
-<div class="row-fluid">
-  <div class="span12">
-    <div id="map" class="map"></div>
-  </div>
-</div>
-
-</div>
-<script>
-console.log(sessionStorage.getItem('latitude'));
-console.log(sessionStorage.getItem('longitude'));
-
-
-var longitude = parseFloat(sessionStorage.getItem('longitude'));
-var latitude = parseFloat(sessionStorage.getItem('latitude'));
-console.log(longitude);
-
-  var map = new ol.Map({
-    target: 'map',
-    layers: [
-      new ol.layer.Tile({
-        source: new ol.source.MapQuest({layer: 'osm'})
-      })
-    ],
-    view: new ol.View({
-      center: ol.proj.transform([longitude, latitude],  'EPSG:4326', 'EPSG:3857'),
-      zoom: 6
-    })
-  });
-
-</script>
+  <div id="chart_div" style="width: 900px; height: 500px;"></div>
 </body>
 </html>

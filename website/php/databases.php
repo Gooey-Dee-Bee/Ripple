@@ -35,8 +35,10 @@
 		mysqli_close($con);
 
 		$return_array = array();
-		while($r = mysqli_fetch_assoc($result)) {
-		    $return_array[] = $r;
+		if($result) {
+			while($r = mysqli_fetch_assoc($result)) {
+			    $return_array[] = $r;
+			}
 		}
 
 		return $return_array;
