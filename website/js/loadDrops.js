@@ -8,7 +8,14 @@ $.post("/ripple/php/loadDrops.php",
 		{latitude: sessionStorage.getItem('latitude'), longitude: sessionStorage.getItem('longitude')},
 		function(data, status) {
 			//console.log('adding songs to array');
-			addSongsToArray(JSON.parse(data));
+			var array = JSON.parse(data);
+			if (array[0] == null) {
+				$('#noSongs').show();
+			}
+			else {
+				addSongsToUserArray(array);
+				$('#noSongs').hide();
+			}
 		});
 }
 
