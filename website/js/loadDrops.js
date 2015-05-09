@@ -75,8 +75,17 @@ var beginPlayer = '<div class="songPlayer" id="song';
 var secondPlayer= '"> <div class="songText"><iframe id=';
 var secondPlayer2 = ' class="iframeObj" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
 var midPlayer ='"></iframe></div><div><img class="drop" src="images/dropItIcon.png"  id=song';
-var alternateEnd = '"></iframe></div><div>';
+var alternateEnd = '" style="width:10px; margin:5px; font-weight:bold;">SEARCH FOR THIS SONG</div></div></div>'
 var endPlayer =' onClick="bumpSong(this.id)"/></div></div>';
+
+
+
+/********* Variables for user *********/
+var beginPlayerUser = '<div class="songPlayerSearch" id="song';
+var secondPlayerUser= '"> <div class="songText"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
+var midPlayerUser = '"></iframe></div><div><div class="dropFromSearch" id="drops';
+var endPlayerUser = '" style="width:10px; margin:5px; font-weight:bold;"></div></div></div>';
+
 
 
 /** GRAB THE SONG ID FROM THE SONG URL ON THE PAGE*/
@@ -153,8 +162,8 @@ console.log('add song');
 	
 	
     var newcontent = document.createElement('div');
-    var newSongListing = beginPlayer+songId+secondPlayer+songId+secondPlayer2+songId+midPlayer+songId+endPlayer;
-    //console.log("ADD SONG "+songId);
+    var newSongListing = beginPlayer+songId+secondPlayer+songId+secondPlayer2+songId+midPlayerUser+songId+endPlayer;
+    
     newcontent.innerHTML = newSongListing;
    
     prependElement('songBox', newcontent);
@@ -178,12 +187,23 @@ console.log('add song');
 function addUserSong(songId) {
 	console.log('add user song');
 	
+	$.get('php/songAnalytics.php', {song_id:songId}, function(data, result) {
+		data = JSON.parse(data);
+		var dropCount = data['count'];
+
+		var rando = "<div style='text-align:center; font-size:2em; width:60px;'> <div style='font-size:20px;'>drop count</div>"+parseInt(dropCount)+"</div>";
+	  
+		
+		
+		
+		
+		
     	var newcontent = document.createElement('div');
-   	 	var newSongListing = beginPlayer+songId+secondPlayer+songId+secondPlayer2+songId+alternateEnd;
-    	console.log("ADD SONG "+songId);
+   	 	var newSongListing = beginPlayerUser+songId+secondPlayerUser+songId+midPlayerUser+songId+endPlayerUser;
     	newcontent.innerHTML = newSongListing;
    
     	prependElement('songBox', newcontent);
+    	$('#drops'+songId).html(rando);
  
     if (sessionStorage.getItem('name') == null) {
     	document.getElementById(songId).style.display = "none";
@@ -193,6 +213,7 @@ function addUserSong(songId) {
 	getUserPoints();
 	('#songId').value = "";
 
+	});
 }
 
 /*ENSURES THE LATEST SONG IS ON TOP*/
