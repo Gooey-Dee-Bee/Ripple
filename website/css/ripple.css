@@ -19,7 +19,7 @@ h2 {
 	font-family: "Poiret One";
 }
 
-#infoBox {
+#infoBox, #noSongs {
 	color:#4898bd;
 	text-align:center;
 	font-family: "Poiret One";
@@ -30,7 +30,17 @@ h2 {
 	margin-right: auto;
 }
 
-
+#infoTextShit {
+	color:#4898bd;
+	text-align:center;
+	font-family: "Poiret One";
+	font-weight: bold;
+	font-size: 25px;
+	width:70%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+}
 
 /* SEARCH MODAL CSS */
 .modalDialog {

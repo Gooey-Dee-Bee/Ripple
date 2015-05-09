@@ -20,6 +20,7 @@
 	    <script type="text/javascript" src="js/userAccount.js"></script>
 	   	<script src="https://checkout.stripe.com/checkout.js"></script>
 	   	<script type="text/javascript" src="js/search.js"></script>
+	   	
 	</head>
 	<body onload="showAccountInfo(); makeRequestForUser();">
 
@@ -73,10 +74,17 @@
 			
 		</div>
 		
+		<h1 id="songSearchSuggest">Previously Dropped Songs</h1>
+		
 		<div id="songBox">
 		</div> 
-		
-			<div id="footer" style="text-align:center;">
+		<br><br>
+		<div id="noSongs" class="hidden">
+			You haven't dropped any songs. Drop some songs <a href="index.html">here</a>
+		</div>
+		<br><br>
+
+		<div id="footer" style="text-align:center;">
 			<hr></hr>
 			<a href="about.html" style="color:gray; text-decoration:none;">About Us</a> |
 			<a href="analytics.html" style="color:gray; text-decoration:none;">Ripple Analytics</a><br></br>

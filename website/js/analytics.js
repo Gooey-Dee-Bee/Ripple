@@ -265,6 +265,8 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 		var userID = data['userID'];
 		//# of users who have dropped the song
 		var userPoints = data['points'];
+		// Get the lifet time toal number of points that this user has earned
+		var totalUserPoints = data['total points'];
 		//# first time the song was dropped
 		var songFirst = data['first drop'];
 		//last time the song was dropped
@@ -277,6 +279,11 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 			multipleLocal = 'No';
 		else
 			multipleLocal = 'Yes';
+
+		// Determine if points have ever been purchased by user
+		var purchasedPoints = "No";
+		if(data['purchased points'])
+			purchasedPoints = "Yes";
 			
 	if(userName != null) {
 		var htmlString = "<div id='info'>"+
@@ -286,9 +293,9 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 			'<tr><td>First Drop</td><td>'+songFirst+'</td></tr>'+
 			'<tr><td>Most Recent Drop</td><td>'+songLast+'</td></tr>'+
 			'<tr><td class="anDescriptor">Points</td></tr>'+
-			'<tr><td>Bought Drops</td><td>Yes/No</td></tr>'+
+			'<tr><td>Bought Drops</td><td>'+purchasedPoints+'</td></tr>'+
 			'<tr><td>Number of Songs Dropped</td><td>'+songDrops+'</td></tr>'+
-			'<tr><td>Points Since Joining (To Be Figured)</td><td>'+userPoints+'</td></tr>'+
+			'<tr><td>Total Points Collected</td><td>'+totalUserPoints+'</td></tr>'+
 			'<tr><td>Points Left in Account</td><td>'+userPoints+'</td></tr>'+
 			'<tr ><td class="anDescriptor">Location</td></tr>'+
 			'<tr><td>Most common location</td><td>+'+songLocation+'</td></tr>'+
