@@ -54,7 +54,7 @@ var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
 function top10Songs() {
 var htmlString = "<div id='analyticTitle'>Top Ten Songs</div>"+
 					"<div id='info'><table id='genTable'>"+
-				'<tr style="font-weight:bold;"><td>Rank</td><td>Plays</td><td>Song Title</td><td>Soundcloud ID</td></tr>';
+				'<tr style="font-weight:bold;"><td>Rank</td><td>Drops</td><td>Song Title</td><td>Soundcloud ID</td></tr>';
 /*INCLUDE PHP FUNCTION REGARDING TOP 10 SONGS*/
 var tenSongs = Array();
 var songId = Array();
