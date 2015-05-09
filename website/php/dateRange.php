@@ -1,15 +1,15 @@
 <?php
 	require_once(__DIR__."/databases.php");
 
-	//$date1 = $_GET['date1'];
-	//$date2 = $_GET['date2'];
-	$date1 = '2015-04-24';
-	$date2 = '2015-05-03';
+	$date1 = $_GET['date1'];
+	$date2 = $_GET['date2'];
+	//$date1 = '2015-04-24';
+	//$date2 = '2015-05-03';
 
 	if($date1 == $date2){ //only asking for info from one day, so...
 		//echo "executing one day loop" . "\n <br />";
 		$query1 = getInfoFromDatabase(
-					"SELECT count(DISTINCT drop_id) as dc
+					"SELECT count(drop_id) as dc
 					FROM drops
 					WHERE DATE(time_stamp) = '$date1'");
 		$dropCount = $query1[0]['dc'];
