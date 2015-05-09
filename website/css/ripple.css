@@ -569,12 +569,13 @@ iframe {
 }
 
 
-#distanceChoice {
+.analyticdrop {
 	background-color:white;
 	height:40px;
 	font-size:20px;
 	border:none;
-	margin:20px;
+	margin-top:20px;
+	margin-bottom:20px;
 	border-radius:3px;
 	padding:5px;
 	font-family: "Poiret One";
