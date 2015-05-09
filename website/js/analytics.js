@@ -295,7 +295,7 @@ $.get('php/userStats.php', {'email':userID}, function(data, status) {
 			'<tr><td class="anDescriptor">Points</td></tr>'+
 			'<tr><td>Bought Drops</td><td>'+purchasedPoints+'</td></tr>'+
 			'<tr><td>Number of Songs Dropped</td><td>'+songDrops+'</td></tr>'+
-			'<tr><td>Total Points Collected</td><td>'+totalUserPoints+'</td></tr>'+
+			//'<tr><td>Total Points Collected</td><td>'+totalUserPoints+'</td></tr>'+
 			'<tr><td>Points Left in Account</td><td>'+userPoints+'</td></tr>'+
 			'<tr ><td class="anDescriptor">Location</td></tr>'+
 			'<tr><td>Most common location</td><td>+'+songLocation+'</td></tr>'+
