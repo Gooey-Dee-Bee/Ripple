@@ -2,6 +2,7 @@ SC.initialize({
 	client_id: 'dafab2de81f874d25715f0e225e7c71a'
 });
 
+showGeneral();
 
 function showGeneral() {
 var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
@@ -54,7 +55,7 @@ var htmlString = "<div id='analyticTitle'>General Statistics</div>"+
 function top10Songs() {
 var htmlString = "<div id='analyticTitle'>Top Ten Songs</div>"+
 					"<div id='info'><table id='genTable'>"+
-				'<tr style="font-weight:bold;"><td>Rank</td><td>Plays</td><td>Song Title</td><td>Soundcloud ID</td></tr>';
+				'<tr style="font-weight:bold;"><td>Rank</td><td>Drops</td><td>Song Title</td><td>Soundcloud ID</td></tr>';
 /*INCLUDE PHP FUNCTION REGARDING TOP 10 SONGS*/
 var tenSongs = Array();
 var songId = Array();
@@ -309,7 +310,7 @@ $('#info').remove();
 
 var htmlString = "<div id='analyticTitle'>Search By Location</div>"+
 					"<div id='info'>"+
-					"<div ><select id ='distanceChoice' onChange='getSongsForLocation(this.options[this.selectedIndex].value)'>"+
+					"<div ><select id ='distanceChoice' class='analyticdrop' onChange='getSongsForLocation(this.options[this.selectedIndex].value)'>"+
 					"<option value=''>Select a Distance</option>"+
 					"<option value='0.5'>0.5 Miles</option>"+
 					"<option value='1'> 1 Mile </option>"+
@@ -319,9 +320,8 @@ var htmlString = "<div id='analyticTitle'>Search By Location</div>"+
 					"<option value = '50'> 50 Miles </option>"+
 					"<option value = '100'> 100 Miles </option>"+
 					"<option value = '2725'> All of United States (or most of europe)</option>"+
+					"<option value = '14000'> The World</option>"+
 					"</select></div><div id='map' class='map'></div>";
-
-
 
 
 $('#songAnalytics').html(htmlString);
@@ -350,28 +350,31 @@ function getSongsForLocation(chosenDistance, html) {
 		var zoomNumber;
 		switch(chosenDistance) {
 			case '0.5':
-				zoomNumber = 18;
+				zoomNumber = 15;
 				break;
 			case '1':
-				zoomNumber = 16;
+				zoomNumber = 14.3;
 				break;
 			case '5':
-				zoomNumber = 14;
-				break;
-			case '10':
 				zoomNumber = 12;
 				break;
+			case '10':
+				zoomNumber = 10;
+				break;
 			case '25':
-				zoomNumber = 11;
+				zoomNumber = 9.8;
 				break;
 			case '50':
-				zoomNumber = 8;
+				zoomNumber = 9.7;
 				break;
 			case '100':
-				zoomNumber = 7;
+				zoomNumber = 8;
 				break;
 			case '2725':
 				zoomNumber = 4;
+				break;
+			case '14000':
+				zoomNumber = 1;
 				break;
 			default:
 				zoomNumber = 5;
@@ -495,4 +498,195 @@ map.on('pointermove', function(e) {
 }
 
 
+function showFrequency() {
+$('#info').remove();
+
+var htmlString = "<div id='analyticTitle'>Frequency of Drops Over Time</div>"+
+				"FROM: "+
+				"<select id='fMonth' class='analyticdrop'><option>Month</option><option value='01'>January</option>"+
+				"<option value='02'>February</option>"+
+				"<option value='03'>March</option>"+
+				"<option value='04'>April</option>"+
+				"<option value='05'>May</option>"+
+				"<option value='06'>June</option>"+
+				"<option value='07'>July</option>"+
+				"<option value='08'>August</option>"+
+				"<option value='09'>September</option>"+
+				"<option value='10'>October</option>"+
+				"<option value='11'>November</option>"+
+				"<option value='12'>December</option></select>"+
+				"<select id='fDay' class='analyticdrop'><option>Day</option><option value='01'>1</option>"+
+				"<option value='02'>2</option>"+
+				"<option value='03'>3</option>"+
+				"<option value='04'>4</option>"+
+				"<option value='05'>5</option>"+
+				"<option value='06'>6</option>"+
+				"<option value='07'>7</option>"+
+				"<option value='08'>8</option>"+
+				"<option value='09'>9</option>"+
+				"<option value='10'>10</option>"+
+				"<option value='11'>11</option>"+
+				"<option value='12'>12</option>"+
+				"<option value='13'>13</option>"+
+				"<option value='14'>14</option>"+
+				"<option value='15'>15</option>"+
+				"<option value='16'>16</option>"+
+				"<option value='17'>17</option>"+
+				"<option value='18'>18</option>"+
+				"<option value='19'>19</option>"+
+				"<option value='20'>20</option>"+
+				"<option value='21'>21</option>"+
+				"<option value='22'>22</option>"+
+				"<option value='23'>23</option>"+
+				"<option value='24'>24</option>"+
+				"<option value='25'>25</option>"+
+				"<option value='26'>26</option>"+
+				"<option value='27'>27</option>"+
+				"<option value='28'>28</option>"+
+				"<option value='29'>29</option>"+
+				"<option value='30'>30</option>"+
+				"<option value='31'>31</option>"+
+				"</select>"+
+				"<select id='fYear' class='analyticdrop'><option>Year</option><option value='2015'>2015</option></select>"+
+				
+				"UNTIL: "+
+				"<select id='lMonth' class='analyticdrop'><option>Month</option><option value='01'>January</option>"+
+				"<option value='02'>February</option>"+
+				"<option value='03'>March</option>"+
+				"<option value='04'>April</option>"+
+				"<option value='05'>May</option>"+
+				"<option value='06'>June</option>"+
+				"<option value='07'>July</option>"+
+				"<option value='08'>August</option>"+
+				"<option value='09'>September</option>"+
+				"<option value='10'>October</option>"+
+				"<option value='11'>November</option>"+
+				"<option value='12'>December</option></select>"+
+				"<select id='lDay' class='analyticdrop'><option>Day</option><option value='01'>1</option>"+
+				"<option value='02'>2</option>"+
+				"<option value='03'>3</option>"+
+				"<option value='04'>4</option>"+
+				"<option value='05'>5</option>"+
+				"<option value='06'>6</option>"+
+				"<option value='07'>7</option>"+
+				"<option value='08'>8</option>"+
+				"<option value='09'>9</option>"+
+				"<option value='10'>10</option>"+
+				"<option value='11'>11</option>"+
+				"<option value='12'>12</option>"+
+				"<option value='13'>13</option>"+
+				"<option value='14'>14</option>"+
+				"<option value='15'>15</option>"+
+				"<option value='16'>16</option>"+
+				"<option value='17'>17</option>"+
+				"<option value='18'>18</option>"+
+				"<option value='19'>19</option>"+
+				"<option value='20'>20</option>"+
+				"<option value='21'>21</option>"+
+				"<option value='22'>22</option>"+
+				"<option value='23'>23</option>"+
+				"<option value='24'>24</option>"+
+				"<option value='25'>25</option>"+
+				"<option value='26'>26</option>"+
+				"<option value='27'>27</option>"+
+				"<option value='28'>28</option>"+
+				"<option value='29'>29</option>"+
+				"<option value='30'>30</option>"+
+				"<option value='31'>31</option>"+
+				"</select>"+
+				"<select id='lYear' class='analyticdrop'><option>Year</option><option value='2015'>2015</option></select>"+
+				"<button onClick='getRequestedDates()' class='analyticOption'>Get Details</button>"+
+
+				"<div id='info'><div id='chart' style='width: 100%; height: 500px;'>View user activity and drops over a specified range of time.</div></div>";
+$('#songAnalytics').html(htmlString);
+
+	
+}
+
+function getRequestedDates() {
+
+var fDate = '2015-04-20';
+var lDate = '2015-05-09';
+
+var firstYear = $('#fYear').val();
+var firstMonth = $('#fMonth').val();
+var firstDay = $('#fDay').val();
+
+var lastYear = $('#lYear').val();
+var lastMonth = $('#lMonth').val();
+var lastDay = $('#lDay').val();
+
+if(firstYear != 'Year' && firstMonth != 'Month' && firstDay != 'Day')
+	fDate = firstYear+'-'+firstMonth+'-'+firstDay;
+
+if(lastYear != 'Year' && lastMonth != 'Month' && lastDay != 'Day')
+	lDate = lastYear+'-'+lastMonth+'-'+lastDay;
+
+getDataPoints(fDate,lDate);
+
+
+
+}
+
+function getDataPoints(firstDate, secondDate) {
+	var date1s= '2015-05-06';
+	var date2s= '2015-05-08';
+	
+	var firstDateJS = fromMtoJSDates(firstDate);
+	var secondDateJS = fromMtoJSDates(secondDate);
+	
+	var dateRange = (parseFloat(secondDateJS) - parseFloat(firstDateJS));
+	console.log(dateRange);
+	
+	$.get('php/dateRange.php', {date1:firstDate, date2:secondDate},function(data,status) {
+		data = JSON.parse(data);
+		console.log(data);
+		var allTheDays = new Array();
+		
+		allTheDays.push(['Date', 'Users Active this Day', 'Active Drops']);
+		for(var i=0; i < data.length; i++) {
+			var oneDay = new Array();
+		
+ 			oneDay.push(parseInt(i), [data[i]['userCount']], [data[i]['dropCount']]);
+			allTheDays.push(oneDay);
+		}
+		console.log(allTheDays);
+
+		
+		chartValues(allTheDays);
+   });
+
+}
+
+function fromMtoJSDates(sqlDate){
+var sqlDateArr1 = sqlDate.split("-");
+    var sYear = sqlDateArr1[0];
+    var sMonth = sqlDateArr1[1];
+    var sDay = sqlDateArr1[2];
+    
+    var dateString = sYear+''+sMonth+''+sDay;
+    console.log(dateString);
+
+	return dateString;
+}
+
+function chartValues(dataPoints) {
+        var data = google.visualization.arrayToDataTable(dataPoints);
+
+        var options = {
+          hAxis: {title: 'Days in Range',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: dataPoints[0][1]},
+          backgroundColor: '#faf5eb'
+
+        };
+		 
+		
+        var chart = new google.visualization.AreaChart(document.getElementById('chart'));
+        chart.draw(data, options);
+        console.log('inside of draw chart');
+
+}
+
+
 showGeneral();
+
