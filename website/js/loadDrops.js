@@ -8,7 +8,14 @@ $.post("/ripple/php/loadDrops.php",
 		{latitude: sessionStorage.getItem('latitude'), longitude: sessionStorage.getItem('longitude')},
 		function(data, status) {
 			//console.log('adding songs to array');
-			addSongsToArray(JSON.parse(data));
+			var array = JSON.parse(data);
+			if (array[0] == null) {
+				$('#noSongs').show();
+			}
+			else {
+				addSongsToUserArray(array);
+				$('#noSongs').hide();
+			}
 		});
 }
 
@@ -22,9 +29,16 @@ function makeRequestForUser(){
 	$.post("/ripple/php/loadDrops.php",
 		{user_id: sessionStorage.getItem('user_id')},
  		function(data, status) {
-		console.log('adding songs to user array');
-		addSongsToUserArray(JSON.parse(data));
-		$('#songBox').show();
+			console.log('adding songs to user array');
+			var array = JSON.parse(data);
+			if (array[0] == null) {
+				$('#noSongs').show();
+			}
+			else {
+				addSongsToUserArray(array);
+				$('#noSongs').hide();
+				$('#songBox').show();
+			}
 	});
 }
 
