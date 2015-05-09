@@ -165,6 +165,7 @@ console.log('add song');
     var newSongListing = beginPlayer+songId+secondPlayer+songId+thirdPlayer+songId+midPlayer+songId+endPlayer;
     newcontent.innerHTML = newSongListing;
    
+   console.log(newSongListing);
     prependElement('songBox', newcontent);
  
     if (sessionStorage.getItem('name') == null) {
@@ -228,7 +229,8 @@ console.log('prepend element');
 /* BUMP A SONG UP THAT IS ALREADY ON THE PLAYLIST */
 function bumpSong(songIdentity) {
 		/*NEEDS TO BE SUBSTITUTED FOR A FUNCTION THAT'S SPECIFIC TO BUMPING*/
-		songIdentity = songIdentity.substr(4,songIdentity.length);
+		//songIdentity = songIdentity.substr(4,songIdentity.length);
+		console.log(songIdentity);
 		
 		
 		console.log('bump song');
