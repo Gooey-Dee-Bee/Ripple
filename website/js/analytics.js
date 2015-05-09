@@ -650,11 +650,11 @@ function getDataPoints(firstDate, secondDate) {
 		console.log(data);
 		var allTheDays = new Array();
 		
-		allTheDays.push(['Date', 'Users Active this Day', 'Active Drops']);
+		allTheDays.push(['Date', 'Users Active this Day', 'Total Drops', 'Original Drops (first time)'] );
 		for(var i=0; i < data.length; i++) {
 			var oneDay = new Array();
 		
- 			oneDay.push(parseInt(i), [data[i]['userCount']], [data[i]['dropCount']]);
+ 			oneDay.push(parseInt(i), [data[i]['userCount']], [data[i]['dropCount']], [data[i]['uniqueDropCount']]);
 			allTheDays.push(oneDay);
 		}
 		console.log(allTheDays);
