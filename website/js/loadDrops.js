@@ -8,14 +8,7 @@ $.post("/ripple/php/loadDrops.php",
 		{latitude: sessionStorage.getItem('latitude'), longitude: sessionStorage.getItem('longitude')},
 		function(data, status) {
 			//console.log('adding songs to array');
-			var array = JSON.parse(data);
-			if (array[0] == null) {
-				$('#noSongs').show();
-			}
-			else {
-				addSongsToUserArray(array);
-				$('#noSongs').hide();
-			}
+			addSongsToArray(JSON.parse(data));
 		});
 }
 
@@ -44,7 +37,12 @@ function makeRequestForUser(){
 
 /*ADD SONGS FROM THE DATABSE TO THE ARRAY*/
 function addSongsToArray(jsonArray) {
-console.log('add song to array');
+	console.log('add song to array');
+	alert('jsonArray.length: ' + jsonArray.length);
+	if (jsonArray.length == 0) {
+		$('#noSongs').show();
+		$('#songBox').hide();
+	}
 	for(var i = 0; i < jsonArray.length; i++){
 		var songId = JSON.stringify(jsonArray[i]["song_id"]);
 		//console.log("FUCK BITCHES");
