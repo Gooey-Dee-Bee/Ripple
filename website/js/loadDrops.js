@@ -38,7 +38,6 @@ function makeRequestForUser(){
 /*ADD SONGS FROM THE DATABSE TO THE ARRAY*/
 function addSongsToArray(jsonArray) {
 	console.log('add song to array');
-	alert('jsonArray.length: ' + jsonArray.length);
 	if (jsonArray.length == 0) {
 		$('#noSongs').show();
 		$('#songBox').hide();
