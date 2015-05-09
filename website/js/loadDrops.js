@@ -22,15 +22,26 @@ function makeRequestForUser(){
 	$.post("/ripple/php/loadDrops.php",
 		{user_id: sessionStorage.getItem('user_id')},
  		function(data, status) {
-		console.log('adding songs to user array');
-		addSongsToUserArray(JSON.parse(data));
-		$('#songBox').show();
+			console.log('adding songs to user array');
+			var array = JSON.parse(data);
+			if (array[0] == null) {
+				$('#noSongs').show();
+			}
+			else {
+				addSongsToUserArray(array);
+				$('#noSongs').hide();
+				$('#songBox').show();
+			}
 	});
 }
 
 /*ADD SONGS FROM THE DATABSE TO THE ARRAY*/
 function addSongsToArray(jsonArray) {
-console.log('add song to array');
+	console.log('add song to array');
+	if (jsonArray.length == 0) {
+		$('#noSongs').show();
+		$('#songBox').hide();
+	}
 	for(var i = 0; i < jsonArray.length; i++){
 		var songId = JSON.stringify(jsonArray[i]["song_id"]);
 		//console.log("FUCK BITCHES");

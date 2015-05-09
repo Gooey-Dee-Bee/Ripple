@@ -106,7 +106,8 @@ function getPersonalPlaylist() {
 	console.log('ugh, inside the getting the personal playlist bullshit');
 	
 	//MAKE REQUEST WORKSBUT MAKE USER REQUEST DOES NOT, RETURNS EMPTY DATA SET//
-	makeUserRequest();
+	//makeUserRequest();
+	makeRequestForUser();
 	console.log('still in personal playlist');
 
 $('#acctLink').html("<a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>View Drop History</a><br></br><a id='buyMoreDrops' href='#' onClick='buyMoreDrops()'>(Buy more drops)</a>"); 

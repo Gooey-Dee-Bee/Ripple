@@ -3,10 +3,7 @@
 
 
 	$email = $_GET['email'];
-<<<<<<< HEAD
-	//$email = "averyferrante@yahoo.com";
-=======
->>>>>>> 0ddb2c9030ca66f12b24eb09a1965e87db402824
+
 
 	$query1 = "SELECT user_id, points FROM users WHERE email = '$email'";
 	$result1 = getInfoFromDatabase($query1);
