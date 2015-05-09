@@ -506,7 +506,7 @@ getDataPoints();
 }
 
 function getDataPoints() {
-	var date1s= '2015-04-24';
+	var date1s= '2015-04-10';
 	var date2s= '2015-05-8';
 	
 	var firstDateJS = fromMtoJSDates(date1s);
