@@ -93,9 +93,17 @@
 			$result7 = getInfoFromDatabase($query7);
 			$userCount = $result7[0]['uc'];
 
+			$query8 = "SELECT count(drop_id) as udc
+						FROM drops
+						WHERE DATE(time_stamp) = '$date'
+						AND prev_drop_id = 0";
+			$result8 = getInfoFromDatabase($query8);
+			$unDropCount = $result8[0]['udc'];
+
 			$info[] = array(
 					'date' => $date,
 					'dropCount' => $dropCount,
+					'uniqueDropCount' => $unDropCount,
 					'userCount' => $userCount);	
 		}
 
