@@ -46,8 +46,9 @@
 	}
 	//total points
 	$totalQuery = "SELECT total_points FROM users WHERE email = '$email'";
-	$totalpoints = getInfoFromDatabase($totalPoints);
+	$totalpoints = getInfoFromDatabase($totalQuery);
 	$totalpoints = $totalpoints[0]['total_points'];
+	$totalpoints = $totalpoints - 50; // Remove the starting # of points to accurately represent total number of points earned
 	//if user has bought points
 	$purchaseQuery = "SELECT user_id FROM payment WHERE user_id = '$userID'";
 	$purchaseQuery = getInfoFromDatabase($purchaseQuery);
