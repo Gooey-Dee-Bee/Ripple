@@ -71,13 +71,12 @@ console.log('add song to user array');
 /******************* FOR BOTH SONGS FROM DB AND SONGS DROPPED DYNAMICALLY **************/
 
 /*Strings to get Soundcloud players on the page*/
-var beginPlayer = '<div class="songPlayer" id="song';
-var secondPlayer= '"> <div class="songText"><iframe id=';
-var secondPlayer2 = ' class="iframeObj" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
-var midPlayer ='"></iframe></div><div><img class="drop" src="images/dropItIcon.png"  id=song';
-var alternateEnd = '" style="width:10px; margin:5px; font-weight:bold;">SEARCH FOR THIS SONG</div></div></div>'
-var endPlayer =' onClick="bumpSong(this.id)"/></div></div>';
 
+	var beginPlayer = '<div class="songPlayerSearch" id="song';
+		var secondPlayer= '"> <div class="songText"><iframe id=';
+		var thirdPlayer = ' src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/';
+		var midPlayer = '"></iframe></div><div><img class="drop" src="images/dropItIcon.png" onClick="bumpSong(this.id)" id="';
+		var endPlayer = '"/></div></div>';
 
 
 /********* Variables for user *********/
@@ -160,10 +159,10 @@ console.log('add song');
 		}
 		 
 	
-	
+	console.log('adding song in addSONG');
     var newcontent = document.createElement('div');
-    var newSongListing = beginPlayer+songId+secondPlayer+songId+secondPlayer2+songId+midPlayerUser+songId+endPlayer;
-    
+    //var newSongListing = beginPlayer+songId+secondPlayer+songId+secondPlayer2+songId+midPlayerUser+songId+endPlayer;
+    var newSongListing = beginPlayer+songId+secondPlayer+songId+thirdPlayer+songId+midPlayer+songId+endPlayer;
     newcontent.innerHTML = newSongListing;
    
     prependElement('songBox', newcontent);
