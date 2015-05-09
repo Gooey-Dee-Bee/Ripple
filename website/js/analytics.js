@@ -499,20 +499,116 @@ function showFrequency() {
 $('#info').remove();
 
 var htmlString = "<div id='analyticTitle'>Frequency of Drops Over Time</div>"+
-					"<div id='info'><div id='chart' style='width: 100%; height: 500px;'>xxx</div></div>";
+				"FROM: "+
+				"<select id='fMonth'><option>Month</option><option value='01'>January</option>"+
+				"<option value='02'>February</option>"+
+				"<option value='03'>March</option>"+
+				"<option value='04'>April</option>"+
+				"<option value='05'>May</option>"+
+				"<option value='06'>June</option>"+
+				"<option>July</option>"+
+				"<option>August</option>"+
+				"<option>September</option>"+
+				"<option>October</option>"+
+				"<option>November</option>"+
+				"<option>December</option></select>"+
+				"<select><option>Day</option><option>1</option>"+
+				"<option>2</option>"+
+				"<option>3</option>"+
+				"<option>4</option>"+
+				"<option>5</option>"+
+				"<option>6</option>"+
+				"<option>7</option>"+
+				"<option>8</option>"+
+				"<option>9</option>"+
+				"<option>10</option>"+
+				"<option>11</option>"+
+				"<option>12</option>"+
+				"<option>13</option>"+
+				"<option>14</option>"+
+				"<option>15</option>"+
+				"<option>16</option>"+
+				"<option>17</option>"+
+				"<option>18</option>"+
+				"<option>19</option>"+
+				"<option>20</option>"+
+				"<option>21</option>"+
+				"<option>22</option>"+
+				"<option>23</option>"+
+				"<option>24</option>"+
+				"<option>25</option>"+
+				"<option>26</option>"+
+				"<option>27</option>"+
+				"<option>28</option>"+
+				"<option>29</option>"+
+				"<option>30</option>"+
+				"<option>31</option>"+
+				"</select>"+
+				"<select><option>Year</option><option>2015</option></select>"+
+				
+				"UNTIL: "+
+				"<select><option>Month</option><option>January</option>"+
+				"<option>February</option>"+
+				"<option>March</option>"+
+				"<option>April</option>"+
+				"<option>May</option>"+
+				"<option>June</option>"+
+				"<option>July</option>"+
+				"<option>August</option>"+
+				"<option>September</option>"+
+				"<option>October</option>"+
+				"<option>November</option>"+
+				"<option>December</option></select>"+
+				
+				"<select><option>Day</option><option>1</option>"+
+				"<option>2</option>"+
+				"<option>3</option>"+
+				"<option>4</option>"+
+				"<option>5</option>"+
+				"<option>6</option>"+
+				"<option>7</option>"+
+				"<option>8</option>"+
+				"<option>9</option>"+
+				"<option>10</option>"+
+				"<option>11</option>"+
+				"<option>12</option>"+
+				"<option>13</option>"+
+				"<option>14</option>"+
+				"<option>15</option>"+
+				"<option>16</option>"+
+				"<option>17</option>"+
+				"<option>18</option>"+
+				"<option>19</option>"+
+				"<option>20</option>"+
+				"<option>21</option>"+
+				"<option>22</option>"+
+				"<option>23</option>"+
+				"<option>24</option>"+
+				"<option>25</option>"+
+				"<option>26</option>"+
+				"<option>27</option>"+
+				"<option>28</option>"+
+				"<option>29</option>"+
+				"<option>30</option>"+
+				"<option>31</option>"+
+				"</select>"+
+				"<select><option>Year</option><option>2015</option></select>"+
+
+				"<div id='info'><div id='chart' style='width: 100%; height: 500px;'>xxx</div></div>";
 $('#songAnalytics').html(htmlString);
 getDataPoints();
 	
 }
 
 function getDataPoints() {
-	var date1s= '2015-04-10';
-	var date2s= '2015-05-8';
+	var date1s= '2015-04-17';
+	var date2s= '2015-05-08';
 	
 	var firstDateJS = fromMtoJSDates(date1s);
 	var secondDateJS = fromMtoJSDates(date2s);
 	
 	var dateRange = (parseFloat(secondDateJS) - parseFloat(firstDateJS));
+	console.log(dateRange);
 	
 	$.get('php/dateRange.php', {date1:date1s, date2:date2s},function(data,status) {
 		data = JSON.parse(data);
@@ -551,9 +647,12 @@ function chartValues(dataPoints) {
 
         var options = {
           hAxis: {title: 'Date',  titleTextStyle: {color: '#333'}},
-          vAxis: {minValue: dataPoints[0][1]}
-        };
+          vAxis: {minValue: dataPoints[0][1]},
+          backgroundColor: '#faf5eb'
 
+        };
+		 
+		
         var chart = new google.visualization.AreaChart(document.getElementById('chart'));
         chart.draw(data, options);
         console.log('inside of draw chart');
