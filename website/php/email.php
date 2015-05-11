@@ -2,13 +2,24 @@
 	require_once(__DIR__."/databases.php"); // Allow access to the database functions
 	require_once(__DIR__."/PHPMailer/PHPMailerAutoload.php");
 
+	$email = $_GET['email'];
+	send_email($email);
+
 	function send_email($email) {
 		$key = generateKey($email);
 		$html_body = format_html_email($email, $key);
 
 
     	$mail = new PHPMailer();
-		$mail->IsSendmail();
+		$mail->IsSMTP();
+		//$mail->IsSendmail();
+
+		$mail->SMTPAuth   = true;                  // enable SMTP authentication
+		$mail->SMTPSecure = "tls";                 // sets the prefix to the servier
+		$mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
+		$mail->Port       = 587;                   // set the SMTP port for the GMAIL server
+		$mail->Username   = "ripplemusicteam@gmail.com";  // GMAIL username
+		$mail->Password   = "ENTER THE CORRECT PASSWORD HERE OR IT WONT WORK";
 
 		$mail->AddAddress($email, 'New Ripple User');
 
